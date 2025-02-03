@@ -7,6 +7,6 @@ This repository will serve as an example for Madison College's Enterprise Java C
 ### Design
 
 * [User Stories](designDocuments/userStories.md)
-* [Screen Design](designDocuments/screens)
+* [Screen Design](designDocuments/siteDesign)
 
 ### [Project Plan](ProjectPlan.md)
