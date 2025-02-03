@@ -1,5 +1,4 @@
-# User Stories
-#### * marks MVP
+# User Stories - #### * = MVP
 
 ### Sign up*
 
@@ -69,6 +68,6 @@ As a user, I want to be able to edit a lake so I can manage my lakes appropriatl
 
 As a user, I want to be able to add a lake so I can select it during my journal entry
 
-# About
+### About
 
 As a user I want to find out more information about this site so that I can make donations or contact the admin.
