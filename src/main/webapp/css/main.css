@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+img {
+    max-width: 100%;
+}
+
+
+/********************************
+* Header & Nav
+**********************************/
+/* Use important! to override bootstrap css */
+.navbar-nav .nav-link {
+    color: white !important;
+    margin-right: 2em;
+    font-size: 18px;
+}
+
+/* Ensure links appear on right under hamburger menu */
+/* Forces text alignment to the right */
+.navbar-collapse {
+    text-align: right;
+}
+
+.navbar-toggler-icon {
+    background-color: #ffffff;
+}
+
+
+/********************************
+* Footer
+**********************************/
+footer {
+    background-color: #536642;
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: 300;
+    padding-bottom: 1em;
+}
+
+footer a {
+    color:#FFFFFF;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color:#FFFFFF;
+    text-decoration: none;
+}
+
+footer a img:hover {
+    border: solid 1px grey;
+}
