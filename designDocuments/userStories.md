@@ -1,4 +1,5 @@
-# User Stories - #### * = MVP
+# User Stories
+#### * = MVP
 
 ### Sign up*
 
