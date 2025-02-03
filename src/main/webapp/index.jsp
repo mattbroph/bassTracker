@@ -10,8 +10,11 @@
     <link rel="stylesheet" href="css/main.css">
     <!-- Bootstrap -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- ChartJS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- JavaScript -->
     <script src="js/dashboard.js"></script>
+
 </head>
 
 <body>
@@ -36,7 +39,7 @@
                 <a href="#aboutMe" class="nav-link">Journals</a>
                 <a href="#skillsTables" class="nav-link">Reports</a>
                 <a href="#personalProjects" class="nav-link">Lakes</a>
-                <a href="#contactMe" class="nav-link" class="nav-link">About</a>
+                <a href="#contactMe" class="nav-link">About</a>
                 <a href="#profile" class="nav-link">Profile</a>
             </div>
         </div>
@@ -45,7 +48,19 @@
 
 <main id="mainContent">
 
-    <h2>Testing</h2>
+    <h1>Matt's 2025 Dashboard</h1>
+    <br>
+    <br>
+
+    <!-- Bass Goal Donut -->
+    <div id="bassGoalContainer">
+        <!-- TODO Hardcoded need to update -->
+        <h2>Number of Bass</h2>
+        <p>100 of 150</p>
+        <canvas id="bassGoalDonut">
+        </canvas>
+    </div>
+
 
 </main>
 

@@ -3,6 +3,13 @@ body {
     padding: 0;
 }
 
+main {
+    margin-left: 8%;
+    margin-right: 8%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
 
 img {
     max-width: 100%;
@@ -53,4 +60,21 @@ footer a:hover {
 
 footer a img:hover {
     border: solid 1px grey;
+}
+
+/*****************************
+* Chart JS
+******************************/
+#bassGoalDonut {
+    max-width: 15em;
+    max-height: 15em;
+}
+
+#bassGoalContainer {
+    text-align: center;
+    border: solid black .1em;
+    border-radius: 1em;
+    max-width: 20em;
+    padding: 1em;
+    display: inline-block;
 }
