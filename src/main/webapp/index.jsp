@@ -14,6 +14,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- JavaScript -->
     <script src="js/dashboard.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&family=Roboto+Slab&display=swap" rel="stylesheet">
 
 </head>
 
@@ -35,7 +39,7 @@
 
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
-                <a href="#home" class="nav-link">Home</a>
+                <a href="#home" class="nav-link" id="active">Home</a>
                 <a href="#aboutMe" class="nav-link">Journals</a>
                 <a href="#skillsTables" class="nav-link">Reports</a>
                 <a href="#personalProjects" class="nav-link">Lakes</a>
@@ -52,14 +56,65 @@
     <br>
     <br>
 
-    <!-- Bass Goal Donut -->
-    <div id="bassGoalContainer">
-        <!-- TODO Hardcoded need to update -->
-        <h2>Number of Bass</h2>
-        <p>100 of 150</p>
-        <canvas id="bassGoalDonut">
-        </canvas>
-    </div>
+    <section id="dashboardRowOne">
+
+        <!-- Bass Goal Donut -->
+        <div id="bassGoalContainer">
+            <!-- TODO Hardcoded need to update -->
+            <h2>Bass Goal</h2>
+            <p>100 of 150</p>
+            <canvas id="bassGoalDonut">
+            </canvas>
+        </div>
+
+        <!-- Bass Size Count -->
+        <div id="bassSizeContainer">
+            <!-- TODO Hardcoded need to update -->
+            <h2>Bass Size Count</h2>
+            <canvas id="bassSizeDonut">
+            </canvas>
+        </div>
+
+        <div id="statContainer">
+            <!-- Catches Per Hour -->
+            <div id="catchPerHourContainer">
+                <!-- TODO Hardcoded need to update -->
+                <h2>Catches Per Hour</h2>
+                <br>
+                <p>1.5</p>
+            </div>
+
+            <!-- Total Hours -->
+            <div id="totalHoursContainer">
+                <!-- TODO Hardcoded need to update -->
+                <h2>Total Hours</h2>
+                <br>
+                <p>45</p>
+            </div>
+        </div>
+
+
+
+
+    </section>
+
+    <section id="dashboardRowTwo">
+        <!-- Trip History -->
+        <div id="tripChartContainer">
+            <!-- TODO Hardcoded need to update -->
+            <h2>Trip History</h2>
+            <p>75 Trips</p>
+            <canvas id="tripChart">
+            </canvas>
+        </div>
+        <div id="catchChartContainer">
+            <!-- TODO Hardcoded need to update -->
+            <h2>Catch History</h2>
+            <p>Goal: 25 Per Month</p>
+            <canvas id="catchChart">
+            </canvas>
+        </div>
+    </section>
 
 
 </main>
