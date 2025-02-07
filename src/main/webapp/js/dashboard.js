@@ -68,7 +68,7 @@ const buildBassSizeCount = () => {
             'LM 19"+'
         ],
         datasets: [{
-            label: 'My First Dataset',
+            label: 'Count',
             data: [11, 16, 7, 3, 14, 15],
             backgroundColor: [
                 '#F8E089',
