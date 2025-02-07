@@ -1,0 +1,43 @@
+input, select, textarea {
+    display: block;
+    width: 24em;
+}
+
+label {
+    font-size: 18px;
+}
+
+textarea {
+    height: 10em;
+}
+
+#smallMouthFields, #largeMouthFields {
+    display: inline-block;
+}
+
+#smallMouthFields input, #largeMouthFields input {
+    width: 10em;
+}
+
+#largeMouthFields {
+    margin-left: 1em;
+}
+
+#buttonContainer input {
+    background-color: #536642;
+    width: 14em;
+    color: #FFFFFF;
+    border-radius: .25em;
+    padding: .25em;
+}
+
+#buttonContainer input:hover {
+    background-color: #8F9C82;
+}
+
+@media (max-width: 510px) {
+    #largeMouthFields {
+        margin-left: 0em;
+    }
+}
+

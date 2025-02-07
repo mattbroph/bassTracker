@@ -12,7 +12,6 @@ main {
     font-family: 'Roboto Slab', serif;
 }
 
-
 img {
     max-width: 100%;
 }
@@ -27,9 +26,6 @@ h1 {
     padding-bottom: 1em;
 }
 
-#catchPerHourContainer p, #totalHoursContainer p {
-    font-size: 26px;
-}
 
 
 /********************************
@@ -58,10 +54,6 @@ h1 {
     text-underline-offset: .3em;
 }
 
-
-
-
-
 /********************************
 * Footer
 **********************************/
@@ -87,101 +79,3 @@ footer a img:hover {
     border: solid 1px grey;
 }
 
-/*****************************
-* Chart JS
-******************************/
-
-#bassSizeDonut {
-    margin-top: 3em;
-}
-
-#bassGoalContainer, #bassSizeContainer {
-    text-align: center;
-    border: solid #FFFFFF .1em;
-    border-radius: .75em;
-    padding: 1.5em;
-    display: inline-block;
-    background-color: #FFFFFF;
-    /* width: 24em; */
-    width: 30%;
-    min-width: 24em;
-}
-
-#statContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    /* width: 24em; */
-    width: 30%;
-    min-width: 24em;
-    justify-content: space-around;
-}
-
-#catchPerHourContainer, #totalHoursContainer {
-
-    border: solid #FFFFFF .1em;
-    border-radius: .75em;
-    padding: 1.5em;
-    background-color: #FFFFFF;
-    width: 100%;
-    height: 12em;
-    display: flex;
-    flex-direction: column; /* Stack items vertically */
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-#dashboardRowOne {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 1em;
-}
-
-/* ROW TWO */
-
-#dashboardRowTwo {
-    margin-top: 2em;
-    margin-bottom: 1em;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 2em;
-}
-
-#tripChartContainer, #catchChartContainer {
-    text-align: center;
-    border: solid #FFFFFF .1em;
-    border-radius: .75em;
-    padding: 1.5em;
-    background-color: #FFFFFF;
-    /* Edit below */
-    width: 48%; /* Default for larger screens */
-}
-
-/* Ensure they stack on small screens */
-@media (max-width: 1467px) {
-    #tripChartContainer, #catchChartContainer {
-        width: 30%;
-        flex-basis: 70%;
-    }
-}
-
-@media (max-width: 1467px) {
-    #dashboardRowOne {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    h1 {
-        text-align: center;
-    }
-}
-
-@media (max-width: 650px) {
-    #bassGoalContainer, #bassSizeContainer, #statContainer {
-        width: 18em;
-        min-width: 18em;
-    }
-}
