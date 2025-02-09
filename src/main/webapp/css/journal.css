@@ -9,6 +9,7 @@ label {
 
 textarea {
     height: 10em;
+    padding: .5em;
 }
 
 #smallMouthFields, #largeMouthFields {
@@ -23,10 +24,23 @@ textarea {
     margin-left: 1em;
 }
 
+
+
+
+/******************
+* Buttons
+*******************/
+#buttonContainer {
+    display: flex;
+    gap: 1em;
+}
+
+/* Submit button */
 #buttonContainer input {
     background-color: #536642;
-    width: 14em;
+    width: 10em;
     color: #FFFFFF;
+    border: 1px solid black;
     border-radius: .25em;
     padding: .25em;
 }
@@ -35,9 +49,29 @@ textarea {
     background-color: #8F9C82;
 }
 
+/* Cancel button */
+.cancelButton {
+    padding: .25em;
+    border: 1px solid black;
+    border-radius: .25em;
+    color: black;
+    background-color: #F6D86B;
+    text-decoration: none;
+    width: 10em;
+    text-align: center;
+}
+
+.cancelButton:hover {
+    text-decoration: none;
+    color: black;
+    background-color: #FAE8A6;
+}
+
+/******************
+* Media Queries
+*******************/
 @media (max-width: 510px) {
     #largeMouthFields {
         margin-left: 0em;
     }
 }
-

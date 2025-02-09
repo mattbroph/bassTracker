@@ -29,6 +29,7 @@
         <!-- Lake -->
         <label for="lake">*Lake</label>
         <select name="lake" id="lake">
+            <option value="" selected disabled>Select an option</option>
             <option value="1">Lake Kegonsa</option>
             <option value="2">Boom Lake</option>
         </select>
@@ -44,6 +45,7 @@
         <!-- Fishing Method -->
         <label for="fishingMethod">*Fishing Method</label>
         <select name="fishingMethod" id="fishingMethod" required>
+            <option value="" selected disabled>Select an option</option>
             <option value="1">Fly Fishing</option>
             <option value="2">Crib Fishing</option>
             <option value="3">Shoreline</option>
@@ -59,6 +61,7 @@
         <!-- Weather -->
         <label for="weather">*Weather</label>
         <select name="weather" id="weather" required>
+            <option value="" selected disabled>Select an option</option>
             <option value="1">Sunny</option>
             <option value="2">Partly Sunny</option>
             <option value="3">Cloudy</option>
@@ -69,6 +72,7 @@
         <!-- Wind -->
         <label for="wind">*Wind</label>
         <select name="wind" id="wind" required>
+            <option value="" selected disabled>Select an option</option>
             <option value="1">0-5 mph</option>
             <option value="2">5-10 mph</option>
             <option value="3">15-20 mph</option>
@@ -122,8 +126,7 @@
         <label for="comments">Comments</label>
         <textarea name="comments"
                   id="comments"
-                  placeholder="enter comments here">
-    </textarea>
+                  placeholder="enter comments here"></textarea>
         <br>
         <!-- Photo -->
         <label for="photo">Photo of the day</label>
@@ -136,9 +139,12 @@
 
         <!-- Button fields -->
         <div id="buttonContainer">
-            <input type="submit" value="Add Journal Entry">
+            <input type="submit" value="Add Journal">
+            <a href="index.jsp" class="cancelButton">Cancel</a>
         </div>
     </form>
+    <br>
+    <br>
 
 
 </main>
