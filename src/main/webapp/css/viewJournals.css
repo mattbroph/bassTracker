@@ -1,0 +1,69 @@
+input {
+    display: inline-block;
+    width: 15em;
+    background-color: #FFFFFF;
+}
+
+label {
+    font-size: 18px;
+    padding-left: .25em;
+}
+
+/******************
+* Table
+******************/
+#journalsTable tbody tr:nth-child(even) {
+    background-color: #E8E7E9;
+}
+
+#journalsTable tbody tr:nth-child(odd) {
+    background-color: #FFFFFF;
+}
+
+#journalsTable thead tr {
+    background-color: #ACB7A3;
+}
+
+/******************
+* Buttons
+*******************/
+
+/* Yellow Submit Select Range Button */
+.yellowSubmitButton {
+    background-color: #F6D86B;
+    width: 10em;
+    color: black;
+    border: 1px solid black;
+    border-radius: .25em;
+    padding: .25em;
+}
+
+.yellowSubmitButton:hover {
+    background-color: #FAE8A6;
+}
+
+/* Green Anchor Add Journal Entry Button */
+.greenAnchorButton {
+    padding: .4em 2em;
+    border: 1px solid black;
+    border-radius: .25em;
+    color: #FFFFFF;
+    background-color: #536642;
+    text-decoration: none;
+    text-align: center;
+}
+
+.greenAnchorButton:hover {
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color:#8F9C82;
+}
+
+/******************
+* Media Queries
+*******************/
+@media (max-width: 845px) {
+    #startRange, #endRange {
+        display: block;
+    }
+}
