@@ -20,7 +20,7 @@ label {
     background-color: #FFFFFF;
 }
 
-#journalsTable thead tr {
+th {
     background-color: #ACB7A3;
 }
 
