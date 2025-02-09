@@ -140,7 +140,7 @@
         <!-- Button fields -->
         <div id="buttonContainer">
             <input type="submit" value="Add Journal">
-            <a href="index.jsp" class="cancelButton">Cancel</a>
+            <a href="viewJournals.jsp" class="cancelButton">Cancel</a>
         </div>
     </form>
     <br>

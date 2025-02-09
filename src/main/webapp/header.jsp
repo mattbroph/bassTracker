@@ -16,12 +16,12 @@
 
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
-                <a href="#home" class="nav-link" id="active">Home</a>
-                <a href="#aboutMe" class="nav-link">Journals</a>
-                <a href="#skillsTables" class="nav-link">Reports</a>
-                <a href="#personalProjects" class="nav-link">Lakes</a>
-                <a href="#contactMe" class="nav-link">About</a>
-                <a href="#profile" class="nav-link">Profile</a>
+                <a href="index.jsp" class="nav-link" id="active">Home</a>
+                <a href="viewJournals.jsp" class="nav-link">Journals</a>
+                <a href="reports.jsp" class="nav-link">Reports</a>
+                <a href="viewLakes.jsp" class="nav-link">Lakes</a>
+                <a href="about.jsp" class="nav-link">About</a>
+                <a href="profile.jsp" class="nav-link">Profile</a>
             </div>
         </div>
     </nav>
