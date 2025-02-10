@@ -7,3 +7,7 @@
 | 3| 02/03/25| Completed non exercise videos, readings and activitys | 2.5 | |
 | 3| 02/04/25| Completed screen designs and user stories for indy project | 2 | |
 | 3| 02/05/25| Completed exercise videos and weekly exercise | 3 | |
+| 3| 02/06/25| Worked on dashboard jsp and implementing chart.js | 3 | |
+| 3| 02/07/25| Worked on database design | 2 | |
+| 3| 02/09/25| Worked on journal jsps and implementing data tables| 2.5 | |
+| 4| 02/10/25| Wrote project plan. Submitted checkpoint 1| 2.5 | |
