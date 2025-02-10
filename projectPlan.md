@@ -79,7 +79,7 @@
 2. The \#4 View profile story
 3. The \#5 Edit profile story
 - [ ] Create User entity
-- [ ] Create class to perform CRU on the user - UserDAO (no delete on user)
+- [ ] Create class to perform CRU on the user - UserDAO (no delete on user? how does that work with congnito??)
 - [ ] Create the config files for the DB connection info (dev and test)
 - [ ] Create unit tests for the UserDAO
 - [ ] Create create profile jsp
