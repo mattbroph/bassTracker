@@ -89,7 +89,7 @@ As a user, I want to be able to edit a lake so I can manage my lakes appropriatl
 
 As a user, I want to be able to add a lake so I can select it during my journal entry
 
-### 17. About*
+### 17. About
 #### WEEK 12
 
 As a user I want to find out more information about this site so that I can make donations or contact the admin.
