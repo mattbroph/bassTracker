@@ -33,7 +33,7 @@
 - [ ] Create controller to route to ViewJournals jsp
 - [ ] Create controller to route to View Journal Details jsp
 - [ ] Create controller to route to Add Journal jsp
-- [ ] Create controller to route db INSERT for Add Journal functionality
+- [ ] Create class to perform CRUD for Add & View Journal functionality
 - [ ] Update journal time log
 
 
@@ -42,9 +42,23 @@
 1. The \#11 Edit Journal story
 2. The \#12 Delete Journal story
 
+- [ ] Create Edit Journal jsp
+- [ ] Create Delete Journal jsp
+- [ ] Create controller to route to editJournal.jsp
+- [ ] Create controller to route to deleteJournal.jsp
+- [ ] Add db UPDATE for Edit Journal functionality to CRUD class
+- [ ] Add db DELETE for Delete Journal functionality to CRUD class
+
+
 ### Week 6 - Class topic is deploying the application to AWS
 #### This week my focus is:
 1. The \#6 User Dashboard (current year) story
+
+- [ ] Create UserDashboard entity
+- [ ] Create class to run db queries to populate UserDashboard entity
+- [ ] Create User Dashboard jsp
+- [ ] Create controller to route to userDashboard.jsp
+- [ ] Update journal time log
 
 ### Week 7 - Class topic is AWS cognito (sign up and log in for users)
 #### Checkpoint 2 is Due: Database designed and created, at least one DAO with full CRUD (create, read, update, delete) implemented with Hibernate, DAO is fully unit tested, Log4J is implemented (no System.out.printlns)
@@ -58,6 +72,7 @@
 - [ ] Update project config files for AWS as needed
 - [ ] Deploy project to AWS
 - [ ] Add deployed link to indie project list in student repo
+- [ ] Update journal time log
 
 ### Week 8 - Class topic is RESTful web services
 1. The \#3a. Create Profile story
@@ -74,13 +89,18 @@
 - [ ] Create controller to route UPDATE request to edit a user's profile
 - [ ] Create controller to route to "view profile" jsp
 - [ ] Create controller to route to "edit profile" jsp
+- [ ] Update journal time log
 
 
 ### Week 9 - Class topic is RESTful web services continued 
 #### Checkpoint 3 is Due: Deployed to AWS, at least one JSP that displays data from the database is implemented, authentication implemented, add AWS deployed app link to indie project list in student repo.
 #### This week my focus is:
-1. The \#3b. User Profile Photo story
+1. Wrapping up week 8 stories if overflow
+2. The \#3b. User Profile Photo story
 - [ ] Double-check all checkpoint 3 items (above) are complete and visible in github.
+- [ ] Add functionality to hit AWS RESTful S3 bucket api and retrieve the user profile image to display throughout the web site
+- [ ] Wrap up any week 8 stories that were carry over
+- [ ] Update journal time log
 
 
 ### Week 10 Class topic is Team Project work week
@@ -89,21 +109,50 @@
 2. The \#15 Edit Lake story
 3. The \#16 Add Lake story
 
+- [ ] Create Lake entity
+- [ ] Create View Lakes jsp
+- [ ] Create Add Lakes jsp
+- [ ] Create Edit Lakes jsp
+- [ ] Create controller to route to viewLakes.jsp
+- [ ] Create controller to route to addLakes.jsp
+- [ ] Create controller to route to editLakes.jsp
+- [ ] Create class to perform CRUD for Add, View and Edit lakes. User's won't be able to "delete" lakes, they can edit them or mark them inactive. This is so that journals with lakes that are marked inactive still retain their data.
+- [ ] Update journal time log
+
 ### Week 11 Class topic is Team Project work week
 #### This week my focus is:
 1. The \#13 Reports - Catch Rate story
+
+- [ ] Create Catch Rate Report entity
+- [ ] Create class that runs query to determine catch rate
+- [ ] Create report.jsp
+- [ ] Create controller to route to report.jsp
+- [ ] Display report on report.jsp page
+- [ ] Update journal time log
 
 ### Week 12 Class topic is completing Team Project work
 #### This week my focus is:
 1. The \#17 About story
 
+- [ ] Finish About page design
+- [ ] Create about.jsp
+- [ ] Create controller that routes to about.jsp
+- [ ] Update journal time log
+
 ### Week 13 Class topic is OPTIONAL EJB (enterprise javabeans)
 #### This week my focus is:
 1. Finishing touches on code and prep for code review
 
+- [ ] Update code
+- [ ] Prep for code review
+- [ ] Update journal time log
+
 ### Week 14 Class topic is project code reviews
 #### This week my focus is:
 1. Code reviews and any items that need attention
+
+- [ ] Perform code reviews
+- [ ] Update journal time log
 
 ### Week 15
 - [ ] Implement Feedback from Week 14 review
