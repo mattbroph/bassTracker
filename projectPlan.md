@@ -1,0 +1,118 @@
+# Project Plan
+
+### Week 2
+- [X] Create project repository on GitHub
+- [X] Create project structure in intellij and push
+- [X] Add link to list of indie projects in student repo.
+- [X] Complete Problem Statement
+- [X] Update journal time log
+
+### Week 3
+- [X] Research possible Web Services/APIs to use
+- [X] List technologies, versions and how they will be used
+- [X] Document user stories and select MVP stories 
+- [X] Confirm MVP stories meet Ent Java indie project objectives
+- [X] Design screens - make sure all MVP user stories are covered
+- [X] Start creating JSPs - html & css
+- [X] First cut at database design
+- [ ] Update journal time log
+
+### Week 4 - Class topic is Hibernate
+#### This week my focus is:
+1. Creating and loading the dev database w/ test data
+2. The \#8 View Journals List story
+3. The \#9 View Journal Details story
+4. The \#10 Add Journal story
+
+- [ ] Create dev version of the database
+- [ ] Create a class for the DB connection
+- [ ] Create Journal entity
+- [ ] Create View Journals jsp
+- [ ] Create View Journal Details jsp
+- [ ] Create Add Journal jsp
+- [ ] Create controller to route to ViewJournals jsp
+- [ ] Create controller to route to View Journal Details jsp
+- [ ] Create controller to route to Add Journal jsp
+- [ ] Create controller to route db INSERT for Add Journal functionality
+- [ ] Update journal time log
+
+
+### Week 5 - Class topic is Hibernate (continued)
+#### This week my focus is:
+1. The \#11 Edit Journal story
+2. The \#12 Delete Journal story
+
+### Week 6 - Class topic is deploying the application to AWS
+#### This week my focus is:
+1. The \#6 User Dashboard (current year) story
+
+### Week 7 - Class topic is AWS cognito (sign up and log in for users)
+#### Checkpoint 2 is Due: Database designed and created, at least one DAO with full CRUD (create, read, update, delete) implemented with Hibernate, DAO is fully unit tested, Log4J is implemented (no System.out.printlns)
+#### This week my focus is:
+1. The \#1 Sign Up story
+2. The \#2 Sign In story
+
+- [ ] Double-check all checkpoint 2 items (above) are complete and visible in github.
+- [ ] Set up Authentication in indie project (more tasks coming for this)
+- [ ] Create project DB on AWS.
+- [ ] Update project config files for AWS as needed
+- [ ] Deploy project to AWS
+- [ ] Add deployed link to indie project list in student repo
+
+### Week 8 - Class topic is RESTful web services
+1. The \#3a. Create Profile story
+2. The \#4 View profile story
+3. The \#5 Edit profile story
+- [ ] Create User entity
+- [ ] Create class to perform CRU on the user - UserDAO (no delete on user)
+- [ ] Create the config files for the DB connection info (dev and test)
+- [ ] Create unit tests for the UserDAO
+- [ ] Create create profile jsp
+- [ ] Creaet view profile jsp
+- [ ] Create edit profile jsp
+- [ ] Create controller to run INSERT for new users request
+- [ ] Create controller to route UPDATE request to edit a user's profile
+- [ ] Create controller to route to "view profile" jsp
+- [ ] Create controller to route to "edit profile" jsp
+
+
+### Week 9 - Class topic is RESTful web services continued 
+#### Checkpoint 3 is Due: Deployed to AWS, at least one JSP that displays data from the database is implemented, authentication implemented, add AWS deployed app link to indie project list in student repo.
+#### This week my focus is:
+1. The \#3b. User Profile Photo story
+- [ ] Double-check all checkpoint 3 items (above) are complete and visible in github.
+
+
+### Week 10 Class topic is Team Project work week
+#### This week my focus is:
+1. The \#14 View Lakes List story
+2. The \#15 Edit Lake story
+3. The \#16 Add Lake story
+
+### Week 11 Class topic is Team Project work week
+#### This week my focus is:
+1. The \#13 Reports - Catch Rate story
+
+### Week 12 Class topic is completing Team Project work
+#### This week my focus is:
+1. The \#17 About story
+
+### Week 13 Class topic is OPTIONAL EJB (enterprise javabeans)
+#### This week my focus is:
+1. Finishing touches on code and prep for code review
+
+### Week 14 Class topic is project code reviews
+#### This week my focus is:
+1. Code reviews and any items that need attention
+
+### Week 15
+- [ ] Implement Feedback from Week 14 review
+- [ ] Final Presentation
+- [ ] Create video, add video link to readme.md
+- [ ] Finalize all documentation
+- [ ] Code quality check
+- [ ] Weekly journal entry
+
+### Week 16
+- [ ] Weekly journal entry
+- [ ] Final touches before code complete
