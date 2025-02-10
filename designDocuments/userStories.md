@@ -11,7 +11,9 @@ As a new user, I want to log in so that I can log my bass fishing journals and t
 
 ### Create Profile*
 
-As a user, I want to create my profile so I can set my name, bass count goal and profile picture to be used throughout the application.
+As a user, I want to create my profile so I can set my name, bass count goal and profile picture to be used throughout the application. 
+
+The user profile photo will be hosted in an AWS S3 bucket and consumed via API.
 
 ### View Profile*
 
