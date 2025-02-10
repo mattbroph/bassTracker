@@ -1,7 +1,5 @@
 # Bass Tacker - Individual Project - Matt Brophy
 
-This repository will serve as an example for Madison College's Enterprise Java Class. 
-
 ### Problem Statement
 
 Many bass fisherman use journals to log details about their fishing trips, including the date, lake, number of bass caught, weather conditions and fishing method. These records help identify trends and can be used to improve a fisherman’s success. Traditional paper journals and spreadsheets can be cumbersome to maintain and analyze.
