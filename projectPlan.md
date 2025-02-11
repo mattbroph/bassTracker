@@ -24,7 +24,7 @@
 3. The \#9 View Journal Details story
 4. The \#10 Add Journal story
 
-- [ ] Create dev version of the database
+- [X] Create dev version of the database
 - [ ] Create a class for the DB connection
 - [ ] Create Journal entity
 - [ ] Create View Journals jsp
