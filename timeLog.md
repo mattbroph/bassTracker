@@ -10,4 +10,4 @@
 | 3| 02/06/25| Worked on dashboard jsp and implementing chart.js | 3 | |
 | 3| 02/07/25| Worked on database design | 2 | |
 | 3| 02/09/25| Worked on journal jsps and implementing data tables| 2.5 | |
-| 4| 02/10/25| Wrote project plan, updated user stories and submitted checkpoint 1| 2.5 | |
+| 4| 02/10/25| Wrote project plan, updated user stories, submitted checkpoint, wrote db creation and load files| 3.5 | |
