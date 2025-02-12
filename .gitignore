@@ -48,5 +48,7 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-# Remove db.properties file from commit #
+# Remove db.properties file from commit
 *.properties
+# Remove hibernate.cfg.xml file from commit
+*.cfg.xml
