@@ -31,7 +31,7 @@
 - [ ] Create View Journal Details jsp
 - [ ] Create Add Journal jsp
 - [X] Create controller to route to ViewJournals jsp
-- [] Create controller to route to View Journal Details jsp
+- [ ] Create controller to route to View Journal Details jsp
 - [X] Create controller to route to Add Journal jsp
 - [ ] Create class to perform CRUD for Add & View Journal functionality
 - [ ] Update journal time log
