@@ -15,7 +15,7 @@
 - [X] Design screens - make sure all MVP user stories are covered
 - [X] Start creating JSPs - html & css
 - [X] First cut at database design
-- [ ] Update journal time log
+- [X] Update journal time log
 
 ### Week 4 - Class topic is Hibernate
 #### This week my focus is:
@@ -30,9 +30,9 @@
 - [ ] Create View Journals jsp
 - [ ] Create View Journal Details jsp
 - [ ] Create Add Journal jsp
-- [ ] Create controller to route to ViewJournals jsp
-- [ ] Create controller to route to View Journal Details jsp
-- [ ] Create controller to route to Add Journal jsp
+- [X] Create controller to route to ViewJournals jsp
+- [] Create controller to route to View Journal Details jsp
+- [X] Create controller to route to Add Journal jsp
 - [ ] Create class to perform CRUD for Add & View Journal functionality
 - [ ] Update journal time log
 

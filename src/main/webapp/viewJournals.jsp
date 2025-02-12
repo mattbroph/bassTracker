@@ -20,7 +20,7 @@
 
     <h1>{$}Matt's Fishing Journals</h1>
     <br>
-    <a href="addJournal.jsp" class="greenAnchorButton">Add Journal Entry</a>
+    <a href="addJournal" class="greenAnchorButton">Add Journal Entry</a>
     <br><br>
     <br><br>
     <br>
