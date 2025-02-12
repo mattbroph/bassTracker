@@ -1,62 +1,64 @@
-package entity;
+package com.mattbroph.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
  * The type Lake.
  */
+ @Entity
+ @Table(name = "Lake")
 public class Lake {
 
     /** The unique Lake ID */
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO, generator="native")
     @GenericGenerator(name = "native",strategy = "native")
-    private int lakeId;
+    @Column(name = "LakeID")
+    private int id;
 
     /** The name of the lake */
     @Column(name = "LakeName")
     private String lakeName;
 
-    /** The user's id (TODO - id will be hardcoded for now) */
+    /** The user's id (TODO - id will be hardcoded until week 5 when learning one to many table relationships) */
     @Column(name = "UserID")
     private int userId;
 
 
+    /**
+     * Empty constructor for instantiating new lake
+     */
+    public Lake() {
+    }
 
     /**
-     * Instantiates a new Lake.
+     * Instantiates a new Lake with instance variables.
      *
-     * @param lakeId   the lake id
      * @param lakeName the lake name
      * @param userId   the user id
      */
-    public Lake(int lakeId, String lakeName, int userId) {
-        this.lakeId = lakeId;
+    public Lake(String lakeName, int userId) {
         this.lakeName = lakeName;
         this.userId = userId;
     }
-
 
     /**
      * Gets lake id.
      *
      * @return the lake id
      */
-    public int getLakeId() {
-        return lakeId;
+    public int getId() {
+        return id;
     }
 
     /**
      * Sets lake id.
      *
-     * @param lakeId the lake id
+     * @param id the lake id
      */
-    public void setLakeId(int lakeId) {
-        this.lakeId = lakeId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
@@ -102,9 +104,9 @@ public class Lake {
     @Override
     public String toString() {
         return "Lake{" +
-                "lakeId=" + lakeId +
-                ", lakeName='" + lakeName + '\'' +
-                ", userId=" + userId +
+                "id= " + id +
+                ", lakeName= '" + lakeName + '\'' +
+                ", userId= " + userId +
                 '}';
     }
 }

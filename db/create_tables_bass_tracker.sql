@@ -1,4 +1,4 @@
-USE bass_tracker;
+USE bass_tracker_test;
 
 #########################################################
 # Remove all tables if they exist, prior to creating them
@@ -69,6 +69,7 @@ CREATE TABLE Lake (
     LakeID INTEGER AUTO_INCREMENT PRIMARY KEY,
     LakeName varchar(50) NOT NULL,
     UserID INTEGER NOT NULL
+    UNIQUE (UserID, LakeName)
 );
 
 #########################################################

@@ -52,3 +52,5 @@ fabric.properties
 *.properties
 # Remove hibernate.cfg.xml file from commit
 *.cfg.xml
+# remove the log files
+*.log
