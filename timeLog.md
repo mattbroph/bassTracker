@@ -11,3 +11,4 @@
 | 3| 02/07/25| Worked on database design | 2 | |
 | 3| 02/09/25| Worked on journal jsps and implementing data tables| 2.5 | |
 | 4| 02/10/25| Wrote project plan, updated user stories, submitted checkpoint, wrote db creation and load files| 3.5 | |
+| 4| 02/11/25| Worked through first 8 videos, 3 remaining for tomorrow and the exercise| 3 | |
