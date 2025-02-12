@@ -1,12 +1,19 @@
 package com.mattbroph.persistance;
 
 import com.mattbroph.entity.Lake;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static com.mysql.cj.conf.PropertyKey.logger;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LakeDaoTest {
+
+    private final Logger logger = LogManager.getLogger(this.getClass());
 
     @BeforeEach
     void setUp() {
@@ -26,6 +33,23 @@ class LakeDaoTest {
     }
 
     @Test
+    void update() {
+        // Get the first lake
+        LakeDao lakeDao = new LakeDao();
+        Lake lake = lakeDao.getById(1);
+        // Log the name of the lake
+        logger.info("The lake name before updating: " + lake.getLakeName());
+        // Change the lake name
+        lake.setLakeName("Lake BeenUpdated");
+        // Update the lake name in the db
+        lakeDao.update(lake);
+        // Check the new lake name
+        assertEquals("Lake BeenUpdated", lake.getLakeName());
+        // Log the new lake name
+        logger.info("The lake name after updating: " + lake.getLakeName());
+    }
+
+    @Test
     void insert() {
         int insertedLakeId;
         LakeDao lakeDao = new LakeDao();
@@ -36,5 +60,13 @@ class LakeDaoTest {
         Lake lakeInserted = lakeDao.getById(insertedLakeId);
         assertNotNull(lakeInserted);
         assertEquals("Lake Waubesa", lakeInserted.getLakeName());
+    }
+
+    @Test
+    void delete() {
+        LakeDao lakeDao = new LakeDao();
+        Lake lake = lakeDao.getById(5);
+        lakeDao.delete(lake);
+        assertNull(lakeDao.getById(5));
     }
 }

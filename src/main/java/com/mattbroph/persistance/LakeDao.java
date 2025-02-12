@@ -23,7 +23,17 @@ public class LakeDao {
         return user;
     }
 
-
+    /**
+     * Update a Lake
+     * @param lake  Lake to be updated
+     */
+    public void update(Lake lake) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.merge(lake);
+        transaction.commit();
+        session.close();
+    }
 
 
     /**
@@ -41,6 +51,17 @@ public class LakeDao {
         return id;
     }
 
+    /**
+     * Delete a Lake
+     * @param lake Lake to be deleted
+     */
+    public void delete(Lake lake) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.delete(lake);
+        transaction.commit();
+        session.close();
+    }
 
 
 
