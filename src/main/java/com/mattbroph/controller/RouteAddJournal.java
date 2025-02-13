@@ -1,13 +1,13 @@
 package com.mattbroph.controller;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import com.mattbroph.entity.Lake;
+import com.mattbroph.persistance.LakeDao;
 
+import java.io.*;
+import java.util.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 
 /** Forwards the request to view journals jsp page
  *
@@ -33,6 +33,16 @@ public class RouteAddJournal extends HttpServlet {
 
         // Set the url param
         String url = "/addJournal.jsp";
+
+        // TODO don't hardcode this user id
+        // Get the user ID
+        String userID = "1";
+
+        // Get the list of Lakes matching the user ID
+        LakeDao lakeDao = new LakeDao();
+        List<Lake> userLakes =
+                lakeDao.getByPropertyEqual("userId", userID);
+        request.setAttribute("userLakes", userLakes);
 
         // Forward to the HTTP request data jsp page
         RequestDispatcher dispatcher =

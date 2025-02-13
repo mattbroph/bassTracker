@@ -1,12 +1,18 @@
 package com.mattbroph.persistance;
 
+import com.mattbroph.entity.Journal;
 import com.mattbroph.entity.Lake;
 
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.criteria.HibernateCriteriaBuilder;
+
+import java.util.List;
 
 public class LakeDao {
 
@@ -61,6 +67,23 @@ public class LakeDao {
         session.delete(lake);
         transaction.commit();
         session.close();
+    }
+
+    /**
+     * Get Lakes by User ID
+     *
+     */
+    public List<Lake> getByPropertyEqual(String propertyName, String value) {
+        Session session = sessionFactory.openSession();
+
+        HibernateCriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Lake> query = builder.createQuery(Lake.class);
+        Root<Lake> root = query.from(Lake.class);
+        query.select(root).where(builder.equal(root.get(propertyName), value));
+        List<Lake> userLakes = session.createSelectionQuery( query ).getResultList();
+
+        session.close();
+        return userLakes;
     }
 
 

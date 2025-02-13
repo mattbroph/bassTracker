@@ -77,7 +77,5 @@ class JournalDaoTest {
         assertEquals(2, journals.size());
         assertEquals(1, journals.get(0).getId());
 
-
-
     }
 }

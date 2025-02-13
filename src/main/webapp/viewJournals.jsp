@@ -70,8 +70,8 @@
         <c:forEach var="journal" items="${journals}">
             <tr>
                 <td>
-                    <a href="viewJournalDetails.jsp">
-                        <img src="images/openIcon.svg?id=${journal.id}" alt="view details">
+                    <a href="viewJournalDetails.jsp?id=${journal.id}">
+                        <img src="images/openIcon.svg" alt="view details">
                     </a>
                 </td>
                 <td>${journal.journalDate}</td>
