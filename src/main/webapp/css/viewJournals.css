@@ -28,17 +28,23 @@ th {
 * Buttons
 *******************/
 
-/* Yellow Submit Select Range Button */
-.yellowSubmitButton {
-    background-color: #F6D86B;
-    width: 10em;
-    color: black;
+/* Yellow Anchor Clear Filter Button */
+.yellowAnchorButton {
+    padding: .25em;
+    margin-bottom: 4em;
+    margin-top: 1em;
     border: 1px solid black;
     border-radius: .25em;
-    padding: .25em;
+    color: black;
+    background-color: #F6D86B;
+    text-decoration: none;
+    width: 10em;
+    text-align: center;
 }
 
-.yellowSubmitButton:hover {
+.yellowAnchorButton:hover {
+    text-decoration: none;
+    color: black;
     background-color: #FAE8A6;
 }
 
@@ -57,13 +63,4 @@ th {
     text-decoration: none;
     color: #FFFFFF;
     background-color:#8F9C82;
-}
-
-/******************
-* Media Queries
-*******************/
-@media (max-width: 845px) {
-    #startRange, #endRange {
-        display: block;
-    }
 }

@@ -1,17 +1,13 @@
 package com.mattbroph.persistance;
 
-import com.mattbroph.entity.Journal;
 import com.mattbroph.entity.Lake;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static com.mysql.cj.conf.PropertyKey.logger;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LakeDaoTest {

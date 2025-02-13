@@ -25,8 +25,8 @@ public class Lake {
     @Column(name = "UserID")
     private int userId;
 
-    //TODO ADD STATUS COLUMN TO LAKE
-
+    @Column(name = "LakeStatus")
+    private boolean lakeStatus;
 
     /**
      * Empty constructor for instantiating new lake
@@ -97,6 +97,24 @@ public class Lake {
      */
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    /**
+     * Is lake status boolean.
+     *
+     * @return the boolean
+     */
+    public boolean isLakeStatus() {
+        return lakeStatus;
+    }
+
+    /**
+     * Sets lake status.
+     *
+     * @param lakeStatus the lake status
+     */
+    public void setLakeStatus(boolean lakeStatus) {
+        this.lakeStatus = lakeStatus;
     }
 
     /**

@@ -18,7 +18,7 @@ class JournalDaoTest {
     @BeforeEach
     void setUp() {
         Database database = Database.getInstance();
-        database.runSQL("fresh_db.sql");
+        database.runSQL("fresh_db_old.sql");
     }
 
     @Test

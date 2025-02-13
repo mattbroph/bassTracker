@@ -30,11 +30,12 @@
         <label for="lake">*Lake</label>
         <select name="lake" id="lake">
             <option value="" selected disabled>Select an option</option>
-            <%-- Populate the user lake options --%>
-            <%-- TODO populate lakes with just ACTIVE--%>
+            <%-- Populate the user active lake options --%>
             <c:forEach var="lake" items="${userLakes}">
 
-            <option value="${lake.id}">${lake.lakeName}</option>
+                <c:if test="${lake.lakeStatus}">
+                    <option value="${lake.id}">${lake.lakeName}</option>
+                </c:if>
 
             </c:forEach>
 

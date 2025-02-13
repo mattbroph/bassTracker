@@ -69,7 +69,7 @@ public class LakeDao {
         session.close();
     }
 
-    /**
+    /** TODO add and LakeStatus = True (active lake) to where clause
      * Get Lakes by User ID
      *
      */
