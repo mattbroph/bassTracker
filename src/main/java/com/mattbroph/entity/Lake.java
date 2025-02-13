@@ -25,6 +25,8 @@ public class Lake {
     @Column(name = "UserID")
     private int userId;
 
+    //TODO ADD STATUS COLUMN TO LAKE
+
 
     /**
      * Empty constructor for instantiating new lake
