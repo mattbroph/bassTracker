@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -67,5 +68,16 @@ class JournalDaoTest {
         Journal journal = journalDao.getById(3);
         journalDao.delete(journal);
         assertNull(journalDao.getById(3));
+    }
+
+    @Test
+    void getByPropertyEqual() {
+        JournalDao journalDao = new JournalDao();
+        List<Journal> journals = journalDao.getByPropertyEqual("userID", "1");
+        assertEquals(2, journals.size());
+        assertEquals(1, journals.get(0).getId());
+
+
+
     }
 }

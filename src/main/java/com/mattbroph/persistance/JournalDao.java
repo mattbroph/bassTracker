@@ -1,11 +1,16 @@
 package com.mattbroph.persistance;
 
 import com.mattbroph.entity.Journal;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.criteria.HibernateCriteriaBuilder;
+
+import java.util.List;
 
 public class JournalDao {
 
@@ -60,6 +65,26 @@ public class JournalDao {
         session.delete(journal);
         transaction.commit();
         session.close();
+    }
+
+    /**
+     * Get Journals by User ID
+     *
+     */
+    public List<Journal> getByPropertyEqual(String propertyName, String value) {
+        Session session = sessionFactory.openSession();
+
+        logger.debug("Searching for journals with " + propertyName + " = " + value);
+
+        HibernateCriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Journal> query = builder.createQuery(Journal.class);
+        Root<Journal> root = query.from(Journal.class);
+        query.select(root).where(builder.equal(root.get(propertyName), value));
+        List<Journal> journals = session.createSelectionQuery( query ).getResultList();
+
+        logger.debug("The list of users is: " + journals);
+        session.close();
+        return journals;
     }
 
 
