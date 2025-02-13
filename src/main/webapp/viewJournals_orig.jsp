@@ -21,7 +21,7 @@
     <c:if test="${not empty journals}">
         <h2>We've got journals folks</h2>
     </c:if>
-
+    
     <h1>{$}Matt's Fishing Journals</h1>
     <br>
     <a href="addJournal" class="greenAnchorButton">Add Journal Entry</a>
@@ -60,30 +60,58 @@
             <th>Lake</th>
             <th>Bass Count</th>
             <th>Hours</th>
-            <th>Air Temp</th>
             <th>Method</th>
-            <th>Weather</th>
-            <th>Wind</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="journal" items="${journals}">
-            <tr>
-                <td>
-                    <a href="viewJournalDetails.jsp">
-                        <img src="images/openIcon.svg?id=${journal.id}" alt="view details">
-                    </a>
-                </td>
-                <td>${journal.journalDate}</td>
-                <td>${journal.lakeID}</td>
-                <td>${journal.totalBassCount}</td>
-                <td>${journal.hours}</td>
-                <td>${journal.airTemp}</td>
-                <td>${journal.methodID}</td>
-                <td>${journal.weatherID}</td>
-                <td>${journal.windID}</td>
-            </tr>
-        </c:forEach>
+        <tr>
+            <td>
+                <a href="viewJournalDetails.jsp">
+                    <img src="images/openIcon.svg" alt="view details">
+                </a>
+            </td>
+            <td>01/20/25</td>
+            <td>Boom Lake</td>
+            <td>8</td>
+            <td>3.5</td>
+            <td>Crib Fishing</td>
+        </tr>
+        <tr>
+            <td>
+                <a href="viewJournalDetails.jsp">
+                    <img src="images/openIcon.svg" alt="view details">
+                </a>
+            </td>
+            <td>01/18/25</td>
+            <td>Lake Kegonsa</td>
+            <td>5</td>
+            <td>2</td>
+            <td>Live Scope</td>
+        </tr>
+        <tr>
+            <td>
+                <a href="viewJournalDetails.jsp">
+                    <img src="images/openIcon.svg" alt="view details">
+                </a>
+            </td>
+            <td>01/17/25</td>
+            <td>Lake Tomahawk</td>
+            <td>12</td>
+            <td>4</td>
+            <td>Live Scope</td>
+        </tr>
+        <tr>
+            <td>
+                <a href="viewJournalDetails.jsp">
+                    <img src="images/openIcon.svg" alt="view details">
+                </a>
+            </td>
+            <td>01/02/25</td>
+            <td>Lake Kegonsa</td>
+            <td>3</td>
+            <td>4</td>
+            <td>Shoreline</td>
+        </tr>
         </tbody>
     </table>
 

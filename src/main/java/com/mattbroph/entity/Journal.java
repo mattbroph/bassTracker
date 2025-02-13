@@ -68,6 +68,9 @@ public class Journal {
     @Column(name = "LM_19_PLUS")
     private int largeMouth19Plus;
 
+    @Transient
+    private int totalBassCount;
+
 
     /**
      * Instantiates a new Journal.
@@ -426,6 +429,18 @@ public class Journal {
     public void setLargeMouth19Plus(int largeMouth19Plus) {
         this.largeMouth19Plus = largeMouth19Plus;
     }
+
+    /**
+     * Adds up the total bass count for the journal
+     * @return the total bass count
+     */
+     public int getTotalBassCount() {
+
+        int totalBassCount = largeMouth1416 + largeMouth1619 + largeMouth19Plus
+        + smallMouth1416 + smallMouth1619 + smallMouth19Plus;
+
+        return totalBassCount;
+     }
 
     @Override
     public String toString() {
