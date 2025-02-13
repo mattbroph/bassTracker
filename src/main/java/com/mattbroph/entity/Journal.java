@@ -18,12 +18,12 @@ public class Journal {
     @GeneratedValue(strategy= GenerationType.AUTO, generator="native")
     @GenericGenerator(name = "native",strategy = "native")
     @Column(name = "JournalID")
-    private int journalID;
+    private int id;
 
     @Column(name = "UserID")
     private int userID;
 
-    @Column(name = "JounalDate")
+    @Column(name = "JournalDate")
     private LocalDate journalDate;
 
     @Column(name = "LakeID")
@@ -80,7 +80,6 @@ public class Journal {
     /**
      * Instantiates a new Journal.
      *
-     * @param journalID        the journal id
      * @param userID           the user id
      * @param journalDate      the journal date
      * @param lakeID           the lake id
@@ -98,13 +97,12 @@ public class Journal {
      * @param largeMouth1619   the large mouth 1619
      * @param largeMouth19Plus the large mouth 19 plus
      */
-    public Journal(int journalID, int userID, LocalDate journalDate, int lakeID,
+    public Journal(int userID, LocalDate journalDate, int lakeID,
             int hours, int methodID, int airTemp, int weatherID, int windID,
             String comments, String imageURL, int smallMouth1416, int smallMouth1619,
             int smallMouth19Plus, int largeMouth1416, int largeMouth1619,
             int largeMouth19Plus) {
 
-        this.journalID = journalID;
         this.userID = userID;
         this.journalDate = journalDate;
         this.lakeID = lakeID;
@@ -128,17 +126,17 @@ public class Journal {
      *
      * @return the journal id
      */
-    public int getJournalID() {
-        return journalID;
+    public int getId() {
+        return id;
     }
 
     /**
      * Sets journal id.
      *
-     * @param journalID the journal id
+     * @param id the journal id
      */
-    public void setJournalID(int journalID) {
-        this.journalID = journalID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
@@ -432,7 +430,7 @@ public class Journal {
     @Override
     public String toString() {
         return "Journal{" +
-                "journalID=" + journalID +
+                "id=" + id +
                 ", userID=" + userID +
                 ", journalDate=" + journalDate +
                 ", lakeID=" + lakeID +
