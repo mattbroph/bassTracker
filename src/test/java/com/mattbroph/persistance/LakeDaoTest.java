@@ -1,6 +1,7 @@
 package com.mattbroph.persistance;
 
 import com.mattbroph.entity.Lake;
+import com.mattbroph.entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class LakeDaoTest {
 
     GenericDao lakeDao;
+    GenericDao userDao;
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
@@ -21,6 +23,7 @@ class LakeDaoTest {
         Database database = Database.getInstance();
         database.runSQL("fresh_db.sql");
         lakeDao = new GenericDao(Lake.class);
+        userDao = new GenericDao(User.class);
     }
 
     @Test
@@ -52,8 +55,12 @@ class LakeDaoTest {
     @Test
     void insert() {
         int insertedLakeId;
+
+        // Get a user
+        User user = (User)userDao.getById(3);
+
         // Create a new lake
-        Lake lake = new Lake("Lake Waubesa", 2);
+        Lake lake = new Lake("Lake Waubesa", user, true);
         // Do the insert and store the lake id
         insertedLakeId = lakeDao.insert(lake);
         Lake lakeInserted = (Lake)lakeDao.getById(insertedLakeId);
@@ -70,9 +77,9 @@ class LakeDaoTest {
 
     @Test
     void getByPropertyEqual() {
-        List<Lake> userLakes = (List<Lake>)lakeDao.getByPropertyEqual("userId", "1");
-        assertEquals(3, userLakes.size());
-        assertEquals(1, userLakes.get(0).getId());
+        List<Lake> userLakes = (List<Lake>)lakeDao.getByPropertyEqual("lakeName", "Lake Mendota");
+        assertEquals(1, userLakes.size());
+        assertEquals(2, userLakes.get(0).getId());
     }
 
     @Test

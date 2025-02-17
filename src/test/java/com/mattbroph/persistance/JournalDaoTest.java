@@ -2,6 +2,7 @@ package com.mattbroph.persistance;
 
 import com.mattbroph.entity.Journal;
 import com.mattbroph.entity.Lake;
+import com.mattbroph.entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,6 +17,7 @@ class JournalDaoTest {
 
     GenericDao journalDao;
     GenericDao lakeDao;
+    GenericDao userDao;
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
@@ -25,6 +27,7 @@ class JournalDaoTest {
         database.runSQL("fresh_db.sql");
         journalDao = new GenericDao(Journal.class);
         lakeDao = new GenericDao(Lake.class);
+        userDao = new GenericDao(User.class);
     }
 
     @Test
@@ -58,11 +61,13 @@ class JournalDaoTest {
         int insertedjournalId;
         LocalDate localDate = LocalDate.now();
 
-        // Create a new lake
+        // Get a lake
         Lake lake = (Lake)lakeDao.getById(1);
+        // Get a user
+        User user = (User)userDao.getById(1);
 
         // Create a new journal
-        Journal journal = new Journal(1, localDate, lake, 5, 2, 80, 2, 2, "Had a really good time fishing today", "https://myimage.com88", 2, 3, 4, 8, 1, 0);
+        Journal journal = new Journal(user, localDate, lake, 5, 2, 80, 2, 2, "Had a really good time fishing today", "https://myimage.com88", 2, 3, 4, 8, 1, 0);
         // Do the insert and store the journal id
         insertedjournalId = journalDao.insert(journal);
         Journal journalInserted = (Journal)journalDao.getById(insertedjournalId);
@@ -78,8 +83,9 @@ class JournalDaoTest {
 
     @Test
     void getByPropertyEqual() {
-        List<Journal> journals = (List<Journal>)journalDao.getByPropertyEqual("userID", "1");
-        assertEquals(2, journals.size());
+
+        List<Journal> journals = (List<Journal>)journalDao.getByPropertyEqual("id", "1");
+        assertEquals(1, journals.size());
     }
 
     @Test

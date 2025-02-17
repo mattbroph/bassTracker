@@ -22,13 +22,13 @@ public class Journal {
     @Column(name = "JournalID")
     private int id;
 
-    @Column(name = "UserID")
-    private int userID;
+    @ManyToOne
+    @JoinColumn(name = "UserID")
+    private User user;
 
     @Column(name = "JournalDate")
     private LocalDate journalDate;
 
-   // TODO NEW CODE HERE
     @ManyToOne
     @JoinColumn(name = "LakeID")
     private Lake lake;
@@ -87,7 +87,7 @@ public class Journal {
     /**
      * Instantiates a new Journal.
      *
-     * @param userID           the user id
+     * @param user             the user
      * @param journalDate      the journal date
      * @param lake             the lake
      * @param hours            the hours
@@ -104,13 +104,13 @@ public class Journal {
      * @param largeMouth1619   the large mouth 1619
      * @param largeMouth19Plus the large mouth 19 plus
      */
-    public Journal(int userID, LocalDate journalDate, Lake lake,
+    public Journal(User user, LocalDate journalDate, Lake lake,
             int hours, int methodID, int airTemp, int weatherID, int windID,
             String comments, String imageURL, int smallMouth1416, int smallMouth1619,
             int smallMouth19Plus, int largeMouth1416, int largeMouth1619,
             int largeMouth19Plus) {
 
-        this.userID = userID;
+        this.user = user;
         this.journalDate = journalDate;
         this.lake = lake;
         this.hours = hours;
@@ -147,21 +147,21 @@ public class Journal {
     }
 
     /**
-     * Gets user id.
+     * Gets the user
      *
-     * @return the user id
+     * @return the user
      */
-    public int getUserID() {
-        return userID;
+    public User getUser() {
+        return user;
     }
 
     /**
-     * Sets user id.
+     * Sets user
      *
-     * @param userID the user id
+     * @param user the user
      */
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     /**
@@ -447,28 +447,26 @@ public class Journal {
      }
 
 
-
     @Override
     public String toString() {
         return "Journal{" +
-                "id=" + id +
-                ", userID=" + userID +
-                ", journalDate=" + journalDate +
-                // TODO update this to show the lake object
-//                ", lakeID=" + lakeID +
-                ", hours=" + hours +
-                ", methodID=" + methodID +
-                ", airTemp=" + airTemp +
-                ", weatherID=" + weatherID +
-                ", windID=" + windID +
-                ", comments='" + comments + '\'' +
-                ", imageURL='" + imageURL + '\'' +
-                ", smallMouth1416=" + smallMouth1416 +
-                ", smallMouth1619=" + smallMouth1619 +
-                ", smallMouth19Plus=" + smallMouth19Plus +
-                ", largeMouth1416=" + largeMouth1416 +
+                "largeMouth19Plus=" + largeMouth19Plus +
                 ", largeMouth1619=" + largeMouth1619 +
-                ", largeMouth19Plus=" + largeMouth19Plus +
+                ", largeMouth1416=" + largeMouth1416 +
+                ", smallMouth19Plus=" + smallMouth19Plus +
+                ", smallMouth1619=" + smallMouth1619 +
+                ", smallMouth1416=" + smallMouth1416 +
+                ", imageURL='" + imageURL + '\'' +
+                ", comments='" + comments + '\'' +
+                ", windID=" + windID +
+                ", weatherID=" + weatherID +
+                ", airTemp=" + airTemp +
+                ", methodID=" + methodID +
+                ", hours=" + hours +
+//                ", lake=" + lake +
+                ", journalDate=" + journalDate +
+//                ", user=" + user +
+                ", id=" + id +
                 '}';
     }
 }

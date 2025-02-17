@@ -24,9 +24,10 @@ public class Lake {
     @Column(name = "LakeName")
     private String lakeName;
 
-    /** The user's id (TODO - id will be hardcoded until week 5 when learning one to many table relationships) */
-    @Column(name = "UserID")
-    private int userId;
+    /** The user's id */
+    @ManyToOne
+    @JoinColumn(name = "UserID")
+    private User user;
 
     @Column(name = "LakeStatus")
     private boolean lakeStatus;
@@ -46,11 +47,13 @@ public class Lake {
      * Instantiates a new Lake with instance variables.
      *
      * @param lakeName the lake name
-     * @param userId   the user id
+     * @param user   the user
+     * @param lakeStatus whether or not the lake is active
      */
-    public Lake(String lakeName, int userId) {
+    public Lake(String lakeName, User user, boolean lakeStatus) {
         this.lakeName = lakeName;
-        this.userId = userId;
+        this.user = user;
+        this.lakeStatus = lakeStatus;
     }
 
     /**
@@ -106,21 +109,21 @@ public class Lake {
     }
 
     /**
-     * Gets user id.
+     * Gets user.
      *
-     * @return the user id
+     * @return the user
      */
-    public int getUserId() {
-        return userId;
+    public User getUserId() {
+        return user;
     }
 
     /**
-     * Sets user id.
+     * Sets user
      *
-     * @param userId the user id
+     * @param user the user
      */
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserId(User user) {
+        this.user = user;
     }
 
     /**
@@ -166,7 +169,7 @@ public class Lake {
         return "Lake{" +
                 "id= " + id +
                 ", lakeName= '" + lakeName + '\'' +
-                ", userId= " + userId +
+                ", user= " + user +
                 '}';
     }
 }
