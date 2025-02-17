@@ -36,17 +36,20 @@ public class Journal {
     @Column(name = "Hours")
     private int hours;
 
-    @Column(name = "MethodID")
-    private int methodID;
+    @ManyToOne
+    @JoinColumn(name = "MethodID")
+    private Method method;
 
     @Column(name = "AirTemp")
     private int airTemp;
 
-    @Column(name = "WeatherID")
-    private int weatherID;
+    @ManyToOne
+    @JoinColumn(name = "WeatherID")
+    private Weather weather;
 
-    @Column(name = "WindID")
-    private int windID;
+    @ManyToOne
+    @JoinColumn(name = "WindID")
+    private Wind wind;
 
     @Column(name = "Comments")
     private String comments;
@@ -91,10 +94,10 @@ public class Journal {
      * @param journalDate      the journal date
      * @param lake             the lake
      * @param hours            the hours
-     * @param methodID         the method id
+     * @param method           the method object
      * @param airTemp          the air temp
-     * @param weatherID        the weather id
-     * @param windID           the wind id
+     * @param weather          the weather object
+     * @param wind             the wind object
      * @param comments         the comments
      * @param imageURL         the image url
      * @param smallMouth1416   the small mouth 1416
@@ -105,7 +108,7 @@ public class Journal {
      * @param largeMouth19Plus the large mouth 19 plus
      */
     public Journal(User user, LocalDate journalDate, Lake lake,
-            int hours, int methodID, int airTemp, int weatherID, int windID,
+            int hours, Method method, int airTemp, Weather weather, Wind wind,
             String comments, String imageURL, int smallMouth1416, int smallMouth1619,
             int smallMouth19Plus, int largeMouth1416, int largeMouth1619,
             int largeMouth19Plus) {
@@ -114,10 +117,10 @@ public class Journal {
         this.journalDate = journalDate;
         this.lake = lake;
         this.hours = hours;
-        this.methodID = methodID;
+        this.method = method;
         this.airTemp = airTemp;
-        this.weatherID = weatherID;
-        this.windID = windID;
+        this.weather = weather;
+        this.wind = wind;
         this.comments = comments;
         this.imageURL = imageURL;
         this.smallMouth1416 = smallMouth1416;
@@ -223,8 +226,8 @@ public class Journal {
      *
      * @return the method id
      */
-    public int getMethodID() {
-        return methodID;
+    public Method getMethodID() {
+        return method;
     }
 
     /**
@@ -232,8 +235,8 @@ public class Journal {
      *
      * @param methodID the method id
      */
-    public void setMethodID(int methodID) {
-        this.methodID = methodID;
+    public void setMethod(int methodID) {
+        this.method = method;
     }
 
     /**
@@ -255,39 +258,39 @@ public class Journal {
     }
 
     /**
-     * Gets weather id.
+     * Gets the weather
      *
-     * @return the weather id
+     * @return the weather
      */
-    public int getWeatherID() {
-        return weatherID;
+    public Weather getWeatherID() {
+        return weather;
     }
 
     /**
-     * Sets weather id.
+     * Sets the weather
      *
-     * @param weatherID the weather id
+     * @param weather the weather
      */
-    public void setWeatherID(int weatherID) {
-        this.weatherID = weatherID;
+    public void setWeatherID(Weather weather) {
+        this.weather = weather;
     }
 
     /**
-     * Gets wind id.
+     * Gets the wind
      *
-     * @return the wind id
+     * @return the wind
      */
-    public int getWindID() {
-        return windID;
+    public Wind getWindID() {
+        return wind;
     }
 
     /**
-     * Sets wind id.
+     * Sets the wind
      *
-     * @param windID the wind id
+     * @param wind the wind
      */
-    public void setWindID(int windID) {
-        this.windID = windID;
+    public void setWindID(Wind wind) {
+        this.wind = wind;
     }
 
     /**
@@ -458,10 +461,10 @@ public class Journal {
                 ", smallMouth1416=" + smallMouth1416 +
                 ", imageURL='" + imageURL + '\'' +
                 ", comments='" + comments + '\'' +
-                ", windID=" + windID +
-                ", weatherID=" + weatherID +
+//                ", windID=" + windID +
+//                ", weatherID=" + weatherID +
                 ", airTemp=" + airTemp +
-                ", methodID=" + methodID +
+//                ", methodID=" + methodID +
                 ", hours=" + hours +
 //                ", lake=" + lake +
                 ", journalDate=" + journalDate +
