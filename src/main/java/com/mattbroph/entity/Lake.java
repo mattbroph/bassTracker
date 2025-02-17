@@ -3,6 +3,9 @@ package com.mattbroph.entity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The type Lake.
  */
@@ -28,6 +31,11 @@ public class Lake {
     @Column(name = "LakeStatus")
     private boolean lakeStatus;
 
+    // TODO NEW LINE HERE - MAY NEED TO UPDATE CASCADING
+
+    @OneToMany(mappedBy = "lake", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<Journal> journals = new ArrayList<>();
+
     /**
      * Empty constructor for instantiating new lake
      */
@@ -44,6 +52,22 @@ public class Lake {
         this.lakeName = lakeName;
         this.userId = userId;
     }
+
+    /**
+     * TODO NOT SURE IF THIS IS NEED BUT WAS IN USER EXAMPLE
+     */
+    public void addJournal(Journal journal) {
+        journals.add(journal);
+        journal.setLake(this);
+    }
+
+    /**
+     * TODO NOT SURE IF THIS IS NEED BUT WAS IN USER EXAMPLE
+     */
+     public void removeJournal(Journal journal) {
+        journals.remove(journal);
+        journal.setLake(null);
+     }
 
     /**
      * Gets lake id.
@@ -115,6 +139,22 @@ public class Lake {
      */
     public void setLakeStatus(boolean lakeStatus) {
         this.lakeStatus = lakeStatus;
+    }
+
+    /**
+     * Gets journals
+     * @return the journals
+     */
+    public List<Journal> getJournals() {
+        return journals;
+    }
+
+    /**
+     * Sets journals
+     * @param journals the journals
+     */
+    public void setJournals(List<Journal> journals) {
+        this.journals = journals;
     }
 
     /**

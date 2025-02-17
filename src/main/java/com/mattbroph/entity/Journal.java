@@ -5,12 +5,14 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Represents a user's Journal Entry
  */
 @Entity
- @Table(name = "Journal")
+@Table(name = "Journal")
 
 public class Journal {
 
@@ -26,8 +28,10 @@ public class Journal {
     @Column(name = "JournalDate")
     private LocalDate journalDate;
 
-    @Column(name = "LakeID")
-    private int lakeID;
+   // TODO NEW CODE HERE
+    @ManyToOne
+    @JoinColumn(name = "LakeID")
+    private Lake lake;
 
     @Column(name = "Hours")
     private int hours;
@@ -85,7 +89,7 @@ public class Journal {
      *
      * @param userID           the user id
      * @param journalDate      the journal date
-     * @param lakeID           the lake id
+     * @param lake             the lake
      * @param hours            the hours
      * @param methodID         the method id
      * @param airTemp          the air temp
@@ -100,7 +104,7 @@ public class Journal {
      * @param largeMouth1619   the large mouth 1619
      * @param largeMouth19Plus the large mouth 19 plus
      */
-    public Journal(int userID, LocalDate journalDate, int lakeID,
+    public Journal(int userID, LocalDate journalDate, Lake lake,
             int hours, int methodID, int airTemp, int weatherID, int windID,
             String comments, String imageURL, int smallMouth1416, int smallMouth1619,
             int smallMouth19Plus, int largeMouth1416, int largeMouth1619,
@@ -108,7 +112,7 @@ public class Journal {
 
         this.userID = userID;
         this.journalDate = journalDate;
-        this.lakeID = lakeID;
+        this.lake = lake;
         this.hours = hours;
         this.methodID = methodID;
         this.airTemp = airTemp;
@@ -179,21 +183,21 @@ public class Journal {
     }
 
     /**
-     * Gets lake id.
+     * Gets the lake
      *
-     * @return the lake id
+     * @return the lake
      */
-    public int getLakeID() {
-        return lakeID;
+    public Lake getLake() {
+        return lake;
     }
 
     /**
-     * Sets lake id.
+     * Sets the lake
      *
-     * @param lakeID the lake id
+     * @param lake the lake
      */
-    public void setLakeID(int lakeID) {
-        this.lakeID = lakeID;
+    public void setLake(Lake lake) {
+        this.lake = lake;
     }
 
     /**
@@ -442,13 +446,16 @@ public class Journal {
         return totalBassCount;
      }
 
+
+
     @Override
     public String toString() {
         return "Journal{" +
                 "id=" + id +
                 ", userID=" + userID +
                 ", journalDate=" + journalDate +
-                ", lakeID=" + lakeID +
+                // TODO update this to show the lake object
+//                ", lakeID=" + lakeID +
                 ", hours=" + hours +
                 ", methodID=" + methodID +
                 ", airTemp=" + airTemp +

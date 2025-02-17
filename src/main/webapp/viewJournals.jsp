@@ -68,7 +68,7 @@
                     </a>
                 </td>
                 <td>${journal.journalDate}</td>
-                <td>${journal.lakeID}</td>
+                <td>${journal.lake.lakeName}</td>
                 <td>${journal.totalBassCount}</td>
                 <td>${journal.hours}</td>
                 <td>${journal.airTemp}</td>

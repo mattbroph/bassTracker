@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class JournalDaoTest {
 
     GenericDao journalDao;
+    GenericDao lakeDao;
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
@@ -23,6 +24,7 @@ class JournalDaoTest {
         Database database = Database.getInstance();
         database.runSQL("fresh_db.sql");
         journalDao = new GenericDao(Journal.class);
+        lakeDao = new GenericDao(Lake.class);
     }
 
     @Test
@@ -55,8 +57,12 @@ class JournalDaoTest {
     void insert() {
         int insertedjournalId;
         LocalDate localDate = LocalDate.now();
+
+        // Create a new lake
+        Lake lake = (Lake)lakeDao.getById(1);
+
         // Create a new journal
-        Journal journal = new Journal(1, localDate, 2, 5, 2, 80, 2, 2, "Had a really good time fishing today", "https://myimage.com88", 2, 3, 4, 8, 1, 0);
+        Journal journal = new Journal(1, localDate, lake, 5, 2, 80, 2, 2, "Had a really good time fishing today", "https://myimage.com88", 2, 3, 4, 8, 1, 0);
         // Do the insert and store the journal id
         insertedjournalId = journalDao.insert(journal);
         Journal journalInserted = (Journal)journalDao.getById(insertedjournalId);
