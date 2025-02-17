@@ -1,7 +1,7 @@
 package com.mattbroph.controller;
 
 import com.mattbroph.entity.Lake;
-import com.mattbroph.persistance.LakeDao;
+import com.mattbroph.persistance.GenericDao;
 
 import java.io.*;
 import java.util.*;
@@ -39,9 +39,9 @@ public class RouteAddJournal extends HttpServlet {
         String userID = "1";
 
         // Get the list of Lakes matching the user ID
-        LakeDao lakeDao = new LakeDao();
+        GenericDao lakeDao = new GenericDao(Lake.class);
         List<Lake> userLakes =
-                lakeDao.getByPropertyEqual("userId", userID);
+                (List<Lake>)lakeDao.getByPropertyEqual("userId", userID);
         request.setAttribute("userLakes", userLakes);
 
         // Forward to the HTTP request data jsp page
