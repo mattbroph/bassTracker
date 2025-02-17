@@ -226,7 +226,7 @@ public class Journal {
      *
      * @return the method id
      */
-    public Method getMethodID() {
+    public Method getMethod() {
         return method;
     }
 
@@ -262,7 +262,7 @@ public class Journal {
      *
      * @return the weather
      */
-    public Weather getWeatherID() {
+    public Weather getWeather() {
         return weather;
     }
 
@@ -271,7 +271,7 @@ public class Journal {
      *
      * @param weather the weather
      */
-    public void setWeatherID(Weather weather) {
+    public void setWeather(Weather weather) {
         this.weather = weather;
     }
 
@@ -280,7 +280,7 @@ public class Journal {
      *
      * @return the wind
      */
-    public Wind getWindID() {
+    public Wind getWind() {
         return wind;
     }
 
@@ -289,7 +289,7 @@ public class Journal {
      *
      * @param wind the wind
      */
-    public void setWindID(Wind wind) {
+    public void setWind(Wind wind) {
         this.wind = wind;
     }
 

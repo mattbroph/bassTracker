@@ -1,6 +1,5 @@
 package com.mattbroph.entity;
 
-
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -37,9 +36,14 @@ public class User {
     @Column(name = "ProfilePicture")
     private String profilePicture;
 
+    /** List of the users lakes */
     // TODO UDPATE CASCADE TYPE ON ALL OBJECTS!!! NEED TO CONSIDER STUFF
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Lake> lakes = new ArrayList<>();
+
+    /** List of the users journals */
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<Journal> journals = new ArrayList<>();
 
     /**
      * Empty constructor for instantiating new user
@@ -170,6 +174,23 @@ public class User {
         this.lakes = lakes;
     }
 
+    /**
+     * Gets journals
+     * @return the journals
+     */
+    public List<Journal> getJournals() {
+        return journals;
+    }
+
+    /**
+     * Sets journals
+     * @param journals the journals
+     */
+    public void setJournals(List<Journal> journals) {
+        this.journals = journals;
+    }
+
+    // TODO update all toStrings()
     @Override
     public String toString() {
         return "User{" +

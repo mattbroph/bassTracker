@@ -1,6 +1,7 @@
 package com.mattbroph.controller;
 
 import com.mattbroph.entity.Journal;
+import com.mattbroph.entity.User;
 import com.mattbroph.persistance.GenericDao;
 
 import java.io.*;
@@ -36,12 +37,13 @@ public class RouteViewJournals extends HttpServlet {
         String url = "/viewJournals.jsp";
 
         // TODO don't hardcode this user id
-        // Get the user ID
-        String userID = "1";
+        int userId = 1;
+        // TODO come clean this up
+        GenericDao userDao = new GenericDao(User.class);
+        User user = (User)userDao.getById(userId);
 
         // Get the list of journals matching the user id
-        GenericDao journalDao = new GenericDao(Journal.class);
-        List<Journal> journals = (List<Journal>)journalDao.getByPropertyEqual("userID", userID);
+        List<Journal> journals = user.getJournals();
 
         // Store the journals in the request and forward onto jsp to be displayed
         request.setAttribute("journals", journals);

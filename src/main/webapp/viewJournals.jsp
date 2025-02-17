@@ -72,9 +72,9 @@
                 <td>${journal.totalBassCount}</td>
                 <td>${journal.hours}</td>
                 <td>${journal.airTemp}</td>
-                <td>${journal.methodID}</td>
-                <td>${journal.weatherID}</td>
-                <td>${journal.windID}</td>
+                <td>${journal.method.methodName}</td>
+                <td>${journal.weather.weatherType}</td>
+                <td>${journal.wind.windType}</td>
             </tr>
         </c:forEach>
         </tbody>
