@@ -16,8 +16,7 @@
 
     <h1>Add a Journal Entry</h1>
 
-    <form name="contactUs"
-          action="http://itins3.madisoncollege.edu/echo.php"
+    <form action="actionAddJournal"
           method="post">
         <!-- Date -->
         <label for="date">*Date</label>
@@ -93,10 +92,10 @@
                        id="sm-14-16"
                        required>
                 <br>
-                <label for="sm-16-18">*Small Mouth 16"-19"</label>
+                <label for="sm-16-19">*Small Mouth 16"-19"</label>
                 <input type="number"
-                       name="sm-16-18"
-                       id="sm-16-18"
+                       name="sm-16-19"
+                       id="sm-16-19"
                        required>
                 <br>
                 <label for="sm-19-plus">*Small Mouth Bass 19"+</label>
@@ -107,22 +106,22 @@
                 <br>
             </div>
             <div id="largeMouthFields">
-                <label for="lg-14-16">*Large Mouth 14"-16"</label>
+                <label for="lm-14-16">*Large Mouth 14"-16"</label>
                 <input type="number"
-                       name="lg-14-16"
-                       id="lg-14-16"
+                       name="lm-14-16"
+                       id="lm-14-16"
                        required>
                 <br>
-                <label for="lg-16-18">*Large Mouth 16"-19"</label>
+                <label for="lm-16-19">*Large Mouth 16"-19"</label>
                 <input type="number"
-                       name="lg-16-18"
-                       id="lg-16-18"
+                       name="lm-16-19"
+                       id="lm-16-19"
                        required>
                 <br>
-                <label for="lg-19-plus">*Large Mouth 19"+</label>
+                <label for="lm-19-plus">*Large Mouth 19"+</label>
                 <input type="number"
-                       name="lg-19-plus"
-                       id="lg-19-plus"
+                       name="lm-19-plus"
+                       id="lm-19-plus"
                        required>
                 <br>
             </div>
