@@ -53,9 +53,10 @@
         <label for="fishingMethod">*Fishing Method</label>
         <select name="fishingMethod" id="fishingMethod" required>
             <option value="" selected disabled>Select an option</option>
-            <option value="1">Fly Fishing</option>
-            <option value="2">Crib Fishing</option>
-            <option value="3">Shoreline</option>
+            <c:forEach var="method" items="${methodList}">
+                <option value="${method.id}">${method.methodName}</option>
+            </c:forEach>
+
         </select>
         <br>
         <!-- Air Temp -->
@@ -69,21 +70,18 @@
         <label for="weather">*Weather</label>
         <select name="weather" id="weather" required>
             <option value="" selected disabled>Select an option</option>
-            <option value="1">Sunny</option>
-            <option value="2">Partly Sunny</option>
-            <option value="3">Cloudy</option>
-            <option value="4">Partly Cloudy</option>
-            <option value="5">Rain</option>
+            <c:forEach var="weather" items="${weatherList}">
+                <option value="${weather.id}">${weather.weatherType}</option>
+            </c:forEach>
         </select>
         <br>
         <!-- Wind -->
         <label for="wind">*Wind</label>
         <select name="wind" id="wind" required>
             <option value="" selected disabled>Select an option</option>
-            <option value="1">0-5 mph</option>
-            <option value="2">5-10 mph</option>
-            <option value="3">15-20 mph</option>
-            <option value="4">20+ mph</option>
+            <c:forEach var="wind" items="${windList}">
+                <option value="${wind.id}">${wind.windType}</option>
+            </c:forEach>
         </select>
         <br>
         <!-- Bass Count Fields -->

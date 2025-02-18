@@ -15,7 +15,7 @@
 <main id="mainContent">
 
     <h1>Edit Journal Entry</h1>
-    <h2>{$}07/22/24 -{$}Lake Kegonsa</h2>
+    <h2>${journal.journalDate} - ${journal.lake.lakeName}</h2>
     <br>
     <br>
 
@@ -27,13 +27,22 @@
         <input type="date"
                name="date"
                id="date"
+               value="${journal.journalDate}"
                required>
         <br>
         <!-- Lake -->
         <label for="lake">*Lake</label>
         <select name="lake" id="lake">
-            <option value="1">Lake Kegonsa</option>
-            <option value="2">Boom Lake</option>
+        <c:forEach var="lake" items="${userLakes}">
+            <c:choose>
+                <c:when test="${lake.id == journal.lake.id}">
+                    <option value="${lake.id}" selected>${lake.lakeName}</option>
+                </c:when>
+                <c:otherwise>
+                    <option value="${lake.id}">${lake.lakeName}</option>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
         </select>
         <br>
 
@@ -42,15 +51,22 @@
         <input type="number"
                name="hoursFished"
                id="hoursFished"
-               value="0"
+               value="${journal.hours}"
                required>
         <br>
         <!-- Fishing Method -->
         <label for="fishingMethod">*Fishing Method</label>
         <select name="fishingMethod" id="fishingMethod" required>
-            <option value="1">Fly Fishing</option>
-            <option value="2">Crib Fishing</option>
-            <option value="3">Shoreline</option>
+            <c:forEach var="method" items="${methodList}">
+                <c:choose>
+                    <c:when test="${method.id == journal.method.id}">
+                        <option value="${method.id}" selected>${method.methodName}</option>
+                    </c:when>
+                    <c:otherwise>
+                        <option value="${method.id}">${method.methodName}</option>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
         </select>
         <br>
         <!-- Air Temp -->
@@ -58,26 +74,37 @@
         <input type="number"
                name="airTemp"
                id="airTemp"
-               value="0"
+               value="${journal.airTemp}"
                required>
         <br>
         <!-- Weather -->
         <label for="weather">*Weather</label>
         <select name="weather" id="weather" required>
-            <option value="1">Sunny</option>
-            <option value="2">Partly Sunny</option>
-            <option value="3">Cloudy</option>
-            <option value="4">Partly Cloudy</option>
-            <option value="5">Rain</option>
+            <c:forEach var="weather" items="${weatherList}">
+                <c:choose>
+                    <c:when test="${weather.id == journal.weather.id}">
+                        <option value="${weather.id}" selected>${weather.weatherType}</option>
+                    </c:when>
+                    <c:otherwise>
+                        <option value="${weather.id}">${weather.weatherType}</option>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
         </select>
         <br>
         <!-- Wind -->
         <label for="wind">*Wind</label>
         <select name="wind" id="wind" required>
-            <option value="1">0-5 mph</option>
-            <option value="2">5-10 mph</option>
-            <option value="3">15-20 mph</option>
-            <option value="4">20+ mph</option>
+            <c:forEach var="wind" items="${windList}">
+                <c:choose>
+                    <c:when test="${wind.id == journal.wind.id}">
+                        <option value="${wind.id}" selected>${wind.windType}</option>
+                    </c:when>
+                    <c:otherwise>
+                        <option value="${wind.id}">${wind.windType}</option>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
         </select>
         <br>
         <!-- Bass Count Fields -->
@@ -87,21 +114,21 @@
                 <input type="number"
                        name="sm-14-16"
                        id="sm-14-16"
-                       value="0"
+                       value="${journal.smallMouth1416}"
                        required>
                 <br>
                 <label for="sm-16-18">*Small Mouth 16"-19"</label>
                 <input type="number"
                        name="sm-16-18"
                        id="sm-16-18"
-                       value="0"
+                       value="${journal.smallMouth1619}"
                        required>
                 <br>
                 <label for="sm-19-plus">*Small Mouth Bass 19"+</label>
                 <input type="number"
                        name="sm-19-plus"
                        id="sm-19-plus"
-                       value="0"
+                       value="${journal.smallMouth19Plus}"
                        required>
                 <br>
             </div>
@@ -110,21 +137,21 @@
                 <input type="number"
                        name="lg-14-16"
                        id="lg-14-16"
-                       value="0"
+                       value="${journal.largeMouth1416}"
                        required>
                 <br>
                 <label for="lg-16-18">*Large Mouth 16"-19"</label>
                 <input type="number"
                        name="lg-16-18"
                        id="lg-16-18"
-                       value="0"
+                       value="${journal.largeMouth1619}"
                        required>
                 <br>
                 <label for="lg-19-plus">*Large Mouth 19"+</label>
                 <input type="number"
                        name="lg-19-plus"
                        id="lg-19-plus"
-                       value="0"
+                       value="${journal.largeMouth19Plus}"
                        required>
                 <br>
             </div>
@@ -133,13 +160,13 @@
         <label for="comments">Comments</label>
         <textarea name="comments"
                   id="comments"
-                  placeholder="enter comments here"></textarea>
+                  placeholder="${journal.comments}"></textarea>
         <br>
         <!-- Photo -->
         <label for="photo">Photo of the day</label>
         <input type="text"
                name="photo"
-               placeholder="enter URL here"
+               placeholder="${journal.imageURL}"
                id="photo">
         <br>
         <br>
@@ -147,7 +174,7 @@
         <!-- Button fields -->
         <div id="buttonContainer">
             <input type="submit" value="Edit Journal">
-            <a href="index.jsp" class="cancelButton">Cancel</a>
+            <a href="viewJournals" class="cancelButton">Cancel</a>
         </div>
     </form>
     <br>

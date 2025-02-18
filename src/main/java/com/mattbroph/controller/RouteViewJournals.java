@@ -38,7 +38,7 @@ public class RouteViewJournals extends HttpServlet {
 
         // TODO don't hardcode this user id
         int userId = 1;
-        // TODO come clean this up
+        // TODO come clean this up - probably store the user in the session
         GenericDao userDao = new GenericDao(User.class);
         User user = (User)userDao.getById(userId);
 
