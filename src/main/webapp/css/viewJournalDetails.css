@@ -1,0 +1,118 @@
+h2 {
+    padding-bottom: .5em;
+}
+
+#photoH2 {
+    padding-bottom: 0;
+}
+
+li {
+    list-style-type: none;
+    padding-bottom: 1em;
+}
+
+ul {
+    padding-left: 0;
+}
+
+span {
+    font-weight: 700;
+    font-size: 17px;
+}
+
+#journalDetails {
+    display: flex;
+    justify-content: space-around;
+    gap: 2em;
+}
+
+#journalDetailsLeft {
+    flex: 1;
+}
+
+#journalDetailsRight {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* padding-top: 3.5em; */
+
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+#bassSizeContainer {
+    text-align: center;
+    border: solid #FFFFFF .1em;
+    border-radius: .75em;
+    padding: 1.5em;
+    background-color: #FFFFFF;
+    width: 80%;
+    min-width: 24em;
+}
+
+
+
+/******************
+* Buttons
+*******************/
+#buttonContainer {
+    display: flex;
+    gap: 1em;
+    margin-bottom: 3em;
+}
+
+/* Green Anchor Button */
+.greenAnchorButton {
+    padding: .4em 2em;
+    border: 1px solid black;
+    border-radius: .25em;
+    color: #FFFFFF;
+    background-color: #536642;
+    text-decoration: none;
+    text-align: center;
+}
+
+.greenAnchorButton:hover {
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color:#8F9C82;
+}
+
+/* Yellow Anchor Button */
+.yellowAnchorButton {
+    padding: .25em;
+    border: 1px solid black;
+    border-radius: .25em;
+    color: black;
+    background-color: #F6D86B;
+    text-decoration: none;
+    width: 10em;
+    text-align: center;
+}
+
+.yellowAnchorButton:hover {
+    text-decoration: none;
+    color: black;
+    background-color: #FAE8A6;
+}
+
+/*****************************
+* Media Queries
+******************************/
+@media (max-width: 1100px) {
+    #journalDetails {
+        display: block;
+    }
+    #journalDetailsRight {
+        display: block;
+        padding-bottom: 2em;
+    }
+    #bassSizeContainer {
+        width: 100%;
+    }
+}

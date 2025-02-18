@@ -34,9 +34,16 @@ public class RouteViewJournalDetails extends HttpServlet {
                       HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Set the url param
-        String url = "/viewJournalDetails.jsp";
+        // Get the journal id
+        int journalId = Integer.parseInt(request.getParameter("journalId"));
 
+        // Set the url param
+        String url = "/viewJournalDetails.jsp?journalId=" + journalId;
+
+        // Get the journal and add it the request
+        GenericDao journalDao = new GenericDao(Journal.class);
+        Journal journal = (Journal)journalDao.getById(journalId);
+        request.setAttribute("journal", journal);
 
         // Forward to the HTTP request data jsp page
         RequestDispatcher dispatcher =

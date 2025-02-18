@@ -65,7 +65,7 @@
                 <td>
 <%--                    TODO update this to view journal
                         just testing edit journal now--%>
-                    <a href="editJournal?journalId=${journal.id}">
+                    <a href="viewJournalDetails?journalId=${journal.id}">
                         <img src="images/openIcon.svg" alt="view details">
                     </a>
                 </td>

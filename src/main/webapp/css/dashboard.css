@@ -2,6 +2,13 @@
     font-size: 26px;
 }
 
+main {
+    padding-left: 8%;
+    padding-right: 8%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
 /*****************************
 * Chart JS
 ******************************/
