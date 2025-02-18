@@ -26,15 +26,15 @@
 
 - [X] Create dev version of the database
 - [X] Create a class for the DB connection
-- [ ] Create Journal entity
-- [ ] Create View Journals jsp
-- [ ] Create View Journal Details jsp
-- [ ] Create Add Journal jsp
+- [X] Create Journal entity
+- [X] Create View Journals jsp
+- [X] Create View Journal Details jsp
+- [X] Create Add Journal jsp
 - [X] Create controller to route to ViewJournals jsp
-- [ ] Create controller to route to View Journal Details jsp
+- [X] Create controller to route to View Journal Details jsp
 - [X] Create controller to route to Add Journal jsp
-- [ ] Create class to perform CRUD for Add & View Journal functionality
-- [ ] Update journal time log
+- [X] Create class to perform CRUD for Add & View Journal functionality
+- [X] Update journal time log
 
 
 ### Week 5 - Class topic is Hibernate (continued)
@@ -42,9 +42,9 @@
 1. The \#11 Edit Journal story
 2. The \#12 Delete Journal story
 
-- [ ] Create Edit Journal jsp
+- [X] Create Edit Journal jsp
 - [ ] Create Delete Journal jsp
-- [ ] Create controller to route to editJournal.jsp
+- [X] Create controller to route to editJournal.jsp
 - [ ] Create controller to route to deleteJournal.jsp
 - [ ] Add db UPDATE for Edit Journal functionality to CRUD class
 - [ ] Add db DELETE for Delete Journal functionality to CRUD class
