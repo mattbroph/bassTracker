@@ -47,6 +47,7 @@ public class RouteViewJournals extends HttpServlet {
 
         // Store the journals in the request and forward onto jsp to be displayed
         request.setAttribute("journals", journals);
+        request.setAttribute("user", user);
 
         // Forward to the HTTP request data jsp page
         RequestDispatcher dispatcher =

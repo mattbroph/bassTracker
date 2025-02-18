@@ -129,17 +129,16 @@ public class ActionAddJournal extends HttpServlet {
         if (insertedJournalId > 0) {
 
             session.setAttribute("addJournalMessage", "The following journal has" +
-                    " been added.");
+                    " been added:");
 
             // Set the url for the redirect
-//            url = request.getContextPath() + "/viewJournalDetailsServlet?journalId=2";
-            url = request.getContextPath() + "/viewJournalDetails";
+            url = request.getContextPath() + "/viewJournalDetails?journalId=" + insertedJournalId;
 
         } else {
 
             session.setAttribute("addJournalMessage", "Something went wrong, " +
                     " your journal has not been added.");
-
+            // TODO make this an error page!
             url = request.getContextPath() + "/viewJournalDetails";
 
         }

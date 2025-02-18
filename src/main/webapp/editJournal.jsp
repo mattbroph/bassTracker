@@ -14,13 +14,9 @@
 
 <main id="mainContent">
 
-    <h1>Edit Journal Entry</h1>
-    <h2>${journal.journalDate} - ${journal.lake.lakeName}</h2>
+    <h1>Edit Journal: ${journal.journalDate} | ${journal.lake.lakeName}</h1>
     <br>
-    <br>
-
-    <form name="contactUs"
-          action="http://itins3.madisoncollege.edu/echo.php"
+    <form action="#"
           method="post">
         <!-- Date -->
         <label for="date">*Date</label>

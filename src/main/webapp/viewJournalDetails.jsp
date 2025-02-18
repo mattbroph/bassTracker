@@ -14,16 +14,14 @@
 
 <main id="mainContent">
 
-    <h1>Journal: ${journal.journalDate} - ${journal.lake.lakeName}</h1>
-    <br>
-
+    <h1>Journal: ${journal.journalDate} | ${journal.lake.lakeName}</h1>
     <%-- Displays one-time success message if journal was just added --%>
     <c:if test="${addJournalMessage != null}" >
         <h2>${addJournalMessage}</h2>
     <%-- Remove success message from the session--%>
         <c:remove var="addJournalMessage" scope="session" />
     </c:if>
-
+    <br>
     <div id="journalDetails">
         <!-- Left -->
         <div id="journalDetailsLeft">

@@ -23,7 +23,7 @@
 
 <main id="mainContent">
 
-    <h1>{$}Matt's Fishing Journals</h1>
+    <h1>${user.firstName}'s Fishing Journals</h1>
     <a href="addJournal" class="greenAnchorButton">Add Journal Entry</a>
     <br><br>
     <br>
