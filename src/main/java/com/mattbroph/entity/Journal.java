@@ -231,11 +231,11 @@ public class Journal {
     }
 
     /**
-     * Sets method id.
+     * Sets method
      *
-     * @param methodID the method id
+     * @param method the method
      */
-    public void setMethod(int methodID) {
+    public void setMethod(Method method) {
         this.method = method;
     }
 

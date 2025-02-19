@@ -16,7 +16,7 @@
 
     <h1>Edit Journal: ${journal.journalDate} | ${journal.lake.lakeName}</h1>
     <br>
-    <form action="#"
+    <form action="actionEditJournal"
           method="post">
         <!-- Date -->
         <label for="date">*Date</label>
@@ -113,10 +113,10 @@
                        value="${journal.smallMouth1416}"
                        required>
                 <br>
-                <label for="sm-16-18">*Small Mouth 16"-19"</label>
+                <label for="sm-16-19">*Small Mouth 16"-19"</label>
                 <input type="number"
-                       name="sm-16-18"
-                       id="sm-16-18"
+                       name="sm-16-19"
+                       id="sm-16-19"
                        value="${journal.smallMouth1619}"
                        required>
                 <br>
@@ -129,24 +129,24 @@
                 <br>
             </div>
             <div id="largeMouthFields">
-                <label for="lg-14-16">*Large Mouth 14"-16"</label>
+                <label for="lm-14-16">*Large Mouth 14"-16"</label>
                 <input type="number"
-                       name="lg-14-16"
-                       id="lg-14-16"
+                       name="lm-14-16"
+                       id="lm-14-16"
                        value="${journal.largeMouth1416}"
                        required>
                 <br>
-                <label for="lg-16-18">*Large Mouth 16"-19"</label>
+                <label for="lm-16-19">*Large Mouth 16"-19"</label>
                 <input type="number"
-                       name="lg-16-18"
-                       id="lg-16-18"
+                       name="lm-16-19"
+                       id="lm-16-19"
                        value="${journal.largeMouth1619}"
                        required>
                 <br>
-                <label for="lg-19-plus">*Large Mouth 19"+</label>
+                <label for="lm-19-plus">*Large Mouth 19"+</label>
                 <input type="number"
-                       name="lg-19-plus"
-                       id="lg-19-plus"
+                       name="lm-19-plus"
+                       id="lm-19-plus"
                        value="${journal.largeMouth19Plus}"
                        required>
                 <br>
@@ -166,6 +166,9 @@
                id="photo">
         <br>
         <br>
+
+        <%-- Hidden field to provide journal id to doPost method  --%>
+        <input type="hidden" name="journalId" value="${journal.id}">
 
         <!-- Button fields -->
         <div id="buttonContainer">
