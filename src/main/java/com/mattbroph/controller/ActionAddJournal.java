@@ -143,11 +143,8 @@ public class ActionAddJournal extends HttpServlet {
 
         }
 
-
         // Send a redirect to the view journal detail page or the error page
         response.sendRedirect(url);
-
-
     }
 
 
