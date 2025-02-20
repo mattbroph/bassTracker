@@ -18,12 +18,6 @@ const buildBassSizeCount = () => {
     let largeMouth1619 = dataDiv.getAttribute("data-lm1619");
     let largeMouth19Plus = dataDiv.getAttribute("data-lm19Plus");
 
-
-
-
-    console.log(smallMouth1416, smallMouth1619, smallMouth19Plus);
-    console.log(largeMouth1416, largeMouth1619, largeMouth19Plus);
-
     // Define the data for the chart
     const data = {
         labels: [

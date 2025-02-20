@@ -79,9 +79,9 @@ class BassGoalTest {
 
     @Test
     void getByPropertyEqual() {
-        List<BassGoal> bassGoals = (List<BassGoal>)bassGoalDao.getByPropertyEqual("goalCount", "65");
-        assertEquals(1, bassGoals.size());
-        assertEquals(1, bassGoals.get(0).getId());
+        List<BassGoal> bassGoals = (List<BassGoal>)bassGoalDao.getByPropertyEqual("goalYear", "2025");
+        assertEquals(3, bassGoals.size());
+//        assertEquals(3, bassGoals.get(0).getId());
     }
 
     /* Hibernate requires a String for this value, but all the fields in the BassGoal

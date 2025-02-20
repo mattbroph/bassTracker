@@ -61,7 +61,7 @@ VALUES ("Lake Kegonsa", "1", true),
 # Bass Goal
 ################################
 INSERT INTO BassGoal (UserID, GoalYear, GoalCount)
-VALUES ("1", "2025", "65"),
+VALUES ("1", "2025", "150"),
        ("1", "2024", "120"),
 	   ("2", "2025", "90"),
        ("3", "2025", "32");

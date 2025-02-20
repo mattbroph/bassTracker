@@ -16,7 +16,9 @@
 
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
-                <a href="index.jsp" class="nav-link" id="active">Home</a>
+<%--               TODO Use id="active" to underscore--%>
+                <a href="index.jsp" class="nav-link">Home</a>
+                <a href="dashboard" class="nav-link">Dashboard</a>
                 <a href="viewJournals" class="nav-link">Journals</a>
                 <a href="reports.jsp" class="nav-link">Reports</a>
                 <a href="viewLakes.jsp" class="nav-link">Lakes</a>

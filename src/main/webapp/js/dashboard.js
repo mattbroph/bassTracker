@@ -14,17 +14,17 @@ const init = () => {
 */
 const buildBassGoalDonut = () => {
 
-    // TODO will have to get this data from the DB somehow (hardcoded for now)
-    // Declare variables
-    let current = 100;
-    let goal = 150;
+    let bassGoalDiv = document.getElementById("bassGoalContainer");
+    let bassGoal = parseInt(bassGoalDiv.getAttribute("data-bassGoal"));
+    let currentBassCount = parseInt(bassGoalDiv.getAttribute("data-currentBassCount"));
+
     let remaining;
 
     // Define "remaining" goal value
-    if (current >= goal) {
+    if (currentBassCount >= bassGoal) {
         remaining = 0;
     } else {
-        remaining = goal - current;
+        remaining = bassGoal - currentBassCount;
     }
 
     // Define the data for the donut
@@ -32,7 +32,7 @@ const buildBassGoalDonut = () => {
         labels: ['Current', 'Remaining'],
         datasets: [{
             label: 'Bass Goal',
-            data: [current, remaining],
+            data: [currentBassCount, remaining],
             backgroundColor: [
                 '#536642', // Green
                 '#F6D86B'  // Yellow
