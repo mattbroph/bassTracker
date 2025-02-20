@@ -43,11 +43,11 @@
 2. The \#12 Delete Journal story
 
 - [X] Create Edit Journal jsp
-- [ ] Create Delete Journal jsp
+- [X] Create Delete Journal jsp
 - [X] Create controller to route to editJournal.jsp
-- [ ] Create controller to route to deleteJournal.jsp
-- [ ] Add db UPDATE for Edit Journal functionality to CRUD class
-- [ ] Add db DELETE for Delete Journal functionality to CRUD class
+- [X] Create controller to route to deleteJournal.jsp
+- [X] Add db UPDATE for Edit Journal functionality to CRUD class
+- [X] Add db DELETE for Delete Journal functionality to CRUD class
 
 
 ### Week 6 - Class topic is deploying the application to AWS
