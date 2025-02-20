@@ -23,12 +23,12 @@ DROP TABLE IF EXISTS `appuser`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `appuser` (
-                           `UserID` int NOT NULL AUTO_INCREMENT,
-                           `UserName` varchar(50) NOT NULL,
-                           `FirstName` varchar(50) NOT NULL,
-                           `LastName` varchar(50) NOT NULL,
-                           `ProfilePicture` varchar(255) DEFAULT NULL,
-                           PRIMARY KEY (`UserID`)
+  `UserID` int NOT NULL AUTO_INCREMENT,
+  `UserName` varchar(50) NOT NULL,
+  `FirstName` varchar(50) NOT NULL,
+  `LastName` varchar(50) NOT NULL,
+  `ProfilePicture` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`UserID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -50,11 +50,11 @@ DROP TABLE IF EXISTS `bassgoal`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `bassgoal` (
-                            `UserID` int NOT NULL,
-                            `GoalYear` year NOT NULL,
-                            `GoalCount` int NOT NULL,
-                            PRIMARY KEY (`UserID`,`GoalYear`),
-                            CONSTRAINT `FK_BassGoal_User` FOREIGN KEY (`UserID`) REFERENCES `appuser` (`UserID`) ON DELETE CASCADE
+  `UserID` int NOT NULL,
+  `GoalYear` year NOT NULL,
+  `GoalCount` int NOT NULL,
+  PRIMARY KEY (`UserID`,`GoalYear`),
+  CONSTRAINT `FK_BassGoal_User` FOREIGN KEY (`UserID`) REFERENCES `appuser` (`UserID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -76,34 +76,34 @@ DROP TABLE IF EXISTS `journal`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `journal` (
-                           `JournalID` int NOT NULL AUTO_INCREMENT,
-                           `UserID` int NOT NULL,
-                           `JournalDate` date NOT NULL,
-                           `LakeID` int NOT NULL,
-                           `Hours` double NOT NULL,
-                           `MethodID` int NOT NULL,
-                           `AirTemp` int NOT NULL,
-                           `WeatherID` int NOT NULL,
-                           `WindID` int NOT NULL,
-                           `Comments` text,
-                           `ImageURL` varchar(255) DEFAULT NULL,
-                           `SM_14_16` int NOT NULL,
-                           `SM_16_19` int NOT NULL,
-                           `SM_19_PLUS` int NOT NULL,
-                           `LM_14_16` int NOT NULL,
-                           `LM_16_19` int NOT NULL,
-                           `LM_19_PLUS` int NOT NULL,
-                           PRIMARY KEY (`JournalID`),
-                           KEY `FK_Wind` (`WindID`),
-                           KEY `FK_Weather` (`WeatherID`),
-                           KEY `FK_Method` (`MethodID`),
-                           KEY `FK_Journal_User` (`UserID`),
-                           KEY `FK_Lake` (`LakeID`),
-                           CONSTRAINT `FK_Journal_User` FOREIGN KEY (`UserID`) REFERENCES `appuser` (`UserID`),
-                           CONSTRAINT `FK_Lake` FOREIGN KEY (`LakeID`) REFERENCES `lake` (`LakeID`),
-                           CONSTRAINT `FK_Method` FOREIGN KEY (`MethodID`) REFERENCES `method` (`MethodID`),
-                           CONSTRAINT `FK_Weather` FOREIGN KEY (`WeatherID`) REFERENCES `weather` (`WeatherID`),
-                           CONSTRAINT `FK_Wind` FOREIGN KEY (`WindID`) REFERENCES `wind` (`WindID`)
+  `JournalID` int NOT NULL AUTO_INCREMENT,
+  `UserID` int NOT NULL,
+  `JournalDate` date NOT NULL,
+  `LakeID` int NOT NULL,
+  `Hours` double NOT NULL,
+  `MethodID` int NOT NULL,
+  `AirTemp` int NOT NULL,
+  `WeatherID` int NOT NULL,
+  `WindID` int NOT NULL,
+  `Comments` text,
+  `ImageURL` varchar(255) DEFAULT NULL,
+  `SM_14_16` int NOT NULL,
+  `SM_16_19` int NOT NULL,
+  `SM_19_PLUS` int NOT NULL,
+  `LM_14_16` int NOT NULL,
+  `LM_16_19` int NOT NULL,
+  `LM_19_PLUS` int NOT NULL,
+  PRIMARY KEY (`JournalID`),
+  KEY `FK_Wind` (`WindID`),
+  KEY `FK_Weather` (`WeatherID`),
+  KEY `FK_Method` (`MethodID`),
+  KEY `FK_Journal_User` (`UserID`),
+  KEY `FK_Lake` (`LakeID`),
+  CONSTRAINT `FK_Journal_User` FOREIGN KEY (`UserID`) REFERENCES `appuser` (`UserID`),
+  CONSTRAINT `FK_Lake` FOREIGN KEY (`LakeID`) REFERENCES `lake` (`LakeID`),
+  CONSTRAINT `FK_Method` FOREIGN KEY (`MethodID`) REFERENCES `method` (`MethodID`),
+  CONSTRAINT `FK_Weather` FOREIGN KEY (`WeatherID`) REFERENCES `weather` (`WeatherID`),
+  CONSTRAINT `FK_Wind` FOREIGN KEY (`WindID`) REFERENCES `wind` (`WindID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -125,14 +125,14 @@ DROP TABLE IF EXISTS `lake`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lake` (
-                        `LakeID` int NOT NULL AUTO_INCREMENT,
-                        `LakeName` varchar(50) NOT NULL,
-                        `UserID` int NOT NULL,
-                        `isActive` tinyint(1) DEFAULT '1',
-                        PRIMARY KEY (`LakeID`),
-                        UNIQUE KEY `UserID` (`UserID`,`LakeName`),
-                        CONSTRAINT `FK_Lake_User` FOREIGN KEY (`UserID`) REFERENCES `appuser` (`UserID`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `LakeID` int NOT NULL AUTO_INCREMENT,
+  `LakeName` varchar(50) NOT NULL,
+  `UserID` int NOT NULL,
+  `LakeStatus` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`LakeID`),
+  UNIQUE KEY `UserID` (`UserID`,`LakeName`),
+  CONSTRAINT `FK_Lake_User` FOREIGN KEY (`UserID`) REFERENCES `appuser` (`UserID`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,7 +141,7 @@ CREATE TABLE `lake` (
 
 LOCK TABLES `lake` WRITE;
 /*!40000 ALTER TABLE `lake` DISABLE KEYS */;
-INSERT INTO `lake` VALUES (1,'Lake Kegonsa',1,1),(2,'Lake Mendota',1,1),(3,'Lake Monona',1,1),(4,'Fake Lake',1,0),(5,'Boom Lake',2,1),(6,'Lake Flannery',2,1),(7,'Lake Michigan',3,1);
+INSERT INTO `lake` VALUES (1,'Lake Kegonsa',1,1),(2,'Lake Mendota',1,1),(3,'Lake Monona',1,1),(4,'Boom Lake',2,1),(5,'Lake Flannery',2,1),(6,'Lake Michigan',3,1);
 /*!40000 ALTER TABLE `lake` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -153,9 +153,9 @@ DROP TABLE IF EXISTS `method`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `method` (
-                          `MethodID` int NOT NULL AUTO_INCREMENT,
-                          `MethodName` varchar(50) NOT NULL,
-                          PRIMARY KEY (`MethodID`)
+  `MethodID` int NOT NULL AUTO_INCREMENT,
+  `MethodName` varchar(50) NOT NULL,
+  PRIMARY KEY (`MethodID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -177,9 +177,9 @@ DROP TABLE IF EXISTS `weather`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `weather` (
-                           `WeatherID` int NOT NULL AUTO_INCREMENT,
-                           `WeatherType` varchar(50) NOT NULL,
-                           PRIMARY KEY (`WeatherID`)
+  `WeatherID` int NOT NULL AUTO_INCREMENT,
+  `WeatherType` varchar(50) NOT NULL,
+  PRIMARY KEY (`WeatherID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -201,9 +201,9 @@ DROP TABLE IF EXISTS `wind`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `wind` (
-                        `WindID` int NOT NULL AUTO_INCREMENT,
-                        `WindType` varchar(50) NOT NULL,
-                        PRIMARY KEY (`WindID`)
+  `WindID` int NOT NULL AUTO_INCREMENT,
+  `WindType` varchar(50) NOT NULL,
+  PRIMARY KEY (`WindID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -226,4 +226,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-02-19 15:23:53
+-- Dump completed on 2025-02-19 14:27:43

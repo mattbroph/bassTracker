@@ -68,7 +68,7 @@ public class ActionAddJournal extends HttpServlet {
 
         // Get the hours fished
         String hoursFished = request.getParameter("hoursFished");
-        int hoursFishedInt = Integer.parseInt(hoursFished);
+        double hoursFishedDouble = Double.parseDouble(hoursFished);
 
         // Get the method ID then get the method
         String methodId = request.getParameter("fishingMethod");
@@ -116,7 +116,7 @@ public class ActionAddJournal extends HttpServlet {
         String url;
 
         // Construct the journal object
-        Journal newJournal = new Journal(user, localJournalDate, lake, hoursFishedInt,
+        Journal newJournal = new Journal(user, localJournalDate, lake, hoursFishedDouble,
                 method, airTempInt, weather, wind, comments, imageURL, smallMouth1416Int,
                 smallMouth1619Int, smallMouth19PlusInt, largeMouth1416Int, largeMouth1619Int,
                 largeMouth19PlusInt);

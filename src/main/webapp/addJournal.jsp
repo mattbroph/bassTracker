@@ -32,7 +32,7 @@
             <%-- Populate the user active lake options --%>
             <c:forEach var="lake" items="${userLakes}">
 
-                <c:if test="${lake.lakeStatus}">
+                <c:if test="${lake.isActive}">
                     <option value="${lake.id}">${lake.lakeName}</option>
                 </c:if>
 
@@ -46,6 +46,8 @@
         <input type="number"
                name="hoursFished"
                id="hoursFished"
+               step="0.25"
+               min="0"
                required>
         <br>
         <!-- Fishing Method -->
@@ -91,6 +93,7 @@
                        name="sm-14-16"
                        id="sm-14-16"
                        value="0"
+                       min="0"
                        required>
                 <br>
                 <label for="sm-16-19">*Small Mouth 16"-19"</label>
@@ -98,6 +101,7 @@
                        name="sm-16-19"
                        id="sm-16-19"
                        value="0"
+                       min="0"
                        required>
                 <br>
                 <label for="sm-19-plus">*Small Mouth Bass 19"+</label>
@@ -105,6 +109,7 @@
                        name="sm-19-plus"
                        id="sm-19-plus"
                        value="0"
+                       min="0"
                        required>
                 <br>
             </div>
@@ -114,6 +119,7 @@
                        name="lm-14-16"
                        id="lm-14-16"
                        value="0"
+                       min="0"
                        required>
                 <br>
                 <label for="lm-16-19">*Large Mouth 16"-19"</label>
@@ -121,6 +127,7 @@
                        name="lm-16-19"
                        id="lm-16-19"
                        value="0"
+                       min="0"
                        required>
                 <br>
                 <label for="lm-19-plus">*Large Mouth 19"+</label>
@@ -128,6 +135,7 @@
                        name="lm-19-plus"
                        id="lm-19-plus"
                        value="0"
+                       min="0"
                        required>
                 <br>
             </div>

@@ -29,8 +29,8 @@ public class Lake {
     @JoinColumn(name = "UserID")
     private User user;
 
-    @Column(name = "LakeStatus")
-    private boolean lakeStatus;
+    @Column(name = "isActive")
+    private boolean isActive;
 
     // TODO NEW LINE HERE - MAY NEED TO UPDATE CASCADING
 
@@ -48,12 +48,12 @@ public class Lake {
      *
      * @param lakeName the lake name
      * @param user   the user
-     * @param lakeStatus whether or not the lake is active
+     * @param isActive whether or not the lake is active
      */
-    public Lake(String lakeName, User user, boolean lakeStatus) {
+    public Lake(String lakeName, User user, boolean isActive) {
         this.lakeName = lakeName;
         this.user = user;
-        this.lakeStatus = lakeStatus;
+        this.isActive = isActive;
     }
 
     /**
@@ -131,17 +131,17 @@ public class Lake {
      *
      * @return the boolean
      */
-    public boolean isLakeStatus() {
-        return lakeStatus;
+    public boolean getIsActive() {
+        return isActive;
     }
 
     /**
      * Sets lake status.
      *
-     * @param lakeStatus the lake status
+     * @param isActive the lake status
      */
-    public void setLakeStatus(boolean lakeStatus) {
-        this.lakeStatus = lakeStatus;
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
     }
 
     /**

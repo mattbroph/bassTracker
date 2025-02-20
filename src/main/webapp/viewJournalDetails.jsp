@@ -14,6 +14,17 @@
 
 <main id="mainContent">
 
+    <c:if test="${deleteJournalMessage != null}">
+        <h2 id="confirmDeleteMessage">${deleteJournalMessage}</h2>
+            <form action="actionDeleteJournal" method="POST">
+                <div class="buttonContainer">
+                    <input type="hidden" name="journalId" value="${journal.id}">
+                    <button type="submit" class="greenAnchorButton">Delete Journal</button>
+                    <a href="viewJournals" class="yellowAnchorButton">Cancel</a>
+                </div>
+            </form>
+    </c:if>
+
     <h1>Journal: ${journal.journalDate} | ${journal.lake.lakeName}</h1>
     <%-- Displays one-time success message if journal was just added --%>
     <c:if test="${addJournalMessage != null}" >
@@ -26,10 +37,12 @@
         <!-- Left -->
         <div id="journalDetailsLeft">
             <!-- Button fields -->
-            <div id="buttonContainer">
-                <a href="editJournal?journalId=${journal.id}" class="greenAnchorButton">Edit Journal</a>
-                <a href="index.jsp" class="yellowAnchorButton">Delete Journal</a>
-            </div>
+            <c:if test="${empty deleteJournalMessage}">
+                <div class="buttonContainer">
+                    <a href="editJournal?journalId=${journal.id}" class="greenAnchorButton">Edit Journal</a>
+                    <a href="deleteJournal?journalId=${journal.id}" class="yellowAnchorButton">Delete Journal</a>
+                </div>
+            </c:if>
             <h2>Trip Details</h2>
             <ul>
                 <li><span>Date:</span> ${journal.journalDate}</li>
@@ -42,7 +55,13 @@
                 <li><span>Bass Caught:</span> ${journal.totalBassCount}</li>
                 <li><span>Comments: </span>${journal.comments}</li>
             </ul>
-            <!-- Could put the image here but I like it bigger? -->
+            <!-- Could put the image here  -->
+            <div id="photoDiv">
+                <c:if test="${not empty journal.imageURL}">
+                    <span><h2 id="photoH2">Photo of the Day:</h2></span>
+                    <img src="${journal.imageURL}" alt="Journal Photo">
+                </c:if>
+            </div>
         </div>
         <!-- Right -->
         <div id="journalDetailsRight">
@@ -60,15 +79,12 @@
                 </canvas>
             </div>
         </div>
-    </div>
-    <div id="photoDiv">
-        <c:if test="${journal.imageURL != null}">
-            <span><h2 id="photoH2">Photo of the Day:</h2></span>
-            <img src="${journal.imageURL}" alt="Journal Photo">
-        </c:if>
+        <!-- Could put the image here also to be bigger -->
     </div>
     <br>
     <a href="viewJournals" class="greenAnchorButton">Go Back</a>
+
+    <c:remove var="deleteJournalMessage" scope="session" />
 
 </main>
 <c:import url="footer.jsp" />

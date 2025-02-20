@@ -20,7 +20,7 @@ CREATE TABLE Journal (
                          UserID INTEGER NOT NULL,
                          JournalDate DATE NOT NULL,
                          LakeID INTEGER NOT NULL,
-                         Hours INTEGER NOT NULL,
+                         Hours DOUBLE NOT NULL,
                          MethodID INTEGER NOT NULL,
                          AirTemp INTEGER NOT NULL,
                          WeatherID INTEGER NOT NULL,
@@ -69,7 +69,7 @@ CREATE TABLE Lake (
                       LakeID INTEGER AUTO_INCREMENT PRIMARY KEY,
                       LakeName varchar(50) NOT NULL,
                       UserID INTEGER NOT NULL,
-                      LakeStatus BOOLEAN DEFAULT TRUE,
+                      isActive BOOLEAN DEFAULT TRUE,
                       UNIQUE (UserID, LakeName)
 );
 

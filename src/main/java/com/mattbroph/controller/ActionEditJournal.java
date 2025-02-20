@@ -69,8 +69,8 @@ public class ActionEditJournal extends HttpServlet {
 
         // Get the hours fished
         String hoursFished = request.getParameter("hoursFished");
-        int hoursFishedInt = Integer.parseInt(hoursFished);
-        journalToEdit.setHours(hoursFishedInt);
+        double hoursFishedDouble = Double.parseDouble(hoursFished);
+        journalToEdit.setHours(hoursFishedDouble);
 
         // Get the method ID then get the method
         String methodId = request.getParameter("fishingMethod");

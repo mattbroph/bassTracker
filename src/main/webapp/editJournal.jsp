@@ -35,7 +35,9 @@
                     <option value="${lake.id}" selected>${lake.lakeName}</option>
                 </c:when>
                 <c:otherwise>
-                    <option value="${lake.id}">${lake.lakeName}</option>
+                    <c:if test="${lake.isActive}">
+                        <option value="${lake.id}">${lake.lakeName}</option>
+                    </c:if>
                 </c:otherwise>
             </c:choose>
         </c:forEach>
@@ -48,6 +50,8 @@
                name="hoursFished"
                id="hoursFished"
                value="${journal.hours}"
+               step="0.25"
+               min="0"
                required>
         <br>
         <!-- Fishing Method -->
@@ -111,6 +115,7 @@
                        name="sm-14-16"
                        id="sm-14-16"
                        value="${journal.smallMouth1416}"
+                       min="0"
                        required>
                 <br>
                 <label for="sm-16-19">*Small Mouth 16"-19"</label>
@@ -118,6 +123,7 @@
                        name="sm-16-19"
                        id="sm-16-19"
                        value="${journal.smallMouth1619}"
+                       min="0"
                        required>
                 <br>
                 <label for="sm-19-plus">*Small Mouth Bass 19"+</label>
@@ -125,6 +131,7 @@
                        name="sm-19-plus"
                        id="sm-19-plus"
                        value="${journal.smallMouth19Plus}"
+                       min="0"
                        required>
                 <br>
             </div>
@@ -134,6 +141,7 @@
                        name="lm-14-16"
                        id="lm-14-16"
                        value="${journal.largeMouth1416}"
+                       min="0"
                        required>
                 <br>
                 <label for="lm-16-19">*Large Mouth 16"-19"</label>
@@ -141,6 +149,7 @@
                        name="lm-16-19"
                        id="lm-16-19"
                        value="${journal.largeMouth1619}"
+                       min="0"
                        required>
                 <br>
                 <label for="lm-19-plus">*Large Mouth 19"+</label>
@@ -148,6 +157,7 @@
                        name="lm-19-plus"
                        id="lm-19-plus"
                        value="${journal.largeMouth19Plus}"
+                       min="0"
                        required>
                 <br>
             </div>
@@ -155,14 +165,13 @@
         <!-- Comments -->
         <label for="comments">Comments</label>
         <textarea name="comments"
-                  id="comments"
-                  placeholder="${journal.comments}"></textarea>
+                  id="comments">${journal.comments}</textarea>
         <br>
         <!-- Photo -->
         <label for="photo">Photo of the day</label>
         <input type="text"
                name="photo"
-               placeholder="${journal.imageURL}"
+               value="${journal.imageURL}"
                id="photo">
         <br>
         <br>

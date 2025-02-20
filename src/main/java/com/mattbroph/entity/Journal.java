@@ -34,7 +34,7 @@ public class Journal {
     private Lake lake;
 
     @Column(name = "Hours")
-    private int hours;
+    private double hours;
 
     @ManyToOne
     @JoinColumn(name = "MethodID")
@@ -108,7 +108,7 @@ public class Journal {
      * @param largeMouth19Plus the large mouth 19 plus
      */
     public Journal(User user, LocalDate journalDate, Lake lake,
-            int hours, Method method, int airTemp, Weather weather, Wind wind,
+            double hours, Method method, int airTemp, Weather weather, Wind wind,
             String comments, String imageURL, int smallMouth1416, int smallMouth1619,
             int smallMouth19Plus, int largeMouth1416, int largeMouth1619,
             int largeMouth19Plus) {
@@ -208,7 +208,7 @@ public class Journal {
      *
      * @return the hours
      */
-    public int getHours() {
+    public double getHours() {
         return hours;
     }
 
@@ -217,7 +217,7 @@ public class Journal {
      *
      * @param hours the hours
      */
-    public void setHours(int hours) {
+    public void setHours(double hours) {
         this.hours = hours;
     }
 
