@@ -59,10 +59,11 @@ CREATE TABLE AppUser (
 );
 
 CREATE TABLE BassGoal (
+                          GoalID INTEGER AUTO_INCREMENT PRIMARY KEY,
                           UserID INTEGER NOT NULL,
                           GoalYear YEAR NOT NULL,
                           GoalCount int NOT NULL,
-                          PRIMARY KEY (UserID, GoalYear)
+                          UNIQUE (UserID, GoalYear)
 );
 
 CREATE TABLE Lake (

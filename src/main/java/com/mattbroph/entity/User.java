@@ -45,6 +45,10 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Journal> journals = new ArrayList<>();
 
+    //TODO NEW CODE HERE FOR DASHBOARD
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<BassGoal> bassGoal = new ArrayList<>();
+
     /**
      * Empty constructor for instantiating new user
      */
@@ -176,6 +180,7 @@ public class User {
 
     /**
      * Gets journals
+     *
      * @return the journals
      */
     public List<Journal> getJournals() {
@@ -184,10 +189,29 @@ public class User {
 
     /**
      * Sets journals
+     *
      * @param journals the journals
      */
     public void setJournals(List<Journal> journals) {
         this.journals = journals;
+    }
+
+    /**
+     * Gets bass goal.
+     *
+     * @return the bass goal
+     */
+    public List<BassGoal> getBassGoal() {
+        return bassGoal;
+    }
+
+    /**
+     * Sets bass goal.
+     *
+     * @param bassGoal the bass goal
+     */
+    public void setBassGoal(List<BassGoal> bassGoal) {
+        this.bassGoal = bassGoal;
     }
 
     // TODO update all toStrings()
