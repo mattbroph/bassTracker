@@ -31,7 +31,6 @@
              data-currentBassCount="${dashboard.currentBassCountForYear}"
              data-bassGoal="${bassGoal.goalCount}"
         >
-            <!-- TODO Hardcoded need to update -->
             <h2>Bass Goal</h2>
             <p>${dashboard.currentBassCountForYear} of ${bassGoal.goalCount}</p>
             <canvas id="bassGoalDonut">
