@@ -57,19 +57,38 @@ const buildBassGoalDonut = () => {
 */
 const buildBassSizeCount = () => {
 
+    let bassSizeDiv = document.getElementById("bassSizeContainer");
+    let smallMouth1416 = parseInt(bassSizeDiv.getAttribute("data-sm1416"));
+    let smallMouth1619 = parseInt(bassSizeDiv.getAttribute("data-sm1619"));
+    let smallMouth19Plus = parseInt(bassSizeDiv.getAttribute("data-sm19Plus"));
+    let largeMouth1416 = parseInt(bassSizeDiv.getAttribute("data-lm1416"));
+    let largeMouth1619 = parseInt(bassSizeDiv.getAttribute("data-lm1619"));
+    let largeMouth19Plus = parseInt(bassSizeDiv.getAttribute("data-lm19Plus"));
+
+    console.log("smallMouth1416: " + smallMouth1416);
+    console.log("smallMouth1619: " + smallMouth1619);
+    console.log("smallMouth19Plus: " + smallMouth19Plus);
+
+    console.log("largeMouth1416: " + largeMouth1416);
+    console.log("largeMouth1619: " + largeMouth1619);
+    console.log("largeMouth19Plus: " + largeMouth19Plus);
+
+
+
     // Define the data for the chart
     const data = {
         labels: [
-            'SM 14"-16"',
-            'SM 16"-19"',
-            'SM 19"+',
-            'LM 14"-16"',
-            'LM 16"-19"',
-            'LM 19"+'
+            'Small Mouth 14"-16"',
+            'Small Mouth 16"-19"',
+            'Small Mouth 19"+',
+            'Large Mouth 14"-16"',
+            'Large Mouth 16"-19"',
+            'Large Mouth 19"+'
         ],
         datasets: [{
             label: 'Count',
-            data: [11, 16, 7, 3, 14, 15],
+            data: [smallMouth1416, smallMouth1619, smallMouth19Plus, largeMouth1416,
+                    largeMouth1619, largeMouth19Plus],
             backgroundColor: [
                 '#F8E089',
                 '#F6D86B',

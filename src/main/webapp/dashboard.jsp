@@ -29,7 +29,14 @@
             </canvas>
         </div>
         <!-- Bass Size Count -->
-        <div id="bassSizeContainer">
+        <div id="bassSizeContainer"
+             data-sm1416="${dashboard.currentSmallMouth1416ForYear}"
+             data-sm1619="${dashboard.currentSmallMouth1619ForYear}"
+             data-sm19Plus="${dashboard.currentSmallMouth19PlusForYear}"
+             data-lm1416="${dashboard.currentLargeMouth1416ForYear}"
+             data-lm1619="${dashboard.currentLargeMouth1619ForYear}"
+             data-lm19Plus="${dashboard.currentLargeMouth19PlusForYear}"
+             >
             <!-- TODO Hardcoded need to update -->
             <h2>Bass Size Count</h2>
             <canvas id="bassSizeDonut">

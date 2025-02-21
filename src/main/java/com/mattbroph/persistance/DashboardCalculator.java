@@ -50,14 +50,14 @@ public class DashboardCalculator {
         int smallMouth19Plus = dashboard.getCurrentSmallMouth19PlusForYear()
                 + journal.getSmallMouth19Plus();
 
-        int largeMouth1416 =  dashboard.getCurrentSmallMouth1416ForYear()
-                + journal.getSmallMouth1416();
+        int largeMouth1416 =  dashboard.getCurrentLargeMouth1416ForYear()
+                + journal.getLargeMouth1416();
 
-        int largeMouth1619 = dashboard.getCurrentSmallMouth1619ForYear()
-                + journal.getSmallMouth1619();
+        int largeMouth1619 = dashboard.getCurrentLargeMouth1619ForYear()
+                + journal.getLargeMouth1619();
 
-        int largeMouth19Plus = dashboard.getCurrentSmallMouth19PlusForYear()
-                + journal.getSmallMouth19Plus();
+        int largeMouth19Plus = dashboard.getCurrentLargeMouth19PlusForYear()
+                + journal.getLargeMouth19Plus();
 
         int totalBass = dashboard.getCurrentTotalBassCountForYear()
                 + journal.getTotalBassCount();
