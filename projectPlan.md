@@ -54,10 +54,10 @@
 #### This week my focus is:
 1. The \#6 User Dashboard (current year) story
 
-- [ ] Create UserDashboard entity
-- [ ] Create class to run db queries to populate UserDashboard entity
-- [ ] Create User Dashboard jsp
-- [ ] Create controller to route to userDashboard.jsp
+- [X] Create UserDashboard entity
+- [X] Create class to run db queries to populate UserDashboard entity
+- [X] Create User Dashboard jsp
+- [X] Create controller to route to userDashboard.jsp
 - [ ] Update journal time log
 
 ### Week 7 - Class topic is AWS cognito (sign up and log in for users)
