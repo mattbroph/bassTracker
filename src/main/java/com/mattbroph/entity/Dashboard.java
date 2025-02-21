@@ -26,7 +26,7 @@ public class Dashboard {
 
     private int currentLargeMouth19PlusForYear;
 
-    private int currentTotalHoursForYear;
+    private double currentTotalHoursForYear;
 
     private double currentCatchRateForYear;
 
@@ -52,99 +52,33 @@ public class Dashboard {
      */
     public Dashboard(List<Journal> journals) {
         this.journals = journals;
-        calculateStatistics();
     }
 
 
     /**
-     * Calculates dashboard statistics and assigns values to instance variables
-     */
-    public void calculateStatistics() {
-
-        resetCounts();
-
-        for (Journal journal : journals) {
-
-            calculateCurrentBassCountsForYear(journal);
-            calculateTotalHours(journal);
-
-        }
-
-        calculateCatchRate();
-
-     }
-
-
-    /**
-     * Calculates the current bass counts for the year
+     * Gets journals.
      *
-     * @param journal the journal
+     * @return the journals
      */
-    public void calculateCurrentBassCountsForYear(Journal journal) {
-
-            currentSmallMouth1416ForYear += journal.getSmallMouth1416();
-            currentSmallMouth1619ForYear += journal.getSmallMouth1619();
-            currentSmallMouth19PlusForYear += journal.getSmallMouth19Plus();
-            currentLargeMouth1416ForYear += journal.getLargeMouth1416();
-            currentLargeMouth1619ForYear += journal.getLargeMouth1619();
-            currentLargeMouth19PlusForYear += journal.getLargeMouth19Plus();
-            currentTotalBassCountForYear += journal.getTotalBassCount();
-        }
+    public List<Journal> getJournals() {
+        return journals;
+    }
 
     /**
-     * Calculates the total hours for the year
+     * Sets journals.
      *
-     * @param journal the journal
+     * @param journals the journals
      */
-    public void calculateTotalHours(Journal journal) {
-
-         currentTotalHoursForYear += journal.getHours();
-
-     }
-
-    /**
-     * Initializes and resets all counts to 0 prior to calculations
-     */
-    public void resetCounts() {
-
-         currentSmallMouth1416ForYear = 0;
-         currentSmallMouth1619ForYear = 0;
-         currentSmallMouth19PlusForYear = 0;
-         currentLargeMouth1416ForYear = 0;
-         currentLargeMouth1619ForYear = 0;
-         currentLargeMouth19PlusForYear = 0;
-         currentTotalBassCountForYear = 0;
-
-         currentTotalHoursForYear = 0;
-
-         currentCatchRateForYear = 0;
-
-     }
-
-    /**
-     * Calculates the catch rate for the year and rounds it to 2 decimals
-     */
-    public void calculateCatchRate() {
-
-         currentCatchRateForYear = Math.round(((double)
-                 currentTotalBassCountForYear / currentTotalHoursForYear)
-                  * 100.0) / 100.0;
-
-     }
-
-
-
-
-
-
-
+    public void setJournals(List<Journal> journals) {
+        this.journals = journals;
+    }
 
     /**
      * Gets current total hours for year.
      *
      * @return the current total hours for year
      */
-    public int getCurrentTotalHoursForYear() {
+    public double getCurrentTotalHoursForYear() {
         return currentTotalHoursForYear;
     }
 
@@ -153,7 +87,7 @@ public class Dashboard {
      *
      * @param currentTotalHoursForYear the current total hours for year
      */
-    public void setCurrentTotalHoursForYear(int currentTotalHoursForYear) {
+    public void setCurrentTotalHoursForYear(double currentTotalHoursForYear) {
         this.currentTotalHoursForYear = currentTotalHoursForYear;
     }
 

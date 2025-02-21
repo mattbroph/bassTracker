@@ -1,6 +1,7 @@
 package com.mattbroph.controller;
 
 import com.mattbroph.entity.*;
+import com.mattbroph.persistance.DashboardCalculator;
 import com.mattbroph.persistance.GenericDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -29,7 +30,7 @@ public class RouteDashboard extends HttpServlet {
 
 
     /**
-     * Forwards to the View Journals JSP
+     * Forwards to the Dashboard JSP
      *
      * @param request  the HttpServletRequest object
      * @param response the HttpServletRequest object
@@ -72,12 +73,15 @@ public class RouteDashboard extends HttpServlet {
             }
         }
 
-        // Now you have a list of journals for the desired year
-        // We'll use these to run calculations in the Dashboard class
+        // Instantiate Dashboard entity with desired list of journals
         Dashboard dashboard = new Dashboard(filteredJournals);
 
-        request.setAttribute("dashboard", dashboard);
+        // Run calculations in the Dashboard class and set the values
+        DashboardCalculator dashboardCalculator = new DashboardCalculator();
+        dashboardCalculator.calculateStatistics(dashboard);
 
+        // Add the dashboard to the request
+        request.setAttribute("dashboard", dashboard);
 
         // Get the goal count that matches the requested year
         for (BassGoal bassGoal : bassGoals) {
