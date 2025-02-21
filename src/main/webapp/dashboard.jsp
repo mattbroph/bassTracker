@@ -14,25 +14,17 @@
 
 <main id="mainContent">
 
-    <c:if test="${bassGoal != null}">
-
-        <h2>The bass goal count is: ${bassGoal.goalCount}</h2>
-        <h2>The bass goal year is: ${bassGoal.goalYear}</h2>
-
-    </c:if>
-
-
     <h1>{$}Matt's ${bassGoal.goalYear} Dashboard</h1>
     <br>
     <br>
     <section id="dashboardRowOne">
         <!-- Bass Goal Donut -->
         <div id="bassGoalContainer"
-             data-currentBassCount="${dashboard.currentBassCountForYear}"
+             data-currentBassCount="${dashboard.currentTotalBassCountForYear}"
              data-bassGoal="${bassGoal.goalCount}"
         >
             <h2>Bass Goal</h2>
-            <p>${dashboard.currentBassCountForYear} of ${bassGoal.goalCount}</p>
+            <p>${dashboard.currentTotalBassCountForYear} of ${bassGoal.goalCount}</p>
             <canvas id="bassGoalDonut">
             </canvas>
         </div>
@@ -49,14 +41,14 @@
                 <!-- TODO Hardcoded need to update -->
                 <h2>Catches Per Hour</h2>
                 <br>
-                <p>1.5</p>
+                <p>${dashboard.currentCatchRateForYear}</p>
             </div>
             <!-- Total Hours -->
             <div id="totalHoursContainer">
                 <!-- TODO Hardcoded need to update -->
                 <h2>Total Hours</h2>
                 <br>
-                <p>45</p>
+                <p>${dashboard.currentTotalHoursForYear}</p>
             </div>
         </div>
     </section>
