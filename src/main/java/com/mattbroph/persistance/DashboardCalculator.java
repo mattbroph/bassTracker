@@ -4,7 +4,9 @@ package com.mattbroph.persistance;
 import com.mattbroph.entity.Dashboard;
 import com.mattbroph.entity.Journal;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Calculates dashboard statistics from the user, journals and bass goals
@@ -17,18 +19,79 @@ public class DashboardCalculator {
      */
     public void calculateStatistics(Dashboard dashboard) {
 
+        // Get the list journals to evaluate
         List<Journal> journals = dashboard.getJournals();
 
+        // Get the trip history tree map
+        Map<Integer, Integer> tripHistory = dashboard.getTripHistory();
+        // Load the map with all the months of the year
+        loadTripHistory(tripHistory);
+
+
+        // Run the calculations for each journal
         for (Journal journal : journals) {
 
             calculateCurrentBassCountsForYear(dashboard, journal);
             calculateTotalHours(dashboard, journal);
+            calculateTripHistory(dashboard, journal);
 
         }
 
+        // Calculate the catch rate after total hours and total bass count is determined
         calculateCatchRate(dashboard);
 
+        // Set the trip history after all processing is complete
+        dashboard.setTripHistory(tripHistory);
+        // Set the total amount of trips for the trip history chart
+        int totalTrips = journals.size();
+        dashboard.setCurrentTripTotalForYear(totalTrips);
+
      }
+
+
+    /**
+     * Totals up the trip history per month
+     */
+    private void calculateTripHistory(Dashboard dashboard, Journal journal) {
+
+        int monthCount;
+
+        // Get the now loaded trip history map
+        Map<Integer, Integer> tripHistory = dashboard.getTripHistory();
+
+        // Add a count of one to each month that a journal entry occurred by:
+
+        // Get the journals date
+        LocalDate journalDate = journal.getJournalDate();
+        // Derive the month from the local date
+        int journalMonth = journalDate.getMonthValue();
+        // Get the current month count and add 1 to it
+        monthCount = tripHistory.get(journalMonth) + 1;
+        // Update the map with the new count
+        tripHistory.put(journalMonth, monthCount);
+
+    }
+
+    /**
+    * Loads the trip history tree map with each month of the year and starts
+    * each count at 0
+    */
+    private void loadTripHistory(Map<Integer, Integer> tripHistory) {
+
+        int numberOfMonths = 12;
+
+        // 1-12 is the month - which will be returned by localDate.getMonth()
+        for (int index = 1; index <= numberOfMonths; index++) {
+
+            tripHistory.put(index, 0);
+
+        }
+
+        // Set the trip history values
+//        dashboard.setTripHistory(tripHistory);
+    }
+
+
 
 
     /**

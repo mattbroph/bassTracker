@@ -37,7 +37,6 @@
              data-lm1619="${dashboard.currentLargeMouth1619ForYear}"
              data-lm19Plus="${dashboard.currentLargeMouth19PlusForYear}"
              >
-            <!-- TODO Hardcoded need to update -->
             <h2>Bass Size Count</h2>
             <canvas id="bassSizeDonut">
             </canvas>
@@ -45,14 +44,12 @@
         <div id="statContainer">
             <!-- Catches Per Hour -->
             <div id="catchPerHourContainer">
-                <!-- TODO Hardcoded need to update -->
                 <h2>Catches Per Hour</h2>
                 <br>
                 <p>${dashboard.currentCatchRateForYear}</p>
             </div>
             <!-- Total Hours -->
             <div id="totalHoursContainer">
-                <!-- TODO Hardcoded need to update -->
                 <h2>Total Hours</h2>
                 <br>
                 <p>${dashboard.currentTotalHoursForYear}</p>
@@ -62,10 +59,14 @@
 
     <section id="dashboardRowTwo">
         <!-- Trip History -->
-        <div id="tripChartContainer">
+        <div id="tripChartContainer"
+                <c:forEach var="history" items="${dashboard.tripHistory.entrySet()}">
+                    data-month-${history.key}="${history.value}"
+                </c:forEach>
+        >
             <!-- TODO Hardcoded need to update -->
             <h2>Trip History</h2>
-            <p>75 Trips</p>
+            <p>${dashboard.currentTripTotalForYear} Trips</p>
             <canvas id="tripChart">
             </canvas>
         </div>
@@ -77,6 +78,7 @@
             </canvas>
         </div>
     </section>
+
 </main>
 <c:import url="footer.jsp" />
 </body>

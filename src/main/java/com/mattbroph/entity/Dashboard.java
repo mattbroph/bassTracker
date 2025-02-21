@@ -1,7 +1,10 @@
 package com.mattbroph.entity;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Calculates dashboard statistics from the user, journals and bass goals
@@ -30,8 +33,18 @@ public class Dashboard {
 
     private double currentCatchRateForYear;
 
+    private Map<Integer, Integer> tripHistory;
+
+    private int currentTripTotalForYear;
 
 
+    public int getCurrentTripTotalForYear() {
+        return currentTripTotalForYear;
+    }
+
+    public void setCurrentTripTotalForYear(int currentTripTotalForYear) {
+        this.currentTripTotalForYear = currentTripTotalForYear;
+    }
 
     /**
      * The dashboards year list of journals
@@ -52,8 +65,26 @@ public class Dashboard {
      */
     public Dashboard(List<Journal> journals) {
         this.journals = journals;
+        this.tripHistory = new TreeMap<Integer, Integer>();
     }
 
+    /**
+     * Gets trip history.
+     *
+     * @return the trip history
+     */
+    public Map<Integer, Integer> getTripHistory() {
+        return tripHistory;
+    }
+
+    /**
+     * Sets trip history.
+     *
+     * @param tripHistory the trip history
+     */
+    public void setTripHistory(Map<Integer, Integer> tripHistory) {
+        this.tripHistory = tripHistory;
+    }
 
     /**
      * Gets journals.
