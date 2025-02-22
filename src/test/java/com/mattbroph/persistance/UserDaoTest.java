@@ -1,5 +1,6 @@
 package com.mattbroph.persistance;
 
+import com.mattbroph.entity.Lake;
 import com.mattbroph.entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,6 +15,7 @@ class UserDaoTest {
 
 
     GenericDao userDao;
+    GenericDao lakeDao;
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
@@ -21,7 +23,7 @@ class UserDaoTest {
     void setUp() {
         Database database = Database.getInstance();
         database.runSQL("fresh_db.sql");
-
+        lakeDao = new GenericDao(Lake.class);
         userDao = new GenericDao(User.class);
     }
 
@@ -64,11 +66,19 @@ class UserDaoTest {
         assertEquals("MyNewName", userInserted.getUserName());
     }
 
+
+    // If a user is deleted, check that lakes are deleted as well
     @Test
     void delete() {
-        User user = (User)userDao.getById(3);
+        User user = (User)userDao.getById(1);
+        // Delete the user
         userDao.delete(user);
-        assertNull(userDao.getById(3));
+        // Check that the user no longer exists in the user table
+        assertNull(userDao.getById(1));
+        // Check that the user's lakes no longer exist in the lake table
+        assertNull(lakeDao.getById(1));
+        assertNull(lakeDao.getById(2));
+        assertNull(lakeDao.getById(3));
     }
 
     @Test
