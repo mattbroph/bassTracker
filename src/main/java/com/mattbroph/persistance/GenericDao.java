@@ -104,11 +104,11 @@ public class GenericDao<T> {
         HibernateCriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<T> query = builder.createQuery(type);
         Root<T> root = query.from(type);
-        List<T> orders = session.createSelectionQuery( query ).getResultList();
+        List<T> entities = session.createSelectionQuery( query ).getResultList();
 
         session.close();
 
-        return orders;
+        return entities;
     }
 
     /** Get order by property (exact match)

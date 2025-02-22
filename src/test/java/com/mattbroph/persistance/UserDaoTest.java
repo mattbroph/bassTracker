@@ -38,6 +38,12 @@ class UserDaoTest {
     }
 
     @Test
+    void getAll() {
+        List<User> users = (List<User>)userDao.getAll();
+        assertEquals(3, users.size());
+    }
+
+    @Test
     void update() {
         // Get the first user
         User user = (User)userDao.getById(1);
