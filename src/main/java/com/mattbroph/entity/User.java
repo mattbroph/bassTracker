@@ -10,7 +10,7 @@ import java.util.List;
  * The user
  */
 @Entity(name = "User")
-@Table(name = "AppUser")
+@Table(name = "appuser")
 public class User {
 
     /** The unique User ID */

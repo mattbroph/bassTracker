@@ -10,7 +10,7 @@ import java.time.LocalDate;
  * Represents the dashboard that user will see on the dashboard page
  */
 @Entity
-@Table(name = "BassGoal")
+@Table(name = "bassgoal")
 public class BassGoal {
 
     /** The unique BassGoal ID */

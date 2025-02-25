@@ -11,7 +11,7 @@ import java.util.List;
  * The method type
  */
 @Entity(name = "Method")
-@Table(name = "Method")
+@Table(name = "method")
 public class Method {
 
     /** The unique Method ID */

@@ -37,6 +37,34 @@ public class Dashboard {
 
     private int currentTripTotalForYear;
 
+    private int monthlyCatchGoal;
+
+    public int getMonthlyCatchGoal() {
+        return monthlyCatchGoal;
+    }
+
+    public void setMonthlyCatchGoal(int monthlyCatchGoal) {
+        this.monthlyCatchGoal = monthlyCatchGoal;
+    }
+
+    private Map<Integer, Integer> catchHistory;
+
+
+
+
+    public Map<Integer, Integer> getCatchHistory() {
+        return catchHistory;
+    }
+
+    public void setCatchHistory(Map<Integer, Integer> catchHistory) {
+        this.catchHistory = catchHistory;
+
+
+
+
+
+
+    }
 
     public int getCurrentTripTotalForYear() {
         return currentTripTotalForYear;
@@ -66,6 +94,7 @@ public class Dashboard {
     public Dashboard(List<Journal> journals) {
         this.journals = journals;
         this.tripHistory = new TreeMap<Integer, Integer>();
+        this.catchHistory = new TreeMap<Integer, Integer>();
     }
 
     /**

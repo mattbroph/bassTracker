@@ -61,6 +61,20 @@ public class RouteDashboard extends HttpServlet {
         // TODO Get the users bass goals
         List<BassGoal> bassGoals = user.getBassGoal();
 
+        int userBassGoal = 0;
+
+        // Get the goal count that matches the requested year
+        for (BassGoal bassGoal : bassGoals) {
+
+            if (bassGoal.getGoalYear() == year) {
+                request.setAttribute("bassGoal", bassGoal);
+                logger.info("the bass goal for 2025 is: " + bassGoal.getGoalCount());
+                userBassGoal = bassGoal.getGoalCount();
+            }
+
+        }
+
+
         // TODO Get the users journals
         List<Journal> journals = user.getJournals();
 
@@ -78,20 +92,10 @@ public class RouteDashboard extends HttpServlet {
 
         // Run calculations in the Dashboard class and set the values
         DashboardCalculator dashboardCalculator = new DashboardCalculator();
-        dashboardCalculator.calculateStatistics(dashboard);
+        dashboardCalculator.calculateStatistics(dashboard, userBassGoal);
 
         // Add the dashboard to the request
         request.setAttribute("dashboard", dashboard);
-
-        // Get the goal count that matches the requested year
-        for (BassGoal bassGoal : bassGoals) {
-
-            if (bassGoal.getGoalYear() == year) {
-                request.setAttribute("bassGoal", bassGoal);
-                logger.info("the bass goal for 2025 is: " + bassGoal.getGoalCount());
-            }
-
-        }
 
 
         // Forward to the HTTP request data jsp page

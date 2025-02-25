@@ -11,7 +11,7 @@ import java.util.List;
  * The wind type
  */
 @Entity(name = "Wind")
-@Table(name = "Wind")
+@Table(name = "wind")
 public class Wind {
 
     /** The unique Wind ID */

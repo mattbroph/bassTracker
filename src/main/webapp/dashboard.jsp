@@ -64,16 +64,19 @@
                     data-month-${history.key}="${history.value}"
                 </c:forEach>
         >
-            <!-- TODO Hardcoded need to update -->
             <h2>Trip History</h2>
             <p>${dashboard.currentTripTotalForYear} Trips</p>
             <canvas id="tripChart">
             </canvas>
         </div>
-        <div id="catchChartContainer">
-            <!-- TODO Hardcoded need to update -->
+        <div id="catchChartContainer"
+                <c:forEach var="catchHistory" items="${dashboard.catchHistory.entrySet()}">
+                    data-month-${catchHistory.key}="${catchHistory.value}"
+                </c:forEach>
+                data-monthly-catch-goal="${dashboard.monthlyCatchGoal}"
+        >
             <h2>Catch History</h2>
-            <p>Goal: 25 Per Month</p>
+            <p>Goal: ${dashboard.monthlyCatchGoal} Per Month</p>
             <canvas id="catchChart">
             </canvas>
         </div>

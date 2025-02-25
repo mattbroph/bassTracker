@@ -12,7 +12,7 @@ import java.util.List;
  * Represents a user's Journal Entry
  */
 @Entity
-@Table(name = "Journal")
+@Table(name = "journal")
 
 public class Journal {
 

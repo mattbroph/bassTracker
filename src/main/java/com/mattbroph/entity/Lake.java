@@ -10,7 +10,7 @@ import java.util.List;
  * The type Lake.
  */
  @Entity
- @Table(name = "Lake")
+ @Table(name = "lake")
 public class Lake {
 
     /** The unique Lake ID */
