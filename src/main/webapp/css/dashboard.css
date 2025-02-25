@@ -88,6 +88,7 @@ main {
 @media (max-width: 1467px) {
     #tripChartContainer, #catchChartContainer, #bassGoalContainer, #bassSizeContainer, #statContainer {
         width: 60%;
+        min-width: 25em;
     }
 }
 
