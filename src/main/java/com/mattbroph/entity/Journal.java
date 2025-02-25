@@ -3,10 +3,7 @@ package com.mattbroph.entity;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
-
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Represents a user's Journal Entry

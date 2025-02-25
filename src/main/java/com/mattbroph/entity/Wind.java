@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The wind type
+ * Represents a wind type
  */
 @Entity(name = "Wind")
 @Table(name = "wind")
@@ -25,6 +25,7 @@ public class Wind {
     @Column(name = "WindType")
     private String windType;
 
+    /** The list of journals that reference the wind type */
     @OneToMany(mappedBy = "wind", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Journal> journals = new ArrayList<>();
 

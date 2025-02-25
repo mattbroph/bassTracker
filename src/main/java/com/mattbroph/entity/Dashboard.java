@@ -1,7 +1,5 @@
 package com.mattbroph.entity;
 
-
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -11,72 +9,33 @@ import java.util.TreeMap;
  */
 public class Dashboard {
 
-    /**
-     * The user's bass count for the year
-     */
+    /** The user's bass count for the year */
     private int currentTotalBassCountForYear;
-
     /** The user's small mouth 14" - 16" count for the year */
     private int currentSmallMouth1416ForYear;
-
+    /** The user's small mouth 16" - 19" count for the year */
     private int currentSmallMouth1619ForYear;
-
+    /** The user's small mouth 19" plus count for the year */
     private int currentSmallMouth19PlusForYear;
-
+    /** The user's large mouth 14" - 16" count for the year */
     private int currentLargeMouth1416ForYear;
-
+    /** The user's large mouth 16" - 19" count for the year */
     private int currentLargeMouth1619ForYear;
-
+    /** The user's large mouth 19" plus count for the year */
     private int currentLargeMouth19PlusForYear;
-
+    /** The user's total hours fished for the year */
     private double currentTotalHoursForYear;
-
+    /** The user's catch rate for the year */
     private double currentCatchRateForYear;
-
+    /** The user's fishing trip history for the year */
     private Map<Integer, Integer> tripHistory;
-
+    /** The user's number of times they went fishing for the year */
     private int currentTripTotalForYear;
-
-    private int monthlyCatchGoal;
-
-    public int getMonthlyCatchGoal() {
-        return monthlyCatchGoal;
-    }
-
-    public void setMonthlyCatchGoal(int monthlyCatchGoal) {
-        this.monthlyCatchGoal = monthlyCatchGoal;
-    }
-
+    /** The user's fishing catch history for the year */
     private Map<Integer, Integer> catchHistory;
-
-
-
-
-    public Map<Integer, Integer> getCatchHistory() {
-        return catchHistory;
-    }
-
-    public void setCatchHistory(Map<Integer, Integer> catchHistory) {
-        this.catchHistory = catchHistory;
-
-
-
-
-
-
-    }
-
-    public int getCurrentTripTotalForYear() {
-        return currentTripTotalForYear;
-    }
-
-    public void setCurrentTripTotalForYear(int currentTripTotalForYear) {
-        this.currentTripTotalForYear = currentTripTotalForYear;
-    }
-
-    /**
-     * The dashboards year list of journals
-     */
+    /** The user's monthly catch goal for the year */
+    private int monthlyCatchGoal;
+    /** The dashboard's year list of journals */
     private List<Journal> journals;
 
 
@@ -95,6 +54,62 @@ public class Dashboard {
         this.journals = journals;
         this.tripHistory = new TreeMap<Integer, Integer>();
         this.catchHistory = new TreeMap<Integer, Integer>();
+    }
+
+    /**
+     * Gets monthly catch goal.
+     *
+     * @return the monthly catch goal
+     */
+    public int getMonthlyCatchGoal() {
+        return monthlyCatchGoal;
+    }
+
+    /**
+     * Sets monthly catch goal.
+     *
+     * @param monthlyCatchGoal the monthly catch goal
+     */
+    public void setMonthlyCatchGoal(int monthlyCatchGoal) {
+        this.monthlyCatchGoal = monthlyCatchGoal;
+    }
+
+
+    /**
+     * Gets catch history.
+     *
+     * @return the catch history
+     */
+    public Map<Integer, Integer> getCatchHistory() {
+        return catchHistory;
+    }
+
+    /**
+     * Sets catch history.
+     *
+     * @param catchHistory the catch history
+     */
+    public void setCatchHistory(Map<Integer, Integer> catchHistory) {
+        this.catchHistory = catchHistory;
+
+    }
+
+    /**
+     * Gets current trip total for year.
+     *
+     * @return the current trip total for year
+     */
+    public int getCurrentTripTotalForYear() {
+        return currentTripTotalForYear;
+    }
+
+    /**
+     * Sets current trip total for year.
+     *
+     * @param currentTripTotalForYear the current trip total for year
+     */
+    public void setCurrentTripTotalForYear(int currentTripTotalForYear) {
+        this.currentTripTotalForYear = currentTripTotalForYear;
     }
 
     /**
@@ -294,8 +309,4 @@ public class Dashboard {
     public void setCurrentLargeMouth19PlusForYear(int currentLargeMouth19PlusForYear) {
         this.currentLargeMouth19PlusForYear = currentLargeMouth19PlusForYear;
     }
-
-
-
-
 }

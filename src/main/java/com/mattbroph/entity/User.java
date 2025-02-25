@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The user
+ * The user that is logged into the application
  */
 @Entity(name = "User")
 @Table(name = "appuser")
@@ -45,7 +45,7 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Journal> journals = new ArrayList<>();
 
-    //TODO NEW CODE HERE FOR DASHBOARD
+    /** List of the users bass goals */
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<BassGoal> bassGoal = new ArrayList<>();
 

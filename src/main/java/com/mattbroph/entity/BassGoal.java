@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 
 /**
- * Represents the dashboard that user will see on the dashboard page
+ * Represents the BassGoals set by the user
  */
 @Entity
 @Table(name = "bassgoal")

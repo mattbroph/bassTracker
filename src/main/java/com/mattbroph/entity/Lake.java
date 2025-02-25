@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The type Lake.
+ * Represents a Lake object
  */
  @Entity
  @Table(name = "lake")
@@ -29,11 +29,11 @@ public class Lake {
     @JoinColumn(name = "UserID")
     private User user;
 
+    /** Whether the user has marked a lake active or inactive */
     @Column(name = "isActive")
     private boolean isActive;
 
-    // TODO NEW LINE HERE - MAY NEED TO UPDATE CASCADING
-
+    /** The list of journals that reference the lake */
     @OneToMany(mappedBy = "lake", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Journal> journals = new ArrayList<>();
 
@@ -48,29 +48,13 @@ public class Lake {
      *
      * @param lakeName the lake name
      * @param user   the user
-     * @param isActive whether or not the lake is active
+     * @param isActive whether the lake is active or inactive
      */
     public Lake(String lakeName, User user, boolean isActive) {
         this.lakeName = lakeName;
         this.user = user;
         this.isActive = isActive;
     }
-
-    /**
-     * TODO NOT SURE IF THIS IS NEED BUT WAS IN USER EXAMPLE
-     */
-    public void addJournal(Journal journal) {
-        journals.add(journal);
-        journal.setLake(this);
-    }
-
-    /**
-     * TODO NOT SURE IF THIS IS NEED BUT WAS IN USER EXAMPLE
-     */
-     public void removeJournal(Journal journal) {
-        journals.remove(journal);
-        journal.setLake(null);
-     }
 
     /**
      * Gets lake id.

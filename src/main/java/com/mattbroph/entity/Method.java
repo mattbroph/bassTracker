@@ -3,12 +3,11 @@ package com.mattbroph.entity;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The method type
+ * Represents a fishing method
  */
 @Entity(name = "Method")
 @Table(name = "method")
@@ -25,6 +24,7 @@ public class Method {
     @Column(name = "MethodName")
     private String methodName;
 
+    /** The list of journals that reference the method */
     @OneToMany(mappedBy = "method", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Journal> journals = new ArrayList<>();
 

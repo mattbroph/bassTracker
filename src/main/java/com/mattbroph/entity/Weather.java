@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The weather type
+ * Represents a weather type
  */
 @Entity(name = "Weather")
 @Table(name = "weather")
