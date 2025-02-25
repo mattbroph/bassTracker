@@ -5,7 +5,6 @@ import com.mattbroph.persistance.DashboardCalculator;
 import com.mattbroph.persistance.GenericDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Routes the user to the dashboard based on year
  *@author mbrophy
  */
 @WebServlet(
@@ -30,7 +29,8 @@ public class RouteDashboard extends HttpServlet {
 
 
     /**
-     * Forwards to the Dashboard JSP
+     * Forwards to the Dashboard JSP to display dashboard information for a given
+     * year
      *
      * @param request  the HttpServletRequest object
      * @param response the HttpServletRequest object
@@ -41,12 +41,10 @@ public class RouteDashboard extends HttpServlet {
                       HttpServletResponse response)
             throws ServletException, IOException {
 
-
-
         // Set the url param
         String url = "/dashboard.jsp";
 
-        // TODO don't hardcode this user id
+        // TODO get user id from session
         // Get the user ID
         int userId = 1;
 
@@ -54,7 +52,6 @@ public class RouteDashboard extends HttpServlet {
         int year = 2025;
 
         // TODO GET THE USER
-        // Get the user (probably from the session)
         GenericDao userDao = new GenericDao(User.class);
         User user = (User)userDao.getById(userId);
 
@@ -71,15 +68,14 @@ public class RouteDashboard extends HttpServlet {
                 logger.info("the bass goal for 2025 is: " + bassGoal.getGoalCount());
                 userBassGoal = bassGoal.getGoalCount();
             }
-
         }
 
-
-        // TODO Get the users journals
+        // Get the users journals
         List<Journal> journals = user.getJournals();
 
-        // If the journal isn't from the desired year, remove it
+        // Build a list of journals for the desired year
         List<Journal> filteredJournals = new ArrayList<>();
+
         for (Journal journal : journals) {
 
             if (journal.getJournalDate().getYear() == year) {
@@ -90,13 +86,13 @@ public class RouteDashboard extends HttpServlet {
         // Instantiate Dashboard entity with desired list of journals
         Dashboard dashboard = new Dashboard(filteredJournals);
 
-        // Run calculations in the Dashboard class and set the values
+        // Run calculations in the DashboardCalculator class and set the values
+        // for the Dashboard object
         DashboardCalculator dashboardCalculator = new DashboardCalculator();
         dashboardCalculator.calculateStatistics(dashboard, userBassGoal);
 
         // Add the dashboard to the request
         request.setAttribute("dashboard", dashboard);
-
 
         // Forward to the HTTP request data jsp page
         RequestDispatcher dispatcher =

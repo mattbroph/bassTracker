@@ -2,8 +2,6 @@ package com.mattbroph.controller;
 
 import com.mattbroph.entity.*;
 import com.mattbroph.persistance.GenericDao;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,16 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.List;
-import java.io.*;
-import java.util.*;
-import javax.servlet.*;
 import javax.servlet.http.*;
-import javax.servlet.annotation.*;
-
 
 /**
- *
+ * Adds a journal entry that was submitted by the user
  *@author mbrophy
  */
 @WebServlet(
@@ -124,7 +116,7 @@ public class ActionAddJournal extends HttpServlet {
         // Add the journal
         insertedJournalId = journalDao.insert(newJournal);
 
-        // If Journal Id = insertedJournalId then send to view details of the journal
+        // If Journal ID = insertedJournalId then send to view details of the journal
         // and note that the journal has been added
         if (insertedJournalId > 0) {
 
@@ -146,12 +138,5 @@ public class ActionAddJournal extends HttpServlet {
         // Send a redirect to the view journal detail page or the error page
         response.sendRedirect(url);
     }
-
-
-
-
-
-
-
 
 }

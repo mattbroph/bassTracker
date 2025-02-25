@@ -9,7 +9,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-/** Forwards the request to view journals jsp page
+/** Forwards the request to add journals jsp page
  *
  *@author mbrophy
  */
@@ -20,7 +20,7 @@ import javax.servlet.annotation.*;
 public class RouteAddJournal extends HttpServlet {
 
     /**
-     * Forwards to the View Journals JSP
+     * Forwards to the Add Journals JSP
      *
      * @param request  the HttpServletRequest object
      * @param response the HttpServletRequest object
@@ -34,12 +34,10 @@ public class RouteAddJournal extends HttpServlet {
         // Set the url param
         String url = "/addJournal.jsp";
 
-        // TODO don't hardcode this user id
+        // TODO get user from the session
         // Get the user ID
         int userId = 1;
 
-        // TODO come clean this up
-        // Get the user (probably from the session)
         GenericDao userDao = new GenericDao(User.class);
         User user = (User)userDao.getById(userId);
 

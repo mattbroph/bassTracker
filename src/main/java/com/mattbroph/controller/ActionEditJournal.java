@@ -2,7 +2,6 @@ package com.mattbroph.controller;
 
 import com.mattbroph.entity.*;
 import com.mattbroph.persistance.GenericDao;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +13,7 @@ import java.time.LocalDate;
 
 
 /**
- *
+ * Edit a journal entry that was submitted by the user
  *@author mbrophy
  */
 @WebServlet(
@@ -24,7 +23,7 @@ import java.time.LocalDate;
 public class ActionEditJournal extends HttpServlet {
 
 
-    /** Adds a new journal to the application database
+    /** Edits a journal in the application database
      *
      *@param request the HttpServletRequest object
      *@param response the HttpServletRequest object

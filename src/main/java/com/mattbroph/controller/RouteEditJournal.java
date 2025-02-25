@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-/** Forwards the request to view journals jsp page
+/** Forwards the request to edit journal jsp page
  *
  *@author mbrophy
  */
@@ -23,7 +23,7 @@ import java.util.List;
 public class RouteEditJournal extends HttpServlet {
 
     /**
-     * Forwards to the View Journals JSP
+     * Forwards to the Edit Journal JSP
      *
      * @param request  the HttpServletRequest object
      * @param response the HttpServletRequest object

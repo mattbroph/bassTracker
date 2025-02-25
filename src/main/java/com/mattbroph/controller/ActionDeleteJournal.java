@@ -14,7 +14,7 @@ import java.time.LocalDate;
 
 
 /**
- *
+ * Delete a journal entry that was submitted by the user
  *@author mbrophy
  */
 @WebServlet(
@@ -24,7 +24,7 @@ import java.time.LocalDate;
 public class ActionDeleteJournal extends HttpServlet {
 
 
-    /** Adds a new journal to the application database
+    /** Deletes a journal from the application database
      *
      *@param request the HttpServletRequest object
      *@param response the HttpServletRequest object
@@ -42,7 +42,7 @@ public class ActionDeleteJournal extends HttpServlet {
         // Get access to the session
         HttpSession session = request.getSession();
 
-        // Get the Journal ID to update
+        // Get the Journal ID to delete
         int journalId = Integer.parseInt(request.getParameter("journalId"));
 
         // TODO Get the user from the session and validate they can delete this journal
