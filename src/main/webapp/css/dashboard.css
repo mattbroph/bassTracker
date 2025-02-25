@@ -86,9 +86,8 @@ main {
 * Media Queries
 ******************************/
 @media (max-width: 1467px) {
-    #tripChartContainer, #catchChartContainer {
-        width: 30%;
-        flex-basis: 70%;
+    #tripChartContainer, #catchChartContainer, #bassGoalContainer, #bassSizeContainer, #statContainer {
+        width: 60%;
     }
 }
 
@@ -100,12 +99,5 @@ main {
     }
     h1 {
         text-align: center;
-    }
-}
-
-@media (max-width: 650px) {
-    #bassGoalContainer, #bassSizeContainer, #statContainer {
-        width: 18em;
-        min-width: 18em;
     }
 }
