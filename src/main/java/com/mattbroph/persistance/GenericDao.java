@@ -12,6 +12,12 @@ import org.hibernate.query.criteria.HibernateCriteriaBuilder;
 
 import java.util.List;
 
+/**
+ * The data access object that can be used by any entity
+ *
+ * @param <T> the class type
+ */
+
 public class GenericDao<T> {
 
     // Turn on logging

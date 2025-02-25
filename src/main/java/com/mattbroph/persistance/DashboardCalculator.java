@@ -1,10 +1,7 @@
 package com.mattbroph.persistance;
 
-
 import com.mattbroph.entity.Dashboard;
 import com.mattbroph.entity.Journal;
-import com.mattbroph.entity.User;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +10,6 @@ import java.util.Map;
  * Calculates dashboard statistics from the user, journals and bass goals
  */
 public class DashboardCalculator {
-
 
     /**
      * Calculates dashboard statistics and assigns values to instance variables
@@ -30,7 +26,6 @@ public class DashboardCalculator {
         loadTripHistory(tripHistory);
         loadCatchHistory(catchHistory);
 
-
         // Run the calculations for each journal
         for (Journal journal : journals) {
 
@@ -38,7 +33,6 @@ public class DashboardCalculator {
             calculateTotalHours(dashboard, journal);
             calculateTripHistory(dashboard, journal);
             calculateCatchHistory(dashboard, journal);
-
         }
 
         // Calculate the catch rate after total hours and total bass count is determined
@@ -51,8 +45,6 @@ public class DashboardCalculator {
         // Set the total amount of trips for the trip history chart
         int totalTrips = journals.size();
         dashboard.setCurrentTripTotalForYear(totalTrips);
-
-
      }
 
 
@@ -131,9 +123,7 @@ public class DashboardCalculator {
         for (int index = 1; index <= numberOfMonths; index++) {
 
             catchHistory.put(index, 0);
-
         }
-
     }
 
 
@@ -149,13 +139,8 @@ public class DashboardCalculator {
         for (int index = 1; index <= numberOfMonths; index++) {
 
             tripHistory.put(index, 0);
-
         }
-
     }
-
-
-
 
     /**
      * Calculates the current bass counts for the year by adding each journal's
@@ -188,7 +173,6 @@ public class DashboardCalculator {
         int totalBass = dashboard.getCurrentTotalBassCountForYear()
                 + journal.getTotalBassCount();
 
-
         // Set the instance variables values in the Dashboard class
         dashboard.setCurrentSmallMouth1416ForYear(smallMouth1416);
         dashboard.setCurrentSmallMouth1619ForYear(smallMouth1619);
@@ -197,7 +181,6 @@ public class DashboardCalculator {
         dashboard.setCurrentLargeMouth1619ForYear(largeMouth1619);
         dashboard.setCurrentLargeMouth19PlusForYear(largeMouth19Plus);
         dashboard.setCurrentTotalBassCountForYear(totalBass);
-
     }
 
     /**
@@ -214,7 +197,6 @@ public class DashboardCalculator {
 
          // Set the instance variable value in the Dashboard class
          dashboard.setCurrentTotalHoursForYear(totalHours);
-
      }
 
     /**
@@ -232,7 +214,6 @@ public class DashboardCalculator {
 
         // Set the instance variable value in the Dashboard class
         dashboard.setCurrentCatchRateForYear(currentCatchRateForYear);
-
      }
 
 }
