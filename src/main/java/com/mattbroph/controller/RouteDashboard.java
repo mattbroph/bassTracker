@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Routes the user to the dashboard based on year
@@ -26,7 +28,6 @@ import java.util.List;
 public class RouteDashboard extends HttpServlet {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
-
 
     /**
      * Forwards to the Dashboard JSP to display dashboard information for a given
@@ -41,6 +42,9 @@ public class RouteDashboard extends HttpServlet {
                       HttpServletResponse response)
             throws ServletException, IOException {
 
+        GenericDao userDao = new GenericDao(User.class);
+        GenericDao bassGoalDao = new GenericDao(BassGoal.class);
+
         // Set the url param
         String url = "/dashboard.jsp";
 
@@ -52,23 +56,20 @@ public class RouteDashboard extends HttpServlet {
         int year = 2025;
 
         // TODO GET THE USER
-        GenericDao userDao = new GenericDao(User.class);
+
         User user = (User)userDao.getById(userId);
 
-        // TODO Get the users bass goals
-        List<BassGoal> bassGoals = user.getBassGoal();
+        // Get the users bass goal for the year
+        Map<String, Object> propertyMap = new HashMap<String, Object>();
+        propertyMap.put("user", user);
+        propertyMap.put("goalYear", year);
 
-        int userBassGoal = 0;
+        List<BassGoal> bassGoal =
+                (List<BassGoal>)bassGoalDao.findByPropertyEqual(propertyMap);
 
-        // Get the goal count that matches the requested year
-        for (BassGoal bassGoal : bassGoals) {
+        int userBassGoal = bassGoal.get(0).getGoalCount();
 
-            if (bassGoal.getGoalYear() == year) {
-                request.setAttribute("bassGoal", bassGoal);
-                logger.info("the bass goal for 2025 is: " + bassGoal.getGoalCount());
-                userBassGoal = bassGoal.getGoalCount();
-            }
-        }
+        request.setAttribute("bassGoal", bassGoal.get(0));
 
         // Get the users journals
         List<Journal> journals = user.getJournals();

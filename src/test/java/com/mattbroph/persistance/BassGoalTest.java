@@ -7,7 +7,9 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -98,5 +100,23 @@ class BassGoalTest {
     void getAll() {
         List<BassGoal> bassGoals = (List<BassGoal>)bassGoalDao.getAll();
         assertEquals(4, bassGoals.size());
+    }
+
+    @Test
+    void findByPropertyEqual() {
+
+        User user = (User)userDao.getById(1);
+
+        Map<String, Object> propertyMap = new HashMap<String, Object>();
+        propertyMap.put("user", user);
+        propertyMap.put("goalYear", 2025);
+
+        List<BassGoal> bassGoal
+                = (List<BassGoal>)bassGoalDao.findByPropertyEqual(propertyMap);
+
+        assertEquals(1, bassGoal.size());
+        assertEquals(2025, bassGoal.get(0).getGoalYear());
+        assertEquals(150, bassGoal.get(0).getGoalCount());
+        assertEquals(1, bassGoal.get(0).getUser().getId());
     }
 }
