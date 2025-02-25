@@ -91,8 +91,9 @@ public class RouteDashboard extends HttpServlet {
         DashboardCalculator dashboardCalculator = new DashboardCalculator();
         dashboardCalculator.calculateStatistics(dashboard, userBassGoal);
 
-        // Add the dashboard to the request
+        // Add the dashboard and user to the request
         request.setAttribute("dashboard", dashboard);
+        request.setAttribute("user", user);
 
         // Forward to the HTTP request data jsp page
         RequestDispatcher dispatcher =

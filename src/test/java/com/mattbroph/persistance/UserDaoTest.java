@@ -1,5 +1,6 @@
 package com.mattbroph.persistance;
 
+import com.mattbroph.entity.BassGoal;
 import com.mattbroph.entity.Lake;
 import com.mattbroph.entity.User;
 import org.apache.logging.log4j.LogManager;
@@ -26,6 +27,7 @@ class UserDaoTest {
         lakeDao = new GenericDao(Lake.class);
         userDao = new GenericDao(User.class);
     }
+
 
     @Test
     void getById() {

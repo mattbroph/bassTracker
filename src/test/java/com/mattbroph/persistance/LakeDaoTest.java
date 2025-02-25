@@ -1,5 +1,6 @@
 package com.mattbroph.persistance;
 
+import com.mattbroph.entity.BassGoal;
 import com.mattbroph.entity.Lake;
 import com.mattbroph.entity.User;
 import org.apache.logging.log4j.LogManager;
@@ -24,6 +25,12 @@ class LakeDaoTest {
         database.runSQL("fresh_db.sql");
         lakeDao = new GenericDao(Lake.class);
         userDao = new GenericDao(User.class);
+    }
+
+    @Test
+    void getAll() {
+        List<Lake> lakes = (List<Lake>)lakeDao.getAll();
+        assertEquals(7, lakes.size());
     }
 
     @Test

@@ -34,7 +34,7 @@ class BassGoalTest {
         assertNotNull(bassGoal);
         // Check bassGoal name
         assertEquals(2025, bassGoal.getGoalYear());
-        assertEquals(65, bassGoal.getGoalCount());
+        assertEquals(150, bassGoal.getGoalCount());
     }
 
     @Test
@@ -92,5 +92,11 @@ class BassGoalTest {
     void getByPropertyLike() {
 //        List<BassGoal> bassGoals = (List<BassGoal>)bassGoalDao.getByPropertyLike("goalYear", "20");
 //        assertEquals(4, bassGoals.size());
+    }
+
+    @Test
+    void getAll() {
+        List<BassGoal> bassGoals = (List<BassGoal>)bassGoalDao.getAll();
+        assertEquals(4, bassGoals.size());
     }
 }

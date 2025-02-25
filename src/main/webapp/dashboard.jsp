@@ -14,7 +14,7 @@
 
 <main id="mainContent">
 
-    <h1>{$}Matt's ${bassGoal.goalYear} Dashboard</h1>
+    <h1>${user.firstName}'s ${bassGoal.goalYear} Dashboard</h1>
     <br>
     <br>
     <section id="dashboardRowOne">

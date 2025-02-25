@@ -1,5 +1,6 @@
 package com.mattbroph.persistance;
 
+import com.mattbroph.entity.BassGoal;
 import com.mattbroph.entity.Weather;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,6 +22,12 @@ class WeatherDaoTest {
         Database database = Database.getInstance();
         database.runSQL("fresh_db.sql");
         weatherDao = new GenericDao(Weather.class);
+    }
+
+    @Test
+    void getAll() {
+        List<Weather> weathers = (List<Weather>)weatherDao.getAll();
+        assertEquals(5, weathers.size());
     }
 
     @Test

@@ -1,5 +1,6 @@
 package com.mattbroph.persistance;
 
+import com.mattbroph.entity.BassGoal;
 import com.mattbroph.entity.Method;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,6 +22,12 @@ class MethodDaoTest {
         Database database = Database.getInstance();
         database.runSQL("fresh_db.sql");
         methodDao = new GenericDao(Method.class);
+    }
+
+    @Test
+    void getAll() {
+        List<Method> methods = (List<Method>)methodDao.getAll();
+        assertEquals(12, methods.size());
     }
 
     @Test

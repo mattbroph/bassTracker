@@ -35,6 +35,12 @@ class JournalDaoTest {
     }
 
     @Test
+    void getAll() {
+        List<Journal> journals = (List<Journal>)journalDao.getAll();
+        assertEquals(14, journals.size());
+    }
+
+    @Test
     void getById() {
         // Get ID 1
         Journal journal = (Journal)journalDao.getById(1);

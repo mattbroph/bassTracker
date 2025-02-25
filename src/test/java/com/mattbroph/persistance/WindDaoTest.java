@@ -1,5 +1,6 @@
 package com.mattbroph.persistance;
 
+import com.mattbroph.entity.BassGoal;
 import com.mattbroph.entity.Wind;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,6 +22,12 @@ class WindDaoTest {
         Database database = Database.getInstance();
         database.runSQL("fresh_db.sql");
         windDao = new GenericDao(Wind.class);
+    }
+
+    @Test
+    void getAll() {
+        List<Wind> winds = (List<Wind>)windDao.getAll();
+        assertEquals(5, winds.size());
     }
 
     @Test
