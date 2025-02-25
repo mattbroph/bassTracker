@@ -18,10 +18,10 @@ public class DashboardCalculator {
 
         // Get the list journals to evaluate
         List<Journal> journals = dashboard.getJournals();
-
         // Get the trip and catch history tree maps
         Map<Integer, Integer> tripHistory = dashboard.getTripHistory();
         Map<Integer, Integer> catchHistory = dashboard.getCatchHistory();
+
         // Load the maps with all the months of the year
         loadTripHistory(tripHistory);
         loadCatchHistory(catchHistory);

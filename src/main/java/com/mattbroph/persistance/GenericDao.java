@@ -184,4 +184,6 @@ public class GenericDao<T> {
         return session.createQuery(query).getResultList();
     }
 
+
+
 }

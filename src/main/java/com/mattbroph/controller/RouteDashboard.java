@@ -67,8 +67,10 @@ public class RouteDashboard extends HttpServlet {
         List<BassGoal> bassGoal =
                 (List<BassGoal>)bassGoalDao.findByPropertyEqual(propertyMap);
 
-        int userBassGoal = bassGoal.get(0).getGoalCount();
+        // Used for calculations in the DashboardCalculator
+        int yearBassGoal = bassGoal.get(0).getGoalCount();
 
+        // Add the bassGoal to the request
         request.setAttribute("bassGoal", bassGoal.get(0));
 
         // Get the users journals
@@ -90,7 +92,7 @@ public class RouteDashboard extends HttpServlet {
         // Run calculations in the DashboardCalculator class and set the values
         // for the Dashboard object
         DashboardCalculator dashboardCalculator = new DashboardCalculator();
-        dashboardCalculator.calculateStatistics(dashboard, userBassGoal);
+        dashboardCalculator.calculateStatistics(dashboard, yearBassGoal);
 
         // Add the dashboard and user to the request
         request.setAttribute("dashboard", dashboard);
