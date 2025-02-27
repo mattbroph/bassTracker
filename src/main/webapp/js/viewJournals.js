@@ -16,7 +16,13 @@ const init = () => {
 
     // Initialize DataTable
     let table = new DataTable('#journalsTable', {
-        scrollX: true
+        scrollX: true,
+        // Export feature
+        layout: {
+            topStart: {
+                buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+            }
+        }
     });
 
     // Custom filtering function which will search data in the Date column (index 1)
