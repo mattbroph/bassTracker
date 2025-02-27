@@ -21,7 +21,7 @@
                     <a href="reports.jsp" class="nav-link">Reports</a>
                     <a href="viewLakes.jsp" class="nav-link">Lakes</a>
                     <a href="about.jsp" class="nav-link">About</a>
-                    <a href="profile.jsp" class="nav-link">Profile</a>
+                    <a href="viewProfile" class="nav-link">Profile</a>
                 </div>
             </div>
         </div>

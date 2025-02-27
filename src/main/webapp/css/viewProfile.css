@@ -1,0 +1,58 @@
+main img {
+    display: block;
+    width: 50%;
+}
+
+li {
+    list-style-type: none;
+}
+
+span {
+    font-weight: 700;
+    font-size: 17px;
+}
+
+
+/******************
+* Buttons
+*******************/
+
+/* Yellow Submit Select Range Button */
+.yellowSubmitButton {
+    background-color: #F6D86B;
+    width: 10em;
+    color: black;
+    border: 1px solid black;
+    border-radius: .25em;
+    padding: .25em;
+}
+
+.yellowSubmitButton:hover {
+    background-color: #FAE8A6;
+}
+
+/* Green Anchor Add Journal Entry Button */
+.greenAnchorButton {
+    padding: .4em 2em;
+    border: 1px solid black;
+    border-radius: .25em;
+    color: #FFFFFF;
+    background-color: #536642;
+    text-decoration: none;
+    text-align: center;
+}
+
+.greenAnchorButton:hover {
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color:#8F9C82;
+}
+
+/******************
+* Media Queries
+*******************/
+@media (max-width: 845px) {
+    #startRange, #endRange {
+        display: block;
+    }
+}
