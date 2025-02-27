@@ -2,6 +2,13 @@
     font-size: 26px;
 }
 
+main {
+    padding-left: 8%;
+    padding-right: 8%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
 /*****************************
 * Chart JS
 ******************************/
@@ -79,9 +86,9 @@
 * Media Queries
 ******************************/
 @media (max-width: 1467px) {
-    #tripChartContainer, #catchChartContainer {
-        width: 30%;
-        flex-basis: 70%;
+    #tripChartContainer, #catchChartContainer, #bassGoalContainer, #bassSizeContainer, #statContainer {
+        width: 60%;
+        min-width: 25em;
     }
 }
 
@@ -93,12 +100,5 @@
     }
     h1 {
         text-align: center;
-    }
-}
-
-@media (max-width: 650px) {
-    #bassGoalContainer, #bassSizeContainer, #statContainer {
-        width: 18em;
-        min-width: 18em;
     }
 }

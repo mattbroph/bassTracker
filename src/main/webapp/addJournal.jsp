@@ -16,8 +16,7 @@
 
     <h1>Add a Journal Entry</h1>
 
-    <form name="contactUs"
-          action="http://itins3.madisoncollege.edu/echo.php"
+    <form action="actionAddJournal"
           method="post">
         <!-- Date -->
         <label for="date">*Date</label>
@@ -33,7 +32,7 @@
             <%-- Populate the user active lake options --%>
             <c:forEach var="lake" items="${userLakes}">
 
-                <c:if test="${lake.lakeStatus}">
+                <c:if test="${lake.isActive}">
                     <option value="${lake.id}">${lake.lakeName}</option>
                 </c:if>
 
@@ -47,15 +46,18 @@
         <input type="number"
                name="hoursFished"
                id="hoursFished"
+               step="0.25"
+               min="0"
                required>
         <br>
         <!-- Fishing Method -->
         <label for="fishingMethod">*Fishing Method</label>
         <select name="fishingMethod" id="fishingMethod" required>
             <option value="" selected disabled>Select an option</option>
-            <option value="1">Fly Fishing</option>
-            <option value="2">Crib Fishing</option>
-            <option value="3">Shoreline</option>
+            <c:forEach var="method" items="${methodList}">
+                <option value="${method.id}">${method.methodName}</option>
+            </c:forEach>
+
         </select>
         <br>
         <!-- Air Temp -->
@@ -69,21 +71,18 @@
         <label for="weather">*Weather</label>
         <select name="weather" id="weather" required>
             <option value="" selected disabled>Select an option</option>
-            <option value="1">Sunny</option>
-            <option value="2">Partly Sunny</option>
-            <option value="3">Cloudy</option>
-            <option value="4">Partly Cloudy</option>
-            <option value="5">Rain</option>
+            <c:forEach var="weather" items="${weatherList}">
+                <option value="${weather.id}">${weather.weatherType}</option>
+            </c:forEach>
         </select>
         <br>
         <!-- Wind -->
         <label for="wind">*Wind</label>
         <select name="wind" id="wind" required>
             <option value="" selected disabled>Select an option</option>
-            <option value="1">0-5 mph</option>
-            <option value="2">5-10 mph</option>
-            <option value="3">15-20 mph</option>
-            <option value="4">20+ mph</option>
+            <c:forEach var="wind" items="${windList}">
+                <option value="${wind.id}">${wind.windType}</option>
+            </c:forEach>
         </select>
         <br>
         <!-- Bass Count Fields -->
@@ -93,38 +92,50 @@
                 <input type="number"
                        name="sm-14-16"
                        id="sm-14-16"
+                       value="0"
+                       min="0"
                        required>
                 <br>
-                <label for="sm-16-18">*Small Mouth 16"-19"</label>
+                <label for="sm-16-19">*Small Mouth 16"-19"</label>
                 <input type="number"
-                       name="sm-16-18"
-                       id="sm-16-18"
+                       name="sm-16-19"
+                       id="sm-16-19"
+                       value="0"
+                       min="0"
                        required>
                 <br>
                 <label for="sm-19-plus">*Small Mouth Bass 19"+</label>
                 <input type="number"
                        name="sm-19-plus"
                        id="sm-19-plus"
+                       value="0"
+                       min="0"
                        required>
                 <br>
             </div>
             <div id="largeMouthFields">
-                <label for="lg-14-16">*Large Mouth 14"-16"</label>
+                <label for="lm-14-16">*Large Mouth 14"-16"</label>
                 <input type="number"
-                       name="lg-14-16"
-                       id="lg-14-16"
+                       name="lm-14-16"
+                       id="lm-14-16"
+                       value="0"
+                       min="0"
                        required>
                 <br>
-                <label for="lg-16-18">*Large Mouth 16"-19"</label>
+                <label for="lm-16-19">*Large Mouth 16"-19"</label>
                 <input type="number"
-                       name="lg-16-18"
-                       id="lg-16-18"
+                       name="lm-16-19"
+                       id="lm-16-19"
+                       value="0"
+                       min="0"
                        required>
                 <br>
-                <label for="lg-19-plus">*Large Mouth 19"+</label>
+                <label for="lm-19-plus">*Large Mouth 19"+</label>
                 <input type="number"
-                       name="lg-19-plus"
-                       id="lg-19-plus"
+                       name="lm-19-plus"
+                       id="lm-19-plus"
+                       value="0"
+                       min="0"
                        required>
                 <br>
             </div>

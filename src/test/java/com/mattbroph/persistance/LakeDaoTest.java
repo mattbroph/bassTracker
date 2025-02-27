@@ -1,6 +1,8 @@
 package com.mattbroph.persistance;
 
+import com.mattbroph.entity.BassGoal;
 import com.mattbroph.entity.Lake;
+import com.mattbroph.entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,19 +14,29 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LakeDaoTest {
 
+    GenericDao lakeDao;
+    GenericDao userDao;
+
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     @BeforeEach
     void setUp() {
         Database database = Database.getInstance();
         database.runSQL("fresh_db.sql");
+        lakeDao = new GenericDao(Lake.class);
+        userDao = new GenericDao(User.class);
+    }
+
+    @Test
+    void getAll() {
+        List<Lake> lakes = (List<Lake>)lakeDao.getAll();
+        assertEquals(7, lakes.size());
     }
 
     @Test
     void getById() {
-        LakeDao lakeDao = new LakeDao();
         // Get ID 1
-        Lake lake = lakeDao.getById(1);
+        Lake lake = (Lake)lakeDao.getById(1);
         // Check if lake is null
         assertNotNull(lake);
         // Check lake name
@@ -34,8 +46,7 @@ class LakeDaoTest {
     @Test
     void update() {
         // Get the first lake
-        LakeDao lakeDao = new LakeDao();
-        Lake lake = lakeDao.getById(1);
+        Lake lake = (Lake)lakeDao.getById(1);
         // Log the name of the lake
         logger.info("The lake name before updating: " + lake.getLakeName());
         // Change the lake name
@@ -51,29 +62,36 @@ class LakeDaoTest {
     @Test
     void insert() {
         int insertedLakeId;
-        LakeDao lakeDao = new LakeDao();
+
+        // Get a user
+        User user = (User)userDao.getById(3);
+
         // Create a new lake
-        Lake lake = new Lake("Lake Waubesa", 2);
+        Lake lake = new Lake("Lake Waubesa", user, true);
         // Do the insert and store the lake id
         insertedLakeId = lakeDao.insert(lake);
-        Lake lakeInserted = lakeDao.getById(insertedLakeId);
+        Lake lakeInserted = (Lake)lakeDao.getById(insertedLakeId);
         assertNotNull(lakeInserted);
         assertEquals("Lake Waubesa", lakeInserted.getLakeName());
     }
 
     @Test
     void delete() {
-        LakeDao lakeDao = new LakeDao();
-        Lake lake = lakeDao.getById(5);
+        Lake lake = (Lake)lakeDao.getById(5);
         lakeDao.delete(lake);
         assertNull(lakeDao.getById(5));
     }
 
     @Test
     void getByPropertyEqual() {
-        LakeDao lakeDao = new LakeDao();
-        List<Lake> userLakes = lakeDao.getByPropertyEqual("userId", "1");
+        List<Lake> userLakes = (List<Lake>)lakeDao.getByPropertyEqual("lakeName", "Lake Mendota");
+        assertEquals(1, userLakes.size());
+        assertEquals(2, userLakes.get(0).getId());
+    }
+
+    @Test
+    void getByPropertyLike() {
+        List<Lake> userLakes = (List<Lake>)lakeDao.getByPropertyLike("lakeName", "Lake M");
         assertEquals(3, userLakes.size());
-        assertEquals(1, userLakes.get(0).getId());
     }
 }

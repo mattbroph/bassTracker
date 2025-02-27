@@ -3,14 +3,13 @@ package com.mattbroph.entity;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
-
 import java.time.LocalDate;
 
 /**
  * Represents a user's Journal Entry
  */
 @Entity
- @Table(name = "Journal")
+@Table(name = "journal")
 
 public class Journal {
 
@@ -20,29 +19,34 @@ public class Journal {
     @Column(name = "JournalID")
     private int id;
 
-    @Column(name = "UserID")
-    private int userID;
+    @ManyToOne
+    @JoinColumn(name = "UserID")
+    private User user;
 
     @Column(name = "JournalDate")
     private LocalDate journalDate;
 
-    @Column(name = "LakeID")
-    private int lakeID;
+    @ManyToOne
+    @JoinColumn(name = "LakeID")
+    private Lake lake;
 
     @Column(name = "Hours")
-    private int hours;
+    private double hours;
 
-    @Column(name = "MethodID")
-    private int methodID;
+    @ManyToOne
+    @JoinColumn(name = "MethodID")
+    private Method method;
 
     @Column(name = "AirTemp")
     private int airTemp;
 
-    @Column(name = "WeatherID")
-    private int weatherID;
+    @ManyToOne
+    @JoinColumn(name = "WeatherID")
+    private Weather weather;
 
-    @Column(name = "WindID")
-    private int windID;
+    @ManyToOne
+    @JoinColumn(name = "WindID")
+    private Wind wind;
 
     @Column(name = "Comments")
     private String comments;
@@ -83,14 +87,14 @@ public class Journal {
     /**
      * Instantiates a new Journal.
      *
-     * @param userID           the user id
+     * @param user             the user
      * @param journalDate      the journal date
-     * @param lakeID           the lake id
+     * @param lake             the lake
      * @param hours            the hours
-     * @param methodID         the method id
+     * @param method           the method object
      * @param airTemp          the air temp
-     * @param weatherID        the weather id
-     * @param windID           the wind id
+     * @param weather          the weather object
+     * @param wind             the wind object
      * @param comments         the comments
      * @param imageURL         the image url
      * @param smallMouth1416   the small mouth 1416
@@ -100,20 +104,20 @@ public class Journal {
      * @param largeMouth1619   the large mouth 1619
      * @param largeMouth19Plus the large mouth 19 plus
      */
-    public Journal(int userID, LocalDate journalDate, int lakeID,
-            int hours, int methodID, int airTemp, int weatherID, int windID,
+    public Journal(User user, LocalDate journalDate, Lake lake,
+            double hours, Method method, int airTemp, Weather weather, Wind wind,
             String comments, String imageURL, int smallMouth1416, int smallMouth1619,
             int smallMouth19Plus, int largeMouth1416, int largeMouth1619,
             int largeMouth19Plus) {
 
-        this.userID = userID;
+        this.user = user;
         this.journalDate = journalDate;
-        this.lakeID = lakeID;
+        this.lake = lake;
         this.hours = hours;
-        this.methodID = methodID;
+        this.method = method;
         this.airTemp = airTemp;
-        this.weatherID = weatherID;
-        this.windID = windID;
+        this.weather = weather;
+        this.wind = wind;
         this.comments = comments;
         this.imageURL = imageURL;
         this.smallMouth1416 = smallMouth1416;
@@ -143,21 +147,21 @@ public class Journal {
     }
 
     /**
-     * Gets user id.
+     * Gets the user
      *
-     * @return the user id
+     * @return the user
      */
-    public int getUserID() {
-        return userID;
+    public User getUser() {
+        return user;
     }
 
     /**
-     * Sets user id.
+     * Sets user
      *
-     * @param userID the user id
+     * @param user the user
      */
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     /**
@@ -179,21 +183,21 @@ public class Journal {
     }
 
     /**
-     * Gets lake id.
+     * Gets the lake
      *
-     * @return the lake id
+     * @return the lake
      */
-    public int getLakeID() {
-        return lakeID;
+    public Lake getLake() {
+        return lake;
     }
 
     /**
-     * Sets lake id.
+     * Sets the lake
      *
-     * @param lakeID the lake id
+     * @param lake the lake
      */
-    public void setLakeID(int lakeID) {
-        this.lakeID = lakeID;
+    public void setLake(Lake lake) {
+        this.lake = lake;
     }
 
     /**
@@ -201,7 +205,7 @@ public class Journal {
      *
      * @return the hours
      */
-    public int getHours() {
+    public double getHours() {
         return hours;
     }
 
@@ -210,7 +214,7 @@ public class Journal {
      *
      * @param hours the hours
      */
-    public void setHours(int hours) {
+    public void setHours(double hours) {
         this.hours = hours;
     }
 
@@ -219,17 +223,17 @@ public class Journal {
      *
      * @return the method id
      */
-    public int getMethodID() {
-        return methodID;
+    public Method getMethod() {
+        return method;
     }
 
     /**
-     * Sets method id.
+     * Sets method
      *
-     * @param methodID the method id
+     * @param method the method
      */
-    public void setMethodID(int methodID) {
-        this.methodID = methodID;
+    public void setMethod(Method method) {
+        this.method = method;
     }
 
     /**
@@ -251,39 +255,39 @@ public class Journal {
     }
 
     /**
-     * Gets weather id.
+     * Gets the weather
      *
-     * @return the weather id
+     * @return the weather
      */
-    public int getWeatherID() {
-        return weatherID;
+    public Weather getWeather() {
+        return weather;
     }
 
     /**
-     * Sets weather id.
+     * Sets the weather
      *
-     * @param weatherID the weather id
+     * @param weather the weather
      */
-    public void setWeatherID(int weatherID) {
-        this.weatherID = weatherID;
+    public void setWeather(Weather weather) {
+        this.weather = weather;
     }
 
     /**
-     * Gets wind id.
+     * Gets the wind
      *
-     * @return the wind id
+     * @return the wind
      */
-    public int getWindID() {
-        return windID;
+    public Wind getWind() {
+        return wind;
     }
 
     /**
-     * Sets wind id.
+     * Sets the wind
      *
-     * @param windID the wind id
+     * @param wind the wind
      */
-    public void setWindID(int windID) {
-        this.windID = windID;
+    public void setWind(Wind wind) {
+        this.wind = wind;
     }
 
     /**
@@ -442,26 +446,27 @@ public class Journal {
         return totalBassCount;
      }
 
+
     @Override
     public String toString() {
         return "Journal{" +
-                "id=" + id +
-                ", userID=" + userID +
-                ", journalDate=" + journalDate +
-                ", lakeID=" + lakeID +
-                ", hours=" + hours +
-                ", methodID=" + methodID +
-                ", airTemp=" + airTemp +
-                ", weatherID=" + weatherID +
-                ", windID=" + windID +
-                ", comments='" + comments + '\'' +
-                ", imageURL='" + imageURL + '\'' +
-                ", smallMouth1416=" + smallMouth1416 +
-                ", smallMouth1619=" + smallMouth1619 +
-                ", smallMouth19Plus=" + smallMouth19Plus +
-                ", largeMouth1416=" + largeMouth1416 +
+                "largeMouth19Plus=" + largeMouth19Plus +
                 ", largeMouth1619=" + largeMouth1619 +
-                ", largeMouth19Plus=" + largeMouth19Plus +
+                ", largeMouth1416=" + largeMouth1416 +
+                ", smallMouth19Plus=" + smallMouth19Plus +
+                ", smallMouth1619=" + smallMouth1619 +
+                ", smallMouth1416=" + smallMouth1416 +
+                ", imageURL='" + imageURL + '\'' +
+                ", comments='" + comments + '\'' +
+//                ", windID=" + windID +
+//                ", weatherID=" + weatherID +
+                ", airTemp=" + airTemp +
+//                ", methodID=" + methodID +
+                ", hours=" + hours +
+//                ", lake=" + lake +
+                ", journalDate=" + journalDate +
+//                ", user=" + user +
+                ", id=" + id +
                 '}';
     }
 }

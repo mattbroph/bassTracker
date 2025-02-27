@@ -23,7 +23,7 @@
 
 <main id="mainContent">
 
-    <h1>{$}Matt's Fishing Journals</h1>
+    <h1>${user.firstName}'s Fishing Journals</h1>
     <a href="addJournal" class="greenAnchorButton">Add Journal Entry</a>
     <br><br>
     <br>
@@ -63,18 +63,20 @@
         <c:forEach var="journal" items="${journals}">
             <tr>
                 <td>
-                    <a href="viewJournalDetails.jsp?id=${journal.id}">
+<%--                    TODO update this to view journal
+                        just testing edit journal now--%>
+                    <a href="viewJournalDetails?journalId=${journal.id}">
                         <img src="images/openIcon.svg" alt="view details">
                     </a>
                 </td>
                 <td>${journal.journalDate}</td>
-                <td>${journal.lakeID}</td>
+                <td>${journal.lake.lakeName}</td>
                 <td>${journal.totalBassCount}</td>
                 <td>${journal.hours}</td>
                 <td>${journal.airTemp}</td>
-                <td>${journal.methodID}</td>
-                <td>${journal.weatherID}</td>
-                <td>${journal.windID}</td>
+                <td>${journal.method.methodName}</td>
+                <td>${journal.weather.weatherType}</td>
+                <td>${journal.wind.windType}</td>
             </tr>
         </c:forEach>
         </tbody>

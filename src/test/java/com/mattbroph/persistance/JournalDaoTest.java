@@ -1,6 +1,6 @@
 package com.mattbroph.persistance;
 
-import com.mattbroph.entity.Journal;
+import com.mattbroph.entity.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,19 +13,37 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class JournalDaoTest {
 
+    GenericDao journalDao;
+    GenericDao lakeDao;
+    GenericDao userDao;
+    GenericDao windDao;
+    GenericDao weatherDao;
+    GenericDao methodDao;
+
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     @BeforeEach
     void setUp() {
         Database database = Database.getInstance();
-        database.runSQL("fresh_db_old.sql");
+        database.runSQL("fresh_db.sql");
+        journalDao = new GenericDao(Journal.class);
+        lakeDao = new GenericDao(Lake.class);
+        userDao = new GenericDao(User.class);
+        windDao = new GenericDao(Wind.class);
+        weatherDao = new GenericDao(Weather.class);
+        methodDao = new GenericDao(Method.class);
+    }
+
+    @Test
+    void getAll() {
+        List<Journal> journals = (List<Journal>)journalDao.getAll();
+        assertEquals(14, journals.size());
     }
 
     @Test
     void getById() {
-        JournalDao journalDao = new JournalDao();
         // Get ID 1
-        Journal journal = journalDao.getById(1);
+        Journal journal = (Journal)journalDao.getById(1);
         // Check if journal is null
         assertNotNull(journal);
         // Check journal name
@@ -35,8 +53,7 @@ class JournalDaoTest {
     @Test
     void update() {
         // Get the first journal
-        JournalDao journalDao = new JournalDao();
-        Journal journal = journalDao.getById(1);
+        Journal journal = (Journal)journalDao.getById(1);
         // Log the name of the journal
         logger.info("The LM19+ count before updating: " + journal.getLargeMouth19Plus());
         // Change the journal name
@@ -52,30 +69,44 @@ class JournalDaoTest {
     @Test
     void insert() {
         int insertedjournalId;
-        JournalDao journalDao = new JournalDao();
         LocalDate localDate = LocalDate.now();
+
+        // Get a lake
+        Lake lake = (Lake)lakeDao.getById(1);
+        // Get a user
+        User user = (User)userDao.getById(1);
+        // Get the wind
+        Wind wind = (Wind)windDao.getById(1);
+        // Get the weather
+        Weather weather = (Weather)weatherDao.getById(1);
+        // Get the method
+        Method method = (Method)methodDao.getById(1);
+
         // Create a new journal
-        Journal journal = new Journal(1, localDate, 2, 5, 2, 80, 2, 2, "Had a really good time fishing today", "https://myimage.com88", 2, 3, 4, 8, 1, 0);
+        Journal journal = new Journal(user, localDate, lake, 5, method, 80, weather, wind, "Had a really good time fishing today", "https://myimage.com88", 2, 3, 4, 8, 1, 0);
         // Do the insert and store the journal id
         insertedjournalId = journalDao.insert(journal);
-        Journal journalInserted = journalDao.getById(insertedjournalId);
+        Journal journalInserted = (Journal)journalDao.getById(insertedjournalId);
         assertNotNull(journalInserted);
     }
 
     @Test
     void delete() {
-        JournalDao journalDao = new JournalDao();
-        Journal journal = journalDao.getById(3);
+        Journal journal = (Journal)journalDao.getById(3);
         journalDao.delete(journal);
         assertNull(journalDao.getById(3));
     }
 
     @Test
     void getByPropertyEqual() {
-        JournalDao journalDao = new JournalDao();
-        List<Journal> journals = journalDao.getByPropertyEqual("userID", "1");
-        assertEquals(2, journals.size());
-        assertEquals(1, journals.get(0).getId());
 
+        List<Journal> journals = (List<Journal>)journalDao.getByPropertyEqual("id", "1");
+        assertEquals(1, journals.size());
+    }
+
+    @Test
+    void getByPropertyLike() {
+        List<Journal> journals = (List<Journal>)journalDao.getByPropertyLike("imageURL", "https://myimage.com");
+        assertEquals(1, journals.size());
     }
 }

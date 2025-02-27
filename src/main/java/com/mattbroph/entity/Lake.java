@@ -3,11 +3,14 @@ package com.mattbroph.entity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * The type Lake.
+ * Represents a Lake object
  */
  @Entity
- @Table(name = "Lake")
+ @Table(name = "lake")
 public class Lake {
 
     /** The unique Lake ID */
@@ -21,12 +24,18 @@ public class Lake {
     @Column(name = "LakeName")
     private String lakeName;
 
-    /** The user's id (TODO - id will be hardcoded until week 5 when learning one to many table relationships) */
-    @Column(name = "UserID")
-    private int userId;
+    /** The user's id */
+    @ManyToOne
+    @JoinColumn(name = "UserID")
+    private User user;
 
-    @Column(name = "LakeStatus")
-    private boolean lakeStatus;
+    /** Whether the user has marked a lake active or inactive */
+    @Column(name = "isActive")
+    private boolean isActive;
+
+    /** The list of journals that reference the lake */
+    @OneToMany(mappedBy = "lake", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<Journal> journals = new ArrayList<>();
 
     /**
      * Empty constructor for instantiating new lake
@@ -38,11 +47,13 @@ public class Lake {
      * Instantiates a new Lake with instance variables.
      *
      * @param lakeName the lake name
-     * @param userId   the user id
+     * @param user   the user
+     * @param isActive whether the lake is active or inactive
      */
-    public Lake(String lakeName, int userId) {
+    public Lake(String lakeName, User user, boolean isActive) {
         this.lakeName = lakeName;
-        this.userId = userId;
+        this.user = user;
+        this.isActive = isActive;
     }
 
     /**
@@ -82,21 +93,21 @@ public class Lake {
     }
 
     /**
-     * Gets user id.
+     * Gets user.
      *
-     * @return the user id
+     * @return the user
      */
-    public int getUserId() {
-        return userId;
+    public User getUserId() {
+        return user;
     }
 
     /**
-     * Sets user id.
+     * Sets user
      *
-     * @param userId the user id
+     * @param user the user
      */
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserId(User user) {
+        this.user = user;
     }
 
     /**
@@ -104,17 +115,33 @@ public class Lake {
      *
      * @return the boolean
      */
-    public boolean isLakeStatus() {
-        return lakeStatus;
+    public boolean getIsActive() {
+        return isActive;
     }
 
     /**
      * Sets lake status.
      *
-     * @param lakeStatus the lake status
+     * @param isActive the lake status
      */
-    public void setLakeStatus(boolean lakeStatus) {
-        this.lakeStatus = lakeStatus;
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    /**
+     * Gets journals
+     * @return the journals
+     */
+    public List<Journal> getJournals() {
+        return journals;
+    }
+
+    /**
+     * Sets journals
+     * @param journals the journals
+     */
+    public void setJournals(List<Journal> journals) {
+        this.journals = journals;
     }
 
     /**
@@ -126,7 +153,7 @@ public class Lake {
         return "Lake{" +
                 "id= " + id +
                 ", lakeName= '" + lakeName + '\'' +
-                ", userId= " + userId +
+                ", user= " + user +
                 '}';
     }
 }

@@ -2,7 +2,6 @@
 */
 const init = () => {
 
-    console.log("hey der world");
     buildBassGoalDonut();
     buildBassSizeCount();
     buildTripChart();
@@ -14,17 +13,17 @@ const init = () => {
 */
 const buildBassGoalDonut = () => {
 
-    // TODO will have to get this data from the DB somehow (hardcoded for now)
-    // Declare variables
-    let current = 100;
-    let goal = 150;
+    let bassGoalDiv = document.getElementById("bassGoalContainer");
+    let bassGoal = parseInt(bassGoalDiv.getAttribute("data-bassGoal"));
+    let currentBassCount = parseInt(bassGoalDiv.getAttribute("data-currentBassCount"));
+
     let remaining;
 
     // Define "remaining" goal value
-    if (current >= goal) {
+    if (currentBassCount >= bassGoal) {
         remaining = 0;
     } else {
-        remaining = goal - current;
+        remaining = bassGoal - currentBassCount;
     }
 
     // Define the data for the donut
@@ -32,7 +31,7 @@ const buildBassGoalDonut = () => {
         labels: ['Current', 'Remaining'],
         datasets: [{
             label: 'Bass Goal',
-            data: [current, remaining],
+            data: [currentBassCount, remaining],
             backgroundColor: [
                 '#536642', // Green
                 '#F6D86B'  // Yellow
@@ -57,6 +56,14 @@ const buildBassGoalDonut = () => {
 */
 const buildBassSizeCount = () => {
 
+    let bassSizeDiv = document.getElementById("bassSizeContainer");
+    let smallMouth1416 = parseInt(bassSizeDiv.getAttribute("data-sm1416"));
+    let smallMouth1619 = parseInt(bassSizeDiv.getAttribute("data-sm1619"));
+    let smallMouth19Plus = parseInt(bassSizeDiv.getAttribute("data-sm19Plus"));
+    let largeMouth1416 = parseInt(bassSizeDiv.getAttribute("data-lm1416"));
+    let largeMouth1619 = parseInt(bassSizeDiv.getAttribute("data-lm1619"));
+    let largeMouth19Plus = parseInt(bassSizeDiv.getAttribute("data-lm19Plus"));
+
     // Define the data for the chart
     const data = {
         labels: [
@@ -69,7 +76,8 @@ const buildBassSizeCount = () => {
         ],
         datasets: [{
             label: 'Count',
-            data: [11, 16, 7, 3, 14, 15],
+            data: [smallMouth1416, smallMouth1619, smallMouth19Plus, largeMouth1416,
+                    largeMouth1619, largeMouth19Plus],
             backgroundColor: [
                 '#F8E089',
                 '#F6D86B',
@@ -98,7 +106,22 @@ const buildBassSizeCount = () => {
 */
 const buildTripChart = () => {
 
-    // Define the data for the chart
+    // Define the y-axis data for the chart
+    let bassSizeDiv = document.getElementById("tripChartContainer");
+    let januaryTrips = parseInt(bassSizeDiv.getAttribute("data-month-1"));
+    let februaryTrips = parseInt(bassSizeDiv.getAttribute("data-month-2"));
+    let marchTrips = parseInt(bassSizeDiv.getAttribute("data-month-3"));
+    let aprilTrips = parseInt(bassSizeDiv.getAttribute("data-month-4"));
+    let mayTrips = parseInt(bassSizeDiv.getAttribute("data-month-5"));
+    let juneTrips = parseInt(bassSizeDiv.getAttribute("data-month-6"));
+    let julyTrips = parseInt(bassSizeDiv.getAttribute("data-month-7"));
+    let augustTrips = parseInt(bassSizeDiv.getAttribute("data-month-8"));
+    let septemberTrips = parseInt(bassSizeDiv.getAttribute("data-month-9"));
+    let octoberTrips = parseInt(bassSizeDiv.getAttribute("data-month-10"));
+    let novemberTrips = parseInt(bassSizeDiv.getAttribute("data-month-11"));
+    let decemberTrips = parseInt(bassSizeDiv.getAttribute("data-month-12"));
+
+    // Define the x-axis data for the chart
     const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May',
         'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -106,7 +129,9 @@ const buildTripChart = () => {
         labels: labels,
         datasets: [{
             label: '# of Trips',
-            data: [10, 5, 7, 30, 25, 40, 55, 35, 15, 25, 32, 40],
+            data: [januaryTrips, februaryTrips, marchTrips, aprilTrips, mayTrips,
+                    juneTrips, julyTrips, augustTrips, septemberTrips, octoberTrips,
+                    novemberTrips, decemberTrips],
             backgroundColor: [
                 '#8F9C82',
                 '#8F9C82',
@@ -164,6 +189,22 @@ const buildTripChart = () => {
  */
 const buildCatchChart = () => {
 
+    // Define the y-axis data for the chart
+    let bassSizeDiv = document.getElementById("catchChartContainer");
+    let januaryCatch = parseInt(bassSizeDiv.getAttribute("data-month-1"));
+    let februaryCatch = parseInt(bassSizeDiv.getAttribute("data-month-2"));
+    let marchCatch = parseInt(bassSizeDiv.getAttribute("data-month-3"));
+    let aprilCatch = parseInt(bassSizeDiv.getAttribute("data-month-4"));
+    let mayCatch = parseInt(bassSizeDiv.getAttribute("data-month-5"));
+    let juneCatch = parseInt(bassSizeDiv.getAttribute("data-month-6"));
+    let julyCatch = parseInt(bassSizeDiv.getAttribute("data-month-7"));
+    let augustCatch = parseInt(bassSizeDiv.getAttribute("data-month-8"));
+    let septemberCatch = parseInt(bassSizeDiv.getAttribute("data-month-9"));
+    let octoberCatch = parseInt(bassSizeDiv.getAttribute("data-month-10"));
+    let novemberCatch = parseInt(bassSizeDiv.getAttribute("data-month-11"));
+    let decemberCatch = parseInt(bassSizeDiv.getAttribute("data-month-12"));
+    let monthlyCatchGoal = parseInt(bassSizeDiv.getAttribute("data-monthly-catch-goal"));
+
     // Define the data for the chart
     const data = {
         labels: [
@@ -183,14 +224,18 @@ const buildCatchChart = () => {
         datasets: [{
             type: 'line',
             label: 'Monthly Goal',
-            data: [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20],
+            data: [monthlyCatchGoal, monthlyCatchGoal, monthlyCatchGoal, monthlyCatchGoal,
+                monthlyCatchGoal, monthlyCatchGoal, monthlyCatchGoal, monthlyCatchGoal,
+                monthlyCatchGoal, monthlyCatchGoal, monthlyCatchGoal, monthlyCatchGoal],
             fill: false,
             borderColor: '#0a0a0a',
             borderWidth: .25
         }, {
             type: 'bar',
             label: 'Catch Count',
-            data: [10, 20, 30, 32, 12, 20, 30, 40, 10, 20, 30, 10],
+            data: [januaryCatch, februaryCatch, marchCatch, aprilCatch, mayCatch,
+                    juneCatch, julyCatch, augustCatch, septemberCatch, octoberCatch,
+                    novemberCatch, decemberCatch],
             borderColor: '#F8E089',
             backgroundColor: '#F8E089',
             borderWidth: .25
