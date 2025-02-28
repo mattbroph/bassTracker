@@ -20,7 +20,7 @@ const init = () => {
         // Export feature
         layout: {
             topStart: {
-                buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+                buttons: ['pageLength', 'copy','excel']
             }
         }
     });

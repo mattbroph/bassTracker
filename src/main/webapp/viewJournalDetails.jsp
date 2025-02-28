@@ -32,17 +32,18 @@
     <%-- Remove success message from the session--%>
         <c:remove var="addJournalMessage" scope="session" />
     </c:if>
+    <!-- Button fields -->
+    <c:if test="${empty deleteJournalMessage}">
+        <div class="buttonContainer">
+            <a href="editJournal?journalId=${journal.id}" class="greenAnchorButton">Edit Journal</a>
+            <a href="deleteJournal?journalId=${journal.id}" class="yellowAnchorButton">Delete Journal</a>
+        </div>
+    </c:if>
     <br>
     <div id="journalDetails">
         <!-- Left -->
         <div id="journalDetailsLeft">
-            <!-- Button fields -->
-            <c:if test="${empty deleteJournalMessage}">
-                <div class="buttonContainer">
-                    <a href="editJournal?journalId=${journal.id}" class="greenAnchorButton">Edit Journal</a>
-                    <a href="deleteJournal?journalId=${journal.id}" class="yellowAnchorButton">Delete Journal</a>
-                </div>
-            </c:if>
+
             <h2>Trip Details</h2>
             <ul>
                 <li><span>Date:</span> ${journal.journalDate}</li>
@@ -55,13 +56,11 @@
                 <li><span>Bass Caught:</span> ${journal.totalBassCount}</li>
                 <li><span>Comments: </span>${journal.comments}</li>
             </ul>
-            <!-- Could put the image here  -->
-            <div id="photoDiv">
+            <!-- Image  -->
                 <c:if test="${not empty journal.imageURL}">
-                    <span><h2 id="photoH2">Photo of the Day:</h2></span>
+                    <h3 id="photoH2"><span>Photo of the Day:</span></h3>
                     <img src="${journal.imageURL}" alt="Journal Photo">
                 </c:if>
-            </div>
         </div>
         <!-- Right -->
         <div id="journalDetailsRight">

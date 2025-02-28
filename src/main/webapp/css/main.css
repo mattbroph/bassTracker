@@ -9,12 +9,13 @@ html, body {
 
 main {
     flex: 1;
-    padding-left: 15%;
-    padding-right: 15%;
-    padding-top: 2%;
-    padding-bottom: 2%;
+    margin-left: 8%;
+    margin-right: 8%;
+    margin-top: 2%;
+    margin-bottom: 2%;
     font-family: 'Roboto Slab', serif;
 }
+
 
 img {
     max-width: 100%;

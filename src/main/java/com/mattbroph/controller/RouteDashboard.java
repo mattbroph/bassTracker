@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -53,10 +54,12 @@ public class RouteDashboard extends HttpServlet {
         int userId = 1;
 
         // TODO GET THE YEAR - UPDATE THIS TO AN INCOMING REQUEST ATTRIBUTE
-        int year = 2025;
+        // If year has not been submitted, then use the current year
+        // Basically setting this up for 2026
+        LocalDate localDate = LocalDate.now();
+        int year = localDate.getYear();
 
         // TODO GET THE USER
-
         User user = (User)userDao.getById(userId);
 
         // Get the users bass goal for the year
