@@ -1,0 +1,97 @@
+form {
+    max-width: 60em;
+    background-color: #F8F9FA;
+    padding: 2em;
+    border-radius: 1em;
+    box-shadow: 0 4px 8px black;
+}
+
+main {
+    margin: 2% auto;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+fieldset {
+    margin-bottom: 2em;
+}
+
+/* Side-by-Side Layout for Bass Counts */
+#bassCountFields {
+    display: flex;
+    justify-content: space-between;
+}
+
+#smallMouthFields, #largeMouthFields {
+    flex: 1;
+}
+
+#largeMouthFields {
+    margin-left: 10px;
+}
+
+/* Buttons */
+#buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#buttonContainer input,
+.cancelButton {
+    width: 48%;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    text-align: center;
+    align-content: center;
+}
+
+.cancelButton {
+    background-color: #F6D86B;
+    color: black;
+    text-decoration: none;
+}
+
+.cancelButton:hover {
+    background-color: #FAE8A6;
+    text-decoration: none;
+    color: black;
+}
+
+input[type="submit"] {
+    background-color: #536642;
+    color: white;
+    border: none;
+}
+
+input[type="submit"]:hover {
+    background-color: #8F9C82;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    #bassCountFields {
+        flex-direction: column;
+    }
+
+    #largeMouthFields {
+        margin-left: 0;
+    }
+
+    #buttonContainer {
+        flex-direction: column;
+    }
+
+    #buttonContainer input, .cancelButton {
+        width: 100%;
+        margin-top: 10px;
+    }
+}

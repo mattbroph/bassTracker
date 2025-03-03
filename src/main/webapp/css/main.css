@@ -1,16 +1,21 @@
-body {
+html, body {
+    background-color: #F2F2F2 !important;
+    height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #F2F2F2 !important;
+    display: flex;
+    flex-direction: column;
 }
 
 main {
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-top: 2%;
-    padding-bottom: 2%;
+    flex: 1;
+    margin-left: 8%;
+    margin-right: 8%;
+    margin-top: 2%;
+    margin-bottom: 2%;
     font-family: 'Roboto Slab', serif;
 }
+
 
 img {
     max-width: 100%;
