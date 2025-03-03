@@ -40,10 +40,10 @@ VALUES ("Crankbaits"),
 ################################
 # AppUser
 ################################
-INSERT INTO AppUser (UserName, FirstName, LastName, ProfilePicture)
-VALUES ("MattyB", "Matt", "Brophy", "https://urltomattspic"),
-	   ("JohnnyD", "John", "Brophy", "https://urltojohnspic"),
-       ("FrodoB", "Frodo", "Baggins", "https://urltofrodospic");
+INSERT INTO AppUser (UserEmail, FirstName, LastName, ProfilePicture)
+VALUES ("mattbroph@gmail.com", "Matt", "Brophy", "https://urltomattspic"),
+	   ("johnB@gmail.com", "John", "Brophy", "https://urltojohnspic"),
+       ("frodoB@gmail.com", "Frodo", "Baggins", "https://urltofrodospic");
 
 ################################
 # Lake
@@ -84,17 +84,6 @@ VALUES ("1", "2025-02-25", "2", "5", "2", "80", "2", "2", "Had a really good tim
     ("1", "2025-02-16", "3", "5", "3", "80", "1", "2", "Weather was perfect", "http://fakeImage8.com", "3", "4", "2", "5", "2", "0"),
     ("1", "2025-02-15", "1", "2", "4", "60", "5", "1", "Bit slow, but enjoyable", "http://fakeImage9.com", "1", "0", "0", "1", "2", "0"),
     ("1", "2025-02-14", "2", "3", "5", "68", "2", "4", "Hooked some nice ones", "http://fakeImage10.com", "2", "3", "0", "4", "1", "0");
-
-################################
-# Check your queries
-################################
-SELECT FirstName, LastName, LakeName, Hours, MethodName, AirTemp, WeatherType, WindType, Comments, ImageURL, SM_14_16, SM_16_19, SM_19_PLUS, LM_14_16, LM_16_19, LM_19_PLUS
-FROM Journal
-         INNER JOIN AppUSer ON Journal.UserID = AppUser.UserID
-         INNER JOIN Lake ON Journal.LakeID = Lake.LakeID
-         INNER JOIN Method ON Journal.MethodID = Method.MethodID
-         INNER JOIN Weather ON Journal.WeatherID = Weather.WeatherID
-         INNER JOIN Wind ON Journal.WindID = Wind.WindID;
 
 
 

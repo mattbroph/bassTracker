@@ -52,7 +52,7 @@ CREATE TABLE Method (
 
 CREATE TABLE AppUser (
                          UserID INTEGER AUTO_INCREMENT PRIMARY KEY,
-                         UserName varchar(50) NOT NULL,
+                         UserEmail varchar(50) NOT NULL,
                          FirstName varchar(50) NOT NULL,
                          LastName varchar(50) NOT NULL,
                          ProfilePicture varchar(255)

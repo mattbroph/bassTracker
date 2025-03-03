@@ -21,8 +21,8 @@ public class User {
     private int id;
 
     /** The username */
-    @Column(name = "UserName")
-    private String userName;
+    @Column(name = "UserEmail")
+    private String userEmail;
 
     /** The user's first name */
     @Column(name = "FirstName")
@@ -58,13 +58,13 @@ public class User {
     /**
      * Instantiates a new User with instance variables.
      *
-     * @param userName       the user name
+     * @param userEmail       the user email
      * @param firstName      the user's first name
      * @param lastName       the user's last name
      * @param profilePicture the user's profile picture
      */
-    public User(String userName, String firstName, String lastName, String profilePicture) {
-        this.userName = userName;
+    public User(String userEmail, String firstName, String lastName, String profilePicture) {
+        this.userEmail = userEmail;
         this.firstName = firstName;
         this.lastName = lastName;
         this.profilePicture = profilePicture;
@@ -89,21 +89,21 @@ public class User {
     }
 
     /**
-     * Gets user name.
+     * Gets user email.
      *
-     * @return the user name
+     * @return the user email
      */
-    public String getUserName() {
-        return userName;
+    public String getUserEmail() {
+        return userEmail;
     }
 
     /**
-     * Sets user name.
+     * Sets user email.
      *
-     * @param userName the user name
+     * @param userEmail the user email
      */
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     /**
@@ -221,7 +221,7 @@ public class User {
                 "profilePicture='" + profilePicture + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", firstName='" + firstName + '\'' +
-                ", userName='" + userName + '\'' +
+                ", userEmail='" + userEmail + '\'' +
                 ", id=" + id +
 //                ", lakes=" + lakes +
                 '}';
