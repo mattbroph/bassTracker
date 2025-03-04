@@ -75,6 +75,9 @@ public class RouteEditJournal extends HttpServlet {
         request.setAttribute("windList", windList);
         request.setAttribute("methodList", methodList);
 
+        // Update the session user object to keep data fresh
+        session.setAttribute("user", user);
+
         // Forward to the HTTP request data jsp page
         RequestDispatcher dispatcher =
                 getServletContext().getRequestDispatcher(url);

@@ -55,6 +55,9 @@ public class RouteViewJournalDetails extends HttpServlet {
         Journal journal = (Journal)journalDao.getById(journalId);
         request.setAttribute("journal", journal);
 
+        // Update the session user object to keep data fresh
+        session.setAttribute("user", user);
+
         // Forward to the HTTP request data jsp page
         RequestDispatcher dispatcher =
                 getServletContext().getRequestDispatcher(url);

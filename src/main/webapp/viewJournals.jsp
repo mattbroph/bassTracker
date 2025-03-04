@@ -70,8 +70,6 @@
         <c:forEach var="journal" items="${journals}">
             <tr>
                 <td>
-<%--                    TODO update this to view journal
-                        just testing edit journal now--%>
                     <a href="viewJournalDetails?journalId=${journal.id}">
                         <img src="images/openIcon.svg" alt="view details">
                     </a>

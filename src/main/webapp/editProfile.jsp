@@ -23,6 +23,7 @@
         <input type="text"
                name="firstName"
                id="firstName"
+               value="${user.firstName}"
                required>
         <br>
         <!-- Last Name -->
@@ -30,23 +31,27 @@
         <input type="text"
                name="lastName"
                id="lastName"
+               value="${user.lastName}"
                required>
         <br>
         <!-- Bass Goals -->
-        <label for="bassGoal2025">Bass Goal 2025:</label>
+        <c:forEach var="goal" items="${bassGoals}">
+        <label for="bassGoal${goal.goalYear}">Bass Goal ${goal.goalYear}:</label>
         <input type="number"
-               id="bassGoal2025"
-               name="bassGoal2025"
-               value="2001"
+               id="bassGoal${goal.goalYear}"
+               name="bassGoal${goal.goalYear}"
+               value="${goal.goalCount}"
                min="0"
                required>
         <br>
+        </c:forEach>
         <!-- Profile Picture -->
         <label for="photo">Profile Picture</label>
         <input type="text"
                name="photo"
                placeholder="enter URL here"
-               id="photo">
+               id="photo"
+               value="${user.profilePicture}">
         <br>
         <!-- Button fields -->
         <div id="buttonContainer">

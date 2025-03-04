@@ -100,6 +100,9 @@ public class RouteDashboard extends HttpServlet {
         // Add the dashboard and user to the request
         request.setAttribute("dashboard", dashboard);
 
+        // Update the session user object to keep data fresh
+        session.setAttribute("user", user);
+
         // Forward to the HTTP request data jsp page
         RequestDispatcher dispatcher =
                 getServletContext().getRequestDispatcher(url);

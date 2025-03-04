@@ -27,7 +27,7 @@
 
     <br>
     <div class="buttonContainer">
-        <a href="editProfile?userId=${user.id}" class="greenAnchorButton">Edit Profile</a>
+        <a href="editProfile" class="greenAnchorButton">Edit Profile</a>
     </div>
 
 
