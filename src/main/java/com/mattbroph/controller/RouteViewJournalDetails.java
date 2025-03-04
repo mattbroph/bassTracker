@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /** Forwards the request to view journal details jsp page
@@ -31,6 +32,17 @@ public class RouteViewJournalDetails extends HttpServlet {
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response)
             throws ServletException, IOException {
+
+        GenericDao userDao = new GenericDao(User.class);
+
+        // TODO validate that the user has permission to view journal -
+        // i.e. user id must match user id for journal before deleting
+        // Get user from the session
+        HttpSession session = request.getSession();
+        User sessionUser = (User) session.getAttribute("user");
+        // Reload user from database to avoid stale data
+        User user = (User) userDao.getById(sessionUser.getId());
+
 
         // Get the journal id
         int journalId = Integer.parseInt(request.getParameter("journalId"));

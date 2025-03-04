@@ -31,18 +31,16 @@ public class RouteAddJournal extends HttpServlet {
                       HttpServletResponse response)
             throws ServletException, IOException {
 
+        GenericDao userDao = new GenericDao(User.class);
+
         // Set the url param
         String url = "/addJournal.jsp";
 
-        // TODO get user from the session
-        // Get the user ID
-//        int userId = 1;
-        // NEW CODE
+        // Get user from the session
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-
-//        GenericDao userDao = new GenericDao(User.class);
-//        User user = (User)userDao.getById(userId);
+        User sessionUser = (User) session.getAttribute("user");
+        // Reload user from database to avoid stale data
+        User user = (User) userDao.getById(sessionUser.getId());
 
         // Get the list of Lakes matching the user ID
         List<Lake> userLakes = user.getLakes();

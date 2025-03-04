@@ -36,12 +36,16 @@ public class RouteDeleteJournal extends HttpServlet {
                       HttpServletResponse response)
             throws ServletException, IOException {
 
-        // TODO don't hardcode this user id
-        // Get the user ID
-        int userId = 1;
+        GenericDao userDao = new GenericDao(User.class);
 
-        // Get access to the session
+        // TODO validate that the user has permission to delete -
+        // i.e. user id must match user id for journal before deleting
+        // Get user from the session
         HttpSession session = request.getSession();
+        User sessionUser = (User) session.getAttribute("user");
+        // Reload user from database to avoid stale data
+        User user = (User) userDao.getById(sessionUser.getId());
+
 
         session.setAttribute("deleteJournalMessage",
                  "Confirm deletion of the following journal entry:");
