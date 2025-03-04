@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/db/bass_tracker_test_localhost-2025_03_04_08_14_02-dump.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/db/create_tables_bass_tracker.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/test/resources/fresh_db.sql" dialect="MySQL" />
   </component>

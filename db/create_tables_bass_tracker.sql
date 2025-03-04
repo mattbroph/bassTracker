@@ -55,7 +55,8 @@ CREATE TABLE AppUser (
                          UserEmail varchar(50) NOT NULL,
                          FirstName varchar(50) NOT NULL,
                          LastName varchar(50) NOT NULL,
-                         ProfilePicture varchar(255)
+                         ProfilePicture varchar(255),
+                         UNIQUE (UserEmail)
 );
 
 CREATE TABLE BassGoal (
