@@ -38,19 +38,32 @@ public class RouteViewJournals extends HttpServlet {
         // Set the url param
         String url = "/viewJournals.jsp";
 
-        // TODO validate that the user has permission to view -
-        // i.e. user id must match user id for journal before deleting
         // Get user from the session
         HttpSession session = request.getSession();
         User sessionUser = (User) session.getAttribute("user");
-        // Reload user from database to avoid stale data
-        User user = (User) userDao.getById(sessionUser.getId());
 
-        // Get the list of journals matching the user id
-        List<Journal> journals = user.getJournals();
+        /*
+         * Check if user is logged in.
+         * If they are not logged in, send them to the index jsp.
+         * If they are logged in, send the user to the view journals jsp.
+         */
+        if (sessionUser == null) {
 
-        // Store the journals in the request and forward onto jsp to be displayed
-        request.setAttribute("journals", journals);
+            response.sendRedirect("index.jsp");
+            return;
+
+        } else {
+
+            // Reload user from database to avoid stale data
+            User user = (User) userDao.getById(sessionUser.getId());
+
+            // Get the list of journals matching the user id
+            List<Journal> journals = user.getJournals();
+
+            // Store the journals in the request and forward onto jsp to be displayed
+            request.setAttribute("journals", journals);
+
+        }
 
         // Forward to the HTTP request data jsp page
         RequestDispatcher dispatcher =

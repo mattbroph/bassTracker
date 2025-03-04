@@ -41,7 +41,7 @@ public class RouteViewProfile extends HttpServlet {
         GenericDao userDao = new GenericDao(User.class);
 
         // Declare the url
-        String url;
+        String url = "/viewProfile.jsp";
 
         // Get user from the session
         HttpSession session = request.getSession();
@@ -54,7 +54,8 @@ public class RouteViewProfile extends HttpServlet {
          */
         if (sessionUser == null) {
 
-            url = "/index.jsp";
+            response.sendRedirect("index.jsp");
+            return;
 
         } else {
 
@@ -67,8 +68,6 @@ public class RouteViewProfile extends HttpServlet {
             // Store the journals in the request and forward onto jsp to be displayed
             request.setAttribute("bassGoals", bassGoals);
             request.setAttribute("user", user);
-
-            url = "/viewProfile.jsp";
 
         }
 

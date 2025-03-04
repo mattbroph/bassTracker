@@ -36,36 +36,50 @@ public class RouteDeleteJournal extends HttpServlet {
                       HttpServletResponse response)
             throws ServletException, IOException {
 
-        GenericDao userDao = new GenericDao(User.class);
+        // Create Daos
+        GenericDao journalDao = new GenericDao(Journal.class);
 
-        // TODO validate that the user has permission to delete -
-        // i.e. user id must match user id for journal before deleting
-        // Get user from the session
-        HttpSession session = request.getSession();
-        User sessionUser = (User) session.getAttribute("user");
-        // Reload user from database to avoid stale data
-        User user = (User) userDao.getById(sessionUser.getId());
-
-
-        session.setAttribute("deleteJournalMessage",
-                 "Confirm deletion of the following journal entry:");
+        // Set the url
+        String url;
 
         // Get the journal id
         int journalId = Integer.parseInt(request.getParameter("journalId"));
 
-        // Get the journal and add to request param
-        GenericDao journalDao = new GenericDao(Journal.class);
+        // Get user from the session
+        HttpSession session = request.getSession();
+        User sessionUser = (User) session.getAttribute("user");
+
+        // If no user is logged in, send them to index jsp.
+        if (sessionUser == null) {
+            response.sendRedirect("index.jsp");
+            return;
+        }
+
+        /* If user does not have access to delete journal id, send them to unauthorized page
+         * If user does have access to delete journal id and is logged in, send them to delete
+         * journal jsp.
+         */
         Journal journal = (Journal)journalDao.getById(journalId);
-        request.setAttribute("journal", journal);
 
+        if (journal.getUser().getId() != sessionUser.getId()) {
+
+            response.sendRedirect("unauthorized.jsp");
+            return;
+
+        } else {
+
+            // Set attributes to make available in jsp
+            request.setAttribute("journal", journal);
+
+            // Update the session message
+            session.setAttribute("deleteJournalMessage",
+                    "Confirm deletion of the following journal entry:");
+
+        }
         // Set the url param
-        String url = "/viewJournalDetails.jsp?journalId=" + journalId;
+        url = "/viewJournalDetails.jsp?journalId=" + journalId;
 
-        // Set attributes to make available in jsp
-        request.setAttribute("journal", journal);
 
-        // Update the session user object to keep data fresh
-        session.setAttribute("user", user);
 
         // Forward to the HTTP request data jsp page
         RequestDispatcher dispatcher =

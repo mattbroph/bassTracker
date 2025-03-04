@@ -38,7 +38,7 @@ public class RouteEditProfile extends HttpServlet {
             throws ServletException, IOException {
 
         // Declare the url
-        String url;
+        String url = "/editProfile.jsp";
 
         // Create the userDao
         GenericDao userDao = new GenericDao(User.class);
@@ -54,7 +54,8 @@ public class RouteEditProfile extends HttpServlet {
         */
         if (sessionUser == null) {
 
-            url = "/index.jsp";
+            response.sendRedirect("index.jsp");
+            return;
 
         } else {
 
@@ -67,8 +68,6 @@ public class RouteEditProfile extends HttpServlet {
             // Store the journals in the request and forward onto jsp to be displayed
             request.setAttribute("bassGoals", bassGoals);
             request.setAttribute("user", user);
-
-            url = "/editProfile.jsp";
 
         }
 
