@@ -15,11 +15,11 @@
     <h1>Welcome to bass tracker</h1>
 
     <c:choose>
-        <c:when test="${empty userEmail}">
+        <c:when test="${empty user}">
             <a href = "logIn">Log in</a>
         </c:when>
         <c:otherwise>
-            <h3>Welcome ${userEmail}</h3>
+            <h3>Welcome ${user.userEmail}</h3>
         </c:otherwise>
     </c:choose>
 

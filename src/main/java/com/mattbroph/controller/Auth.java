@@ -7,7 +7,9 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mattbroph.auth.*;
+import com.mattbroph.entity.User;
 import com.mattbroph.persistance.PropertiesLoader;
+import com.mattbroph.service.UserService;
 import org.apache.commons.io.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -58,6 +60,8 @@ public class Auth extends HttpServlet implements PropertiesLoader {
     String REGION;
     String POOL_ID;
     Keys jwks;
+    // NEW CODE
+    private final UserService userService = new UserService();
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
@@ -78,7 +82,7 @@ public class Auth extends HttpServlet implements PropertiesLoader {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String authCode = req.getParameter("code");
-        String userEmail = null;
+        User user = new User();
 
         if (authCode == null) {
             //TODO forward to an error page or back to the login
@@ -86,8 +90,8 @@ public class Auth extends HttpServlet implements PropertiesLoader {
             HttpRequest authRequest = buildAuthRequest(authCode);
             try {
                 TokenResponse tokenResponse = getToken(authRequest);
-                userEmail = validate(tokenResponse);
-                req.setAttribute("userEmail", userEmail);
+                user = validate(tokenResponse);
+//                req.setAttribute("user", user);
             } catch (IOException e) {
                 logger.error("Error getting or validating the token: " + e.getMessage(), e);
                 //TODO forward to an error page
@@ -96,10 +100,22 @@ public class Auth extends HttpServlet implements PropertiesLoader {
                 //TODO forward to an error page
             }
         }
+
+        // NEW CODE
+        //
+        userService.addUserSession(user, req);
+
+
         RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
         dispatcher.forward(req, resp);
 
     }
+
+
+
+
+
+
 
     /**
      * Sends the request for a token to Cognito and maps the response
@@ -133,7 +149,7 @@ public class Auth extends HttpServlet implements PropertiesLoader {
      * @return
      * @throws IOException
      */
-    private String validate(TokenResponse tokenResponse) throws IOException {
+    private User validate(TokenResponse tokenResponse) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         CognitoTokenHeader tokenHeader = mapper.readValue(CognitoJWTParser.getHeader(tokenResponse.getIdToken()).toString(), CognitoTokenHeader.class);
 
@@ -170,19 +186,17 @@ public class Auth extends HttpServlet implements PropertiesLoader {
 
         // Verify the token
         DecodedJWT jwt = verifier.verify(tokenResponse.getIdToken());
-        String userName = jwt.getClaim("cognito:username").asString();
         String userEmail = jwt.getClaim("email").asString();
+        String userFirstName = jwt.getClaim("given_name").asString();
+        String userLastName = jwt.getClaim("family_name").asString();
         // TODO I added this line to get the email address instead
         logger.debug("here's the user's email: " + userEmail);
 
-        logger.debug("here's the username: " + userName);
-
         logger.debug("here are all the available claims: " + jwt.getClaims());
-
         // TODO decide what you want to do with the info!
         // for now, I'm just returning username for display back to the browser
-
-        return userEmail;
+        User user = new User(userEmail, userFirstName, userLastName);
+        return user;
     }
 
     /** Create the auth url and use it to build the request.

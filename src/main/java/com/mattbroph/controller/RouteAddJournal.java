@@ -36,10 +36,13 @@ public class RouteAddJournal extends HttpServlet {
 
         // TODO get user from the session
         // Get the user ID
-        int userId = 1;
+//        int userId = 1;
+        // NEW CODE
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
 
-        GenericDao userDao = new GenericDao(User.class);
-        User user = (User)userDao.getById(userId);
+//        GenericDao userDao = new GenericDao(User.class);
+//        User user = (User)userDao.getById(userId);
 
         // Get the list of Lakes matching the user ID
         List<Lake> userLakes = user.getLakes();

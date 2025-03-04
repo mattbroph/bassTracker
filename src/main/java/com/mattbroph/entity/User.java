@@ -61,6 +61,19 @@ public class User {
      * @param userEmail       the user email
      * @param firstName      the user's first name
      * @param lastName       the user's last name
+     */
+    public User(String userEmail, String firstName, String lastName) {
+        this.userEmail = userEmail;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    /**
+     * Instantiates a new User with all instance variables.
+     *
+     * @param userEmail       the user email
+     * @param firstName      the user's first name
+     * @param lastName       the user's last name
      * @param profilePicture the user's profile picture
      */
     public User(String userEmail, String firstName, String lastName, String profilePicture) {

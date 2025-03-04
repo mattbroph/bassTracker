@@ -1,7 +1,7 @@
 package com.mattbroph.controller;
 
 import com.mattbroph.entity.*;
-import com.mattbroph.persistance.DashboardCalculator;
+import com.mattbroph.service.DashboardCalculator;
 import com.mattbroph.persistance.GenericDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
