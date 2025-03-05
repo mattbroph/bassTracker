@@ -35,6 +35,10 @@
                 <option value="false" ${lake.isActive == false ? 'selected' : ''}>Not Active</option>
             </select>
         </fieldset>
+
+        <%-- Hidden field to provide lake id to doPost method  --%>
+        <input type="hidden" name="lakeId" value="${lake.id}">
+
         <br>
         <!-- Button fields -->
         <div id="buttonContainer">

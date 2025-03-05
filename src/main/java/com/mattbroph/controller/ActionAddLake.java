@@ -62,7 +62,7 @@ public class ActionAddLake extends HttpServlet {
         // If insertedLakeId > 0 insert was successful, send to the view lakes jsp
         // and note that the lake has been added
         if (insertedLakeId > 0) {
-            session.setAttribute("addLakeMessage", newLake.getLakeName()
+            session.setAttribute("lakeMessage", newLake.getLakeName()
                     + " was added.");
 
             // Set the url for the redirect

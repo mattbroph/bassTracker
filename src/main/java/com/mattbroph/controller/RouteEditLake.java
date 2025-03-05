@@ -36,7 +36,6 @@ public class RouteEditLake extends HttpServlet {
             throws ServletException, IOException {
 
         // Create Daos
-        GenericDao userDao = new GenericDao(User.class);
         GenericDao lakeDao = new GenericDao(Lake.class);
 
         // Set the url param
@@ -66,18 +65,10 @@ public class RouteEditLake extends HttpServlet {
             response.sendRedirect("unauthorized.jsp");
             return;
 
-        } else {
-
-            // Reload user from database to avoid stale data
-            User user = (User) userDao.getById(sessionUser.getId());
-
-            // Set attributes to make available in jsp
-            request.setAttribute("lake", lake);
-
-            // Update the session user object to keep data fresh
-            session.setAttribute("user", user);
-
         }
+
+        // Set attributes to make available in jsp
+        request.setAttribute("lake", lake);
 
         // Forward to the HTTP request data jsp page
         RequestDispatcher dispatcher =
