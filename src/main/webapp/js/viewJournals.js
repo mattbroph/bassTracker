@@ -15,7 +15,7 @@ const init = () => {
     });
 
     // Initialize DataTable
-    let table = new DataTable('#journalsTable', {
+    let table = new DataTable('#table', {
         scrollX: true,
         // Export feature
         layout: {

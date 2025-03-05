@@ -54,3 +54,5 @@ fabric.properties
 *.cfg.xml
 # remove the log files
 *.log
+# Remove my notes
+*.txt

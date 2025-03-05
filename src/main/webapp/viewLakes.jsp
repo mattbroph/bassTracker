@@ -22,7 +22,7 @@
 <script src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.print.min.js"></script>
 <!-- JavaScript -->
-<script src="js/viewJournals.js"></script>
+<script src="js/viewLakes.js"></script>
 </head>
 
 <body>
@@ -30,58 +30,31 @@
 
 <main id="mainContent">
 
-    <h1>${user.firstName}'s Fishing Journals</h1>
-    <a href="addJournal" class="greenAnchorButton">Add Journal Entry</a>
+    <h1>${user.firstName}'s Lakes</h1>
+    <a href="addLake" class="greenAnchorButton">Add a Lake</a>
     <br><br>
     <br>
-    <h2>Journals Table</h2>
+    <h2>Lakes Table</h2>
     <br>
-    <!-- Table of Date Inputs for DataTables -->
-    <table cellspacing="5" cellpadding="5">
-        <tbody><tr>
-            <td>Start Range:</td>
-            <td><input type="text" id="min" name="min"></td>
-        </tr>
-        <tr>
-            <td>End Range:</td>
-            <td><input type="text" id="max" name="max"></td>
-        </tr>
-        <tr>
-            <td><a href="viewJournals" class="yellowAnchorButton">Clear Filters</a></td>
-        </tr>
-        </tbody>
-    </table>
-    <!-- Table of Journal Entries -->
+    <!-- Table of Lake Entries -->
     <table id="table" class="display" style="width:100%">
         <thead>
         <tr>
-            <th>View Details</th>
-            <th>Date</th>
+            <th>Edit</th>
             <th>Lake</th>
-            <th>Bass Count</th>
-            <th>Hours</th>
-            <th>Air Temp</th>
-            <th>Method</th>
-            <th>Weather</th>
-            <th>Wind</th>
+            <th>Status</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="journal" items="${journals}">
+        <c:forEach var="lake" items="${userLakes}">
             <tr>
                 <td>
-                    <a href="viewJournalDetails?journalId=${journal.id}">
-                        <img src="images/openIcon.svg" alt="view details">
+                    <a href="editLake?lakeId=${lake.id}">
+                        <img src="images/editIcon.svg" alt="edit lake">
                     </a>
                 </td>
-                <td>${journal.journalDate}</td>
-                <td>${journal.lake.lakeName}</td>
-                <td>${journal.totalBassCount}</td>
-                <td>${journal.hours}</td>
-                <td>${journal.airTemp}</td>
-                <td>${journal.method.methodName}</td>
-                <td>${journal.weather.weatherType}</td>
-                <td>${journal.wind.windType}</td>
+                <td>${lake.lakeName}</td>
+                <td>${lake.isActive ? 'Active' : 'Not Active'}</td>
             </tr>
         </c:forEach>
         </tbody>
