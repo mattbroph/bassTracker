@@ -58,7 +58,6 @@ public class RouteDashboard extends HttpServlet {
 
         // TODO GET THE YEAR - UPDATE THIS TO AN INCOMING REQUEST ATTRIBUTE
         // If year has not been submitted, then use the current year
-        // Basically setting this up for 2026
         LocalDate localDate = LocalDate.now();
         int year = localDate.getYear();
 

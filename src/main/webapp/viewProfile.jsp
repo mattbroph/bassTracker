@@ -11,25 +11,26 @@
 <c:import url="header.jsp" />
 
 <main id="mainContent">
-    <h1>Matt's Profile</h1>
+    <h1>${user.firstName}'s Profile</h1>
 
     <h2>Profile Details</h2>
     <br>
-    <p><span>First Name:</span> Matt</p>
-    <p><span>Last Name:</span> Brophy</p>
+    <p><span>First Name:</span> ${user.firstName}</p>
+    <p><span>Last Name:</span> ${user.lastName}</p>
     <p><span>Yearly Bass Goals:</span></p>
     <ul>
-        <li>2025 - Goal: 150</li>
-        <li>2024 - Goal: 75</li>
+        <c:forEach var="goal" items="${bassGoals}">
+            <li>${goal.goalYear} - Goal: ${goal.goalCount}</li>
+        </c:forEach>
     </ul>
     <p id="profilePicTitle"><span>Profile Pic:</span></p>
-    <img id="profilePic" src="https://i.postimg.cc/BZmpbFBz/mb-bass.jpg" alt="matt's profile pic">
-
+    <c:if test="${not empty user.profilePicture}">
+        <img id="profilePic" src="${user.profilePicture}" alt="profile picture">
+    </c:if>
     <br>
     <div class="buttonContainer">
         <a href="editProfile" class="greenAnchorButton">Edit Profile</a>
     </div>
-
 
 </main>
 <c:import url="footer.jsp" />

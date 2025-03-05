@@ -60,9 +60,8 @@ public class Auth extends HttpServlet implements PropertiesLoader {
     String REGION;
     String POOL_ID;
     Keys jwks;
-    // NEW CODE
-    private final UserService userService = new UserService();
 
+    private final UserService userService = new UserService();
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     @Override
@@ -91,7 +90,6 @@ public class Auth extends HttpServlet implements PropertiesLoader {
             try {
                 TokenResponse tokenResponse = getToken(authRequest);
                 user = validate(tokenResponse);
-//                req.setAttribute("user", user);
             } catch (IOException e) {
                 logger.error("Error getting or validating the token: " + e.getMessage(), e);
                 //TODO forward to an error page
@@ -101,10 +99,8 @@ public class Auth extends HttpServlet implements PropertiesLoader {
             }
         }
 
-        // NEW CODE
-        //
+        // Add the user to the session
         userService.addUserSession(user, req);
-
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
         dispatcher.forward(req, resp);
