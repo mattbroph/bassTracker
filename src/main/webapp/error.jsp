@@ -18,6 +18,12 @@
         <h2>${deleteJournalMessage}</h2>
     </c:if>
 
+    <%-- Hooked up to ActionAddLake at the moment --%>
+    <c:if test=" ${not empty errorMessage}">
+        <h2>${errorMessage}</h2>
+        <c:remove var="errorMessage" scope="session" />
+    </c:if>
+
 </main>
 <c:import url="footer.jsp" />
 </body>

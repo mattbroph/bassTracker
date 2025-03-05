@@ -14,6 +14,13 @@
 
 <main id="mainContent">
 
+    <%-- If an error occured while inserting a new lake into the db. Check
+    ActionAddLake controller for details --%>
+    <c:if test=" ${not empty addLakeMessage}">
+        <h2>${addLakeMessage}</h2>
+        <c:remove var="addLakeMessage" scope="session" />
+    </c:if>
+
     <h1>Add a Lake</h1>
 
     <form action="actionAddLake"
@@ -30,7 +37,7 @@
             <!-- isActive -->
             <label for="status">*Lake Status</label>
             <select name="status" id="status">
-                <option value="true" selected>Active</option>
+                <option value="true">Active</option>
                 <option value="false">Not Active</option>
             </select>
         </fieldset>
