@@ -64,7 +64,7 @@
     <!-- Table of Bass Goals -->
     <h2>Bass Goals</h2>
     <br>
-    <a href="addLake" class="yellowAnchorButton">Add Goal</a>
+    <a href="addGoal" class="yellowAnchorButton">Add Goal</a>
     <br>
     <br>
     <table id="table" class="display" style="width:100%">
