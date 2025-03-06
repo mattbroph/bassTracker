@@ -62,11 +62,7 @@ public class RouteEditProfile extends HttpServlet {
             // Reload user from database to avoid stale data
             User user = (User) userDao.getById(sessionUser.getId());
 
-            // Get the list of journals matching the user id
-            List<BassGoal> bassGoals = user.getBassGoal();
-
-            // Store the journals in the request and forward onto jsp to be displayed
-            request.setAttribute("bassGoals", bassGoals);
+            // Store the user in the request and forward onto jsp to be displayed
             request.setAttribute("user", user);
 
         }
