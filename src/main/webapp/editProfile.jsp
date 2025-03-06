@@ -4,7 +4,7 @@
 <html lang="en">
 <%-- CSS --%>
 <link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/editProfile.css">
+<link rel="stylesheet" href="css/forms.css">
 </head>
 
 <body>
@@ -12,7 +12,7 @@
 
 <main id="mainContent">
 
-    <h1>Matt's Profile</h1>
+    <h1>${user.firstName}'s Profile</h1>
 
     <form name="editProfile"
           action="actionEditProfile"
