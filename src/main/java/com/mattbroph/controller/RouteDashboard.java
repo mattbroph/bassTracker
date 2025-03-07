@@ -1,7 +1,7 @@
 package com.mattbroph.controller;
 
 import com.mattbroph.entity.*;
-import com.mattbroph.persistance.DashboardCalculator;
+import com.mattbroph.service.DashboardCalculator;
 import com.mattbroph.persistance.GenericDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -49,18 +50,16 @@ public class RouteDashboard extends HttpServlet {
         // Set the url param
         String url = "/dashboard.jsp";
 
-        // TODO get user id from session
-        // Get the user ID
-        int userId = 1;
+        // Get user from the session
+        HttpSession session = request.getSession();
+        User sessionUser = (User) session.getAttribute("user");
+        // Reload user from database to avoid stale data
+        User user = (User) userDao.getById(sessionUser.getId());
 
         // TODO GET THE YEAR - UPDATE THIS TO AN INCOMING REQUEST ATTRIBUTE
         // If year has not been submitted, then use the current year
-        // Basically setting this up for 2026
         LocalDate localDate = LocalDate.now();
         int year = localDate.getYear();
-
-        // TODO GET THE USER
-        User user = (User)userDao.getById(userId);
 
         // Get the users bass goal for the year
         Map<String, Object> propertyMap = new HashMap<String, Object>();
@@ -99,7 +98,9 @@ public class RouteDashboard extends HttpServlet {
 
         // Add the dashboard and user to the request
         request.setAttribute("dashboard", dashboard);
-        request.setAttribute("user", user);
+
+        // Update the session user object to keep data fresh
+        session.setAttribute("user", user);
 
         // Forward to the HTTP request data jsp page
         RequestDispatcher dispatcher =

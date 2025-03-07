@@ -31,34 +31,50 @@ public class RouteAddJournal extends HttpServlet {
                       HttpServletResponse response)
             throws ServletException, IOException {
 
+        GenericDao userDao = new GenericDao(User.class);
+
         // Set the url param
         String url = "/addJournal.jsp";
 
-        // TODO get user from the session
-        // Get the user ID
-        int userId = 1;
+        // Get user from the session
+        HttpSession session = request.getSession();
+        User sessionUser = (User) session.getAttribute("user");
 
-        GenericDao userDao = new GenericDao(User.class);
-        User user = (User)userDao.getById(userId);
+        // If no user is logged in, send them to index jsp.
+        if (sessionUser == null) {
 
-        // Get the list of Lakes matching the user ID
-        List<Lake> userLakes = user.getLakes();
+            response.sendRedirect("index.jsp");
+            return;
 
-        // Get the list of methods, winds and weather
-        GenericDao weatherDao = new GenericDao(Weather.class);
-        List<Weather> weatherList = (List<Weather>)weatherDao.getAll();
+        } else {
 
-        GenericDao windDao = new GenericDao(Wind.class);
-        List<Wind> windList = (List<Wind>)windDao.getAll();
+            // Reload user from database to avoid stale data
+            User user = (User) userDao.getById(sessionUser.getId());
 
-        GenericDao methodDao = new GenericDao(Method.class);
-        List<Method> methodList = (List<Method>)methodDao.getAll();
+            // Get the list of Lakes matching the user ID
+            List<Lake> userLakes = user.getLakes();
 
-        // Set attributes to make available in jsp
-        request.setAttribute("userLakes", userLakes);
-        request.setAttribute("weatherList", weatherList);
-        request.setAttribute("windList", windList);
-        request.setAttribute("methodList", methodList);
+            // Get the list of methods, winds and weather
+            GenericDao weatherDao = new GenericDao(Weather.class);
+            List<Weather> weatherList = (List<Weather>)weatherDao.getAll();
+
+            GenericDao windDao = new GenericDao(Wind.class);
+            List<Wind> windList = (List<Wind>)windDao.getAll();
+
+            GenericDao methodDao = new GenericDao(Method.class);
+            List<Method> methodList = (List<Method>)methodDao.getAll();
+
+            // Set attributes to make available in jsp
+            request.setAttribute("userLakes", userLakes);
+            request.setAttribute("weatherList", weatherList);
+            request.setAttribute("windList", windList);
+            request.setAttribute("methodList", methodList);
+
+            // Update the session user object to keep data fresh
+            session.setAttribute("user", user);
+
+
+        }
 
         // Forward to the HTTP request data jsp page
         RequestDispatcher dispatcher =

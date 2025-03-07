@@ -33,21 +33,37 @@ public class RouteViewJournals extends HttpServlet {
                       HttpServletResponse response)
             throws ServletException, IOException {
 
+        GenericDao userDao = new GenericDao(User.class);
+
         // Set the url param
         String url = "/viewJournals.jsp";
 
-        // TODO don't hardcode this user id
-        int userId = 1;
-        // TODO come clean this up - probably store the user in the session
-        GenericDao userDao = new GenericDao(User.class);
-        User user = (User)userDao.getById(userId);
+        // Get user from the session
+        HttpSession session = request.getSession();
+        User sessionUser = (User) session.getAttribute("user");
 
-        // Get the list of journals matching the user id
-        List<Journal> journals = user.getJournals();
+        /*
+         * Check if user is logged in.
+         * If they are not logged in, send them to the index jsp.
+         * If they are logged in, send the user to the view journals jsp.
+         */
+        if (sessionUser == null) {
 
-        // Store the journals in the request and forward onto jsp to be displayed
-        request.setAttribute("journals", journals);
-        request.setAttribute("user", user);
+            response.sendRedirect("index.jsp");
+            return;
+
+        } else {
+
+            // Reload user from database to avoid stale data
+            User user = (User) userDao.getById(sessionUser.getId());
+
+            // Get the list of journals matching the user id
+            List<Journal> journals = user.getJournals();
+
+            // Store the journals in the request and forward onto jsp to be displayed
+            request.setAttribute("journals", journals);
+
+        }
 
         // Forward to the HTTP request data jsp page
         RequestDispatcher dispatcher =

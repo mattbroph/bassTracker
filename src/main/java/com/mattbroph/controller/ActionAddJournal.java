@@ -34,39 +34,44 @@ public class ActionAddJournal extends HttpServlet {
             throws ServletException, IOException {
 
         // Get the necessary daos
-        GenericDao userDao = new GenericDao(User.class);
         GenericDao journalDao = new GenericDao(Journal.class);
 
         // Build forwarding url variable
         String url;
 
-        // Get access to the session
-        HttpSession session = request.getSession();
-
         // Id of the row inserted
         int insertedJournalId = 0;
 
-        // TODO Get the user from the session
-        User user = (User)userDao.getById(1);
+        // Get user from the session
+        HttpSession session = request.getSession();
+        User sessionUser = (User) session.getAttribute("user");
+
+        // If no user is logged in, send them to index jsp.
+        if (sessionUser == null) {
+            response.sendRedirect("index.jsp");
+            return;
+        }
 
         // Retrieve the data from the form
-        Journal newJournal = retrieveFormData(request, user);
+        Journal newJournal = retrieveFormData(request, sessionUser);
 
         // Add the journal to the database
         insertedJournalId = journalDao.insert(newJournal);
 
-        // If Journal ID = insertedJournalId then send to view details of the journal
+        // If insertedJournalId > 0 insert was successful, send to view details of the journal
         // and note that the journal has been added
         if (insertedJournalId > 0) {
             session.setAttribute("addJournalMessage", "The following journal has" +
                     " been added:");
             // Set the url for the redirect
             url = request.getContextPath() + "/viewJournalDetails?journalId=" + insertedJournalId;
+
         } else {
+
             session.setAttribute("addJournalMessage", "Something went wrong, " +
                     " your journal has not been added.");
-            // TODO make this an error page!
-            url = request.getContextPath() + "/viewJournalDetails";
+
+            url = request.getContextPath() + "/error.jsp";
         }
 
         // Send a redirect to the view journal detail page or the error page

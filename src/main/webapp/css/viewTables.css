@@ -12,16 +12,20 @@ label {
 /******************
 * Table
 ******************/
-#journalsTable tbody tr:nth-child(even) {
+#table tbody tr:nth-child(even) {
     background-color: #E8E7E9;
 }
 
-#journalsTable tbody tr:nth-child(odd) {
+#table tbody tr:nth-child(odd) {
     background-color: #FFFFFF;
 }
 
 th {
     background-color: #ACB7A3;
+}
+
+#message {
+    color: #DE2424;
 }
 
 /******************

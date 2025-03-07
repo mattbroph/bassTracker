@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -34,43 +35,66 @@ public class RouteEditJournal extends HttpServlet {
                       HttpServletResponse response)
             throws ServletException, IOException {
 
+        // Create Daos
+        GenericDao userDao = new GenericDao(User.class);
+        GenericDao journalDao = new GenericDao(Journal.class);
+
         // Set the url param
         String url = "/editJournal.jsp";
-
-        // TODO don't hardcode this user id
-        // Get the user ID
-        int userId = 1;
 
         // Get the journal id
         int journalId = Integer.parseInt(request.getParameter("journalId"));
 
-        // TODO come clean this up
-        // Get the user (probably from the session)
-        GenericDao userDao = new GenericDao(User.class);
-        User user = (User)userDao.getById(userId);
+        // Get user from the session
+        HttpSession session = request.getSession();
+        User sessionUser = (User) session.getAttribute("user");
 
-        GenericDao journalDao = new GenericDao(Journal.class);
+        // If no user is logged in, send them to index jsp.
+        if (sessionUser == null) {
+            response.sendRedirect("index.jsp");
+            return;
+        }
+
+        /* If user does not have access to edit journal id, send them to unauthorized page
+         * If user does have access to edit journal id and is logged in, send them
+         * to the edit journal jsp.
+         */
         Journal journal = (Journal)journalDao.getById(journalId);
 
-        // Get the list of Lakes matching the user ID
-        List<Lake> userLakes = user.getLakes();
+        if (journal.getUser().getId() != sessionUser.getId()) {
 
-        // Get the list of methods, winds and weather
-        GenericDao weatherDao = new GenericDao(Weather.class);
-        List<Weather> weatherList = (List<Weather>)weatherDao.getAll();
+            response.sendRedirect("unauthorized.jsp");
+            return;
 
-        GenericDao windDao = new GenericDao(Wind.class);
-        List<Wind> windList = (List<Wind>)windDao.getAll();
+        } else {
 
-        GenericDao methodDao = new GenericDao(Method.class);
-        List<Method> methodList = (List<Method>)methodDao.getAll();
+            // Reload user from database to avoid stale data
+            User user = (User) userDao.getById(sessionUser.getId());
 
-        // Set attributes to make available in jsp
-        request.setAttribute("journal", journal);
-        request.setAttribute("userLakes", userLakes);
-        request.setAttribute("weatherList", weatherList);
-        request.setAttribute("windList", windList);
-        request.setAttribute("methodList", methodList);
+            // Get the list of Lakes matching the user ID
+            List<Lake> userLakes = user.getLakes();
+
+            // Get the list of methods, winds and weather
+            GenericDao weatherDao = new GenericDao(Weather.class);
+            List<Weather> weatherList = (List<Weather>)weatherDao.getAll();
+
+            GenericDao windDao = new GenericDao(Wind.class);
+            List<Wind> windList = (List<Wind>)windDao.getAll();
+
+            GenericDao methodDao = new GenericDao(Method.class);
+            List<Method> methodList = (List<Method>)methodDao.getAll();
+
+            // Set attributes to make available in jsp
+            request.setAttribute("journal", journal);
+            request.setAttribute("userLakes", userLakes);
+            request.setAttribute("weatherList", weatherList);
+            request.setAttribute("windList", windList);
+            request.setAttribute("methodList", methodList);
+
+            // Update the session user object to keep data fresh
+            session.setAttribute("user", user);
+
+        }
 
         // Forward to the HTTP request data jsp page
         RequestDispatcher dispatcher =

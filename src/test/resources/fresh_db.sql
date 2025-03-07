@@ -24,11 +24,12 @@ DROP TABLE IF EXISTS `appuser`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `appuser` (
                            `UserID` int NOT NULL AUTO_INCREMENT,
-                           `UserName` varchar(50) NOT NULL,
+                           `UserEmail` varchar(50) NOT NULL,
                            `FirstName` varchar(50) NOT NULL,
                            `LastName` varchar(50) NOT NULL,
                            `ProfilePicture` varchar(255) DEFAULT NULL,
-                           PRIMARY KEY (`UserID`)
+                           PRIMARY KEY (`UserID`),
+                           UNIQUE KEY `UserEmail` (`UserEmail`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -38,7 +39,7 @@ CREATE TABLE `appuser` (
 
 LOCK TABLES `appuser` WRITE;
 /*!40000 ALTER TABLE `appuser` DISABLE KEYS */;
-INSERT INTO `appuser` VALUES (1,'MattyB','Matt','Brophy','https://urltomattspic'),(2,'JohnnyD','John','Brophy','https://urltojohnspic'),(3,'FrodoB','Frodo','Baggins','https://urltofrodospic');
+INSERT INTO `appuser` VALUES (1,'mattbroph@gmail.com','Matt','Brophy','https://urltomattspic'),(2,'johnB@gmail.com','John','Brophy','https://urltojohnspic'),(3,'frodoB@gmail.com','Frodo','Baggins','https://urltofrodospic');
 /*!40000 ALTER TABLE `appuser` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -228,4 +229,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-02-20 15:34:38
+-- Dump completed on 2025-03-04  8:14:02

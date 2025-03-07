@@ -38,28 +38,46 @@ public class ActionEditJournal extends HttpServlet {
         GenericDao userDao = new GenericDao(User.class);
         GenericDao journalDao = new GenericDao(Journal.class);
 
-        // Get access to the session
-        HttpSession session = request.getSession();
+        // Declare the url
+        String url;
 
         // Get the Journal ID to update
         int journalId = Integer.parseInt(request.getParameter("journalId"));
 
-        // TODO Get the user from the session
-        User user = (User)userDao.getById(1);
+        // Get user from the session
+        HttpSession session = request.getSession();
+        User sessionUser = (User) session.getAttribute("user");
 
-        // Get the current Journal
+        // If no user is logged in, send them to index jsp.
+        if (sessionUser == null) {
+            response.sendRedirect("index.jsp");
+            return;
+        }
+
+        /* If user does not have access to edit journal id, send them to unauthorized page
+         * If user does have access to edit journal id and is logged in, edit the journal
+         */
         Journal journalToEdit = (Journal)journalDao.getById(journalId);
 
-        // Edit the current Journal:
-        editJournalParameters(journalToEdit, request);
+         if (journalToEdit.getUser().getId() != sessionUser.getId()) {
 
-        // Build forwarding url
-        String url = request.getContextPath() + "/viewJournalDetails?journalId=" + journalId;
+             response.sendRedirect("unauthorized.jsp");
+             return;
 
-        // Update the journal
-        journalDao.update(journalToEdit);
+         } else {
 
-        // Send a redirect to the view journal detail page or the error page
+             // Edit parameters of the existing Journal
+             editJournalParameters(journalToEdit, request);
+
+             // Update the journal
+             journalDao.update(journalToEdit);
+
+             // Build forwarding url
+             url = request.getContextPath()
+                    + "/viewJournalDetails?journalId=" + journalId;
+         }
+
+        // Send a redirect to the view journal detail page
         response.sendRedirect(url);
     }
 

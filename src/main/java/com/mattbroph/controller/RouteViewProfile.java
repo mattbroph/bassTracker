@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -36,21 +37,39 @@ public class RouteViewProfile extends HttpServlet {
                       HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Set the url param
+        // Create the userDao
+        GenericDao userDao = new GenericDao(User.class);
+
+        // Declare the url
         String url = "/viewProfile.jsp";
 
-        // TODO don't hardcode this user id
-        int userId = 1;
-        // TODO come clean this up - probably store the user in the session
-        GenericDao userDao = new GenericDao(User.class);
-        User user = (User)userDao.getById(userId);
+        // Get user from the session
+        HttpSession session = request.getSession();
+        User sessionUser = (User) session.getAttribute("user");
 
-        // Get the list of journals matching the user id
-        List<BassGoal> bassGoals = user.getBassGoal();
+        /*
+         * Check if user is logged in.
+         * If they are not logged in, send them to the index jsp.
+         * If they are logged in, send the user to the view profile jsp.
+         */
+        if (sessionUser == null) {
 
-        // Store the journals in the request and forward onto jsp to be displayed
-        request.setAttribute("bassGoals", bassGoals);
-        request.setAttribute("user", user);
+            response.sendRedirect("index.jsp");
+            return;
+
+        } else {
+
+            // Reload user from database to avoid stale data
+            User user = (User) userDao.getById(sessionUser.getId());
+
+            // Get the list of journals matching the user id
+            List<BassGoal> bassGoals = user.getBassGoal();
+
+            // Store the journals in the request and forward onto jsp to be displayed
+            request.setAttribute("bassGoals", bassGoals);
+            request.setAttribute("user", user);
+
+        }
 
         // Forward to the HTTP request data jsp page
         RequestDispatcher dispatcher =

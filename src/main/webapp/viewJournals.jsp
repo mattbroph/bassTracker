@@ -4,7 +4,7 @@
 <html lang="en">
 <%-- CSS --%>
 <link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/viewJournals.css">
+<link rel="stylesheet" href="css/viewTables.css">
 <!-- Data Tables -->
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
@@ -52,7 +52,7 @@
         </tbody>
     </table>
     <!-- Table of Journal Entries -->
-    <table id="journalsTable" class="display" style="width:100%">
+    <table id="table" class="display" style="width:100%">
         <thead>
         <tr>
             <th>View Details</th>
@@ -70,8 +70,6 @@
         <c:forEach var="journal" items="${journals}">
             <tr>
                 <td>
-<%--                    TODO update this to view journal
-                        just testing edit journal now--%>
                     <a href="viewJournalDetails?journalId=${journal.id}">
                         <img src="images/openIcon.svg" alt="view details">
                     </a>

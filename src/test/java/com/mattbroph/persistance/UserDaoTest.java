@@ -35,8 +35,8 @@ class UserDaoTest {
         User user = (User)userDao.getById(1);
         // Check if user is null
         assertNotNull(user);
-        // Check username
-        assertEquals("MattyB", user.getUserName());
+        // Check user email
+        assertEquals("mattbroph@gmail.com", user.getUserEmail());
     }
 
     @Test
@@ -50,15 +50,15 @@ class UserDaoTest {
         // Get the first user
         User user = (User)userDao.getById(1);
         // Log the name of the user
-        logger.info("The user name before updating: " + user.getUserName());
-        // Change the username
-        user.setUserName("NewUserName");
+        logger.info("The user email before updating: " + user.getUserEmail());
+        // Change the user email
+        user.setUserEmail("NewUserEmail@gmail.com");
         // Update the user name in the db
         userDao.update(user);
-        // Check the new username
-        assertEquals("NewUserName", user.getUserName());
-        // Log the new username
-        logger.info("The user name after updating: " + user.getUserName());
+        // Check the new user email
+        assertEquals("NewUserEmail@gmail.com", user.getUserEmail());
+        // Log the new user email
+        logger.info("The user email after updating: " + user.getUserEmail());
     }
 
     @Test
@@ -66,12 +66,12 @@ class UserDaoTest {
         int insertedUserId;
 
         // Create a new user
-        User user = new User("MyNewName", "Matt", "Brophy", "urlToMyImage.com");
+        User user = new User("MyNewName@gmail.com", "Matt", "Brophy", "urlToMyImage.com");
         // Do the insert and store the user id
         insertedUserId = userDao.insert(user);
         User userInserted = (User)userDao.getById(insertedUserId);
         assertNotNull(userInserted);
-        assertEquals("MyNewName", userInserted.getUserName());
+        assertEquals("MyNewName@gmail.com", userInserted.getUserEmail());
     }
 
 
@@ -91,15 +91,15 @@ class UserDaoTest {
 
     @Test
     void getByPropertyEqual() {
-        List<User> users = (List<User>)userDao.getByPropertyEqual("userName", "MattyB");
+        List<User> users = (List<User>)userDao.getByPropertyEqual("userEmail", "mattbroph@gmail.com");
         assertEquals(1, users.size());
         assertEquals(1, users.get(0).getId());
     }
 
     @Test
     void getByPropertyLike() {
-        List<User> users = (List<User>)userDao.getByPropertyLike("userName", "John");
+        List<User> users = (List<User>)userDao.getByPropertyLike("userEmail", "matt");
         assertEquals(1, users.size());
-        assertEquals(2, users.get(0).getId());
+        assertEquals(1, users.get(0).getId());
     }
 }

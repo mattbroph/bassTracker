@@ -36,26 +36,42 @@ public class ActionDeleteJournal extends HttpServlet {
             throws ServletException, IOException {
 
         // Get the necessary daos
-        GenericDao userDao = new GenericDao(User.class);
         GenericDao journalDao = new GenericDao(Journal.class);
 
-        // Get access to the session
-        HttpSession session = request.getSession();
+        // Declare the url
+        String url;
 
         // Get the Journal ID to delete
         int journalId = Integer.parseInt(request.getParameter("journalId"));
 
-        // TODO Get the user from the session and validate they can delete this journal
-        User user = (User)userDao.getById(1);
+        // Get user from the session
+        HttpSession session = request.getSession();
+        User sessionUser = (User) session.getAttribute("user");
 
-        // Get the journal to delete
+        // If no user is logged in, send them to index jsp.
+        if (sessionUser == null) {
+            response.sendRedirect("index.jsp");
+            return;
+        }
+
+        /* If user does not have access to delete journal id, send them to unauthorized page
+         * If user does have access to delete journal id and is logged in, delete the journal
+         */
         Journal journalToDelete = (Journal)journalDao.getById(journalId);
 
-        // Delete the journal
-        journalDao.delete(journalToDelete);
+        if (journalToDelete.getUser().getId() != sessionUser.getId()) {
+            response.sendRedirect("unauthorized.jsp");
+            return;
 
-        // Create the url to forward
-        String url = request.getContextPath() + "/viewJournals";
+        } else {
+
+            // Delete the journal
+            journalDao.delete(journalToDelete);
+
+            // Create the url to forward
+            url = request.getContextPath() + "/viewJournals";
+
+        }
 
         // Send a redirect to the view journal detail page or the error page
         response.sendRedirect(url);

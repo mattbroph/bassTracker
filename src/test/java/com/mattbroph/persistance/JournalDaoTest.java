@@ -7,7 +7,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -108,5 +110,28 @@ class JournalDaoTest {
     void getByPropertyLike() {
         List<Journal> journals = (List<Journal>)journalDao.getByPropertyLike("imageURL", "https://myimage.com");
         assertEquals(1, journals.size());
+    }
+
+    @Test
+    void findByPropertyEqual() {
+
+
+        // Find all journals where user ID = 1 and Weather ID = 3
+        User user = (User)userDao.getById(1);
+        Weather weather = (Weather)weatherDao.getById(3);
+
+        Map<String, Object> propertyMap = new HashMap<String, Object>();
+        propertyMap.put("user", user);
+        propertyMap.put("weather", weather);
+
+        List<Journal> journals =
+                 (List<Journal>)journalDao.findByPropertyEqual(propertyMap);
+
+        assertEquals(2, journals.size());
+        assertEquals("http://fakeImage2.com", journals.get(0).getImageURL());
+        assertEquals(2, journals.get(0).getLargeMouth1416());
+        assertEquals("http://fakeImage7.com", journals.get(1).getImageURL());
+        assertEquals(3, journals.get(1).getLargeMouth1416());
+
     }
 }

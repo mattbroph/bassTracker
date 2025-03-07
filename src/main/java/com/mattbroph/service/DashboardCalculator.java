@@ -1,4 +1,4 @@
-package com.mattbroph.persistance;
+package com.mattbroph.service;
 
 import com.mattbroph.entity.Dashboard;
 import com.mattbroph.entity.Journal;

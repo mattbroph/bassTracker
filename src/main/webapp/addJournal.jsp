@@ -6,7 +6,7 @@
 <script src="js/dashboard.js"></script>
 <%-- CSS --%>
 <link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/journalFieldsets.css">
+<link rel="stylesheet" href="css/forms.css">
 </head>
 
 <body>
