@@ -40,72 +40,55 @@
 
 
 
-    <div id="profileAndStatsContainer">
-        <div id="profileContainer">
-            <div id="photoContainer">
+    <div id="profileContainer">
+        <h2>Profile Details</h2>
+        <br>
+        <p><span class="profileSpan">First Name:</span> ${user.firstName}</p>
+        <p><span class="profileSpan">Last Name:</span> ${user.lastName}</p>
+        <div id="photoContainer">
+            <p><span class="profileSpan">Photo:</span></p>
+            <c:if test="${not empty user.profilePicture}">
                 <img id="profilePic" src="${user.profilePicture}" alt="profile picture">
-            </div>
-            <p>${user.firstName} ${user.lastName}</p>
+            </c:if>
+            <br>
             <br>
             <div class="buttonContainer">
                 <a href="editProfile" class="greenAnchorButton">Edit Profile</a>
             </div>
         </div>
+    </div>
+    <br>
+    <br>
+    <br>
 
-        <div id="statsContainer">
-            <h2>Statistics</h2>
-            <div id="innerStatsContainer">
-                <div class="stat">
-                    <h3>250</h3>
-                    <img src="images/hook.svg" alt="fishing hook">
-                    <h3>Bass Caught</h3>
-                </div>
-                <div class="stat">
-                    <h3>100</h3>
-                    <img src="images/hour.svg" alt="clock">
-                    <h3>Hours Fished</h3>
-                </div>
-                <div class="stat">
-                    <h3>1.5</h3>
-                    <img src="images/graph.svg" alt="bar graph">
-                    <h3>Catch Rate</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-    <br>
-    <br>
     <!-- Table of Bass Goals -->
-    <div id="bassGoalsContainer">
-        <h2>Bass Goals</h2>
-        <br>
-<%--        <a href="addGoal" class="yellowAnchorButton">Add Goal</a>--%>
-<%--        <br>--%>
-<%--        <br>--%>
-        <table id="table" class="display" style="width:100%">
-            <thead>
+    <h2>Bass Goals</h2>
+    <br>
+    <a href="addGoal" class="yellowAnchorButton">Add Goal</a>
+    <br>
+    <br>
+    <table id="table" class="display" style="width:100%">
+        <thead>
+        <tr>
+            <th>Edit</th>
+            <th>Year</th>
+            <th>Goal</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="goal" items="${bassGoals}">
             <tr>
-                <th>Edit</th>
-                <th>Year</th>
-                <th>Goal</th>
+                <td>
+                    <a href="editGoal?goalId=${goal.id}">
+                        <img src="images/editIcon.svg" alt="edit goal">
+                    </a>
+                </td>
+                <td>${goal.goalYear}</td>
+                <td>${goal.goalCount}</td>
             </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="goal" items="${bassGoals}">
-                <tr>
-                    <td>
-                        <a href="editGoal?goalId=${goal.id}">
-                            <img src="images/editIcon.svg" alt="edit goal">
-                        </a>
-                    </td>
-                    <td>${goal.goalYear}</td>
-                    <td>${goal.goalCount}</td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-    </div>
+        </c:forEach>
+        </tbody>
+    </table>
 
 
 </main>

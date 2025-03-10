@@ -21,6 +21,7 @@
     /* width: 24em; */
     width: 30%;
     min-width: 24em;
+    box-shadow: 0 4px 8px #757272;
 }
 
 #statContainer {
@@ -46,6 +47,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    box-shadow: 0 4px 8px #757272;
 }
 
 #dashboardRowOne {
@@ -74,6 +76,7 @@
     background-color: #FFFFFF;
     /* Edit below */
     width: 48%; /* Default for larger screens */
+    box-shadow: 0 4px 8px #757272;
 }
 
 /*****************************
