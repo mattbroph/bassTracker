@@ -176,4 +176,6 @@
 - [ ] Custom 500 error page
 - [ ] Unauthorized access page
 - [ ] Auto load 6 years of bass goals
+- [ ] Redesign view journal details css
+- [ ] Redesign view profile css
 
