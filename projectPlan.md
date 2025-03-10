@@ -178,4 +178,8 @@
 - [ ] Auto load 6 years of bass goals
 - [ ] Redesign view journal details css
 - [ ] Redesign view profile css
+- [ ] Testing dashboard calculator
+- [ ] All test plans
+- [ ] Add logging
+- [ ] Update all controller logic for insert / update to handle errors
 
