@@ -8,7 +8,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mattbroph.auth.*;
 import com.mattbroph.entity.User;
-import com.mattbroph.persistance.PropertiesLoader;
+import com.mattbroph.persistence.PropertiesLoader;
 import com.mattbroph.service.UserService;
 import org.apache.commons.io.*;
 import org.apache.logging.log4j.LogManager;

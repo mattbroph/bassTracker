@@ -3,14 +3,12 @@ package com.mattbroph.service;
 
 import com.mattbroph.entity.BassGoal;
 import com.mattbroph.entity.User;
-import com.mattbroph.persistance.GenericDao;
+import com.mattbroph.persistence.GenericDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.ws.rs.core.Request;
 import java.time.LocalDate;
 import java.util.List;
 

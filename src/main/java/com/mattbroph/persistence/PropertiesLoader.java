@@ -1,4 +1,4 @@
-package com.mattbroph.persistance;
+package com.mattbroph.persistence;
 
 import java.io.IOException;
 import java.util.Properties;

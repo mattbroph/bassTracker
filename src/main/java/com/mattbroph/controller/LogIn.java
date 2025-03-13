@@ -1,6 +1,6 @@
 package com.mattbroph.controller;
 
-import com.mattbroph.persistance.PropertiesLoader;
+import com.mattbroph.persistence.PropertiesLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -1,9 +1,8 @@
 package com.mattbroph.controller;
 
 import com.mattbroph.entity.BassGoal;
-import com.mattbroph.entity.Lake;
 import com.mattbroph.entity.User;
-import com.mattbroph.persistance.GenericDao;
+import com.mattbroph.persistence.GenericDao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

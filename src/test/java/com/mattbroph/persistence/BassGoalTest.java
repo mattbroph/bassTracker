@@ -1,4 +1,4 @@
-package com.mattbroph.persistance;
+package com.mattbroph.persistence;
 
 import com.mattbroph.entity.BassGoal;
 import com.mattbroph.entity.User;

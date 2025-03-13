@@ -2,7 +2,7 @@ package com.mattbroph.controller;
 
 import com.mattbroph.entity.Journal;
 import com.mattbroph.entity.User;
-import com.mattbroph.persistance.GenericDao;
+import com.mattbroph.persistence.GenericDao;
 
 import java.io.*;
 import java.util.*;

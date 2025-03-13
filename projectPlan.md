@@ -58,7 +58,7 @@
 - [X] Create class to run db queries to populate UserDashboard entity
 - [X] Create User Dashboard jsp
 - [X] Create controller to route to userDashboard.jsp
-- [ ] Update journal time log
+- [X] Update journal time log
 
 ### Week 7 - Class topic is AWS cognito (sign up and log in for users)
 #### Checkpoint 2 is Due: Database designed and created, at least one DAO with full CRUD (create, read, update, delete) implemented with Hibernate, DAO is fully unit tested, Log4J is implemented (no System.out.printlns)
@@ -66,30 +66,29 @@
 1. The \#1 Sign Up story
 2. The \#2 Sign In story
 
-- [ ] Double-check all checkpoint 2 items (above) are complete and visible in github.
-- [ ] Set up Authentication in indie project (more tasks coming for this)
-- [ ] Create project DB on AWS.
-- [ ] Update project config files for AWS as needed
-- [ ] Deploy project to AWS
-- [ ] Add deployed link to indie project list in student repo
-- [ ] Update journal time log
+- [X] Double-check all checkpoint 2 items (above) are complete and visible in github.
+- [X] Set up Authentication in indie project (more tasks coming for this)
+- [X] Create project DB on AWS.
+- [X] Update project config files for AWS as needed
+- [X] Deploy project to AWS
+- [X] Add deployed link to indie project list in student repo
+- [X] Update journal time log
 
 ### Week 8 - Class topic is RESTful web services
 1. The \#3a. Create Profile story
 2. The \#4 View profile story
 3. The \#5 Edit profile story
-- [ ] Create User entity
-- [ ] Create class to perform CRU on the user - UserDAO (no delete on user? how does that work with congnito??)
-- [ ] Create the config files for the DB connection info (dev and test)
-- [ ] Create unit tests for the UserDAO
-- [ ] Create create profile jsp
-- [ ] Creaet view profile jsp
-- [ ] Create edit profile jsp
-- [ ] Create controller to run INSERT for new users request
-- [ ] Create controller to route UPDATE request to edit a user's profile
-- [ ] Create controller to route to "view profile" jsp
-- [ ] Create controller to route to "edit profile" jsp
-- [ ] Update journal time log
+- [X] Create User entity
+- [X] Create class to perform CRU on the user - UserDAO (no delete on user? how does that work with congnito??)
+- [X] Create the config files for the DB connection info (dev and test)
+- [X] Create unit tests for the UserDAO
+- [X] Create view profile jsp
+- [X] Create edit profile jsp
+- [X] Create controller to run INSERT for new users request
+- [X] Create controller to route UPDATE request to edit a user's profile
+- [X] Create controller to route to "view profile" jsp
+- [X] Create controller to route to "edit profile" jsp
+- [X] Update journal time log
 
 
 ### Week 9 - Class topic is RESTful web services continued 
@@ -165,3 +164,22 @@
 ### Week 16
 - [ ] Weekly journal entry
 - [ ] Final touches before code complete
+
+### Additional things to work on
+- [ ] Gracefully handle user not being able to add or edit lake with same name
+- [ ] Disable certain nav bar pages if user not logged in
+- [ ] Show dynamic page titles
+- [ ] Tool tip for add journal photo
+- [ ] Work on jsp messaging if bass goal = 0
+- [ ] Work on jsp messaging if lake is empty on add journal
+- [ ] Custom 404
+- [ ] Custom 500 error page
+- [ ] Unauthorized access page
+- [ ] Auto load 6 years of bass goals
+- [ ] Redesign view journal details css
+- [ ] Redesign view profile css
+- [ ] Testing dashboard calculator
+- [ ] All test plans
+- [ ] Add logging
+- [ ] Update all controller logic for insert / update to handle errors
+
