@@ -2,7 +2,7 @@ package com.mattbroph.controller;
 
 import com.mattbroph.entity.*;
 import com.mattbroph.service.DashboardCalculator;
-import com.mattbroph.persistance.GenericDao;
+import com.mattbroph.persistence.GenericDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import javax.servlet.RequestDispatcher;

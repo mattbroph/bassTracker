@@ -1,7 +1,7 @@
 package com.mattbroph.controller;
 
 import com.mattbroph.entity.*;
-import com.mattbroph.persistance.GenericDao;
+import com.mattbroph.persistence.GenericDao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
 
 /** Forwards the request to edit lake jsp page
  *

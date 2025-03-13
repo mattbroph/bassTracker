@@ -1,4 +1,4 @@
-package com.mattbroph.persistance;
+package com.mattbroph.persistence;
 
 import jakarta.persistence.criteria.*;
 import org.apache.logging.log4j.LogManager;

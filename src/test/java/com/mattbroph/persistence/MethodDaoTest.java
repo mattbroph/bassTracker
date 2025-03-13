@@ -1,6 +1,5 @@
-package com.mattbroph.persistance;
+package com.mattbroph.persistence;
 
-import com.mattbroph.entity.BassGoal;
 import com.mattbroph.entity.Method;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

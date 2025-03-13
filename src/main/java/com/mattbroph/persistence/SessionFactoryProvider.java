@@ -1,4 +1,4 @@
-package com.mattbroph.persistance;
+package com.mattbroph.persistence;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
