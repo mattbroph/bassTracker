@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 
 /**
@@ -22,13 +23,17 @@ import java.io.IOException;
 )
 public class ActionEditLake extends HttpServlet {
 
+    // Instance variables
+    private String url = "";
 
-    /** Edits a lake in the application database
+
+    /**
+     * Edits a lake in the application database
      *
-     *@param request the HttpServletRequest object
-     *@param response the HttpServletRequest object
-     *@exception ServletException if there is a Servlet failure
-     *@exception IOException if there is an IO failure
+     * @param request  the HttpServletRequest object
+     * @param response the HttpServletRequest object
+     * @throws ServletException if there is a Servlet failure
+     * @throws IOException      if there is an IO failure
      */
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response)
@@ -37,8 +42,8 @@ public class ActionEditLake extends HttpServlet {
         // Get the necessary daos
         GenericDao lakeDao = new GenericDao(Lake.class);
 
-        // Declare the url
-        String url = request.getContextPath()
+        // Happy path url
+        url = request.getContextPath()
                 + "/viewLakes";
 
         // Get the lake id to update
@@ -57,23 +62,16 @@ public class ActionEditLake extends HttpServlet {
         /* If user does not have access to edit lake id, send them to unauthorized page
          * If user does have access to edit lake id and is logged in, edit the lake
          */
-        Lake lakeToEdit = (Lake)lakeDao.getById(lakeId);
+        Lake lakeToEdit = (Lake) lakeDao.getById(lakeId);
 
         if (lakeToEdit.getUser().getId() != sessionUser.getId()) {
 
             response.sendRedirect("unauthorized.jsp");
             return;
-         }
+        }
 
         // Edit parameters of the existing Lake
-        editLakeParameters(lakeToEdit, request);
-
-        // Update the Lake
-        lakeDao.update(lakeToEdit);
-
-        // Provide a success message
-        session.setAttribute("lakeMessage", lakeToEdit.getLakeName()
-                + " was edited successfully.");
+        editLakeParameters(lakeToEdit, request, lakeDao, session);
 
         // Send a redirect to the view journal detail page
         response.sendRedirect(url);
@@ -81,16 +79,62 @@ public class ActionEditLake extends HttpServlet {
 
     /**
      * Retrieve parameters from form and update journal attributes in database
+     *
+     * @param
+     * @param
+     * @param
+     * @param
+     * @param
      */
-     public void editLakeParameters(Lake lakeToEdit, HttpServletRequest request) {
+    public void editLakeParameters(Lake lakeToEdit, HttpServletRequest request,
+                                   GenericDao lakeDao, HttpSession session) {
 
-         // Get the new lake name and set it
-         String lakeName = request.getParameter("lakeName");
-         lakeToEdit.setLakeName(lakeName);
-         // Get the new lake status and set it
-         boolean isActive = Boolean.parseBoolean(request.getParameter("status"));
-         lakeToEdit.setIsActive(isActive);
+        // Get the lake name and status from the form
+        String lakeName = request.getParameter("lakeName");
+        lakeName = lakeName.trim();
+        boolean isActive = Boolean.parseBoolean(request.getParameter("status"));
+        // Get a list of existing lakes that have the same lake name
+        List<Lake> existingLakes = lakeDao.getByPropertyEqual("lakeName", lakeName);
 
-     }
+        // If user is not editing lake name - only the status - update the lake
+        if (lakeName.equalsIgnoreCase(lakeToEdit.getLakeName())) {
 
+            // Set the new lake status
+            lakeToEdit.setIsActive(isActive);
+
+            // Update the Lake
+            lakeDao.update(lakeToEdit);
+
+            // Provide a success message
+            session.setAttribute("lakeMessage", lakeToEdit.getLakeName()
+                    + " was edited successfully.");
+
+        } else {
+
+            // If user is editing the lake name, check to see if lake name already
+            // exists. If it does, do not perform the update.
+            if (existingLakes.size() > 0) {
+
+                session.setAttribute("lakeMessage", lakeName
+                        + " already exists. Lake name must be unique.");
+
+                session.setAttribute("lake", lakeToEdit);
+
+                url = "editLake.jsp";
+
+            } else {
+
+                // Set the lake name & status
+                lakeToEdit.setLakeName(lakeName);
+                lakeToEdit.setIsActive(isActive);
+
+                // Update the Lake
+                lakeDao.update(lakeToEdit);
+
+                // Provide a success message
+                session.setAttribute("lakeMessage", lakeToEdit.getLakeName()
+                        + " was edited successfully.");
+            }
+        }
+    }
 }
