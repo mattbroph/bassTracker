@@ -94,7 +94,10 @@ public class ActionEditLake extends HttpServlet {
         lakeName = lakeName.trim();
         boolean isActive = Boolean.parseBoolean(request.getParameter("status"));
         // Get a list of existing lakes that have the same lake name
+        // TODO FIX THIS!!! It needs to check only the user lakes!!! Right now it checks all lakes
         List<Lake> existingLakes = lakeDao.getByPropertyEqual("lakeName", lakeName);
+
+//        List<Lake> existingLakes2 = user.getLakes();
 
         // If user is not editing lake name - only the status - update the lake
         if (lakeName.equalsIgnoreCase(lakeToEdit.getLakeName())) {

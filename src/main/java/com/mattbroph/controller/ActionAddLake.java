@@ -34,6 +34,9 @@ public class ActionAddLake extends HttpServlet {
                        HttpServletResponse response)
             throws ServletException, IOException {
 
+        // Local variables
+        boolean lakeExists = false;
+
         // Get the necessary daos
         GenericDao lakeDao = new GenericDao(Lake.class);
 
@@ -57,12 +60,21 @@ public class ActionAddLake extends HttpServlet {
         Lake newLake = retrieveFormData(request, sessionUser);
 
         // Check to see if lake already exists for this user
-        List<Lake> existingLakes = lakeDao.getByPropertyEqual("lakeName", newLake.getLakeName());
+        List<Lake> existingLakes = sessionUser.getLakes();
 
-        if (existingLakes.size() > 0) {
+        for (Lake lake : existingLakes) {
 
-            // Don't do the insert, send them back to the jsp with a message
-            // saying that lake already exists.
+            if (lake.getLakeName().equalsIgnoreCase((newLake.getLakeName()))) {
+                lakeExists = true;
+            }
+        }
+
+        /* If lake name already exists for this user, don't do the insert
+        * and send them back to the jsp with a message saying that lake already
+        * exists.
+         */
+        if (lakeExists == true) {
+
             session.setAttribute("lakeMessage", newLake.getLakeName()
                     + " already exists. Lake name must be unique.");
 
