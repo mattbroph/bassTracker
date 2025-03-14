@@ -66,6 +66,7 @@ public class ActionAddLake extends HttpServlet {
 
             if (lake.getLakeName().equalsIgnoreCase((newLake.getLakeName()))) {
                 lakeExists = true;
+                break;
             }
         }
 
@@ -73,7 +74,7 @@ public class ActionAddLake extends HttpServlet {
         * and send them back to the jsp with a message saying that lake already
         * exists.
          */
-        if (lakeExists == true) {
+        if (lakeExists) {
 
             session.setAttribute("lakeMessage", newLake.getLakeName()
                     + " already exists. Lake name must be unique.");
@@ -85,16 +86,14 @@ public class ActionAddLake extends HttpServlet {
             // Add the lake to the database
             insertedLakeId = lakeDao.insert(newLake);
 
-        }
+            // If insertedLakeId > 0 insert was successful, send to the view lakes jsp
+            // and note that the lake has been added
+            if (insertedLakeId > 0) {
+                session.setAttribute("lakeMessage", newLake.getLakeName()
+                        + " was added.");
 
-
-        // If insertedLakeId > 0 insert was successful, send to the view lakes jsp
-        // and note that the lake has been added
-        if (insertedLakeId > 0) {
-            session.setAttribute("lakeMessage", newLake.getLakeName()
-                    + " was added.");
-
-            url = request.getContextPath() + "/viewLakes";
+                url = request.getContextPath() + "/viewLakes";
+            }
         }
 
         // Send a redirect to the view lakes page or the error page

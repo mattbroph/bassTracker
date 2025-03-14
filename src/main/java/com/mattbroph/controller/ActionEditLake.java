@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -71,7 +72,7 @@ public class ActionEditLake extends HttpServlet {
         }
 
         // Edit parameters of the existing Lake
-        editLakeParameters(lakeToEdit, request, lakeDao, session);
+        editLakeParameters(lakeToEdit, request, lakeDao, session, sessionUser);
 
         // Send a redirect to the view journal detail page
         response.sendRedirect(url);
@@ -87,17 +88,27 @@ public class ActionEditLake extends HttpServlet {
      * @param
      */
     public void editLakeParameters(Lake lakeToEdit, HttpServletRequest request,
-                                   GenericDao lakeDao, HttpSession session) {
+            GenericDao lakeDao, HttpSession session, User sessionUser) {
 
         // Get the lake name and status from the form
         String lakeName = request.getParameter("lakeName");
         lakeName = lakeName.trim();
         boolean isActive = Boolean.parseBoolean(request.getParameter("status"));
-        // Get a list of existing lakes that have the same lake name
-        // TODO FIX THIS!!! It needs to check only the user lakes!!! Right now it checks all lakes
-        List<Lake> existingLakes = lakeDao.getByPropertyEqual("lakeName", lakeName);
 
-//        List<Lake> existingLakes2 = user.getLakes();
+        // Get a list of existing lakes that the user has
+        List<Lake> existingLakes = sessionUser.getLakes();
+        // Create an empty list to hold lakes with the same lake name as submission
+        List<Lake> matchingLakeNames = new ArrayList<Lake>();
+
+        // Determine if the submitted lake name exists in existingLakes
+        for (Lake lake : existingLakes) {
+
+            // If lakeName equals lake.getLakeName() then add it to a List of
+            // Lakes with a matching lake name
+            if (lakeName.equalsIgnoreCase(lake.getLakeName())) {
+                matchingLakeNames.add(lake);
+            }
+        }
 
         // If user is not editing lake name - only the status - update the lake
         if (lakeName.equalsIgnoreCase(lakeToEdit.getLakeName())) {
@@ -116,7 +127,7 @@ public class ActionEditLake extends HttpServlet {
 
             // If user is editing the lake name, check to see if lake name already
             // exists. If it does, do not perform the update.
-            if (existingLakes.size() > 0) {
+            if (matchingLakeNames.size() > 0) {
 
                 session.setAttribute("lakeMessage", lakeName
                         + " already exists. Lake name must be unique.");
