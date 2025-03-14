@@ -32,10 +32,9 @@
 
     <h1>${user.firstName}'s Lakes</h1>
 
-    <%-- Hooked up to ActionAddLake at the moment --%>
+    <%-- Hooked up to ActionAddLake --%>
     <c:if test="${lakeMessage != null}">
         <h2 id="message">${lakeMessage}</h2>
-        <br>
         <c:remove var="lakeMessage" scope="session" />
     </c:if>
 

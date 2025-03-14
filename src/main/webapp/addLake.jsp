@@ -14,14 +14,16 @@
 
 <main id="mainContent">
 
-    <%-- If an error occured while inserting a new lake into the db. Check
-    ActionAddLake controller for details --%>
-    <c:if test=" ${not empty addLakeMessage}">
-        <h2>${addLakeMessage}</h2>
-        <c:remove var="addLakeMessage" scope="session" />
-    </c:if>
-
     <h1>Add a Lake</h1>
+
+    <%-- Hooked up to ActionAddLake.
+     If user tried to submit a lake that exists, this message will appear.
+--%>
+    <c:if test="${lakeMessage != null}">
+        <h2 id="message">${lakeMessage}</h2>
+        <br>
+        <c:remove var="lakeMessage" scope="session" />
+    </c:if>
 
     <form action="actionAddLake"
           method="post">

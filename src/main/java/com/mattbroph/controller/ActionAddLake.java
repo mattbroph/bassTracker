@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Adds a lake entry that was submitted by the user
@@ -37,7 +38,7 @@ public class ActionAddLake extends HttpServlet {
         GenericDao lakeDao = new GenericDao(Lake.class);
 
         // Build forwarding url variable
-        String url;
+        String url = "";
 
         // Id of the row inserted
         int insertedLakeId = 0;
@@ -55,8 +56,25 @@ public class ActionAddLake extends HttpServlet {
         // Retrieve the data from the form
         Lake newLake = retrieveFormData(request, sessionUser);
 
-        // Add the lake to the database
-        insertedLakeId = lakeDao.insert(newLake);
+        // Check to see if lake already exists for this user
+        List<Lake> existingLakes = lakeDao.getByPropertyEqual("lakeName", newLake.getLakeName());
+
+        if (existingLakes.size() > 0) {
+
+            // Don't do the insert, send them back to the jsp with a message
+            // saying that lake already exists.
+            session.setAttribute("lakeMessage", newLake.getLakeName()
+                    + " already exists. Lake name must be unique.");
+
+            url = request.getContextPath() + "/addLake";
+
+        } else {
+
+            // Add the lake to the database
+            insertedLakeId = lakeDao.insert(newLake);
+
+        }
+
 
         // If insertedLakeId > 0 insert was successful, send to the view lakes jsp
         // and note that the lake has been added
@@ -64,15 +82,7 @@ public class ActionAddLake extends HttpServlet {
             session.setAttribute("lakeMessage", newLake.getLakeName()
                     + " was added.");
 
-            // Set the url for the redirect
             url = request.getContextPath() + "/viewLakes";
-
-        } else {
-
-            session.setAttribute("errorMessage", "Something went wrong, "
-                    + " your lake has not been added.");
-
-            url = request.getContextPath() + "/error.jsp";
         }
 
         // Send a redirect to the view lakes page or the error page
@@ -96,6 +106,4 @@ public class ActionAddLake extends HttpServlet {
          return newLake;
 
      }
-
-
 }
