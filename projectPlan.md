@@ -166,7 +166,7 @@
 - [ ] Final touches before code complete
 
 ### Additional things to work on
-- [ ] Gracefully handle user not being able to add or edit lake with same name
+- [X] Gracefully handle user not being able to add or edit lake with same name
 - [ ] Disable certain nav bar pages if user not logged in
 - [ ] Show dynamic page titles
 - [ ] Tool tip for add journal photo
