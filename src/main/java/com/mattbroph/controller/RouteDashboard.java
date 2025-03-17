@@ -109,6 +109,9 @@ public class RouteDashboard extends HttpServlet implements PropertiesLoader {
         // Update the session user object to keep data fresh
         session.setAttribute("user", user);
 
+        // Mark the Dashboard Nav as active for CSS underline
+        session.setAttribute("lastClicked", "Dashboard");
+
         // Forward to the HTTP request data jsp page
         RequestDispatcher dispatcher =
                 getServletContext().getRequestDispatcher(url);

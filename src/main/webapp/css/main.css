@@ -21,6 +21,12 @@ img {
     max-width: 100%;
 }
 
+.active {
+    text-decoration: underline;
+    text-decoration-color: #F6D86B;
+    text-underline-offset: .3em;
+}
+
 /********************************
 * Fonts
 **********************************/

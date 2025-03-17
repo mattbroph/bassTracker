@@ -2,8 +2,10 @@ package com.mattbroph.controller;
 
 import com.mattbroph.entity.*;
 import com.mattbroph.persistence.GenericDao;
+import com.mattbroph.service.PageTitleService;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,6 +41,12 @@ public class RouteEditLake extends HttpServlet {
 
         // Set the url param
         String url = "/editLake.jsp";
+
+        // Get the page title from the servlet context and set it in the request
+        ServletContext context = getServletContext();
+        PageTitleService pageTitleService = new PageTitleService();
+        String pageTitle = pageTitleService.getPageTitle(context, "page.editLake");
+        request.setAttribute("pageTitle", pageTitle);
 
         // Get the lake id
         int lakeId = Integer.parseInt(request.getParameter("lakeId"));

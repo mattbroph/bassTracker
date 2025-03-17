@@ -3,8 +3,10 @@ package com.mattbroph.controller;
 import com.mattbroph.entity.BassGoal;
 import com.mattbroph.entity.User;
 import com.mattbroph.persistence.GenericDao;
+import com.mattbroph.service.PageTitleService;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,6 +45,12 @@ public class RouteViewProfile extends HttpServlet {
         // Declare the url
         String url = "/viewProfile.jsp";
 
+        // Get the page title from the servlet context and set it in the request
+        ServletContext context = getServletContext();
+        PageTitleService pageTitleService = new PageTitleService();
+        String pageTitle = pageTitleService.getPageTitle(context, "page.viewProfile");
+        request.setAttribute("pageTitle", pageTitle);
+
         // Get user from the session
         HttpSession session = request.getSession();
         User sessionUser = (User) session.getAttribute("user");
@@ -68,6 +76,8 @@ public class RouteViewProfile extends HttpServlet {
             // Store the journals in the request and forward onto jsp to be displayed
             request.setAttribute("bassGoals", bassGoals);
             request.setAttribute("user", user);
+            // Mark the Profile Nav as active for CSS underline
+            session.setAttribute("lastClicked", "Profile");
 
         }
 

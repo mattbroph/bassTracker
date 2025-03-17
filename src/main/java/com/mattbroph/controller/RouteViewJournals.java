@@ -3,6 +3,7 @@ package com.mattbroph.controller;
 import com.mattbroph.entity.Journal;
 import com.mattbroph.entity.User;
 import com.mattbroph.persistence.GenericDao;
+import com.mattbroph.service.PageTitleService;
 
 import java.io.*;
 import java.util.*;
@@ -38,6 +39,12 @@ public class RouteViewJournals extends HttpServlet {
         // Set the url param
         String url = "/viewJournals.jsp";
 
+        // Get the page title from the servlet context and set it in the request
+        ServletContext context = getServletContext();
+        PageTitleService pageTitleService = new PageTitleService();
+        String pageTitle = pageTitleService.getPageTitle(context, "page.viewJournals");
+        request.setAttribute("pageTitle", pageTitle);
+
         // Get user from the session
         HttpSession session = request.getSession();
         User sessionUser = (User) session.getAttribute("user");
@@ -64,6 +71,9 @@ public class RouteViewJournals extends HttpServlet {
             request.setAttribute("journals", journals);
 
         }
+
+        // Mark the Journals Nav as active for CSS underline
+        session.setAttribute("lastClicked", "Journal");
 
         // Forward to the HTTP request data jsp page
         RequestDispatcher dispatcher =

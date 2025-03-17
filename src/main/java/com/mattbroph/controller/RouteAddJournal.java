@@ -2,6 +2,7 @@ package com.mattbroph.controller;
 
 import com.mattbroph.entity.*;
 import com.mattbroph.persistence.GenericDao;
+import com.mattbroph.service.PageTitleService;
 
 import java.io.*;
 import java.util.*;
@@ -35,6 +36,12 @@ public class RouteAddJournal extends HttpServlet {
 
         // Set the url param
         String url = "/addJournal.jsp";
+
+        // Get the page title from the servlet context and set it in the request
+        ServletContext context = getServletContext();
+        PageTitleService pageTitleService = new PageTitleService();
+        String pageTitle = pageTitleService.getPageTitle(context, "page.addJournal");
+        request.setAttribute("pageTitle", pageTitle);
 
         // Get user from the session
         HttpSession session = request.getSession();
