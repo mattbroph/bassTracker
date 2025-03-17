@@ -102,7 +102,7 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         // Add the user to the session
         userService.addUserSession(user, req);
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/home");
         dispatcher.forward(req, resp);
 
     }

@@ -15,7 +15,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
                     <%-- TODO Use id="active" to underscore--%>
-                    <a href="index.jsp" class="nav-link ${lastClicked == 'Home' ? 'active' : ''}">Home</a>
+                    <a href="home" class="nav-link ${lastClicked == 'Home' ? 'active' : ''}">Home</a>
                     <a href="dashboard" class="nav-link ${lastClicked == 'Dashboard' ? 'active' : ''}">Dashboard</a>
                     <a href="viewJournals" class="nav-link ${lastClicked == 'Journal' ? 'active' : ''}">Journals</a>
                     <a href="reports.jsp" class="nav-link ${lastClicked == 'Reports' ? 'active' : ''}">Reports</a>
