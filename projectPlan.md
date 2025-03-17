@@ -182,4 +182,5 @@
 - [ ] All test plans
 - [ ] Add logging
 - [ ] Update all controller logic for insert / update to handle errors
+- [ ] Send Ashlie logo info
 
