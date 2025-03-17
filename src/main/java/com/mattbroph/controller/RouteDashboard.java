@@ -1,11 +1,15 @@
 package com.mattbroph.controller;
 
 import com.mattbroph.entity.*;
+import com.mattbroph.persistence.PropertiesLoader;
 import com.mattbroph.service.DashboardCalculator;
 import com.mattbroph.persistence.GenericDao;
+import com.mattbroph.service.PageTitleService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextListener;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,10 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Routes the user to the dashboard based on year
@@ -27,7 +28,7 @@ import java.util.Map;
         name = "routeDashboardServlet",
         urlPatterns = { "/dashboard" }
 )
-public class RouteDashboard extends HttpServlet {
+public class RouteDashboard extends HttpServlet implements PropertiesLoader {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
@@ -49,6 +50,12 @@ public class RouteDashboard extends HttpServlet {
 
         // Set the url param
         String url = "/dashboard.jsp";
+
+        // Get the page title from the servlet context and set it in the request
+        ServletContext context = getServletContext();
+        PageTitleService pageTitleService = new PageTitleService();
+        String pageTitle = pageTitleService.getPageTitle(context, "page.dashboard");
+        request.setAttribute("pageTitle", pageTitle);
 
         // Get user from the session
         HttpSession session = request.getSession();
