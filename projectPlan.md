@@ -168,7 +168,8 @@
 ### Additional things to work on
 - [X] Gracefully handle user not being able to add or edit lake with same name
 - [ ] Disable certain nav bar pages if user not logged in
-- [ ] Show dynamic page titles
+- [X] Show dynamic page titles
+- [X] Add underline on last clicked nav bar
 - [ ] Tool tip for add journal photo
 - [ ] Work on jsp messaging if bass goal = 0
 - [ ] Work on jsp messaging if lake is empty on add journal
@@ -183,4 +184,3 @@
 - [ ] Add logging
 - [ ] Update all controller logic for insert / update to handle errors
 - [ ] Send Ashlie logo info
-
