@@ -172,10 +172,10 @@
 - [ ] Tool tip for add journal photo
 - [ ] Work on jsp messaging if bass goal = 0
 - [ ] Work on jsp messaging if lake is empty on add journal
-- [ ] Custom 404
-- [ ] Custom 500 error page
+- [X] Custom 404
+- [X] Custom 500 error page
 - [ ] Unauthorized access page
-- [ ] Auto load 6 years of bass goals
+- [ ] Auto-load 6 years of bass goals
 - [ ] Redesign view journal details css
 - [ ] Redesign view profile css
 - [ ] Testing dashboard calculator
