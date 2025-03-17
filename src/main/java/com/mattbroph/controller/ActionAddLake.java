@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Adds a lake entry that was submitted by the user
@@ -33,11 +34,14 @@ public class ActionAddLake extends HttpServlet {
                        HttpServletResponse response)
             throws ServletException, IOException {
 
+        // Local variables
+        boolean lakeExists = false;
+
         // Get the necessary daos
         GenericDao lakeDao = new GenericDao(Lake.class);
 
         // Build forwarding url variable
-        String url;
+        String url = "";
 
         // Id of the row inserted
         int insertedLakeId = 0;
@@ -55,24 +59,41 @@ public class ActionAddLake extends HttpServlet {
         // Retrieve the data from the form
         Lake newLake = retrieveFormData(request, sessionUser);
 
-        // Add the lake to the database
-        insertedLakeId = lakeDao.insert(newLake);
+        // Check to see if lake already exists for this user
+        List<Lake> existingLakes = sessionUser.getLakes();
 
-        // If insertedLakeId > 0 insert was successful, send to the view lakes jsp
-        // and note that the lake has been added
-        if (insertedLakeId > 0) {
+        for (Lake lake : existingLakes) {
+
+            if (lake.getLakeName().equalsIgnoreCase((newLake.getLakeName()))) {
+                lakeExists = true;
+                break;
+            }
+        }
+
+        /* If lake name already exists for this user, don't do the insert
+        * and send them back to the jsp with a message saying that lake already
+        * exists.
+         */
+        if (lakeExists) {
+
             session.setAttribute("lakeMessage", newLake.getLakeName()
-                    + " was added.");
+                    + " already exists. Lake name must be unique.");
 
-            // Set the url for the redirect
-            url = request.getContextPath() + "/viewLakes";
+            url = request.getContextPath() + "/addLake";
 
         } else {
 
-            session.setAttribute("errorMessage", "Something went wrong, "
-                    + " your lake has not been added.");
+            // Add the lake to the database
+            insertedLakeId = lakeDao.insert(newLake);
 
-            url = request.getContextPath() + "/error.jsp";
+            // If insertedLakeId > 0 insert was successful, send to the view lakes jsp
+            // and note that the lake has been added
+            if (insertedLakeId > 0) {
+                session.setAttribute("lakeMessage", newLake.getLakeName()
+                        + " was added.");
+
+                url = request.getContextPath() + "/viewLakes";
+            }
         }
 
         // Send a redirect to the view lakes page or the error page
@@ -96,6 +117,4 @@ public class ActionAddLake extends HttpServlet {
          return newLake;
 
      }
-
-
 }
