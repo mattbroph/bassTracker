@@ -170,18 +170,21 @@
 - [X] Disable certain nav bar pages if user not logged in
 - [X] Show dynamic page titles
 - [X] Add underline on last clicked nav bar
+- [ ] Set default profile pic image
+- [ ] Form for year in dashboard jsp
+- [X] Auto-load 6 years of bass goals
+- [ ] Redesign view journal details css
+- [ ] Redesign view profile css
 - [ ] Tool tip for add journal photo
 - [ ] Work on jsp messaging if bass goal = 0
 - [ ] Work on jsp messaging if lake is empty on add journal
 - [X] Custom 404
 - [X] Custom 500 error page
 - [ ] Unauthorized access page
-- [ ] Auto-load 6 years of bass goals
-- [ ] Redesign view journal details css
-- [ ] Redesign view profile css
 - [ ] Testing dashboard calculator
 - [ ] All test plans
 - [ ] Add logging
 - [ ] Update all controller logic for insert / update to handle errors
-- [ ] Send Ashlie logo info
+- [X] Send Ashlie logo info
 - [ ] Update session check sending to index.jsp to a properties variable
+- [ ] Hibernate form validation
