@@ -167,7 +167,7 @@
 
 ### Additional things to work on
 - [X] Gracefully handle user not being able to add or edit lake with same name
-- [ ] Disable certain nav bar pages if user not logged in
+- [X] Disable certain nav bar pages if user not logged in
 - [X] Show dynamic page titles
 - [X] Add underline on last clicked nav bar
 - [ ] Tool tip for add journal photo
@@ -184,3 +184,4 @@
 - [ ] Add logging
 - [ ] Update all controller logic for insert / update to handle errors
 - [ ] Send Ashlie logo info
+- [ ] Update session check sending to index.jsp to a properties variable
