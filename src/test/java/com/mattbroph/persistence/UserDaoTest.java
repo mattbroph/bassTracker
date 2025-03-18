@@ -22,7 +22,7 @@ class UserDaoTest {
     @BeforeEach
     void setUp() {
         Database database = Database.getInstance();
-        database.runSQL("fresh_db.sql");
+//        database.runSQL("fresh_db.sql");
         lakeDao = new GenericDao(Lake.class);
         userDao = new GenericDao(User.class);
     }

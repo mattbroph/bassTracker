@@ -43,7 +43,8 @@
     <div id="profileAndStatsContainer">
         <div id="profileContainer">
             <div id="photoContainer">
-                <img id="profilePic" src="${user.profilePicture}" alt="profile picture">
+                <%-- If user profile is empty or null, grab the default image --%>
+                <img id="profilePic" src="${empty user.profilePicture ? 'images/defaultProfile.svg' : user.profilePicture}" alt="profile picture">
             </div>
             <p>${user.firstName} ${user.lastName}</p>
             <br>

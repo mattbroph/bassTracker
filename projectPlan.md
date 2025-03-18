@@ -170,7 +170,7 @@
 - [X] Disable certain nav bar pages if user not logged in
 - [X] Show dynamic page titles
 - [X] Add underline on last clicked nav bar
-- [ ] Set default profile pic image
+- [X] Set default profile pic image
 - [ ] Form for year in dashboard jsp
 - [X] Auto-load 6 years of bass goals
 - [ ] Redesign view journal details css
@@ -188,3 +188,4 @@
 - [X] Send Ashlie logo info
 - [ ] Update session check sending to index.jsp to a properties variable
 - [ ] Hibernate form validation
+- [ ] Add user profile pic to H1s?
