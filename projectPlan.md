@@ -172,9 +172,9 @@
 - [X] Add underline on last clicked nav bar
 - [X] Set default profile pic image
 - [ ] Form for year in dashboard jsp
-- [X] Auto-load 6 years of bass goals
+- [X] Autoload 6 years of bass goals
 - [ ] Redesign view journal details css
-- [ ] Redesign view profile css
+- [X] Redesign view profile css
 - [ ] Tool tip for add journal photo
 - [ ] Work on jsp messaging if bass goal = 0
 - [ ] Work on jsp messaging if lake is empty on add journal
