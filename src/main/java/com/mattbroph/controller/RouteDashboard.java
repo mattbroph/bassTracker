@@ -63,12 +63,19 @@ public class RouteDashboard extends HttpServlet implements PropertiesLoader {
         // Reload user from database to avoid stale data
         User user = (User) userDao.getById(sessionUser.getId());
 
-        // TODO GET THE YEAR - UPDATE THIS TO AN INCOMING REQUEST ATTRIBUTE
         // If year has not been submitted, then use the current year
-        LocalDate localDate = LocalDate.now();
-        int year = localDate.getYear();
+        int year;
+        String dashboardYearParam = request.getParameter("dashboardYear");
 
-        // Get the users bass goal for the year
+        if (dashboardYearParam != null) {
+            year = Integer.parseInt(request.getParameter("dashboardYear"));
+        } else {
+            LocalDate localDate = LocalDate.now();
+            year = localDate.getYear();
+        }
+
+        // Get the user's bass goal for the year that will be displayed on
+        // the dashboard
         Map<String, Object> propertyMap = new HashMap<String, Object>();
         propertyMap.put("user", user);
         propertyMap.put("goalYear", year);
@@ -79,8 +86,14 @@ public class RouteDashboard extends HttpServlet implements PropertiesLoader {
         // Used for calculations in the DashboardCalculator
         int yearBassGoal = bassGoal.get(0).getGoalCount();
 
-        // Add the bassGoal to the request
+        // Add the bassGoal to the request. This is used to determine which
+        // year of data to display on the dashboard
         request.setAttribute("bassGoal", bassGoal.get(0));
+
+        // Add the entire list of bass goals to the request. This is used for
+        // the dashboard form selection options
+        List<BassGoal> bassGoalList = user.getBassGoal();
+        request.setAttribute("bassGoalList", bassGoalList);
 
         // Get the users journals
         List<Journal> journals = user.getJournals();

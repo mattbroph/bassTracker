@@ -15,8 +15,28 @@
 <main id="mainContent">
 
     <h1>${user.firstName}'s ${bassGoal.goalYear} Dashboard</h1>
+    <form name="dashboard"
+          action="dashboard"
+          method="get">
+        <!-- Dashboard Year -->
+        <label for="dashboardYear"></label>
+        <select name="dashboardYear" id="dashboardYear" required>
+                <option value="${bassGoal.goalYear}" selected disabled>${bassGoal.goalYear}</option>
+                <c:forEach var="goal" items="${bassGoalList}">
+                        <option value="${goal.goalYear}">${goal.goalYear}</option>
+                </c:forEach>
+        </select>
+        <!-- Button-->
+        <br>
+        <input type="submit" value="Change Year" class="greenAnchorButton">
+    </form>
     <br>
     <br>
+
+
+
+
+
     <section id="dashboardRowOne">
         <!-- Bass Goal Donut -->
         <div id="bassGoalContainer"
