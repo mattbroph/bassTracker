@@ -30,12 +30,12 @@
         <br>
         <input type="submit" value="Change Year" class="greenAnchorButton">
     </form>
+    <%-- If yearly bass goal is 0, let the user know they can update it on their profile page--%>
+    <c:if test="${bassGoal.goalCount == 0}">
+        <p id="message">Your ${bassGoal.goalYear} bass goal is currently set to 0.<br>You can update your yearly goals on your profile page.</p>
+    </c:if>
     <br>
     <br>
-
-
-
-
 
     <section id="dashboardRowOne">
         <!-- Bass Goal Donut -->
