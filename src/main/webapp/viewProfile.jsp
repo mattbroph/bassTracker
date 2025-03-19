@@ -52,20 +52,20 @@
                 <a href="editProfile" class="greenAnchorButton">Edit Profile</a>
             </div>
         </div>
-<%--        TODO Make Dynamic Info--%>
+
         <div id="statsContainer">
             <div class="statYellow">
-                <p class="statCount">250</p>
+                <p class="statCount">${profileStats.currentTotalBassCountForUser}</p>
                 <img src="images/hook.svg" alt="fishing hook">
                 <p class="statName">Bass Caught</p>
             </div>
             <div class="statGreen">
-                <p class="statCount">100</p>
+                <p class="statCount">${profileStats.currentTotalHoursForUser}</p>
                 <img src="images/clock.svg" alt="clock">
                 <p class="statName">Hours Fished</p>
             </div>
             <div class="statYellow">
-                <p class="statCount">1.5</p>
+                <p class="statCount">${profileStats.currentCatchRateForUser}</p>
                 <img src="images/graph.svg" alt="bar graph">
                 <p class="statName">Catch Rate</p>
             </div>

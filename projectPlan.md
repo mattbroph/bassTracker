@@ -185,8 +185,9 @@
 - [ ] Testing dashboard calculator
 - [ ] All test plans
 - [ ] Add logging
-- [ ] Update all controller logic for insert / update to handle errors
+- [ ] Review all controller logic for insert / update to handle errors
 - [X] Send Ashlie logo info
 - [ ] Update session check sending to index.jsp to a properties variable
 - [ ] Hibernate form validation
 - [ ] Add user profile pic to H1s?
+- [ ] Css for hover over open / edit on tables
