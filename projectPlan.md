@@ -173,7 +173,7 @@
 - [X] Set default profile pic image
 - [X] Form for year in dashboard jsp
 - [X] Work on jsp messaging if bass goal = 0
-- [ ] Work on jsp messaging if lake is empty on add journal
+- [X] Work on jsp messaging if lake is empty on add journal
 - [ ] Add user profile pic to H1s?
 - [X] Autoload 6 years of bass goals
 - [ ] Redesign view journal details css

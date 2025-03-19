@@ -58,8 +58,17 @@ public class RouteAddJournal extends HttpServlet {
             // Reload user from database to avoid stale data
             User user = (User) userDao.getById(sessionUser.getId());
 
-            // Get the list of Lakes matching the user ID
+            // Get the list of active Lakes matching the user ID
             List<Lake> userLakes = user.getLakes();
+
+            List<Lake> userActiveLakes = new ArrayList<>();
+
+            for (Lake lake : userLakes) {
+
+                if (lake.getIsActive()) {
+                    userActiveLakes.add(lake);
+                }
+            }
 
             // Get the list of methods, winds and weather
             GenericDao weatherDao = new GenericDao(Weather.class);
@@ -72,7 +81,7 @@ public class RouteAddJournal extends HttpServlet {
             List<Method> methodList = (List<Method>)methodDao.getAll();
 
             // Set attributes to make available in jsp
-            request.setAttribute("userLakes", userLakes);
+            request.setAttribute("userLakes", userActiveLakes);
             request.setAttribute("weatherList", weatherList);
             request.setAttribute("windList", windList);
             request.setAttribute("methodList", methodList);
