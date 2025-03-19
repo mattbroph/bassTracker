@@ -175,6 +175,7 @@
 - [X] Autoload 6 years of bass goals
 - [ ] Redesign view journal details css
 - [X] Redesign view profile css
+- [ ] Make view profile page stats dynamic
 - [ ] Tool tip for add journal photo
 - [ ] Work on jsp messaging if bass goal = 0
 - [ ] Work on jsp messaging if lake is empty on add journal

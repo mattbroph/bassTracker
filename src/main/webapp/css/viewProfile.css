@@ -1,38 +1,24 @@
-p {
+#userName {
     padding-top: 1em;
     font-size: 18px;
     font-weight: 700;
     font-size: 30px;
 }
 
-main {
-    flex: 1;
-    margin-left: 14%;
-    margin-right: 14%;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    font-family: 'Roboto Slab', serif;
-}
 
-
-
-#statsContainer h2 {
-    font-weight: 700;
-    font-size: 40px;
-    text-decoration: underline;
-    text-decoration-color: #F6D86B;
-    text-underline-offset: .2em;
-}
-
-
-#profileAndStatsContainer {
+#largeContainer {
     display: flex;
     justify-content: space-between;
-    gap: 4em;
+    gap: 2em;
+    flex-wrap: wrap;
 }
 
 
-#profileContainer, #statsContainer {
+/*********************
+Profile container
+*********************/
+
+#profileContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,22 +30,8 @@ main {
     box-shadow: 0 4px 8px #757272;
 }
 
-#bassGoalsContainer {
-    background-color: #F8F9FA;
-    border-radius: .75em;
-    padding: 2em 1.5em;
-    box-shadow: 0 4px 8px #757272;
-}
-
 #profileContainer {
     flex: 1;
-}
-
-#statsContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex: 2;
 }
 
 
@@ -77,29 +49,75 @@ main {
     clip-path: circle();
 }
 
-#innerStatsContainer {
+/*********************
+Stats container
+*********************/
+
+#statsContainer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
+    align-items: center;
     width: 100%;
     gap: 2em;
-    margin-top: 5em;
-    padding-top: 1em;
-    border-top: #F6D86B solid 4px;
+    flex: 1;
+    min-width: 250px;
 
 }
 
-.stat {
+.statYellow, .statGreen {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 100px;
+    width: 250px;
+    border-radius: .75em;
+    padding: 1em;
 }
 
-.stat img {
-    width: 50px;
+.statYellow {
+    background-color: #F6D86B;
+}
+
+.statGreen {
+    background-color: #718162;
+    color:#FFFFFF;
+}
+
+.statYellow img, .statGreen img {
+    width: 60px;
     height: auto;
+}
+
+.statCount {
+    font-size: 30px;
+    margin-bottom: 0;
+}
+
+.statName {
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+
+/*********************
+Bass goals container
+*********************/
+#bassGoalsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #F8F9FA;
+    border-radius: .75em;
+    padding: 1.5em;
+    box-shadow: 0 4px 8px #757272;
+    flex: 1;
+    min-width: 260px;
+
+}
+
+#bassGoalsContainer h2 {
+    text-align: center;
 }
 
 
@@ -169,12 +187,14 @@ th {
 * Media Queries
 ******************************/
 @media (max-width: 1100px) {
-    #profileAndStatsContainer {
+    #largeContainer {
         flex-direction: column;
         align-items: center;
     }
-    #statsContainer, #profileContainer {
+    #statsContainer, #profileContainer, #bassGoalsContainer {
         width: 100%;
     }
-
+    #bassGoalsContainer {
+        margin-bottom: 1.5em;
+    }
 }

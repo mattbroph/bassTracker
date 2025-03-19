@@ -22,7 +22,7 @@
 <script src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.print.min.js"></script>
 <!-- JavaScript -->
-<script src="js/viewLakes.js"></script>
+<script src="js/viewProfile.js"></script>
 </head>
 
 <body>
@@ -40,74 +40,69 @@
 
 
 
-    <div id="profileAndStatsContainer">
+    <div id="largeContainer">
         <div id="profileContainer">
             <div id="photoContainer">
                 <%-- If user profile is empty or null, grab the default image --%>
                 <img id="profilePic" src="${empty user.profilePicture ? 'images/defaultProfile.svg' : user.profilePicture}" alt="profile picture">
             </div>
-            <p>${user.firstName} ${user.lastName}</p>
+            <p id="userName">${user.firstName} ${user.lastName}</p>
             <br>
             <div class="buttonContainer">
                 <a href="editProfile" class="greenAnchorButton">Edit Profile</a>
             </div>
         </div>
-
+<%--        TODO Make Dynamic Info--%>
         <div id="statsContainer">
-            <h2>Statistics</h2>
-            <div id="innerStatsContainer">
-                <div class="stat">
-                    <h3>250</h3>
-                    <img src="images/hook.svg" alt="fishing hook">
-                    <h3>Bass Caught</h3>
-                </div>
-                <div class="stat">
-                    <h3>100</h3>
-                    <img src="images/hour.svg" alt="clock">
-                    <h3>Hours Fished</h3>
-                </div>
-                <div class="stat">
-                    <h3>1.5</h3>
-                    <img src="images/graph.svg" alt="bar graph">
-                    <h3>Catch Rate</h3>
-                </div>
+            <div class="statYellow">
+                <p class="statCount">250</p>
+                <img src="images/hook.svg" alt="fishing hook">
+                <p class="statName">Bass Caught</p>
             </div>
+            <div class="statGreen">
+                <p class="statCount">100</p>
+                <img src="images/clock.svg" alt="clock">
+                <p class="statName">Hours Fished</p>
+            </div>
+            <div class="statYellow">
+                <p class="statCount">1.5</p>
+                <img src="images/graph.svg" alt="bar graph">
+                <p class="statName">Catch Rate</p>
+            </div>
+        </div>
+
+        <!-- Table of Bass Goals -->
+        <div id="bassGoalsContainer">
+            <h2>Bass Goals</h2>
+            <br>
+            <%-- <a href="addGoal" class="yellowAnchorButton">Add Goal</a>--%>
+            <%-- <br>--%>
+            <%-- <br>--%>
+            <table id="table" class="display" style="width:100%">
+                <thead>
+                <tr>
+                    <th>Edit</th>
+                    <th>Year</th>
+                    <th>Goal</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="goal" items="${bassGoals}">
+                    <tr>
+                        <td>
+                            <a href="editGoal?goalId=${goal.id}">
+                                <img src="images/editIcon.svg" alt="edit goal">
+                            </a>
+                        </td>
+                        <td>${goal.goalYear}</td>
+                        <td>${goal.goalCount}</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
         </div>
     </div>
     <br>
-    <br>
-    <br>
-    <!-- Table of Bass Goals -->
-    <div id="bassGoalsContainer">
-        <h2>Bass Goals</h2>
-        <br>
-<%--        <a href="addGoal" class="yellowAnchorButton">Add Goal</a>--%>
-<%--        <br>--%>
-<%--        <br>--%>
-        <table id="table" class="display" style="width:100%">
-            <thead>
-            <tr>
-                <th>Edit</th>
-                <th>Year</th>
-                <th>Goal</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="goal" items="${bassGoals}">
-                <tr>
-                    <td>
-                        <a href="editGoal?goalId=${goal.id}">
-                            <img src="images/editIcon.svg" alt="edit goal">
-                        </a>
-                    </td>
-                    <td>${goal.goalYear}</td>
-                    <td>${goal.goalCount}</td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-    </div>
-
 
 </main>
 <c:import url="footer.jsp" />
