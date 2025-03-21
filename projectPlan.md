@@ -174,7 +174,7 @@
 - [X] Form for year in dashboard jsp
 - [X] Work on jsp messaging if bass goal = 0
 - [X] Work on jsp messaging if lake is empty on add journal
-- [ ] Add user profile pic to H1s?
+- [X] Add user profile pic to H1s?
 - [X] Autoload 6 years of bass goals
 - [ ] Redesign view journal details css
 - [X] Redesign view profile css
@@ -182,7 +182,7 @@
 - [ ] Tool tip for add journal photo
 - [X] Custom 404
 - [X] Custom 500 error page
-- [ ] Unauthorized access page
+- [X] Unauthorized access page
 - [X] Send Ashlie logo info
 
 ### Additional things to work on

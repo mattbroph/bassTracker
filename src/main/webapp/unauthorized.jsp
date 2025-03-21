@@ -12,7 +12,8 @@
 
 <main id="mainContent">
 
-    <h1>You shouldn't be here</h1>
+    <h1>Access Denied</h1>
+    <h2>Phishing for something?</h2>
 
 </main>
 <c:import url="footer.jsp" />
