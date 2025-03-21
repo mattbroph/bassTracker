@@ -176,16 +176,16 @@
 - [X] Work on jsp messaging if lake is empty on add journal
 - [X] Add user profile pic to H1s?
 - [X] Autoload 6 years of bass goals
-- [ ] Redesign view journal details css
 - [X] Redesign view profile css
 - [X] Make view profile page stats dynamic
-- [ ] Tool tip for add journal photo
+- [X] Tool tip for add / edit journal photo & edit profile photo
 - [X] Custom 404
 - [X] Custom 500 error page
 - [X] Unauthorized access page
 - [X] Send Ashlie logo info
 
 ### Additional things to work on
+- [ ] Redesign view journal details css
 - [ ] Update session check sending to index.jsp to a properties variable
 - [ ] Hibernate form validation
 - [ ] Css for hover over open / edit on tables

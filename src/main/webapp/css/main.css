@@ -121,3 +121,50 @@ footer a:hover {
 footer a img:hover {
     border: solid 1px grey;
 }
+
+/********************************
+* Tool Tips
+**********************************/
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+}
+
+.toolTipDiv {
+    display: flex;
+    align-items: center;
+}
+
+/* Tooltip Icon */
+.tooltip-icon {
+    width: 20px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+/* Tooltip Text */
+.tooltip-text {
+    visibility: hidden;
+    background-color: #F6D86B;
+    padding: 5px;
+    border-radius: 5px;
+    border: #536642 solid 1px;
+
+    position: absolute;
+    top: -30px;
+    transform: translateX(-36%);
+    white-space: nowrap;
+
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Show tooltip when hovering over the icon */
+.tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+.bold {
+    font-weight: 600;
+}

@@ -70,7 +70,7 @@
                 <fieldset>
                     <legend>Fishing Conditions</legend>
                     <!-- Air Temp -->
-                    <label for="airTemp">*Air Temp</label>
+                    <label for="airTemp">*Air Temp &#8457;</label>
                     <input type="number"
                            name="airTemp"
                            id="airTemp"
@@ -163,7 +163,23 @@
                               placeholder="enter comments here"></textarea>
                     <br>
                     <!-- Photo -->
-                    <label for="photo">Photo of the day</label>
+                    <div class="toolTipDiv">
+                        <label for="photo">Photo of the day</label>
+                        <div class="tooltip-container">
+                            <img src="images/toolTip.svg" alt="tooltip" class="tooltip-icon">
+                            <!-- Tool Tip Text-->
+                            <span class="tooltip-text">
+                            <span class="bold">Upload your photo to a free image hosting site.</span><br>
+                            <ol>
+                                <li>Sign up / login to <a href="https://postimages.org/" target="_blank" rel="noopener noreferrer">PostImages</a></li>
+                                <li>Upload your photo</li>
+                                <li>Click 'Share'</li>
+                                <li>Copy the 'Direct Link' URL</li>
+                                <li>Paste the URL here</li>
+                            </ol>
+                        </span>
+                        </div>
+                    </div>
                     <input type="text"
                            name="photo"
                            placeholder="enter URL here"
