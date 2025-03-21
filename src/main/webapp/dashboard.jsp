@@ -14,7 +14,10 @@
 
 <main id="mainContent">
 
-    <h1>${user.firstName}'s ${bassGoal.goalYear} Dashboard</h1>
+    <div class="headerWithPic">
+        <h1>${user.firstName}'s ${bassGoal.goalYear} Dashboard</h1>
+        <img class="profileIcon" src="${empty user.profilePicture ? 'images/defaultProfile.svg' : user.profilePicture}" alt="profile picture">
+    </div>
     <form name="dashboard"
           action="dashboard"
           method="get">

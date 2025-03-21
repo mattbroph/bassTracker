@@ -13,6 +13,11 @@
     flex-wrap: wrap;
 }
 
+/* Override main.css - no need for margin on this page */
+.headerWithPic {
+    margin-bottom: 4em;
+}
+
 
 /*********************
 Profile container

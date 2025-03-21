@@ -2,6 +2,10 @@
     font-size: 26px;
 }
 
+/* Override main.css - no need for margin on this page */
+.headerWithPic {
+    margin-bottom: 0;
+}
 
 /*****************************
 * Chart JS

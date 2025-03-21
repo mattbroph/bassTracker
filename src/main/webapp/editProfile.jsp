@@ -12,7 +12,7 @@
 
 <main id="mainContent">
 
-    <h1>${user.firstName}'s Profile</h1>
+    <h1>Edit ${user.firstName}'s Profile</h1>
 
     <form name="editProfile"
           action="actionEditProfile"
