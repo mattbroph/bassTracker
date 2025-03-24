@@ -108,14 +108,14 @@
 2. The \#15 Edit Lake story
 3. The \#16 Add Lake story
 
-- [ ] Create Lake entity
-- [ ] Create View Lakes jsp
-- [ ] Create Add Lakes jsp
-- [ ] Create Edit Lakes jsp
-- [ ] Create controller to route to viewLakes.jsp
-- [ ] Create controller to route to addLakes.jsp
-- [ ] Create controller to route to editLakes.jsp
-- [ ] Create class to perform CRUD for Add, View and Edit lakes. User's won't be able to "delete" lakes, they can edit them or mark them inactive. This is so that journals with lakes that are marked inactive still retain their data.
+- [X] Create Lake entity
+- [X] Create View Lakes jsp
+- [X] Create Add Lakes jsp
+- [X] Create Edit Lakes jsp
+- [X] Create controller to route to viewLakes.jsp
+- [X] Create controller to route to addLakes.jsp
+- [X] Create controller to route to editLakes.jsp
+- [X] Create class to perform CRUD for Add, View and Edit lakes. User's won't be able to "delete" lakes, they can edit them or mark them inactive. This is so that journals with lakes that are marked inactive still retain their data.
 - [ ] Update journal time log
 
 ### Week 11 Class topic is Team Project work week
@@ -165,21 +165,33 @@
 - [ ] Weekly journal entry
 - [ ] Final touches before code complete
 
-### Additional things to work on
+### Spring Break
 - [X] Gracefully handle user not being able to add or edit lake with same name
-- [ ] Disable certain nav bar pages if user not logged in
-- [ ] Show dynamic page titles
-- [ ] Tool tip for add journal photo
-- [ ] Work on jsp messaging if bass goal = 0
-- [ ] Work on jsp messaging if lake is empty on add journal
-- [ ] Custom 404
-- [ ] Custom 500 error page
-- [ ] Unauthorized access page
-- [ ] Auto load 6 years of bass goals
+- [X] Disable certain nav bar pages if user not logged in
+- [X] Show dynamic page titles
+- [X] Add underline on last clicked nav bar
+- [X] Set default profile pic image
+- [X] Form for year in dashboard jsp
+- [X] Work on jsp messaging if bass goal = 0
+- [X] Work on jsp messaging if lake is empty on add journal
+- [X] Add user profile pic to H1s?
+- [X] Autoload 6 years of bass goals
+- [X] Redesign view profile css
+- [X] Make view profile page stats dynamic
+- [X] Tool tip for add / edit journal photo & edit profile photo
+- [X] Custom 404
+- [X] Custom 500 error page
+- [X] Unauthorized access page
+- [X] Send Ashlie logo info
+
+### Additional things to work on
 - [ ] Redesign view journal details css
-- [ ] Redesign view profile css
-- [ ] Testing dashboard calculator
+- [ ] Update session check sending to index.jsp to a properties variable
+- [ ] Hibernate form validation
+- [ ] Css for hover over open / edit on tables
+- [ ] Review all java docs (params / returns ect.)
+- [ ] Refactor any controllers you think is necessary
 - [ ] All test plans
 - [ ] Add logging
-- [ ] Update all controller logic for insert / update to handle errors
-
+- [ ] Review all controller logic for insert / update to handle errors
+- [ ] Testing dashboard calculator

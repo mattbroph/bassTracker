@@ -48,15 +48,7 @@ public class Database implements PropertiesLoader {
      */
     private void loadProperties() {
 
-
-        try {
-            properties = loadProperties("/database.properties");
-        } catch (
-        IOException ioException) {
-            logger.error("Cannot load properties..." + ioException.getMessage(), ioException);
-        } catch (Exception e) {
-            logger.error("Error loading properties" + e.getMessage(), e);
-        }
+        properties = loadProperties("/database.properties");
 
     }
 

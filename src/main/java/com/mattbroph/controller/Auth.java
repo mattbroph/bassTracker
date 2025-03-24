@@ -102,7 +102,7 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         // Add the user to the session
         userService.addUserSession(user, req);
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/home");
         dispatcher.forward(req, resp);
 
     }
@@ -255,20 +255,14 @@ public class Auth extends HttpServlet implements PropertiesLoader {
      */
     // TODO This code appears in a couple classes, consider using a startup servlet similar to adv java project
     private void loadProperties() {
-        try {
-            properties = loadProperties("/cognito.properties");
-            CLIENT_ID = properties.getProperty("client.id");
-            CLIENT_SECRET = properties.getProperty("client.secret");
-            OAUTH_URL = properties.getProperty("oauthURL");
-            LOGIN_URL = properties.getProperty("loginURL");
-            REDIRECT_URL = properties.getProperty("redirectURL");
-            REGION = properties.getProperty("region");
-            POOL_ID = properties.getProperty("poolId");
-        } catch (IOException ioException) {
-            logger.error("Cannot load properties..." + ioException.getMessage(), ioException);
-        } catch (Exception e) {
-            logger.error("Error loading properties" + e.getMessage(), e);
-        }
+        properties = loadProperties("/cognito.properties");
+        CLIENT_ID = properties.getProperty("client.id");
+        CLIENT_SECRET = properties.getProperty("client.secret");
+        OAUTH_URL = properties.getProperty("oauthURL");
+        LOGIN_URL = properties.getProperty("loginURL");
+        REDIRECT_URL = properties.getProperty("redirectURL");
+        REGION = properties.getProperty("region");
+        POOL_ID = properties.getProperty("poolId");
     }
 }
 

@@ -2,6 +2,10 @@
     font-size: 26px;
 }
 
+/* Override main.css - no need for margin on this page */
+.headerWithPic {
+    margin-bottom: 0;
+}
 
 /*****************************
 * Chart JS
@@ -77,6 +81,29 @@
     /* Edit below */
     width: 48%; /* Default for larger screens */
     box-shadow: 0 4px 8px #757272;
+}
+
+/*****************************
+* Buttons
+****************************/
+
+/* Green Anchor Button */
+.greenAnchorButton {
+    padding: .4em 2em;
+    border: 1px solid black;
+    border-radius: .25em;
+    color: #FFFFFF;
+    background-color: #536642;
+    text-decoration: none;
+    text-align: center;
+    /* NEW */
+    margin-top: .5em;
+}
+
+.greenAnchorButton:hover {
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color:#8F9C82;
 }
 
 /*****************************

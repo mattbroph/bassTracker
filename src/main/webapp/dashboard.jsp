@@ -14,9 +14,32 @@
 
 <main id="mainContent">
 
-    <h1>${user.firstName}'s ${bassGoal.goalYear} Dashboard</h1>
+    <div class="headerWithPic">
+        <h1>${user.firstName}'s ${bassGoal.goalYear} Dashboard</h1>
+        <img class="profileIcon" src="${empty user.profilePicture ? 'images/defaultProfile.svg' : user.profilePicture}" alt="profile picture">
+    </div>
+    <form name="dashboard"
+          action="dashboard"
+          method="get">
+        <!-- Dashboard Year -->
+        <label for="dashboardYear"></label>
+        <select name="dashboardYear" id="dashboardYear" required>
+                <option value="${bassGoal.goalYear}" selected disabled>${bassGoal.goalYear}</option>
+                <c:forEach var="goal" items="${bassGoalList}">
+                        <option value="${goal.goalYear}">${goal.goalYear}</option>
+                </c:forEach>
+        </select>
+        <!-- Button-->
+        <br>
+        <input type="submit" value="Change Year" class="greenAnchorButton">
+    </form>
+    <%-- If yearly bass goal is 0, let the user know they can update it on their profile page--%>
+    <c:if test="${bassGoal.goalCount == 0}">
+        <p id="message">Your ${bassGoal.goalYear} bass goal is currently set to 0.<br>You can update your yearly goals on your profile page.</p>
+    </c:if>
     <br>
     <br>
+
     <section id="dashboardRowOne">
         <!-- Bass Goal Donut -->
         <div id="bassGoalContainer"

@@ -21,11 +21,17 @@ public interface PropertiesLoader {
      * @throws IOException properties file cannot be read
      * @throws Exception something went wrong accessing the properties file
      */
-    default Properties loadProperties(String propertiesFilePath) throws IOException, Exception{
+    default Properties loadProperties(String propertiesFilePath) {
+
         Properties properties = new Properties();
 
-        properties.load(this.getClass().getResourceAsStream(propertiesFilePath));
-
+        try {
+            properties.load(this.getClass().getResourceAsStream(propertiesFilePath));
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
         return properties;
     }
 }

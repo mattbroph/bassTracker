@@ -21,6 +21,12 @@ img {
     max-width: 100%;
 }
 
+.active {
+    text-decoration: underline;
+    text-decoration-color: #F6D86B;
+    text-underline-offset: .3em;
+}
+
 /********************************
 * Fonts
 **********************************/
@@ -28,7 +34,7 @@ h1 {
     font-weight: bold;
     font-size: 48px;
     letter-spacing: 4px;
-    padding-bottom: 1em;
+    padding-bottom: .5em;
 }
 
 /* JSP Session Messaging */
@@ -63,6 +69,35 @@ h1 {
 }
 
 /********************************
+* Header w/ Profile Image
+**********************************/
+.profileIcon {
+    width: 150px;
+    max-width: 100%;
+    height: auto;
+    clip-path: circle();
+}
+
+.headerWithPic {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.headerWithPic h1 {
+    padding-bottom: 0;
+}
+
+@media (max-width: 600px) {
+    .headerWithPic {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/********************************
 * Footer
 **********************************/
 footer {
@@ -85,4 +120,51 @@ footer a:hover {
 
 footer a img:hover {
     border: solid 1px grey;
+}
+
+/********************************
+* Tool Tips
+**********************************/
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+}
+
+.toolTipDiv {
+    display: flex;
+    align-items: center;
+}
+
+/* Tooltip Icon */
+.tooltip-icon {
+    width: 20px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+/* Tooltip Text */
+.tooltip-text {
+    visibility: hidden;
+    background-color: #F6D86B;
+    padding: 5px;
+    border-radius: 5px;
+    border: #536642 solid 1px;
+
+    position: absolute;
+    top: -30px;
+    transform: translateX(-36%);
+    white-space: nowrap;
+
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Show tooltip when hovering over the icon */
+.tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+.bold {
+    font-weight: 600;
 }

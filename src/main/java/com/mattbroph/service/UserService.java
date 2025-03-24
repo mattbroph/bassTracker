@@ -42,52 +42,54 @@ public class UserService {
 
 
         /* If the user exists then add it to the session variable.
-        *  This will grab the First Name and Last Name and Profile Picture from
-        * the database.
-        */
+         *  This will grab the First Name and Last Name and Profile Picture from
+         * the database.
+         */
         if (userList.size() == 1) {
             /* Only one user can exist with the same email, so grab the first
-            *  and only user from the list
-            */
+             *  and only user from the list
+             */
             user = userList.get(0);
             // Store the user in the session
             session.setAttribute("user", user);
 
         } else {
             /*
-            * If the user does not exist yet, add it to the database. Use the
-            * Cognito jwt claim variables for first name and last name to create
-            * the user.
-            */
+             * If the user does not exist yet, add it to the database. Use the
+             * Cognito jwt claim variables for first name and last name to create
+             * the user.
+             */
             int insertedUserId = 0;
-
             insertedUserId = userDao.insert(user);
-
             User newUser = (User) userDao.getById(insertedUserId);
 
+            /*
+             * If the user was inserted successfully, create bass goals for
+             * the current year up to the max year for the user.
+             */
             if (insertedUserId > 0) {
-                /*
-                * If the user was inserted successfully, create a bass goal for
-                * the current year for the user.
-                */
-                int insertedBassGoalId = 0;
+
+                final int MAX_YEAR_TO_INSERT = 2030;
                 LocalDate localDate = LocalDate.now();
-                int year = localDate.getYear();
+                int currentYear = localDate.getYear();
 
-                // Insert bass goal
-                BassGoal bassGoal = new BassGoal(newUser, year, 0);
-                insertedBassGoalId = bassGoalDao.insert(bassGoal);
 
-                // TODO not sure if this is true if an insert fails or not
-                if (insertedBassGoalId == 0) {
+                for (int year = currentYear; year <= MAX_YEAR_TO_INSERT; year++) {
 
-                    logger.error("User created but bass goal insert failed"
-                            + " for user: " + user.getUserEmail());
-                    session.setAttribute("newUserError", "User created but"
-                            + " bass goal insert failed");
+                    int insertedBassGoalId = 0;
+
+                    BassGoal bassGoal = new BassGoal(newUser, year, 0);
+                    insertedBassGoalId = bassGoalDao.insert(bassGoal);
+
+                    if (insertedBassGoalId > 0) {
+
+                        logger.info( year + " bass goal' for user "
+                                + newUser.getUserEmail() + " was added to the database.");
+                    }
+
+                    session.setAttribute("user", newUser);
+
                 }
-
-                session.setAttribute("user", newUser);
 
             } else {
                 logger.error("Failed to insert new user into database: "
@@ -95,6 +97,7 @@ public class UserService {
                 session.setAttribute("newUserError", "User could not be"
                         + " created, please try to sign up again.");
             }
+
 
         }
     }

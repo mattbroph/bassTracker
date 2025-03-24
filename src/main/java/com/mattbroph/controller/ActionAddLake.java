@@ -39,6 +39,7 @@ public class ActionAddLake extends HttpServlet {
 
         // Get the necessary daos
         GenericDao lakeDao = new GenericDao(Lake.class);
+        GenericDao userDao = new GenericDao(User.class);
 
         // Build forwarding url variable
         String url = "";
@@ -56,11 +57,14 @@ public class ActionAddLake extends HttpServlet {
             return;
         }
 
+        // Reload user from database to avoid stale data
+        User user = (User) userDao.getById(sessionUser.getId());
+
         // Retrieve the data from the form
-        Lake newLake = retrieveFormData(request, sessionUser);
+        Lake newLake = retrieveFormData(request, user);
 
         // Check to see if lake already exists for this user
-        List<Lake> existingLakes = sessionUser.getLakes();
+        List<Lake> existingLakes = user.getLakes();
 
         for (Lake lake : existingLakes) {
 

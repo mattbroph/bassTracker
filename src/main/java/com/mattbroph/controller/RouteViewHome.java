@@ -1,29 +1,34 @@
 package com.mattbroph.controller;
 
-import com.mattbroph.entity.Journal;
+import com.mattbroph.entity.BassGoal;
 import com.mattbroph.entity.User;
 import com.mattbroph.persistence.GenericDao;
 import com.mattbroph.service.PageTitleService;
 
-import java.io.*;
-import java.util.*;
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.util.List;
 
 
-/** Forwards the request to view journals jsp page
+/** Forwards the request to view profile jsp page
  *
  *@author mbrophy
  */
 @WebServlet(
-        name = "routeViewJournalsServlet",
-        urlPatterns = { "/viewJournals" }
+        name = "routeViewHomeServlet",
+        urlPatterns = { "/home" }
 )
-public class RouteViewJournals extends HttpServlet {
+public class RouteViewHome extends HttpServlet {
 
     /**
-     * Forwards to the View Journals JSP
+     * Forwards to the View Profile JSP
      *
      * @param request  the HttpServletRequest object
      * @param response the HttpServletRequest object
@@ -34,15 +39,13 @@ public class RouteViewJournals extends HttpServlet {
                       HttpServletResponse response)
             throws ServletException, IOException {
 
-        GenericDao userDao = new GenericDao(User.class);
-
-        // Set the url param
-        String url = "/viewJournals.jsp";
+        // Declare the url
+        String url = "/index.jsp";
 
         // Get the page title from the servlet context and set it in the request
         ServletContext context = getServletContext();
         PageTitleService pageTitleService = new PageTitleService();
-        String pageTitle = pageTitleService.getPageTitle(context, "page.viewJournals");
+        String pageTitle = pageTitleService.getPageTitle(context, "page.home");
         request.setAttribute("pageTitle", pageTitle);
 
         // Get user from the session
@@ -52,28 +55,19 @@ public class RouteViewJournals extends HttpServlet {
         /*
          * Check if user is logged in.
          * If they are not logged in, send them to the index jsp.
-         * If they are logged in, send the user to the view journals jsp.
+         * If they are logged in, send the user to the view profile jsp.
          */
         if (sessionUser == null) {
 
             response.sendRedirect("index.jsp");
             return;
 
-        } else {
-
-            // Reload user from database to avoid stale data
-            User user = (User) userDao.getById(sessionUser.getId());
-
-            // Get the list of journals matching the user id
-            List<Journal> journals = user.getJournals();
-
-            // Store the journals in the request and forward onto jsp to be displayed
-            request.setAttribute("journals", journals);
-
         }
 
-        // Mark the Journals Nav as active for CSS underline
-        session.setAttribute("lastClicked", "Journal");
+        // Mark the Home Nav as active for CSS underline
+        session.setAttribute("lastClicked", "Home");
+
+
 
         // Forward to the HTTP request data jsp page
         RequestDispatcher dispatcher =

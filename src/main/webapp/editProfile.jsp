@@ -12,7 +12,7 @@
 
 <main id="mainContent">
 
-    <h1>${user.firstName}'s Profile</h1>
+    <h1>Edit ${user.firstName}'s Profile</h1>
 
     <form name="editProfile"
           action="actionEditProfile"
@@ -38,7 +38,23 @@
                    required>
             <br>
             <!-- Profile Picture -->
-            <label for="photo">Profile Picture</label>
+            <div class="toolTipDiv">
+                <label for="photo">Profile Picture</label>
+                    <div class="tooltip-container">
+                        <img src="images/toolTip.svg" alt="tooltip" class="tooltip-icon">
+                        <!-- Tool Tip Text-->
+                        <span class="tooltip-text">
+                            <span class="bold">Upload your photo to a free image hosting site.</span><br>
+                            <ol>
+                                <li>Sign up / login to <a href="https://postimages.org/" target="_blank" rel="noopener noreferrer">PostImages</a></li>
+                                <li>Upload your photo</li>
+                                <li>Click 'Share'</li>
+                                <li>Copy the 'Direct Link' URL</li>
+                                <li>Paste the URL here</li>
+                            </ol>
+                        </span>
+                    </div>
+            </div>
             <input type="text"
                    name="photo"
                    placeholder="enter URL here"

@@ -2,8 +2,10 @@ package com.mattbroph.controller;
 
 import com.mattbroph.entity.User;
 import com.mattbroph.persistence.GenericDao;
+import com.mattbroph.service.PageTitleService;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,6 +39,12 @@ public class RouteEditProfile extends HttpServlet {
 
         // Declare the url
         String url = "/editProfile.jsp";
+
+        // Get the page title from the servlet context and set it in the request
+        ServletContext context = getServletContext();
+        PageTitleService pageTitleService = new PageTitleService();
+        String pageTitle = pageTitleService.getPageTitle(context, "page.editProfile");
+        request.setAttribute("pageTitle", pageTitle);
 
         // Create the userDao
         GenericDao userDao = new GenericDao(User.class);

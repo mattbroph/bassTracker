@@ -12,8 +12,8 @@
 
 <main id="mainContent">
 
-    <h1>Access Denied</h1>
-    <h2>Phishing for something?</h2>
+    <h1>404 - page not found</h1>
+    <h2>Lost this one in the weeds &#8722; try another cast!</h2>
 
 </main>
 <c:import url="footer.jsp" />

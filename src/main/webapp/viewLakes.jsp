@@ -30,7 +30,10 @@
 
 <main id="mainContent">
 
-    <h1>${user.firstName}'s Lakes</h1>
+    <div class="headerWithPic">
+        <h1>${user.firstName}'s Lakes</h1>
+        <img class="profileIcon" src="${empty user.profilePicture ? 'images/defaultProfile.svg' : user.profilePicture}" alt="profile picture">
+    </div>
 
     <%-- Hooked up to ActionAddLake --%>
     <c:if test="${lakeMessage != null}">

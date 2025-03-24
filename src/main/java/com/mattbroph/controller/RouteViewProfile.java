@@ -1,10 +1,13 @@
 package com.mattbroph.controller;
 
-import com.mattbroph.entity.BassGoal;
-import com.mattbroph.entity.User;
+import com.mattbroph.entity.*;
 import com.mattbroph.persistence.GenericDao;
+import com.mattbroph.service.DashboardCalculator;
+import com.mattbroph.service.PageTitleService;
+import com.mattbroph.service.ProfileStatsCalculator;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,6 +46,12 @@ public class RouteViewProfile extends HttpServlet {
         // Declare the url
         String url = "/viewProfile.jsp";
 
+        // Get the page title from the servlet context and set it in the request
+        ServletContext context = getServletContext();
+        PageTitleService pageTitleService = new PageTitleService();
+        String pageTitle = pageTitleService.getPageTitle(context, "page.viewProfile");
+        request.setAttribute("pageTitle", pageTitle);
+
         // Get user from the session
         HttpSession session = request.getSession();
         User sessionUser = (User) session.getAttribute("user");
@@ -62,12 +71,26 @@ public class RouteViewProfile extends HttpServlet {
             // Reload user from database to avoid stale data
             User user = (User) userDao.getById(sessionUser.getId());
 
-            // Get the list of journals matching the user id
+            // Get the list of bass goals matching the user id
             List<BassGoal> bassGoals = user.getBassGoal();
 
-            // Store the journals in the request and forward onto jsp to be displayed
+            // Get the complete list of journals matching the user id
+            List<Journal> journals = user.getJournals();
+            // Instantiate ProfileStats entity with desired list of journals
+            ProfileStats profileStats = new ProfileStats(journals);
+            // Run calculations in the ProfileStatsCalculator class and set the values
+            // for the ProfileStats object
+            ProfileStatsCalculator profileStatsCalculator = new ProfileStatsCalculator();
+            profileStatsCalculator.calculateStatistics(profileStats);
+
+
+            // Store the bass goals and profile stats in the request and forward
+            // onto jsp to be displayed
             request.setAttribute("bassGoals", bassGoals);
+            request.setAttribute("profileStats", profileStats);
             request.setAttribute("user", user);
+            // Mark the Profile Nav as active for CSS underline
+            session.setAttribute("lastClicked", "Profile");
 
         }
 

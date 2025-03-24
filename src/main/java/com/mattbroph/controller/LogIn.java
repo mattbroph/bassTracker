@@ -39,16 +39,10 @@ public class LogIn extends HttpServlet implements PropertiesLoader {
     // TODO This code appears in a couple classes, consider using a startup servlet similar to adv java project
     // 4 to do this work a single time and put the properties in the application scope
     private void loadProperties() {
-        try {
-            properties = loadProperties("/cognito.properties");
-            CLIENT_ID = properties.getProperty("client.id");
-            LOGIN_URL = properties.getProperty("loginURL");
-            REDIRECT_URL = properties.getProperty("redirectURL");
-        } catch (IOException ioException) {
-            logger.error("Cannot load properties..." + ioException.getMessage(), ioException);
-        } catch (Exception e) {
-            logger.error("Error loading properties" + e.getMessage(), e);
-        }
+        properties = loadProperties("/cognito.properties");
+        CLIENT_ID = properties.getProperty("client.id");
+        LOGIN_URL = properties.getProperty("loginURL");
+        REDIRECT_URL = properties.getProperty("redirectURL");
     }
 
     /**

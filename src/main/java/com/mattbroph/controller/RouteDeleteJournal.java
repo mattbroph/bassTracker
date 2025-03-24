@@ -2,7 +2,10 @@ package com.mattbroph.controller;
 
 import com.mattbroph.entity.*;
 import com.mattbroph.persistence.GenericDao;
+import com.mattbroph.service.PageTitleService;
+
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,6 +44,12 @@ public class RouteDeleteJournal extends HttpServlet {
 
         // Set the url
         String url;
+
+        // Get the page title from the servlet context and set it in the request
+        ServletContext context = getServletContext();
+        PageTitleService pageTitleService = new PageTitleService();
+        String pageTitle = pageTitleService.getPageTitle(context, "page.deleteJournal");
+        request.setAttribute("pageTitle", pageTitle);
 
         // Get the journal id
         int journalId = Integer.parseInt(request.getParameter("journalId"));

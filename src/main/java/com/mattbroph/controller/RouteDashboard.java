@@ -1,11 +1,15 @@
 package com.mattbroph.controller;
 
 import com.mattbroph.entity.*;
+import com.mattbroph.persistence.PropertiesLoader;
 import com.mattbroph.service.DashboardCalculator;
 import com.mattbroph.persistence.GenericDao;
+import com.mattbroph.service.PageTitleService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextListener;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,10 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Routes the user to the dashboard based on year
@@ -27,7 +28,7 @@ import java.util.Map;
         name = "routeDashboardServlet",
         urlPatterns = { "/dashboard" }
 )
-public class RouteDashboard extends HttpServlet {
+public class RouteDashboard extends HttpServlet implements PropertiesLoader {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
@@ -50,18 +51,31 @@ public class RouteDashboard extends HttpServlet {
         // Set the url param
         String url = "/dashboard.jsp";
 
+        // Get the page title from the servlet context and set it in the request
+        ServletContext context = getServletContext();
+        PageTitleService pageTitleService = new PageTitleService();
+        String pageTitle = pageTitleService.getPageTitle(context, "page.dashboard");
+        request.setAttribute("pageTitle", pageTitle);
+
         // Get user from the session
         HttpSession session = request.getSession();
         User sessionUser = (User) session.getAttribute("user");
         // Reload user from database to avoid stale data
         User user = (User) userDao.getById(sessionUser.getId());
 
-        // TODO GET THE YEAR - UPDATE THIS TO AN INCOMING REQUEST ATTRIBUTE
         // If year has not been submitted, then use the current year
-        LocalDate localDate = LocalDate.now();
-        int year = localDate.getYear();
+        int year;
+        String dashboardYearParam = request.getParameter("dashboardYear");
 
-        // Get the users bass goal for the year
+        if (dashboardYearParam != null) {
+            year = Integer.parseInt(request.getParameter("dashboardYear"));
+        } else {
+            LocalDate localDate = LocalDate.now();
+            year = localDate.getYear();
+        }
+
+        // Get the user's bass goal for the year that will be displayed on
+        // the dashboard
         Map<String, Object> propertyMap = new HashMap<String, Object>();
         propertyMap.put("user", user);
         propertyMap.put("goalYear", year);
@@ -72,8 +86,14 @@ public class RouteDashboard extends HttpServlet {
         // Used for calculations in the DashboardCalculator
         int yearBassGoal = bassGoal.get(0).getGoalCount();
 
-        // Add the bassGoal to the request
+        // Add the bassGoal to the request. This is used to determine which
+        // year of data to display on the dashboard
         request.setAttribute("bassGoal", bassGoal.get(0));
+
+        // Add the entire list of bass goals to the request. This is used for
+        // the dashboard form selection options
+        List<BassGoal> bassGoalList = user.getBassGoal();
+        request.setAttribute("bassGoalList", bassGoalList);
 
         // Get the users journals
         List<Journal> journals = user.getJournals();
@@ -101,6 +121,9 @@ public class RouteDashboard extends HttpServlet {
 
         // Update the session user object to keep data fresh
         session.setAttribute("user", user);
+
+        // Mark the Dashboard Nav as active for CSS underline
+        session.setAttribute("lastClicked", "Dashboard");
 
         // Forward to the HTTP request data jsp page
         RequestDispatcher dispatcher =
