@@ -56,3 +56,6 @@ fabric.properties
 *.log
 # Remove my notes
 *.txt
+# Remove .ebextension and .platform files
+.ebextensions/
+.platform/
