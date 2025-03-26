@@ -157,6 +157,24 @@
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>3.2.2</version>
+                    <configuration>
+                        <webResources>
+                            <resource>
+                                <directory>src/main/.platform</directory>
+                                <targetPath>.platform</targetPath>
+                                <filtering>true</filtering>
+                            </resource>
+                            <resource>
+                                <directory>src/main/.ebextensions</directory>
+                                <targetPath>.ebextensions</targetPath>
+                                <filtering>true</filtering>
+                            </resource>
+                        </webResources>
+                    </configuration>
+                </plugin>
+                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven-compiler-plugin-version}</version>
@@ -164,14 +182,6 @@
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin-version}</version>
-<!--                    Not needed? getting an error otherwise -->
-<!--                    <dependencies>-->
-<!--                        <dependency>-->
-<!--                            <groupId>org.junit.platform</groupId>-->
-<!--                            <artifactId>junit-platform-surefire-provider</artifactId>-->
-<!--                            <version>${junit-platform-runner-version}</version>-->
-<!--                        </dependency>-->
-<!--                    </dependencies>-->
                 </plugin>
             </plugins>
         </pluginManagement>
