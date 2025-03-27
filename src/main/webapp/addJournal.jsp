@@ -69,6 +69,9 @@
 
                 <fieldset>
                     <legend>Fishing Conditions</legend>
+                    <a href="weather" target="_blank">Forgot the weather?</a>
+                    <br>
+                    <br>
                     <!-- Air Temp -->
                     <label for="airTemp">*Air Temp &#8457;</label>
                     <input type="number"
