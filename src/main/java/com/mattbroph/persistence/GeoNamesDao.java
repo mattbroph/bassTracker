@@ -23,8 +23,8 @@ public class GeoNamesDao implements PropertiesLoader {
             throws JsonProcessingException {
 
          // Get the base URL from the properties file
-         Properties geoNamesProperties = loadProperties("/geoNames.properties");
-         String baseLocationUrl = geoNamesProperties.getProperty("baseURL");
+         Properties geoNamesProperties = loadProperties("/weatherApi.properties");
+         String baseLocationUrl = geoNamesProperties.getProperty("geoNames.baseURL");
          String completeUrl = baseLocationUrl + "&postalcode=" + zipCode + "&country=" + countryCode;
 
          System.out.println(completeUrl);
