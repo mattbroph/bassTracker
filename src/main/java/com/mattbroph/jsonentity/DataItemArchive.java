@@ -3,24 +3,28 @@ package com.mattbroph.jsonentity;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DataItem{
+/**
+ * The type Data item.
+ */
+public class DataItemArchive {
+	private String date;
 	private Object wdir;
 	private Object wpgt;
-	private Object temp;
 	private Object pres;
+	private Object tmax;
 	private Object snow;
-	private int coco;
 	private Object wspd;
-	private Object dwpt;
-	private String time;
-	private Object rhum;
+	private Object tavg;
+	private Object tmin;
 	private Object prcp;
-	private Object tsun;
+	private int tsun;
+	// Adding Coco
+	private int coco;
 	private String cocoDescription;
 	private static final Map<Integer, String> WEATHER_CONDITIONS = new HashMap<Integer, String>();
 
 	// Load the weather conditions map in the constructor
-	public DataItem() {
+	public DataItemArchive() {
 		WEATHER_CONDITIONS.put(1, "Clear");
 		WEATHER_CONDITIONS.put(2, "Fair");
 		WEATHER_CONDITIONS.put(3, "Cloudy");
@@ -50,11 +54,20 @@ public class DataItem{
 		WEATHER_CONDITIONS.put(27, "Storm");
 	}
 
+
+	public int getCoco() {
+		return coco;
+	}
+
+	public void setCoco(int coco) {
+		this.coco = coco;
+	}
+
 	public String getCocoDescription() {
 		return cocoDescription;
 	}
 
-	public void setCocoDescription() {
+	public void setCocoDescription(String cocoDescription) {
 
 		for (Map.Entry<Integer, String> entry : WEATHER_CONDITIONS.entrySet()) {
 
@@ -67,100 +80,201 @@ public class DataItem{
 		this.cocoDescription = "Unknown";
 	}
 
+	/**
+	 * Set date.
+	 *
+	 * @param date the date
+	 */
+	public void setDate(String date){
+		this.date = date;
+	}
+
+	/**
+	 * Get date string.
+	 *
+	 * @return the string
+	 */
+	public String getDate(){
+		return date;
+	}
+
+	/**
+	 * Set wdir.
+	 *
+	 * @param wdir the wdir
+	 */
 	public void setWdir(Object wdir){
 		this.wdir = wdir;
 	}
 
+	/**
+	 * Get wdir object.
+	 *
+	 * @return the object
+	 */
 	public Object getWdir(){
 		return wdir;
 	}
 
+	/**
+	 * Set wpgt.
+	 *
+	 * @param wpgt the wpgt
+	 */
 	public void setWpgt(Object wpgt){
 		this.wpgt = wpgt;
 	}
 
+	/**
+	 * Get wpgt object.
+	 *
+	 * @return the object
+	 */
 	public Object getWpgt(){
 		return wpgt;
 	}
 
-	public void setTemp(Object temp){
-		this.temp = temp;
-	}
-
-	public Object getTemp(){
-		return temp;
-	}
-
+	/**
+	 * Set pres.
+	 *
+	 * @param pres the pres
+	 */
 	public void setPres(Object pres){
 		this.pres = pres;
 	}
 
+	/**
+	 * Get pres object.
+	 *
+	 * @return the object
+	 */
 	public Object getPres(){
 		return pres;
 	}
 
+	/**
+	 * Set tmax.
+	 *
+	 * @param tmax the tmax
+	 */
+	public void setTmax(Object tmax){
+		this.tmax = tmax;
+	}
+
+	/**
+	 * Get tmax object.
+	 *
+	 * @return the object
+	 */
+	public Object getTmax(){
+		return tmax;
+	}
+
+	/**
+	 * Set snow.
+	 *
+	 * @param snow the snow
+	 */
 	public void setSnow(Object snow){
 		this.snow = snow;
 	}
 
+	/**
+	 * Get snow object.
+	 *
+	 * @return the object
+	 */
 	public Object getSnow(){
 		return snow;
 	}
 
-	public void setCoco(int coco){
-		this.coco = coco;
-		setCocoDescription();
-	}
-
-	public int getCoco(){
-		return coco;
-	}
-
+	/**
+	 * Set wspd.
+	 *
+	 * @param wspd the wspd
+	 */
 	public void setWspd(Object wspd){
 		this.wspd = wspd;
 	}
 
+	/**
+	 * Get wspd object.
+	 *
+	 * @return the object
+	 */
 	public Object getWspd(){
 		return wspd;
 	}
 
-	public void setDwpt(Object dwpt){
-		this.dwpt = dwpt;
+	/**
+	 * Set tavg.
+	 *
+	 * @param tavg the tavg
+	 */
+	public void setTavg(Object tavg){
+		this.tavg = tavg;
 	}
 
-	public Object getDwpt(){
-		return dwpt;
+	/**
+	 * Get tavg object.
+	 *
+	 * @return the object
+	 */
+	public Object getTavg(){
+		return tavg;
 	}
 
-	public void setTime(String time){
-		this.time = time;
+	/**
+	 * Set tmin.
+	 *
+	 * @param tmin the tmin
+	 */
+	public void setTmin(Object tmin){
+		this.tmin = tmin;
 	}
 
-	public String getTime(){
-		return time;
+	/**
+	 * Get tmin object.
+	 *
+	 * @return the object
+	 */
+	public Object getTmin(){
+		return tmin;
 	}
 
-	public void setRhum(Object rhum){
-		this.rhum = rhum;
-	}
-
-	public Object getRhum(){
-		return rhum;
-	}
-
+	/**
+	 * Set prcp.
+	 *
+	 * @param prcp the prcp
+	 */
 	public void setPrcp(Object prcp){
 		this.prcp = prcp;
 	}
 
+	/**
+	 * Get prcp object.
+	 *
+	 * @return the object
+	 */
 	public Object getPrcp(){
 		return prcp;
 	}
 
-	public void setTsun(Object tsun){
+	/**
+	 * Set tsun.
+	 *
+	 * @param tsun the tsun
+	 */
+	public void setTsun(int tsun){
 		this.tsun = tsun;
 	}
 
-	public Object getTsun(){
+	/**
+	 * Get tsun int.
+	 *
+	 * @return the int
+	 */
+	public int getTsun(){
 		return tsun;
 	}
 
@@ -168,16 +282,15 @@ public class DataItem{
  	public String toString(){
 		return 
 			"DataItem{" + 
-			"wdir = '" + wdir + '\'' + 
+			"date = '" + date + '\'' + 
+			",wdir = '" + wdir + '\'' + 
 			",wpgt = '" + wpgt + '\'' + 
-			",temp = '" + temp + '\'' + 
 			",pres = '" + pres + '\'' + 
+			",tmax = '" + tmax + '\'' + 
 			",snow = '" + snow + '\'' + 
-			",coco = '" + coco + '\'' + 
 			",wspd = '" + wspd + '\'' + 
-			",dwpt = '" + dwpt + '\'' + 
-			",time = '" + time + '\'' + 
-			",rhum = '" + rhum + '\'' + 
+			",tavg = '" + tavg + '\'' + 
+			",tmin = '" + tmin + '\'' + 
 			",prcp = '" + prcp + '\'' + 
 			",tsun = '" + tsun + '\'' + 
 			"}";

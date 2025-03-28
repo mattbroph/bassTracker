@@ -2,6 +2,7 @@ package com.mattbroph.persistence;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mattbroph.jsonentity.Location;
 import com.mattbroph.jsonentity.MeteoStat;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -24,22 +25,26 @@ public class MeteoStatWeatherDao implements PropertiesLoader {
     /**
      * Calls the meteostat api to retrieve weather information
      *
-     * @param lat the latitude of the geonames location
-     * @param lng the longitude of the geonames location
-     * @param date the date of the weather being requested
-     * @return the MeteoStatWeather information based on lat, lng & date
+     * @param location the geonames Location object containing lat and lng data
+     * @param startDate the start date of the weather being requested
+     * @param endDate the end date of the weatehr being requested
+     * @return the MeteoStatWeather information based on lat, lng & dates
      *
      * @throws JsonProcessingException if an error occurs while processing the json
      */
-     public MeteoStat getMeteoStatWeather(Object lat, Object lng, LocalDate date)
+     public MeteoStat getMeteoStatWeather(Location location, LocalDate startDate, LocalDate endDate)
             throws JsonProcessingException {
+
+         // Get the latitude and longitude values
+         Object lat = location.getPostalCodes().get(0).getLat();
+         Object lng = location.getPostalCodes().get(0).getLng();
 
          // Build the base URL from the properties file values
          Properties meteostatProperties = loadProperties("/weatherApi.properties");
          String baseUrl = meteostatProperties.getProperty("meteostat.baseURL");
 
-         String completeUrl = baseUrl + "?lat=" + lat + "&lon=" + lng + "&start=" + date + "&end=" + date;
-         // https://meteostat.p.rapidapi.com/point/daily?lat=52.5244&lon=13.4105&start=2020-01-01&end=2020-01-01
+         String completeUrl = baseUrl + "?lat=" + lat + "&lon=" + lng + "&start=" + startDate + "&end=" + endDate + "&units=imperial";
+         // https://meteostat.p.rapidapi.com/point/daily?lat=-89.352295&lon=43.120526&start=2020-01-01&end=2020-01-01&units=imperial
 
          logger.info("The test meteostat url is: " + completeUrl);
 
