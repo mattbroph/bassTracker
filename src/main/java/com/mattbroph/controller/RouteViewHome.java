@@ -1,10 +1,7 @@
 package com.mattbroph.controller;
 
-import com.mattbroph.entity.BassGoal;
-import com.mattbroph.entity.User;
-import com.mattbroph.persistence.GenericDao;
-import com.mattbroph.service.PageTitleService;
 
+import com.mattbroph.service.PageTitleService;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -14,8 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
-
 
 /** Forwards the request to view profile jsp page
  *
@@ -50,24 +45,9 @@ public class RouteViewHome extends HttpServlet {
 
         // Get user from the session
         HttpSession session = request.getSession();
-        User sessionUser = (User) session.getAttribute("user");
-
-        /*
-         * Check if user is logged in.
-         * If they are not logged in, send them to the index jsp.
-         * If they are logged in, send the user to the view profile jsp.
-         */
-        if (sessionUser == null) {
-
-            response.sendRedirect("index.jsp");
-            return;
-
-        }
 
         // Mark the Home Nav as active for CSS underline
         session.setAttribute("lastClicked", "Home");
-
-
 
         // Forward to the HTTP request data jsp page
         RequestDispatcher dispatcher =

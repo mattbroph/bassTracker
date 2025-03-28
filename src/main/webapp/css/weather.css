@@ -1,0 +1,21 @@
+/******************
+* Table
+******************/
+#table tbody tr:nth-child(even) {
+    background-color: #E8E7E9;
+}
+
+#table tbody tr:nth-child(odd) {
+    background-color: #FFFFFF;
+}
+
+th {
+    background-color: #ACB7A3;
+    padding: 12px;
+}
+
+#table th, #table td {
+    padding: 10px;
+    text-align: center;
+}
+
