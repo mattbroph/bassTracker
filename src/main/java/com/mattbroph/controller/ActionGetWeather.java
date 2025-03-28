@@ -6,8 +6,10 @@ import com.mattbroph.jsonentity.MeteoStat;
 import com.mattbroph.jsonentity.PostalCodes;
 import com.mattbroph.persistence.GeoNamesDao;
 import com.mattbroph.persistence.MeteoStatWeatherDao;
+import com.mattbroph.service.PageTitleService;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -68,6 +70,12 @@ public class ActionGetWeather extends HttpServlet {
         request.setAttribute("postalCode", postalCode);
         request.setAttribute("hourlyData", hourlyData);
         request.setAttribute("date", date);
+
+        // Get the page title from the servlet context and set it in the request
+        ServletContext context = getServletContext();
+        PageTitleService pageTitleService = new PageTitleService();
+        String pageTitle = pageTitleService.getPageTitle(context, "page.weather");
+        request.setAttribute("pageTitle", pageTitle);
 
         // Forward to the weather jsp
         RequestDispatcher dispatcher =
