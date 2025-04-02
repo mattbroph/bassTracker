@@ -193,5 +193,5 @@
 - [ ] Refactor any controllers you think is necessary
 - [ ] All test plans
 - [ ] Add logging
-- [ ] Review all controller logic for insert / update to handle errors
+- [X] Review all controller logic for insert / update to handle errors
 - [ ] Testing dashboard calculator
