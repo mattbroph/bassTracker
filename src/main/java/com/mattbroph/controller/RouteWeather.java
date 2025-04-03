@@ -1,7 +1,9 @@
 package com.mattbroph.controller;
 
-
+import com.mattbroph.entity.User;
+import com.mattbroph.persistence.GenericDao;
 import com.mattbroph.service.PageTitleService;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -12,18 +14,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-/** Forwards the request to view profile jsp page
+/** Forwards the request to the weather form page
  *
  *@author mbrophy
  */
 @WebServlet(
-        name = "routeViewHomeServlet",
-        urlPatterns = { "/home" }
+        name = "routeWeatherServlet",
+        urlPatterns = { "/weather" }
 )
-public class RouteViewHome extends HttpServlet {
+public class RouteWeather extends HttpServlet {
 
     /**
-     * Forwards to the View Profile JSP
+     * Forwards to the weather form page
      *
      * @param request  the HttpServletRequest object
      * @param response the HttpServletRequest object
@@ -34,20 +36,18 @@ public class RouteViewHome extends HttpServlet {
                       HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Declare the url
-        String url = "/index.jsp";
+        // Set the url param
+        String url = "/weather.jsp";
 
         // Get the page title from the servlet context and set it in the request
         ServletContext context = getServletContext();
         PageTitleService pageTitleService = new PageTitleService();
-        String pageTitle = pageTitleService.getPageTitle(context, "page.home");
+        String pageTitle = pageTitleService.getPageTitle(context, "page.weather");
         request.setAttribute("pageTitle", pageTitle);
 
-        // Get user from the session
+        // Mark the weather tab as active to underline the nav
         HttpSession session = request.getSession();
-
-        // Mark the Home Nav as active for CSS underline
-        session.setAttribute("lastClicked", "Home");
+        session.setAttribute("lastClicked", "Weather");
 
         // Forward to the HTTP request data jsp page
         RequestDispatcher dispatcher =
