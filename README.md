@@ -26,13 +26,12 @@ The Bass Tracker application will allow users to log their fishing trips, track 
 * Dependency Management
   * Maven
 * Web Services consumed using Java
-  * AWS S3 for user profile photo
+  * Meteostat Weather API
 * CSS 
   * Custom CSS
   * Minimal Bootstrap
 * Data Validation
-  * TBD
-  * Explore Hibernate Validator?
+  * Hibernate Validator
 * Logging
   * Log4J2
 * Hosting
