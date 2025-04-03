@@ -44,3 +44,17 @@ The Bass Tracker application will allow users to log their fishing trips, track 
 * Unit Testing
   * JUnit tests to cover all testable logic
 * IDE: IntelliJ IDEA
+
+## Screenshots
+
+### Dashboard
+<img src="https://github.com/mattbroph/bassTracker/screenshots/app/dashboard.png">
+
+### View Journals
+<img src="https://github.com/mattbroph/bassTracker/screenshots/app/viewJournals.png">
+
+### Weather (API)
+<img src="https://github.com/mattbroph/bassTracker/screenshots/app/weather.png">
+
+### View Profile
+<img src="https://github.com/mattbroph/bassTracker/screenshots/app/profile.png">
