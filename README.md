@@ -48,13 +48,13 @@ The Bass Tracker application will allow users to log their fishing trips, track 
 ## Screenshots
 
 ### Dashboard
-<img src="https://github.com/mattbroph/bassTracker/tree/main/screenshots/app/dashboard.png">
+<img src="https://github.com/mattbroph/bassTracker/blob/main/screenshots/app/dashboard.png">
 
 ### View Journals
-<img src="https://github.com/mattbroph/bassTracker/screenshots/app/viewJournals.png">
+<img src="https://github.com/mattbroph/bassTracker/blob/main/screenshots/app/viewJournals.png">
 
 ### Weather (API)
-<img src="https://github.com/mattbroph/bassTracker/screenshots/app/weather.png">
+<img src="https://github.com/mattbroph/bassTracker/blob/main/screenshots/app/weather.png">
 
 ### View Profile
-<img src="https://github.com/mattbroph/bassTracker/screenshots/app/profile.png">
+<img src="https://github.com/mattbroph/bassTracker/blob/main/screenshots/app/profile.png">
