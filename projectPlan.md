@@ -96,10 +96,10 @@
 #### This week my focus is:
 1. Wrapping up week 8 stories if overflow
 2. The \#3b. User Profile Photo story
-- [ ] Double-check all checkpoint 3 items (above) are complete and visible in github.
-- [ ] Add functionality to hit AWS RESTful S3 bucket api and retrieve the user profile image to display throughout the web site
-- [ ] Wrap up any week 8 stories that were carry over
-- [ ] Update journal time log
+- [X] Double-check all checkpoint 3 items (above) are complete and visible in github.
+- [X] Add functionality to hit AWS RESTful S3 bucket api and retrieve the user profile image to display throughout the web site
+- [X] Wrap up any week 8 stories that were carry over
+- [X] Update journal time log
 
 
 ### Week 10 Class topic is Team Project work week
@@ -116,7 +116,7 @@
 - [X] Create controller to route to addLakes.jsp
 - [X] Create controller to route to editLakes.jsp
 - [X] Create class to perform CRUD for Add, View and Edit lakes. User's won't be able to "delete" lakes, they can edit them or mark them inactive. This is so that journals with lakes that are marked inactive still retain their data.
-- [ ] Update journal time log
+- [X] Update journal time log
 
 ### Week 11 Class topic is Team Project work week
 #### This week my focus is:
