@@ -48,7 +48,7 @@ The Bass Tracker application will allow users to log their fishing trips, track 
 ## Screenshots
 
 ### Dashboard
-<img src="https://github.com/mattbroph/bassTracker/screenshots/app/dashboard.png">
+<img src="https://github.com/mattbroph/bassTracker/tree/main/screenshots/app/dashboard.png">
 
 ### View Journals
 <img src="https://github.com/mattbroph/bassTracker/screenshots/app/viewJournals.png">
