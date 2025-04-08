@@ -20,7 +20,7 @@
                     <c:if test="${not empty user}">
                         <a href="dashboard" class="nav-link ${lastClicked == 'Dashboard' ? 'active' : ''}">Dashboard</a>
                         <a href="viewJournals" class="nav-link ${lastClicked == 'Journal' ? 'active' : ''}">Journals</a>
-                        <a href="reports.jsp" class="nav-link ${lastClicked == 'Reports' ? 'active' : ''}">Reports</a>
+                        <a href="viewReports" class="nav-link ${lastClicked == 'Reports' ? 'active' : ''}">Reports</a>
                         <a href="viewLakes" class="nav-link ${lastClicked == 'Lakes' ? 'active' : ''}">Lakes</a>
                     </c:if>
                     <a href="about.jsp" class="nav-link ${lastClicked == 'About' ? 'active' : ''}">About</a>
