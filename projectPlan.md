@@ -122,11 +122,11 @@
 #### This week my focus is:
 1. The \#13 Reports - Catch Rate story
 
-- [ ] Create Catch Rate Report entity
-- [ ] Create class that runs query to determine catch rate
-- [ ] Create report.jsp
-- [ ] Create controller to route to report.jsp
-- [ ] Display report on report.jsp page
+- [X] Create Catch Rate Report entity
+- [X] Create class that runs query to determine catch rate
+- [X] Create report.jsp
+- [X] Create controller to route to report.jsp
+- [ ] Display report on viewReport.jsp page
 - [ ] Update journal time log
 
 ### Week 12 Class topic is completing Team Project work
