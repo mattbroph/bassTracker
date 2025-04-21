@@ -160,7 +160,10 @@
 1. Code reviews and any items that need attention
 
 - [ ] Perform code reviews
+- [ ] All test plans
+- [ ] Add logging
 - [ ] Update journal time log
+- [ ] Update session check sending to index.jsp to a properties variable - and dupe code in checkpoint 3
 
 ### Week 15
 - [ ] Implement Feedback from Week 14 review
@@ -168,6 +171,7 @@
 - [ ] Create video, add video link to readme.md
 - [ ] Finalize all documentation
 - [ ] Code quality check
+- [ ] Review all java docs (params / returns ect.)
 - [ ] Weekly journal entry
 
 ### Week 16
@@ -192,15 +196,3 @@
 - [X] Custom 500 error page
 - [X] Unauthorized access page
 - [X] Send Ashlie logo info
-
-### Required
-- [ ] Update session check sending to index.jsp to a properties variable
-- [ ] Review all java docs (params / returns ect.)
-- [ ] All test plans
-- [ ] Add logging
-- [X] Review all controller logic for insert / update to handle errors
-- [ ] Testing dashboard calculator
-
-### Additional non mvp
-- [ ] Redesign view journal details css
-- [ ] Css for hover over open / edit on tables
