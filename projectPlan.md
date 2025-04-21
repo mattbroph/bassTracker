@@ -133,19 +133,26 @@
 #### This week my focus is:
 1. The \#17 Home story
 
-- [ ] Finish Home page design
-- [ ] Update index.jsp
 - [X] Create controller that routes to index.jsp
-- [ ] Update journal time log
+- [X] Update journal time log
 
 ### Week 13 Class topic is OPTIONAL EJB (enterprise javabeans)
 #### This week my focus is:
 1. Finishing touches on code and prep for code review
 
-- [ ] Update code
 - [ ] Prep for code review
-- [ ] Update journal time log
+- [ ] Finish Home page design
+- [ ] Update index.jsp
 - [ ] Hibernate form validation
+  - [X] Add Lake
+    - [X] Add Lake
+    - [ ] Edit Lake
+    - [ ] Add Journal
+    - [ ] Edit Journal
+    - [ ] Edit Bass Goal
+    - [ ] Edit Profile
+    - [ ] Weather    
+- [ ] Update journal time log
 
 ### Week 14 Class topic is project code reviews
 #### This week my focus is:
@@ -196,4 +203,3 @@
 ### Additional non mvp
 - [ ] Redesign view journal details css
 - [ ] Css for hover over open / edit on tables
-
