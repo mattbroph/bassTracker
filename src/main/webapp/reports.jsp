@@ -5,6 +5,7 @@
 <%-- CSS --%>
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/forms.css">
+<link rel="stylesheet" href="css/viewProfile.css">
 <!-- Data Tables -->
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
@@ -31,70 +32,71 @@
 <main id="mainContent">
 
     <h1>Reports</h1>
-
     <br><br>
     <!-- Form -->
-    <form action="actionCreateReport"
-          method="post">
-        <!-- Select Report -->
+    <c:if test="${empty catchRateStats}">
+        <form action="actionCreateReport"
+              method="post">
+            <!-- Select Report -->
+            <legend>Select a Report</legend>
+            <label for="catchReport">
+                <input class="radio" id="catchReport" type="radio" name="reportType" value="catchReport" checked>Catch Rate
+            </label>
+            <br>
+            <!-- Placeholder for future reports -->
+            <!-- <label for="placeholderReport">
+            <input id="placeholderReport" type="radio" name="reportType" value="placeholderReport">Placeholder</label> -->
+            <br>
+            <!-- Start Date -->
+            <fieldset>
+                <legend>Catch Report</legend>
 
-        <legend>Select a Report</legend>
-        <label for="catchReport">
-            <input class="radio" id="catchReport" type="radio" name="reportType" value="catchReport" checked>Catch Rate
-        </label>
-        <br>
-        <!-- Placeholder for future reports -->
-        <!-- <label for="placeholderReport">
-        <input id="placeholderReport" type="radio" name="reportType" value="placeholderReport">Placeholder</label> -->
-        <br>
-        <!-- Start Date -->
-        <fieldset>
-            <legend>Catch Report</legend>
-
-            <label for="startDate">*Start Date</label>
-            <input type="date"
-                   name="startDate"
-                   id="startDate"
-                   required>
-            <br>
-            <!-- End Date -->
-            <label for="endDate">*End Date</label>
-            <input type="date"
-                   name="endDate"
-                   id="endDate"
-                   required>
-            <br>
-            <!-- Lake -->
-            <label for="lake">*Lake</label>
-            <select name="lake" id="lake">
-                <option value="allLakes" selected>All</option>
-                <%-- Populate the user lake options --%>
-                <c:forEach var="lake" items="${userLakes}">
-                    <option value="${lake.id}">${lake.lakeName}</option>
-                </c:forEach>
-            </select>
-            <br>
-            <!-- Fishing Method -->
-            <label for="fishingMethod">*Fishing Method</label>
-            <select name="fishingMethod" id="fishingMethod" required>
-                <option value="allMethods" selected>All</option>
-                <c:forEach var="method" items="${methodList}">
-                    <option value="${method.id}">${method.methodName}</option>
-                </c:forEach>
-            </select>
-        </fieldset>
-        <!-- Button fields -->
-        <div id="buttonContainer">
-            <input type="submit" value="Submit">
-            <a href="viewReports" class="cancelButton">Clear</a>
-        </div>
-    </form>
-    <br>
-    <br>
-    <br>
+                <label for="startDate">*Start Date</label>
+                <input type="date"
+                       name="startDate"
+                       id="startDate"
+                       required>
+                <br>
+                <!-- End Date -->
+                <label for="endDate">*End Date</label>
+                <input type="date"
+                       name="endDate"
+                       id="endDate"
+                       required>
+                <br>
+                <!-- Lake -->
+                <label for="lake">*Lake</label>
+                <select name="lake" id="lake">
+                    <option value="allLakes" selected>All</option>
+                    <%-- Populate the user lake options --%>
+                    <c:forEach var="lake" items="${userLakes}">
+                        <option value="${lake.id}">${lake.lakeName}</option>
+                    </c:forEach>
+                </select>
+                <br>
+                <!-- Fishing Method -->
+                <label for="fishingMethod">*Fishing Method</label>
+                <select name="fishingMethod" id="fishingMethod" required>
+                    <option value="allMethods" selected>All</option>
+                    <c:forEach var="method" items="${methodList}">
+                        <option value="${method.id}">${method.methodName}</option>
+                    </c:forEach>
+                </select>
+            </fieldset>
+            <!-- Button fields -->
+            <div id="buttonContainer">
+                <input type="submit" value="Submit">
+                <a href="viewReports" class="cancelButton">Clear</a>
+            </div>
+        </form>
+    </c:if>
 
     <!-- Table of Results -->
     <c:if test="${not empty catchRateStats}">
+        <a href="viewReports" class="greenAnchorButton">Run New Report</a>
+        <br>
+        <br>
+        <br>
         <h2>Catch Rate</h2>
         <table id="table" class="display" style="width:100%">
             <thead>
@@ -121,10 +123,6 @@
             </tbody>
         </table>
     </c:if>
-
-
-
-
 </main>
 <c:import url="footer.jsp" />
 </body>
