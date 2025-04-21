@@ -7,7 +7,13 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -92,5 +98,41 @@ class LakeDaoTest {
     void getByPropertyLike() {
         List<Lake> userLakes = (List<Lake>)lakeDao.getByPropertyLike("lakeName", "Lake M");
         assertEquals(3, userLakes.size());
+    }
+
+    /**
+     * This class tests the Lake object validator annotations. This will be used
+     * for form validation.
+     */
+    @Test
+    void checkInvalidLakeValidation() {
+
+        // Create a validator factory and validator
+        ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
+        Validator validator = validatorFactory.getValidator();
+
+        // Get a user
+        User user = (User)userDao.getById(3);
+
+        // Create an invalid lake
+        Lake invalidLake = new Lake("", user, true);
+
+        // Check for any violations
+        Set<ConstraintViolation<Lake>> violations = validator.validate(invalidLake);
+
+        if (violations.isEmpty()) {
+            logger.info("Lake is valid");
+        } else {
+            System.out.println("Lake is not valid");
+            for (ConstraintViolation<Lake> violation : violations) {
+                logger.info(violation.getMessage());
+            }
+        }
+        /* There are two violations
+        * 1. Lake size is not bewtween 1-50
+        * 2. Lake name is empty
+        */
+        assertEquals(2, violations.size());
+
     }
 }
