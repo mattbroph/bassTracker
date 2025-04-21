@@ -126,8 +126,8 @@
 - [X] Create class that runs query to determine catch rate
 - [X] Create report.jsp
 - [X] Create controller to route to report.jsp
-- [ ] Display report on viewReport.jsp page
-- [ ] Update journal time log
+- [X] Display report on viewReport.jsp page
+- [X] Update journal time log
 
 ### Week 12 Class topic is completing Team Project work
 #### This week my focus is:
