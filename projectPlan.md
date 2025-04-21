@@ -131,11 +131,11 @@
 
 ### Week 12 Class topic is completing Team Project work
 #### This week my focus is:
-1. The \#17 About story
+1. The \#17 Home story
 
-- [ ] Finish About page design
-- [ ] Create about.jsp
-- [ ] Create controller that routes to about.jsp
+- [ ] Finish Home page design
+- [ ] Update index.jsp
+- [X] Create controller that routes to index.jsp
 - [ ] Update journal time log
 
 ### Week 13 Class topic is OPTIONAL EJB (enterprise javabeans)
@@ -145,6 +145,7 @@
 - [ ] Update code
 - [ ] Prep for code review
 - [ ] Update journal time log
+- [ ] Hibernate form validation
 
 ### Week 14 Class topic is project code reviews
 #### This week my focus is:
@@ -184,14 +185,15 @@
 - [X] Unauthorized access page
 - [X] Send Ashlie logo info
 
-### Additional things to work on
-- [ ] Redesign view journal details css
+### Required
 - [ ] Update session check sending to index.jsp to a properties variable
-- [ ] Hibernate form validation
-- [ ] Css for hover over open / edit on tables
 - [ ] Review all java docs (params / returns ect.)
-- [ ] Refactor any controllers you think is necessary
 - [ ] All test plans
 - [ ] Add logging
 - [X] Review all controller logic for insert / update to handle errors
 - [ ] Testing dashboard calculator
+
+### Additional non mvp
+- [ ] Redesign view journal details css
+- [ ] Css for hover over open / edit on tables
+
