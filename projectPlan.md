@@ -151,7 +151,8 @@
     - [ ] Edit Journal
     - [ ] Edit Bass Goal
     - [ ] Edit Profile
-    - [ ] Weather    
+    - [ ] Weather
+    - [ ] Catch report
 - [ ] Update journal time log
 
 ### Week 14 Class topic is project code reviews
