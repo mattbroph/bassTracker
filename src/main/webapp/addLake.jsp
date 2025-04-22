@@ -20,7 +20,7 @@
      If user tried to submit a lake that exists, this message will appear.
 --%>
     <c:if test="${lakeMessage != null}">
-        <h2 class="message">${lakeMessage}</h2>
+        <p class="message">${lakeMessage}</p>
         <br>
         <c:remove var="lakeMessage" scope="session" />
     </c:if>

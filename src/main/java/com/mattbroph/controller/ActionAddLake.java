@@ -2,6 +2,7 @@ package com.mattbroph.controller;
 
 import com.mattbroph.entity.*;
 import com.mattbroph.persistence.GenericDao;
+import com.mattbroph.service.FormValidation;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
@@ -27,7 +28,7 @@ import java.util.Set;
         name = "actionAddLakeServlet",
         urlPatterns = { "/actionAddLake" }
 )
-public class ActionAddLake extends HttpServlet {
+public class ActionAddLake extends HttpServlet implements FormValidation {
 
 
     /** Adds a new lake to the application database
@@ -48,10 +49,8 @@ public class ActionAddLake extends HttpServlet {
         GenericDao lakeDao = new GenericDao(Lake.class);
         GenericDao userDao = new GenericDao(User.class);
 
-        // Create a validator factory and validator
-        ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
-        Validator validator = validatorFactory.getValidator();
-        List<String> violationMessages = new ArrayList<>();
+        // Create a list to hold validator error messages
+        List<String> violationMessages;
 
         // Build forwarding url variable
         String url = "";
@@ -75,26 +74,28 @@ public class ActionAddLake extends HttpServlet {
         // Retrieve the data from the form
         Lake newLake = retrieveFormData(request, user);
 
-        // Check for any hibernate violations
-        Set<ConstraintViolation<Lake>> violations = validator.validate(newLake);
 
-        // If there are violations, send them back to the form and display the errors
-        if (!violations.isEmpty()) {
 
-            for (ConstraintViolation<Lake> violation : violations) {
-                // Add violation messages
-                violationMessages.add(violation.getMessage());
-            }
+        /************************************
+        ***********************************
+         ************************************/
 
+        // Check for any hibernate using implemented FormValidation Interface
+        violationMessages = validateFormData(newLake);
+
+        // If there are violations, stop processing doPost and display errors on jsp
+        if (!violationMessages.isEmpty()) {
             session.setAttribute("errorMessages", violationMessages);
-
             url = request.getContextPath() + "/addLake";
-
             response.sendRedirect(url);
-
-            // If there are errors, stop processing doPost and display errors on jsp
             return;
         }
+
+        /************************************
+         ***********************************
+         ************************************/
+
+
 
         // Check to see if lake already exists for this user
         List<Lake> existingLakes = user.getLakes();
