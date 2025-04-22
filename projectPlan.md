@@ -149,7 +149,7 @@
     - [X] Edit Lake
     - [ ] Add Journal
     - [ ] Edit Journal
-    - [ ] Edit Bass Goal
+    - [X] Edit Bass Goal
     - [ ] Edit Profile
     - [ ] Weather
     - [ ] Catch report
