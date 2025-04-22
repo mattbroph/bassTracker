@@ -146,7 +146,7 @@
 - [ ] Hibernate form validation
   - [X] Add Lake
     - [X] Add Lake
-    - [ ] Edit Lake
+    - [X] Edit Lake
     - [ ] Add Journal
     - [ ] Edit Journal
     - [ ] Edit Bass Goal
