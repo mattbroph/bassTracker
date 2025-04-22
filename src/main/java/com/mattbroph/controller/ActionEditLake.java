@@ -2,6 +2,9 @@ package com.mattbroph.controller;
 
 import com.mattbroph.entity.*;
 import com.mattbroph.persistence.GenericDao;
+import com.mattbroph.service.FormValidation;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,10 +25,7 @@ import java.util.List;
         name = "actionEditLakeServlet",
         urlPatterns = { "/actionEditLake" }
 )
-public class ActionEditLake extends HttpServlet {
-
-    // Instance variables
-    private String url = "";
+public class ActionEditLake extends HttpServlet implements FormValidation {
 
 
     /**
@@ -40,11 +40,14 @@ public class ActionEditLake extends HttpServlet {
                        HttpServletResponse response)
             throws ServletException, IOException {
 
+        // Create a list to hold validator error messages
+        List<String> violationMessages;
+
         // Get the necessary daos
         GenericDao lakeDao = new GenericDao(Lake.class);
 
         // Happy path url
-        url = request.getContextPath()
+        String url = request.getContextPath()
                 + "/viewLakes";
 
         // Get the lake id to update
@@ -71,24 +74,63 @@ public class ActionEditLake extends HttpServlet {
             return;
         }
 
-        // Edit parameters of the existing Lake
-        editLakeParameters(lakeToEdit, request, lakeDao, session, sessionUser);
+        /* Create a new lake storing the original lake values.
+         * This gets used in the session messages if there is an issue with the update.
+         */
+        Lake origLakeValues = new Lake(lakeToEdit.getLakeName(), lakeToEdit.getUser(), lakeToEdit.getIsActive());
+
+        // Update the lakes variables based on the form submission
+        boolean editTheLake = editLakeParameters(lakeToEdit, request, sessionUser);
+
+        // If the lake passes initial validation, send it through hibernate validator
+        if (editTheLake) {
+            // Check for any hibernate using implemented FormValidation Interface
+            violationMessages = validateFormData(lakeToEdit);
+
+            // If there are violations, stop processing doPost and display errors on jsp
+            if (!violationMessages.isEmpty()) {
+                session.setAttribute("errorMessages", violationMessages);
+                url = "editLake?lakeId=" + lakeToEdit.getId();
+                session.setAttribute("lake", origLakeValues);
+                response.sendRedirect(url);
+                return;
+            }
+
+            // Update the Lake if hibernate validation passes
+            lakeDao.update(lakeToEdit);
+
+            session.setAttribute("lakeMessage", lakeToEdit.getLakeName()
+                    + " was edited successfully.");
+
+            } else {
+
+                // If the lake name already exists, display that onto the page
+                session.setAttribute("lake", origLakeValues);
+
+                url = "editLake?lakeId=" + lakeToEdit.getId();
+
+                    session.setAttribute("lakeMessage", lakeToEdit.getLakeName()
+                            + " already exists. Lake name must be unique.");
+        }
+
 
         // Send a redirect to the view journal detail page
         response.sendRedirect(url);
     }
 
     /**
-     * Retrieve parameters from form and update journal attributes in database
+     * Retrieve parameters from form and update lake attributes. Track the
+     * editTheLake status and use that for further processing in doPost
      *
-     * @param
-     * @param
-     * @param
-     * @param
-     * @param
+     * @param lakeToEdit the lake to edit
+     * @param request the http request
+     * @param sessionUser the user
      */
-    public void editLakeParameters(Lake lakeToEdit, HttpServletRequest request,
-            GenericDao lakeDao, HttpSession session, User sessionUser) {
+    public boolean editLakeParameters(Lake lakeToEdit,
+             HttpServletRequest request, User sessionUser) {
+
+        // Declare Variables
+        boolean editTheLake;
 
         // Get the lake name and status from the form
         String lakeName = request.getParameter("lakeName");
@@ -115,13 +157,7 @@ public class ActionEditLake extends HttpServlet {
 
             // Set the new lake status
             lakeToEdit.setIsActive(isActive);
-
-            // Update the Lake
-            lakeDao.update(lakeToEdit);
-
-            // Provide a success message
-            session.setAttribute("lakeMessage", lakeToEdit.getLakeName()
-                    + " was edited successfully.");
+            editTheLake = true;
 
         } else {
 
@@ -129,26 +165,18 @@ public class ActionEditLake extends HttpServlet {
             // exists. If it does, do not perform the update.
             if (matchingLakeNames.size() > 0) {
 
-                session.setAttribute("lakeMessage", lakeName
-                        + " already exists. Lake name must be unique.");
-
-                session.setAttribute("lake", lakeToEdit);
-
-                url = "editLake.jsp";
+                lakeToEdit.setLakeName(lakeName);
+                editTheLake = false;
 
             } else {
 
                 // Set the lake name & status
                 lakeToEdit.setLakeName(lakeName);
                 lakeToEdit.setIsActive(isActive);
-
-                // Update the Lake
-                lakeDao.update(lakeToEdit);
-
-                // Provide a success message
-                session.setAttribute("lakeMessage", lakeToEdit.getLakeName()
-                        + " was edited successfully.");
+                editTheLake = true;
             }
         }
+
+        return editTheLake;
     }
 }

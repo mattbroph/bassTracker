@@ -74,12 +74,6 @@ public class ActionAddLake extends HttpServlet implements FormValidation {
         // Retrieve the data from the form
         Lake newLake = retrieveFormData(request, user);
 
-
-
-        /************************************
-        ***********************************
-         ************************************/
-
         // Check for any hibernate using implemented FormValidation Interface
         violationMessages = validateFormData(newLake);
 
@@ -90,12 +84,6 @@ public class ActionAddLake extends HttpServlet implements FormValidation {
             response.sendRedirect(url);
             return;
         }
-
-        /************************************
-         ***********************************
-         ************************************/
-
-
 
         // Check to see if lake already exists for this user
         List<Lake> existingLakes = user.getLakes();
