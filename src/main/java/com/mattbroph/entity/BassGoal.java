@@ -1,6 +1,9 @@
 package com.mattbroph.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
@@ -23,14 +26,19 @@ public class BassGoal {
     /** The user to display on the dashboard */
     @ManyToOne
     @JoinColumn(name = "UserID")
+    @NotNull(message = "User must be provided")
     private User user;
 
     /** The year to display on the dashboard */
     @Column(name = "GoalYear")
+    @Min(value = 1900, message = "Goal year must be a valid year")
+    @Max(value = 2100, message = "Goal year must be a valid year")
     private int goalYear;
 
     /** The user's bass goal count */
     @Column(name = "GoalCount")
+    @Min(value = 0, message = "Goal count must be between 0 and 1000")
+    @Max(value = 1000, message = "Goal count must be between 0 and 1000")
     private int goalCount;
 
     /**
