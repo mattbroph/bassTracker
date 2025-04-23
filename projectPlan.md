@@ -202,4 +202,4 @@
 - [ ] Add a download paper journal feature on the journals page
 - [ ] Redesign view journal details page
 - [ ] Redesign view profile page
-- [ ] Add special character removal from data input / when rendering on page - XSS
+- [ ] Add special character removal from data input / when rendering on page - XSS - maybe use Java HTML Sanitizer (by OWASP)
