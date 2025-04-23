@@ -35,8 +35,8 @@ public class Journal {
     private Lake lake;
 
     @Column(name = "Hours")
-    @PositiveOrZero(message = "Hours must be between 0 and 24")
-    @Size(min = 0, max = 24, message = "Hours must be between 0 and 24")
+    @Min(value = 0, message = "Hours must be between 0 and 24")
+    @Max(value = 0, message = "Hours must be between 0 and 24")
     private double hours;
 
     @ManyToOne
@@ -46,6 +46,8 @@ public class Journal {
 
     @Column(name = "AirTemp")
     @NotNull(message = "Air temp must be provided")
+    @Min(value = -100, message = "Temp must be between -100 and 200")
+    @Max(value = 200, message = "Temp must be between -100 and 200")
     private int airTemp;
 
     @ManyToOne
@@ -68,32 +70,32 @@ public class Journal {
 
     @Column(name = "SM_14_16")
     @Min(value = 0, message = "Count must be between 0 and 100")
-    @Min(value = 100, message = "Count must be between 0 and 100")
+    @Max(value = 100, message = "Count must be between 0 and 100")
     private int smallMouth1416;
 
     @Column(name = "SM_16_19")
     @Min(value = 0, message = "Count must be between 0 and 100")
-    @Min(value = 100, message = "Count must be between 0 and 100")
+    @Max(value = 100, message = "Count must be between 0 and 100")
     private int smallMouth1619;
 
     @Column(name = "SM_19_PLUS")
     @Min(value = 0, message = "Count must be between 0 and 100")
-    @Min(value = 100, message = "Count must be between 0 and 100")
+    @Max(value = 100, message = "Count must be between 0 and 100")
     private int smallMouth19Plus;
 
     @Column(name = "LM_14_16")
     @Min(value = 0, message = "Count must be between 0 and 100")
-    @Min(value = 100, message = "Count must be between 0 and 100")
+    @Max(value = 100, message = "Count must be between 0 and 100")
     private int largeMouth1416;
 
     @Column(name = "LM_16_19")
     @Min(value = 0, message = "Count must be between 0 and 100")
-    @Min(value = 100, message = "Count must be between 0 and 100")
+    @Max(value = 100, message = "Count must be between 0 and 100")
     private int largeMouth1619;
 
     @Column(name = "LM_19_PLUS")
     @Min(value = 0, message = "Count must be between 0 and 100")
-    @Min(value = 100, message = "Count must be between 0 and 100")
+    @Max(value = 100, message = "Count must be between 0 and 100")
     private int largeMouth19Plus;
 
     @Transient

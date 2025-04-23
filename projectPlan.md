@@ -147,7 +147,7 @@
   - [X] Add Lake
     - [X] Add Lake
     - [X] Edit Lake
-    - [ ] Add Journal
+    - [X] Add Journal
     - [ ] Edit Journal
     - [X] Edit Bass Goal
     - [X] Edit Profile
@@ -196,3 +196,10 @@
 - [X] Custom 500 error page
 - [X] Unauthorized access page
 - [X] Send Ashlie logo info
+
+### Future
+- [ ] Add journal validation - send em back to the form but keep it populated
+- [ ] Add a download paper journal feature on the journals page
+- [ ] Redesign view journal details page
+- [ ] Redesign view profile page
+- [ ] Add special character removal from data input / when rendering on page - XSS

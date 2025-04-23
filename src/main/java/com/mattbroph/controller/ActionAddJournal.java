@@ -2,6 +2,8 @@ package com.mattbroph.controller;
 
 import com.mattbroph.entity.*;
 import com.mattbroph.persistence.GenericDao;
+import com.mattbroph.service.FormValidation;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
 import javax.servlet.http.*;
 
 /**
@@ -19,7 +22,7 @@ import javax.servlet.http.*;
         name = "actionAddJournalsServlet",
         urlPatterns = { "/actionAddJournal" }
 )
-public class ActionAddJournal extends HttpServlet {
+public class ActionAddJournal extends HttpServlet implements FormValidation {
 
 
     /** Adds a new journal to the application database
@@ -32,6 +35,9 @@ public class ActionAddJournal extends HttpServlet {
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response)
             throws ServletException, IOException {
+
+        // Create a list to hold validator error messages
+        List<String> violationMessages;
 
         // Get the necessary daos
         GenericDao journalDao = new GenericDao(Journal.class);
@@ -55,7 +61,18 @@ public class ActionAddJournal extends HttpServlet {
         // Retrieve the data from the form
         Journal newJournal = retrieveFormData(request, sessionUser);
 
-        // Add the journal to the database
+        // Check for any hibernate using implemented FormValidation Interface
+        violationMessages = validateFormData(newJournal);
+
+        // If there are violations, stop processing doPost and display errors on jsp
+        if (!violationMessages.isEmpty()) {
+            session.setAttribute("errorMessages", violationMessages);
+            url = request.getContextPath() + "/addJournal";
+            response.sendRedirect(url);
+            return;
+        }
+
+        // Add the journal to the database if no hibernate validator issues
         insertedJournalId = journalDao.insert(newJournal);
 
         // If insertedJournalId > 0 insert was successful, send to view details of the journal
