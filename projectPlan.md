@@ -150,7 +150,7 @@
     - [ ] Add Journal
     - [ ] Edit Journal
     - [X] Edit Bass Goal
-    - [ ] Edit Profile
+    - [X] Edit Profile
     - [ ] Weather
     - [ ] Catch report
 - [ ] Update journal time log
