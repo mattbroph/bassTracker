@@ -1,8 +1,10 @@
 package com.mattbroph.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,24 +22,30 @@ public class User {
     @Column(name = "UserID")
     private int id;
 
-    /** The username */
+    /** The user email */
     @Column(name = "UserEmail")
+    @NotNull(message = "Email must be provided")
+    @Size(min = 1, max = 50, message = "Email must be between 1 and 50 characters")
     private String userEmail;
 
     /** The user's first name */
     @Column(name = "FirstName")
+    @NotNull(message = "First name must be provided")
+    @Size(min = 1, max = 50, message = "First name must be between 1 and 50 characters")
     private String firstName;
 
     /** The user's last name */
     @Column(name = "LastName")
+    @NotNull(message = "Last name must be provided")
+    @Size(min = 1, max = 50, message = "Last name must be between 1 and 50 characters")
     private String lastName;
 
     /** The user's profile picture */
     @Column(name = "ProfilePicture")
+    @Size(min = 0, max = 255, message = "Photo url must be between 0 and 255 characters")
     private String profilePicture;
 
     /** List of the users lakes */
-    // TODO UDPATE CASCADE TYPE ON ALL OBJECTS!!! NEED TO CONSIDER STUFF
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Lake> lakes = new ArrayList<>();
 
