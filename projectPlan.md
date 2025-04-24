@@ -151,7 +151,7 @@
     - [X] Edit Journal
     - [X] Edit Bass Goal
     - [X] Edit Profile
-    - [ ] Weather
+    - [X] Weather
     - [ ] Catch report
 - [ ] Update journal time log
 
