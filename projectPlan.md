@@ -140,7 +140,7 @@
 #### This week my focus is:
 1. Finishing touches on code and prep for code review
 
-- [ ] Prep for code review
+- [X] Prep for code review
 - [ ] Finish Home page design
 - [ ] Update index.jsp
 - [ ] Hibernate form validation
@@ -148,7 +148,7 @@
     - [X] Add Lake
     - [X] Edit Lake
     - [X] Add Journal
-    - [ ] Edit Journal
+    - [X] Edit Journal
     - [X] Edit Bass Goal
     - [X] Edit Profile
     - [ ] Weather
