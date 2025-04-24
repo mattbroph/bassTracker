@@ -33,6 +33,14 @@
 
     <h1>Reports</h1>
     <br><br>
+    <%-- Hibernate validator messages. See ActionCreateReport servlet --%>
+    <c:if test="${errorMessages != null}">
+        <c:forEach var="error" items="${errorMessages}">
+            <p class="message">${error}</p>
+        </c:forEach>
+        <c:remove var="errorMessages" scope="session" />
+    </c:if>
+
     <!-- Form -->
     <c:if test="${empty catchRateStats}">
         <form action="actionCreateReport"

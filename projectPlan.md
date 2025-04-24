@@ -143,7 +143,7 @@
 - [X] Prep for code review
 - [ ] Finish Home page design
 - [ ] Update index.jsp
-- [ ] Hibernate form validation
+- [X] Hibernate form validation
   - [X] Add Lake
     - [X] Add Lake
     - [X] Edit Lake
@@ -152,8 +152,8 @@
     - [X] Edit Bass Goal
     - [X] Edit Profile
     - [X] Weather
-    - [ ] Catch report
-- [ ] Update journal time log
+    - [X] Catch report
+- [X] Update journal time log
 
 ### Week 14 Class topic is project code reviews
 #### This week my focus is:
