@@ -141,8 +141,8 @@
 1. Finishing touches on code and prep for code review
 
 - [X] Prep for code review
-- [ ] Finish Home page design
-- [ ] Update index.jsp
+- [X] Finish Home page design
+- [X] Update index.jsp
 - [X] Hibernate form validation
   - [X] Add Lake
     - [X] Add Lake
