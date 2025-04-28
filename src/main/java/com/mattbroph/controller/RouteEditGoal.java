@@ -4,6 +4,7 @@ import com.mattbroph.entity.BassGoal;
 import com.mattbroph.entity.User;
 import com.mattbroph.persistence.GenericDao;
 import com.mattbroph.service.PageTitleService;
+import com.mattbroph.service.UserSessionValidator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -56,15 +57,11 @@ public class RouteEditGoal extends HttpServlet {
 
         // Get user from the session
         HttpSession session = request.getSession();
-        User sessionUser = (User) session.getAttribute("user");
+        User sessionUser = UserSessionValidator.validateUserSession(request, response, session);
 
-        /*
-        * Check if user is logged in.
-        * If they are not logged in, send them to the index jsp.
-        */
+        // Check if user is logged in
         if (sessionUser == null) {
-
-            response.sendRedirect("index.jsp");
+            // User was redirected via validateUserSession(), stop further processing
             return;
         }
 

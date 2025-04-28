@@ -5,6 +5,7 @@ import com.mattbroph.persistence.PropertiesLoader;
 import com.mattbroph.service.DashboardCalculator;
 import com.mattbroph.persistence.GenericDao;
 import com.mattbroph.service.PageTitleService;
+import com.mattbroph.service.UserSessionValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import javax.servlet.RequestDispatcher;
@@ -59,7 +60,14 @@ public class RouteDashboard extends HttpServlet implements PropertiesLoader {
 
         // Get user from the session
         HttpSession session = request.getSession();
-        User sessionUser = (User) session.getAttribute("user");
+        User sessionUser = UserSessionValidator.validateUserSession(request, response, session);
+
+        // Check if user is logged in
+        if (sessionUser == null) {
+            // User was redirected via validateUserSession(), stop further processing
+            return;
+        }
+
         // Reload user from database to avoid stale data
         User user = (User) userDao.getById(sessionUser.getId());
 
