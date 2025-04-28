@@ -2,7 +2,13 @@ package com.mattbroph.controller;
 
 import com.mattbroph.entity.*;
 import com.mattbroph.persistence.GenericDao;
+import com.mattbroph.service.FormValidation;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Adds a lake entry that was submitted by the user
@@ -20,7 +28,7 @@ import java.util.List;
         name = "actionAddLakeServlet",
         urlPatterns = { "/actionAddLake" }
 )
-public class ActionAddLake extends HttpServlet {
+public class ActionAddLake extends HttpServlet implements FormValidation {
 
 
     /** Adds a new lake to the application database
@@ -40,6 +48,9 @@ public class ActionAddLake extends HttpServlet {
         // Get the necessary daos
         GenericDao lakeDao = new GenericDao(Lake.class);
         GenericDao userDao = new GenericDao(User.class);
+
+        // Create a list to hold validator error messages
+        List<String> violationMessages;
 
         // Build forwarding url variable
         String url = "";
@@ -63,6 +74,17 @@ public class ActionAddLake extends HttpServlet {
         // Retrieve the data from the form
         Lake newLake = retrieveFormData(request, user);
 
+        // Check for any hibernate using implemented FormValidation Interface
+        violationMessages = validateFormData(newLake);
+
+        // If there are violations, stop processing doPost and display errors on jsp
+        if (!violationMessages.isEmpty()) {
+            session.setAttribute("errorMessages", violationMessages);
+            url = request.getContextPath() + "/addLake";
+            response.sendRedirect(url);
+            return;
+        }
+
         // Check to see if lake already exists for this user
         List<Lake> existingLakes = user.getLakes();
 
@@ -73,7 +95,6 @@ public class ActionAddLake extends HttpServlet {
                 break;
             }
         }
-
         /* If lake name already exists for this user, don't do the insert
         * and send them back to the jsp with a message saying that lake already
         * exists.
@@ -119,6 +140,5 @@ public class ActionAddLake extends HttpServlet {
          Lake newLake = new Lake(lakeName, user, isActive);
 
          return newLake;
-
      }
 }

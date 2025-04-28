@@ -16,6 +16,13 @@
 
     <h1>Edit Journal: ${journal.journalDate} | ${journal.lake.lakeName}</h1>
     <br>
+    <%-- Hibernate validator messages. See ActionEditJournal Servlet --%>
+    <c:if test="${errorMessages != null}">
+        <c:forEach var="error" items="${errorMessages}">
+            <p class="message">${error}</p>
+        </c:forEach>
+        <c:remove var="errorMessages" scope="session" />
+    </c:if>
     <form action="actionEditJournal"
           method="post">
         <fieldset>

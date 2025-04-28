@@ -68,11 +68,35 @@ public class ActionCreateReport extends HttpServlet {
 
         // Get the start date and convert to local date
         String startDate = request.getParameter("startDate");
-        LocalDate localStartDate = LocalDate.parse(startDate);
+        LocalDate localStartDate;
+
+        try {
+            localStartDate = LocalDate.parse(startDate);
+
+        } catch (Exception e) {
+            session.setAttribute("errorMessages", "Invalid start date format. Please use yyyy-MM-dd.");
+            response.sendRedirect("viewReports");
+            return;
+        }
 
         // Get the end date and convert to local date
         String endDate = request.getParameter("endDate");
-        LocalDate localEndDate = LocalDate.parse(endDate);
+        LocalDate localEndDate;
+
+        try {
+            localEndDate = LocalDate.parse(endDate);
+        } catch (Exception e) {
+            session.setAttribute("errorMessages", "Invalid end date format. Please use yyyy-MM-dd.");
+            response.sendRedirect("viewReports");
+            return;
+        }
+
+        // Validate that start date is not after end date
+        if (localStartDate.isAfter(localEndDate)) {
+            session.setAttribute("errorMessages", "Start date must be before end date.");
+            response.sendRedirect("viewReports");
+            return;
+        }
 
         // Filter the journals by start date and end date
         List<Journal> filteredJournals = new ArrayList<>();
@@ -89,11 +113,7 @@ public class ActionCreateReport extends HttpServlet {
             }
         }
 
-        // TODO Make sure filteredJournals is not empty
-        // TODO Send this to a "view reports" page and include the selected radio button for h2.
-        // Then add a Run another report button that brings you back to the Reports page.
-
-        // Next Up - Use the Profile stats object to generate catch rate, total bass, hours
+        // Use the Profile stats object to generate catch rate, total bass, hours
         ProfileStats catchRateStats = new ProfileStats(filteredJournals);
         ProfileStatsCalculator catchRateCalculator = new ProfileStatsCalculator();
         catchRateCalculator.calculateStatistics(catchRateStats);
@@ -101,7 +121,6 @@ public class ActionCreateReport extends HttpServlet {
         request.setAttribute("catchRateStats", catchRateStats);
         request.setAttribute("startDate", startDate);
         request.setAttribute("endDate", endDate);
-
 
         // Mark the Report Nav as active for CSS underline
         session.setAttribute("lastClicked", "Reports");
@@ -148,9 +167,7 @@ public class ActionCreateReport extends HttpServlet {
              request.setAttribute("methodName", "All");
          }
 
-
          return propertyMap;
-
      }
 
 }

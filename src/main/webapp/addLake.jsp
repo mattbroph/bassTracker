@@ -20,9 +20,18 @@
      If user tried to submit a lake that exists, this message will appear.
 --%>
     <c:if test="${lakeMessage != null}">
-        <h2 id="message">${lakeMessage}</h2>
+        <p class="message">${lakeMessage}</p>
         <br>
         <c:remove var="lakeMessage" scope="session" />
+    </c:if>
+
+    <%-- Hibernate validator messages. See ActionAddLake servlet
+    retrieveFormData() method --%>
+    <c:if test="${errorMessages != null}">
+        <c:forEach var="error" items="${errorMessages}">
+            <p class="message">${error}</p>
+        </c:forEach>
+        <c:remove var="errorMessages" scope="session" />
     </c:if>
 
     <form action="actionAddLake"

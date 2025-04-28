@@ -3,7 +3,9 @@ package com.mattbroph.controller;
 import com.mattbroph.entity.BassGoal;
 import com.mattbroph.entity.User;
 import com.mattbroph.persistence.GenericDao;
+import com.mattbroph.service.FormValidation;
 
+import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 
 /**
@@ -21,7 +24,7 @@ import java.io.IOException;
         name = "actionEditGoalServlet",
         urlPatterns = { "/actionEditGoal" }
 )
-public class ActionEditGoal extends HttpServlet {
+public class ActionEditGoal extends HttpServlet implements FormValidation {
 
 
     /** Edits a bass goal in the application database
@@ -34,6 +37,9 @@ public class ActionEditGoal extends HttpServlet {
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response)
             throws ServletException, IOException {
+
+        // Create a list to hold validator error messages
+        List<String> violationMessages;
 
         // Get the necessary daos
         GenericDao bassGoalDao = new GenericDao(BassGoal.class);
@@ -64,10 +70,21 @@ public class ActionEditGoal extends HttpServlet {
 
             response.sendRedirect("unauthorized.jsp");
             return;
-         }
+        }
 
         // Edit parameters of the existing bass goal
         editBassGoalParameters(bassGoalToEdit, request);
+
+        // Check for any hibernate using implemented FormValidation Interface
+        violationMessages = validateFormData(bassGoalToEdit);
+
+        // If there are violations, stop processing doPost and display errors on jsp
+        if (!violationMessages.isEmpty()) {
+            session.setAttribute("errorMessages", violationMessages);
+            url = "editGoal?goalId=" + bassGoalToEdit.getId();
+            response.sendRedirect(url);
+            return;
+        }
 
         // Update the bass goal
         bassGoalDao.update(bassGoalToEdit);

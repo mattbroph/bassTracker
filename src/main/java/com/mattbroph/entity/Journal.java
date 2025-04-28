@@ -2,6 +2,7 @@ package com.mattbroph.entity;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import org.hibernate.annotations.GenericGenerator;
 import java.time.LocalDate;
 
@@ -21,55 +22,80 @@ public class Journal {
 
     @ManyToOne
     @JoinColumn(name = "UserID")
+    @NotNull(message = "User must be provided")
     private User user;
 
     @Column(name = "JournalDate")
+    @NotNull(message = "Date must be provided")
     private LocalDate journalDate;
 
     @ManyToOne
     @JoinColumn(name = "LakeID")
+    @NotNull(message = "Lake must be provided")
     private Lake lake;
 
     @Column(name = "Hours")
+    @Min(value = 0, message = "Hours must be between 0 and 24")
+    @Max(value = 24, message = "Hours must be between 0 and 24")
     private double hours;
 
     @ManyToOne
+    @NotNull(message = "Method must be provided")
     @JoinColumn(name = "MethodID")
     private Method method;
 
     @Column(name = "AirTemp")
+    @NotNull(message = "Air temp must be provided")
+    @Min(value = -100, message = "Temp must be between -100 and 200")
+    @Max(value = 200, message = "Temp must be between -100 and 200")
     private int airTemp;
 
     @ManyToOne
+    @NotNull(message = "Weather must be provided")
     @JoinColumn(name = "WeatherID")
     private Weather weather;
 
     @ManyToOne
     @JoinColumn(name = "WindID")
+    @NotNull(message = "Wind must be provided")
     private Wind wind;
 
     @Column(name = "Comments")
+    @Size(max = 1000, message = "Comments should be less than 1000 characters")
     private String comments;
 
     @Column(name = "ImageURL")
+    @Size(min = 0, max = 255, message = "Photo url must be between 0 and 255 characters")
     private String imageURL;
 
     @Column(name = "SM_14_16")
+    @Min(value = 0, message = "SM_14_16 count must be between 0 and 100")
+    @Max(value = 100, message = "SM_14_16 count must be between 0 and 100")
     private int smallMouth1416;
 
     @Column(name = "SM_16_19")
+    @Min(value = 0, message = "SM_16_19 count must be between 0 and 100")
+    @Max(value = 100, message = "SM_16_19 count must be between 0 and 100")
     private int smallMouth1619;
 
     @Column(name = "SM_19_PLUS")
+    @Min(value = 0, message = "SM_19_PLUS count must be between 0 and 100")
+    @Max(value = 100, message = "SM_19_PLUS count must be between 0 and 100")
     private int smallMouth19Plus;
 
     @Column(name = "LM_14_16")
+    @Min(value = 0, message = "LM_14_16 count must be between 0 and 100")
+    @Max(value = 100, message = "LM_14_16 count must be between 0 and 100")
     private int largeMouth1416;
 
     @Column(name = "LM_16_19")
+    @Min(value = 0, message = "LM_16_19 count must be between 0 and 100")
+    @Max(value = 100, message = "LM_16_19 count must be between 0 and 100")
     private int largeMouth1619;
 
     @Column(name = "LM_19_PLUS")
+    @Min(value = 0, message = "LM_19_PLUS count must be between 0 and 100")
+    @Max(value = 100, message = "LM_19_PLUS count must be between 0 and 100")
     private int largeMouth19Plus;
 
     @Transient

@@ -15,14 +15,37 @@
     <h1>Welcome to bass tracker</h1>
 
     <c:choose>
+    <%-- User is not logged in --%>
         <c:when test="${empty user}">
-            <a href = "logIn">Log in</a>
+            <h2>Overview</h2>
+            <br>
+            <p>With an account you can...</p>
+            <ul>
+                <li>Log and review fishing journal entries</li>
+                <li>View dashboard statistics</li>
+                <li>Analyze your fishing data and trends</li>
+            </ul>
+            <br>
+            <a href = "logIn" class="greenAnchorButton">Log In / Sign Up</a>
         </c:when>
         <c:otherwise>
-            <h3>Welcome ${user.userEmail}</h3>
-            <a href = "logOut">Log out</a>
+            <%-- User is logged in --%>
+            <h2>Hi ${user.firstName}, you are now logged in.</h2>
+            <br>
+            <a href = "logOut" class="greenAnchorButton">Log out</a>
         </c:otherwise>
     </c:choose>
+    <br>
+    <br>
+    <br>
+    <h2>Getting Started</h2>
+    <ol>
+        <li>Log in or sign up for an account</li>
+        <li>Add at least one lake under the lakes page</li>
+        <li>Update your yearly bass goals under your profile page</li>
+        <li>Log journals</li>
+        <li>Explore</li>
+    </ol>
 
     <%-- If an error occured while inserting the user into the db. Check
     UserService addUserSession() for details --%>

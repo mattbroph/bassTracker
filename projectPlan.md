@@ -133,26 +133,39 @@
 #### This week my focus is:
 1. The \#17 Home story
 
-- [ ] Finish Home page design
-- [ ] Update index.jsp
 - [X] Create controller that routes to index.jsp
-- [ ] Update journal time log
+- [X] Update journal time log
 
 ### Week 13 Class topic is OPTIONAL EJB (enterprise javabeans)
 #### This week my focus is:
 1. Finishing touches on code and prep for code review
 
-- [ ] Update code
-- [ ] Prep for code review
-- [ ] Update journal time log
-- [ ] Hibernate form validation
+- [X] Prep for code review
+- [X] Finish Home page design
+- [X] Update index.jsp
+- [X] Hibernate form validation
+  - [X] Add Lake
+    - [X] Add Lake
+    - [X] Edit Lake
+    - [X] Add Journal
+    - [X] Edit Journal
+    - [X] Edit Bass Goal
+    - [X] Edit Profile
+    - [X] Weather
+    - [X] Catch report
+- [X] Update journal time log
 
 ### Week 14 Class topic is project code reviews
 #### This week my focus is:
 1. Code reviews and any items that need attention
 
 - [ ] Perform code reviews
+- [ ] All test plans
+- [ ] Add logging
 - [ ] Update journal time log
+- [ ] Update session check sending to index.jsp to a properties variable - and dupe code in checkpoint 3
+- [ ] Remove printlns or printStackTraces - checkpoint 3
+- [ ] Checkpoint 3 - generally overloaded constructors should call the no-arg constructor, allowing you to place common logic in a single place. This is true even if there is not currently logic in the no-arg constructor.
 
 ### Week 15
 - [ ] Implement Feedback from Week 14 review
@@ -160,6 +173,7 @@
 - [ ] Create video, add video link to readme.md
 - [ ] Finalize all documentation
 - [ ] Code quality check
+- [ ] Review all java docs (params / returns ect.)
 - [ ] Weekly journal entry
 
 ### Week 16
@@ -185,15 +199,9 @@
 - [X] Unauthorized access page
 - [X] Send Ashlie logo info
 
-### Required
-- [ ] Update session check sending to index.jsp to a properties variable
-- [ ] Review all java docs (params / returns ect.)
-- [ ] All test plans
-- [ ] Add logging
-- [X] Review all controller logic for insert / update to handle errors
-- [ ] Testing dashboard calculator
-
-### Additional non mvp
-- [ ] Redesign view journal details css
-- [ ] Css for hover over open / edit on tables
-
+### Future
+- [ ] Add journal validation - send em back to the form but keep it populated
+- [ ] Add a download paper journal feature on the journals page
+- [ ] Redesign view journal details page
+- [ ] Redesign view profile page
+- [ ] Add special character removal from data input / when rendering on page - XSS - maybe use Java HTML Sanitizer (by OWASP)

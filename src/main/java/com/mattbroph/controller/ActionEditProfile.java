@@ -2,6 +2,7 @@ package com.mattbroph.controller;
 
 import com.mattbroph.entity.User;
 import com.mattbroph.persistence.GenericDao;
+import com.mattbroph.service.FormValidation;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 
 /**
@@ -20,7 +22,7 @@ import java.io.IOException;
         name = "actionEditProfileServlet",
         urlPatterns = { "/actionEditProfile" }
 )
-public class ActionEditProfile extends HttpServlet {
+public class ActionEditProfile extends HttpServlet implements FormValidation {
 
 
     /** Edits the user profile in the application database
@@ -33,6 +35,9 @@ public class ActionEditProfile extends HttpServlet {
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response)
             throws ServletException, IOException {
+
+        // Create a list to hold validator error messages
+        List<String> violationMessages;
 
         // Get the necessary daos
         GenericDao userDao = new GenericDao(User.class);
@@ -57,7 +62,18 @@ public class ActionEditProfile extends HttpServlet {
         // Edit parameters of the existing user
         editUserParameters(userToEdit, request);
 
-        // Update the User
+        // Check for any hibernate using implemented FormValidation Interface
+        violationMessages = validateFormData(userToEdit);
+
+        // If there are violations, stop processing doPost and display errors on jsp
+        if (!violationMessages.isEmpty()) {
+            session.setAttribute("errorMessages", violationMessages);
+            url = "editProfile";
+            response.sendRedirect(url);
+            return;
+        }
+
+        // Update the User in the database if hibernate validator passes
         userDao.update(userToEdit);
 
         // Provide a success message

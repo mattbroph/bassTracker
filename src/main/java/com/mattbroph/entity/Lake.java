@@ -3,6 +3,9 @@ package com.mattbroph.entity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,11 +25,14 @@ public class Lake {
 
     /** The name of the lake */
     @Column(name = "LakeName")
+    @Size(max = 50, min = 1, message = "Invalid lake name. Size should be between 1 and 50 characters.")
+    @NotEmpty(message = "Please enter a lake name")
     private String lakeName;
 
     /** The user's id */
     @ManyToOne
     @JoinColumn(name = "UserID")
+    @NotNull(message = "User must be provided")
     private User user;
 
     /** Whether the user has marked a lake active or inactive */

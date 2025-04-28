@@ -14,6 +14,14 @@
 
     <h1>${user.firstName}'s Bass Goal</h1>
 
+    <%-- Hibernate validator messages. See ActionEditGoal servlet --%>
+    <c:if test="${errorMessages != null}">
+        <c:forEach var="error" items="${errorMessages}">
+            <p class="message">${error}</p>
+        </c:forEach>
+        <c:remove var="errorMessages" scope="session" />
+    </c:if>
+
     <form name="actionEditGoal"
           action="actionEditGoal"
           method="post">

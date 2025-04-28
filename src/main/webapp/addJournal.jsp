@@ -16,6 +16,14 @@
 
     <h1>Add a Journal Entry</h1>
 
+    <%-- Hibernate validator messages. See ActionAddJournal Servlet --%>
+    <c:if test="${errorMessages != null}">
+        <c:forEach var="error" items="${errorMessages}">
+            <p class="message">${error}</p>
+        </c:forEach>
+        <c:remove var="errorMessages" scope="session" />
+    </c:if>
+
     <c:choose>
 
         <c:when test="${empty userLakes}">

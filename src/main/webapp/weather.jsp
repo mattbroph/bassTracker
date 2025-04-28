@@ -19,6 +19,13 @@
 
     <h1>Weather Search</h1>
     <br>
+    <%-- Hibernate validator messages. See ActionGetWeather servlet --%>
+    <c:if test="${errorMessages != null}">
+        <c:forEach var="error" items="${errorMessages}">
+            <p class="message">${error}</p>
+        </c:forEach>
+        <c:remove var="errorMessages" scope="session" />
+    </c:if>
     <form action="actionGetWeather"
           method="get">
         <fieldset>

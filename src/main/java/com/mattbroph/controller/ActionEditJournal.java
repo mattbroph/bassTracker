@@ -2,6 +2,8 @@ package com.mattbroph.controller;
 
 import com.mattbroph.entity.*;
 import com.mattbroph.persistence.GenericDao;
+import com.mattbroph.service.FormValidation;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
 
 
 /**
@@ -20,7 +23,7 @@ import java.time.LocalDate;
         name = "actionEditJournalsServlet",
         urlPatterns = { "/actionEditJournal" }
 )
-public class ActionEditJournal extends HttpServlet {
+public class ActionEditJournal extends HttpServlet implements FormValidation {
 
 
     /** Edits a journal in the application database
@@ -33,6 +36,9 @@ public class ActionEditJournal extends HttpServlet {
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response)
             throws ServletException, IOException {
+
+        // Create a list to hold validator error messages
+        List<String> violationMessages;
 
         // Get the necessary daos
         GenericDao userDao = new GenericDao(User.class);
@@ -64,18 +70,31 @@ public class ActionEditJournal extends HttpServlet {
              response.sendRedirect("unauthorized.jsp");
              return;
 
-         } else {
-
-             // Edit parameters of the existing Journal
-             editJournalParameters(journalToEdit, request);
-
-             // Update the journal
-             journalDao.update(journalToEdit);
-
-             // Build forwarding url
-             url = request.getContextPath()
-                    + "/viewJournalDetails?journalId=" + journalId;
          }
+
+         // Edit parameters of the existing Journal
+        editJournalParameters(journalToEdit, request);
+
+        // Check for any hibernate using implemented FormValidation Interface
+        violationMessages = validateFormData(journalToEdit);
+
+        // If there are violations, stop processing doPost and display errors on jsp
+        if (!violationMessages.isEmpty()) {
+            session.setAttribute("errorMessages", violationMessages);
+            url = "editJournal?journalId=" + journalToEdit.getId();
+            response.sendRedirect(url);
+            return;
+        }
+
+
+
+         // Update the journal
+        journalDao.update(journalToEdit);
+
+        // Build forwarding url
+        url = request.getContextPath()
+                + "/viewJournalDetails?journalId=" + journalId;
+
 
         // Send a redirect to the view journal detail page
         response.sendRedirect(url);

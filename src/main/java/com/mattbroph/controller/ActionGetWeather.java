@@ -42,6 +42,10 @@ public class ActionGetWeather extends HttpServlet {
                        HttpServletResponse response)
             throws ServletException, IOException {
 
+        // Define variables
+        LocalDate date;
+        HttpSession session = request.getSession();
+
         // Get the necessary daos
         GeoNamesDao geoNamesDao = new GeoNamesDao();
         MeteoStatWeatherDao meteostatDao = new MeteoStatWeatherDao();
@@ -52,7 +56,24 @@ public class ActionGetWeather extends HttpServlet {
         // Retrieve the data from the form
         String zipCode = request.getParameter("zipCode");
         String countryCode = "US";
-        LocalDate date = LocalDate.parse(request.getParameter("date"));
+
+        // Retrieve and validate date value
+        try {
+            date = LocalDate.parse(request.getParameter("date"));
+        } catch (Exception e) {
+            session.setAttribute("errorMessages", "Invalid date format. Please enter a valid date (yyyy-MM-dd).");
+            url = "weather";
+            response.sendRedirect(url);
+            return;
+        }
+
+        // Validate zip code data
+        if (zipCode == null || !zipCode.matches("\\d{5}")) {
+            session.setAttribute("errorMessages", "Invalid zip code. Please enter a 5-digit US ZIP code.");
+            url = "weather";
+            response.sendRedirect(url);
+            return;
+        }
 
         // Build the geonames Location object
         Location location = geoNamesDao.getLocationInformation(zipCode, countryCode);
