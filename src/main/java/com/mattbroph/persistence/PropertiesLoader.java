@@ -33,7 +33,7 @@ public interface PropertiesLoader {
         try {
             properties.load(this.getClass().getResourceAsStream(propertiesFilePath));
         } catch (IOException ioException) {
-            logger.error("IOException occured while loading properties", ioException);
+            logger.error("IOException occurred while loading properties", ioException);
         } catch (Exception exception) {
             logger.error("Unexpected exception occurred", exception);
         }
