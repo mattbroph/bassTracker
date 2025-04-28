@@ -40,6 +40,7 @@ public class Weather {
      * @param weatherType the weather type
      */
     public Weather(String weatherType) {
+        this();
         this.weatherType = weatherType;
     }
 

@@ -165,7 +165,7 @@
 - [ ] Update journal time log
 - [X] Update session check sending to index.jsp to remove duplicate code - checkpoint 3
 - [X] Remove printlns or printStackTraces - checkpoint 3
-- [ ] Generally overloaded constructors should call the no-arg constructor, allowing you to place common logic in a single place. This is true even if there is not currently logic in the no-arg constructor. - Checkpoint 3
+- [X] Generally overloaded constructors should call the no-arg constructor, allowing you to place common logic in a single place. This is true even if there is not currently logic in the no-arg constructor. - Checkpoint 3
 
 ### Week 15
 - [ ] Implement Feedback from Week 14 review

@@ -57,6 +57,7 @@ public class Lake {
      * @param isActive whether the lake is active or inactive
      */
     public Lake(String lakeName, User user, boolean isActive) {
+        this();
         this.lakeName = lakeName;
         this.user = user;
         this.isActive = isActive;

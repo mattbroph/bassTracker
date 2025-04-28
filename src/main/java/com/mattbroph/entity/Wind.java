@@ -41,6 +41,7 @@ public class Wind {
      * @param windType the wind type
      */
     public Wind(String windType) {
+        this();
         this.windType = windType;
     }
 

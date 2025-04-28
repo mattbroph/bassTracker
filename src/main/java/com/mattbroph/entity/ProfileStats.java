@@ -44,6 +44,7 @@ public class ProfileStats {
      * @param journals the journals
      */
     public ProfileStats(List<Journal> journals) {
+        this();
         this.journals = journals;
     }
 

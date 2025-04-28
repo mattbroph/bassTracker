@@ -136,6 +136,7 @@ public class Journal {
             int smallMouth19Plus, int largeMouth1416, int largeMouth1619,
             int largeMouth19Plus) {
 
+        this();
         this.user = user;
         this.journalDate = journalDate;
         this.lake = lake;

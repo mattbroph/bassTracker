@@ -40,6 +40,7 @@ public class Method {
      * @param methodName the method type
      */
     public Method(String methodName) {
+        this();
         this.methodName = methodName;
     }
 
