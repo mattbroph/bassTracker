@@ -170,7 +170,7 @@
 ### Week 15
 - [ ] Implement Feedback from Week 14 review
   - [X] Overide annotations in doGets doPosts
-  - [ ] Front end validation add / edit journal
+  - [X] Front end validation add / edit journal
   - [ ] Error handling in weather API calls
   - [ ] Add to JSPs check if user is logged in - not just on controllers
 - [ ] Final Presentation
