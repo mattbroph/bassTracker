@@ -38,6 +38,7 @@ public class ActionGetWeather extends HttpServlet {
      *@exception ServletException if there is a Servlet failure
      *@exception IOException if there is an IO failure
      */
+    @Override
     public void doGet(HttpServletRequest request,
                        HttpServletResponse response)
             throws ServletException, IOException {

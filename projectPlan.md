@@ -160,16 +160,16 @@
 1. Code reviews and any items that need attention
 
 - [X] Perform code reviews
-- [ ] All test plans
+- [X] All test plans
 - [ ] Add logging
-- [ ] Update journal time log
+- [X] Update journal time log
 - [X] Update session check sending to index.jsp to remove duplicate code - checkpoint 3
-- [ ] Remove printlns or printStackTraces - checkpoint 3
+- [X] Remove printlns or printStackTraces - checkpoint 3
 - [X] Generally overloaded constructors should call the no-arg constructor, allowing you to place common logic in a single place. This is true even if there is not currently logic in the no-arg constructor. - Checkpoint 3
 
 ### Week 15
 - [ ] Implement Feedback from Week 14 review
-  - [ ] Overide annotations in doGets doPosts
+  - [X] Overide annotations in doGets doPosts
   - [ ] Front end validation add / edit journal
   - [ ] Error handling in weather API calls
   - [ ] Add to JSPs check if user is logged in - not just on controllers

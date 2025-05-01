@@ -28,6 +28,7 @@ public class ApplicationStartUp extends HttpServlet implements PropertiesLoader 
      *
      * @throws ServletException if process fails
      */
+    @Override
     public void init() throws ServletException {
 
         // Create a Properties object and load the properties file

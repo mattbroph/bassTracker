@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- JavaScript -->
-<script src="js/dashboard.js"></script>
+<%--<script src="js/dashboard.js"></script>--%>
 <%-- CSS --%>
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/forms.css">
@@ -61,6 +61,7 @@
                    value="${journal.hours}"
                    step="0.25"
                    min="0"
+                   max="24"
                    required>
             <br>
             <!-- Fishing Method -->
@@ -87,6 +88,8 @@
                    name="airTemp"
                    id="airTemp"
                    value="${journal.airTemp}"
+                   min="-100"
+                   max="200"
                    required>
             <br>
             <!-- Weather -->
@@ -131,6 +134,7 @@
                            id="sm-14-16"
                            value="${journal.smallMouth1416}"
                            min="0"
+                           max="100"
                            required>
                     <br>
                     <label for="sm-16-19">*Small Mouth 16"-19"</label>
@@ -139,6 +143,7 @@
                            id="sm-16-19"
                            value="${journal.smallMouth1619}"
                            min="0"
+                           max="100"
                            required>
                     <br>
                     <label for="sm-19-plus">*Small Mouth Bass 19"+</label>
@@ -147,6 +152,7 @@
                            id="sm-19-plus"
                            value="${journal.smallMouth19Plus}"
                            min="0"
+                           max="100"
                            required>
                     <br>
                 </div>
@@ -157,6 +163,7 @@
                            id="lm-14-16"
                            value="${journal.largeMouth1416}"
                            min="0"
+                           max="100"
                            required>
                     <br>
                     <label for="lm-16-19">*Large Mouth 16"-19"</label>
@@ -165,6 +172,7 @@
                            id="lm-16-19"
                            value="${journal.largeMouth1619}"
                            min="0"
+                           max="100"
                            required>
                     <br>
                     <label for="lm-19-plus">*Large Mouth 19"+</label>
@@ -173,6 +181,7 @@
                            id="lm-19-plus"
                            value="${journal.largeMouth19Plus}"
                            min="0"
+                           max="100"
                            required>
                     <br>
                 </div>
@@ -184,6 +193,7 @@
             <!-- Comments -->
             <label for="comments">Comments</label>
             <textarea name="comments"
+                      maxlength="1000"
                       id="comments">${journal.comments}</textarea>
             <br>
             <!-- Photo -->
@@ -207,6 +217,7 @@
             <input type="text"
                    name="photo"
                    value="${journal.imageURL}"
+                   maxlength="255"
                    id="photo">
             <br>
         </fieldset>

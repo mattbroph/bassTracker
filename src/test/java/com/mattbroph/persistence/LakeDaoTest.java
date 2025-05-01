@@ -123,7 +123,7 @@ class LakeDaoTest {
         if (violations.isEmpty()) {
             logger.info("Lake is valid");
         } else {
-            System.out.println("Lake is not valid");
+            logger.error("Lake is not valid");
             for (ConstraintViolation<Lake> violation : violations) {
                 logger.info(violation.getMessage());
             }
