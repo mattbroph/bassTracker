@@ -7,11 +7,18 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-
+/**
+ * Tests the geonames API operations
+ * @author mbrophy
+ */
 class GeoNamesDaoTest {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * Tests the API call and response to GeoNames to get the Location data
+     * @throws JsonProcessingException if an error occurs while processing the JSON response
+     */
     @Test
     void getLocationInformation() throws JsonProcessingException {
 

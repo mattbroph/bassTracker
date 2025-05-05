@@ -17,6 +17,10 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests the lake CRUD operations
+ * @author mbrophy
+ */
 class LakeDaoTest {
 
     GenericDao lakeDao;
@@ -24,6 +28,9 @@ class LakeDaoTest {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * Reloads a fresh database via a script before each test
+     */
     @BeforeEach
     void setUp() {
         Database database = Database.getInstance();
@@ -32,12 +39,18 @@ class LakeDaoTest {
         userDao = new GenericDao(User.class);
     }
 
+    /**
+     * Tests getting all of the lakes
+     */
     @Test
     void getAll() {
         List<Lake> lakes = (List<Lake>)lakeDao.getAll();
         assertEquals(7, lakes.size());
     }
 
+    /**
+     * Tests getting a lake by id
+     */
     @Test
     void getById() {
         // Get ID 1
@@ -48,6 +61,9 @@ class LakeDaoTest {
         assertEquals("Lake Kegonsa", lake.getLakeName());
     }
 
+    /**
+     * Tests updating a lake by id
+     */
     @Test
     void update() {
         // Get the first lake
@@ -64,6 +80,9 @@ class LakeDaoTest {
         logger.info("The lake name after updating: " + lake.getLakeName());
     }
 
+    /**
+     * Tests inserting a new lake
+     */
     @Test
     void insert() {
         int insertedLakeId;
@@ -80,6 +99,9 @@ class LakeDaoTest {
         assertEquals("Lake Waubesa", lakeInserted.getLakeName());
     }
 
+    /**
+     * Tests deleting a lake by id
+     */
     @Test
     void delete() {
         Lake lake = (Lake)lakeDao.getById(5);
@@ -87,6 +109,9 @@ class LakeDaoTest {
         assertNull(lakeDao.getById(5));
     }
 
+    /**
+     * Tests getting a list of lakes by property equals
+     */
     @Test
     void getByPropertyEqual() {
         List<Lake> userLakes = (List<Lake>)lakeDao.getByPropertyEqual("lakeName", "Lake Mendota");
@@ -94,6 +119,9 @@ class LakeDaoTest {
         assertEquals(2, userLakes.get(0).getId());
     }
 
+    /**
+     * Tests getting a list of lakes by property like
+     */
     @Test
     void getByPropertyLike() {
         List<Lake> userLakes = (List<Lake>)lakeDao.getByPropertyLike("lakeName", "Lake M");

@@ -11,10 +11,18 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests the meteostat API operations
+ * @author mbrophy
+ */
 class MeteoStatWeatherDaoTest {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * Tests the API call and response to MeteoStat to get the Weather data
+     * @throws JsonProcessingException if an error occurs while processing the JSON response
+     */
     @Test
     void getMeteoStatWeather() throws JsonProcessingException {
 

@@ -10,12 +10,19 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests the wind CRUD operations
+ * @author mbrophy
+ */
 class WindDaoTest {
 
     GenericDao windDao;
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * Reloads a fresh database via a script before each test
+     */
     @BeforeEach
     void setUp() {
         Database database = Database.getInstance();
@@ -23,12 +30,18 @@ class WindDaoTest {
         windDao = new GenericDao(Wind.class);
     }
 
+    /**
+     * Tests getting all of the wind items
+     */
     @Test
     void getAll() {
         List<Wind> winds = (List<Wind>)windDao.getAll();
         assertEquals(5, winds.size());
     }
 
+    /**
+     * Tests getting a wind item by id
+     */
     @Test
     void getById() {
         // Get ID 1
@@ -39,6 +52,9 @@ class WindDaoTest {
         assertEquals("0-5 mph", wind.getWindType());
     }
 
+    /**
+     * Tests updating a wind item by id
+     */
     @Test
     void update() {
         // Get the first wind
@@ -55,6 +71,9 @@ class WindDaoTest {
         logger.info("The wind type after updating: " + wind.getWindType());
     }
 
+    /**
+     * Tests inserting a new wind item
+     */
     @Test
     void insert() {
         int insertedWindId;
@@ -68,6 +87,9 @@ class WindDaoTest {
         assertEquals("300 mph", windInserted.getWindType());
     }
 
+    /**
+     * Tests deleting a wind item by id
+     */
     @Test
     void delete() {
         Wind wind = (Wind)windDao.getById(5);
@@ -75,6 +97,9 @@ class WindDaoTest {
         assertNull(windDao.getById(5));
     }
 
+    /**
+     * Tests getting a list of wind items by property equals
+     */
     @Test
     void getByPropertyEqual() {
         List<Wind> winds = (List<Wind>)windDao.getByPropertyEqual("windType", "5-10 mph");
@@ -82,6 +107,9 @@ class WindDaoTest {
         assertEquals(2, winds.get(0).getId());
     }
 
+    /**
+     * Tests getting a list of wind items by property like
+     */
     @Test
     void getByPropertyLike() {
         List<Wind> winds = (List<Wind>)windDao.getByPropertyLike("windType", "20+");
