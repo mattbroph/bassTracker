@@ -4,6 +4,7 @@ import com.mattbroph.entity.Lake;
 import com.mattbroph.entity.User;
 import com.mattbroph.persistence.GenericDao;
 import com.mattbroph.service.PageTitleService;
+import com.mattbroph.service.UserSessionValidator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -35,6 +36,7 @@ public class RouteViewLakes extends HttpServlet {
      * @throws ServletException if there is a Servlet failure
      * @throws IOException      if there is an IO failure
      */
+    @Override
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response)
             throws ServletException, IOException {
@@ -52,16 +54,15 @@ public class RouteViewLakes extends HttpServlet {
 
         // Get user from the session
         HttpSession session = request.getSession();
-        User sessionUser = (User) session.getAttribute("user");
-
+        User sessionUser = UserSessionValidator.validateUserSession(request, response, session);
+        
         /*
          * Check if user is logged in.
          * If they are not logged in, send them to the index jsp.
          * If they are logged in, send the user to the view lakes jsp.
          */
         if (sessionUser == null) {
-
-            response.sendRedirect("index.jsp");
+            // User was redirected via validateUserSession(), stop further processing
             return;
 
         } else {

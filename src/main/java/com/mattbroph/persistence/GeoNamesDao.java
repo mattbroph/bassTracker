@@ -27,8 +27,6 @@ public class GeoNamesDao implements PropertiesLoader {
          String baseLocationUrl = geoNamesProperties.getProperty("geoNames.baseURL");
          String completeUrl = baseLocationUrl + "&postalcode=" + zipCode + "&country=" + countryCode;
 
-         System.out.println(completeUrl);
-
          Client client = ClientBuilder.newClient();
          WebTarget target =
                  client.target(completeUrl);

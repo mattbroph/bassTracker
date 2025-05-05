@@ -55,6 +55,7 @@ public class BassGoal {
      * @param goalCount the goal count
      */
     public BassGoal(User user, int goalYear, int goalCount) {
+        this();
         this.user = user;
         this.goalYear = goalYear;
         this.goalCount = goalCount;

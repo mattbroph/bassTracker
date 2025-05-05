@@ -3,10 +3,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- JavaScript -->
-<script src="js/dashboard.js"></script>
+<%--<script src="js/dashboard.js"></script>--%>
 <%-- CSS --%>
-<link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/forms.css">
+<%--<link rel="stylesheet" href="css/main.css">--%>
+<%--<link rel="stylesheet" href="css/forms.css">--%>
 </head>
 
 <body>
@@ -48,7 +48,6 @@
                     <!-- Lake -->
                     <label for="lake">*Lake</label>
                     <select name="lake" id="lake">
-                        <option value="" selected disabled>Select an option</option>
                         <%-- Populate the user active lake options --%>
                         <c:forEach var="lake" items="${userLakes}">
                             <option value="${lake.id}">${lake.lakeName}</option>
@@ -62,13 +61,14 @@
                            name="hoursFished"
                            id="hoursFished"
                            step="0.25"
+                           value="0"
                            min="0"
+                           max="24"
                            required>
                     <br>
                     <!-- Fishing Method -->
                     <label for="fishingMethod">*Fishing Method</label>
                     <select name="fishingMethod" id="fishingMethod" required>
-                        <option value="" selected disabled>Select an option</option>
                         <c:forEach var="method" items="${methodList}">
                             <option value="${method.id}">${method.methodName}</option>
                         </c:forEach>
@@ -85,23 +85,23 @@
                     <input type="number"
                            name="airTemp"
                            id="airTemp"
+                           min="-100"
+                           max="200"
                            required>
                     <br>
                     <!-- Weather -->
                     <label for="weather">*Weather</label>
                     <select name="weather" id="weather" required>
-                        <option value="" selected disabled>Select an option</option>
-                        <c:forEach var="weather" items="${weatherList}">
-                            <option value="${weather.id}">${weather.weatherType}</option>
+                        <c:forEach var="weatherItem" items="${weatherList}">
+                            <option value="${weatherItem.id}">${weatherItem.weatherType}</option>
                         </c:forEach>
                     </select>
                     <br>
                     <!-- Wind -->
                     <label for="wind">*Wind</label>
                     <select name="wind" id="wind" required>
-                        <option value="" selected disabled>Select an option</option>
-                        <c:forEach var="wind" items="${windList}">
-                            <option value="${wind.id}">${wind.windType}</option>
+                        <c:forEach var="windItem" items="${windList}">
+                            <option value="${windItem.id}">${windItem.windType}</option>
                         </c:forEach>
                     </select>
                 </fieldset>
@@ -117,6 +117,7 @@
                                    id="sm-14-16"
                                    value="0"
                                    min="0"
+                                   max="100"
                                    required>
                             <br>
                             <label for="sm-16-19">*Small Mouth 16"-19"</label>
@@ -125,6 +126,7 @@
                                    id="sm-16-19"
                                    value="0"
                                    min="0"
+                                   max="100"
                                    required>
                             <br>
                             <label for="sm-19-plus">*Small Mouth Bass 19"+</label>
@@ -133,6 +135,7 @@
                                    id="sm-19-plus"
                                    value="0"
                                    min="0"
+                                   max="100"
                                    required>
                             <br>
                         </div>
@@ -143,6 +146,7 @@
                                    id="lm-14-16"
                                    value="0"
                                    min="0"
+                                   max="100"
                                    required>
                             <br>
                             <label for="lm-16-19">*Large Mouth 16"-19"</label>
@@ -151,6 +155,7 @@
                                    id="lm-16-19"
                                    value="0"
                                    min="0"
+                                   max="100"
                                    required>
                             <br>
                             <label for="lm-19-plus">*Large Mouth 19"+</label>
@@ -159,6 +164,7 @@
                                    id="lm-19-plus"
                                    value="0"
                                    min="0"
+                                   max="100"
                                    required>
                             <br>
                         </div>
@@ -171,6 +177,7 @@
                     <label for="comments">Comments</label>
                     <textarea name="comments"
                               id="comments"
+                              maxlength="1000"
                               placeholder="enter comments here"></textarea>
                     <br>
                     <!-- Photo -->
@@ -194,6 +201,7 @@
                     <input type="text"
                            name="photo"
                            placeholder="enter URL here"
+                           maxlength="255"
                            id="photo">
                     <br>
                 </fieldset>

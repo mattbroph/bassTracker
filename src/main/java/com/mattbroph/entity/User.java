@@ -71,6 +71,7 @@ public class User {
      * @param lastName       the user's last name
      */
     public User(String userEmail, String firstName, String lastName) {
+        this();
         this.userEmail = userEmail;
         this.firstName = firstName;
         this.lastName = lastName;

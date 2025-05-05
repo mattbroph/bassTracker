@@ -3,6 +3,7 @@ package com.mattbroph.controller;
 import com.mattbroph.entity.*;
 import com.mattbroph.persistence.GenericDao;
 import com.mattbroph.service.PageTitleService;
+import com.mattbroph.service.UserSessionValidator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -33,6 +34,7 @@ public class RouteEditJournal extends HttpServlet {
      * @throws ServletException if there is a Servlet failure
      * @throws IOException      if there is an IO failure
      */
+    @Override
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response)
             throws ServletException, IOException {
@@ -55,11 +57,11 @@ public class RouteEditJournal extends HttpServlet {
 
         // Get user from the session
         HttpSession session = request.getSession();
-        User sessionUser = (User) session.getAttribute("user");
+        User sessionUser = UserSessionValidator.validateUserSession(request, response, session);
 
-        // If no user is logged in, send them to index jsp.
+        // Check if user is logged in
         if (sessionUser == null) {
-            response.sendRedirect("index.jsp");
+            // User was redirected via validateUserSession(), stop further processing
             return;
         }
 

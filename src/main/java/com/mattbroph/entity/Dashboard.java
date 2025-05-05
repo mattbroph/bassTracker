@@ -51,6 +51,7 @@ public class Dashboard {
      * @param journals the journals
      */
     public Dashboard(List<Journal> journals) {
+        this();
         this.journals = journals;
         this.tripHistory = new TreeMap<Integer, Integer>();
         this.catchHistory = new TreeMap<Integer, Integer>();
