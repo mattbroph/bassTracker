@@ -104,6 +104,9 @@ public class ActionEditJournal extends HttpServlet implements FormValidation {
 
     /**
      * Retrieve parameters from form and update journal attributes in database
+     *
+     * @param journalToEdit the journal that will be edited
+     * @param request the http request
      */
      public void editJournalParameters(Journal journalToEdit, HttpServletRequest request) {
 

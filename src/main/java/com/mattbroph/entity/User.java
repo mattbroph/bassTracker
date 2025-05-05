@@ -236,7 +236,6 @@ public class User {
         this.bassGoal = bassGoal;
     }
 
-    // TODO update all toStrings()
     @Override
     public String toString() {
         return "User{" +
@@ -245,7 +244,6 @@ public class User {
                 ", firstName='" + firstName + '\'' +
                 ", userEmail='" + userEmail + '\'' +
                 ", id=" + id +
-//                ", lakes=" + lakes +
                 '}';
     }
 }

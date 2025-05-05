@@ -137,7 +137,6 @@ public class BassGoal {
     public String toString() {
         return "BassGoal{" +
                 "id=" + id +
-//                ", user=" + user +
                 ", goalYear=" + goalYear +
                 ", goalCount=" + goalCount +
                 '}';

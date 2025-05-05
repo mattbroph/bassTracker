@@ -3,6 +3,10 @@ package com.mattbroph.jsonentity;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The type Data item from the Meteostat weather api
+ * @author mbrophy
+ */
 public class DataItem{
 	private Object wdir;
 	private Object wpgt;
@@ -19,7 +23,10 @@ public class DataItem{
 	private String cocoDescription;
 	private static final Map<Integer, String> WEATHER_CONDITIONS = new HashMap<Integer, String>();
 
-	// Load the weather conditions map in the constructor
+	/**
+	 * Instantiates a new Data item.
+	 */
+// Load the weather conditions map in the constructor
 	public DataItem() {
 		WEATHER_CONDITIONS.put(1, "Clear");
 		WEATHER_CONDITIONS.put(2, "Fair");
@@ -50,10 +57,18 @@ public class DataItem{
 		WEATHER_CONDITIONS.put(27, "Storm");
 	}
 
+	/**
+	 * Gets coco description.
+	 *
+	 * @return the coco description
+	 */
 	public String getCocoDescription() {
 		return cocoDescription;
 	}
 
+	/**
+	 * Sets coco description.
+	 */
 	public void setCocoDescription() {
 
 		for (Map.Entry<Integer, String> entry : WEATHER_CONDITIONS.entrySet()) {
@@ -67,99 +82,219 @@ public class DataItem{
 		this.cocoDescription = "Unknown";
 	}
 
+	/**
+	 * Set wdir.
+	 *
+	 * @param wdir the wdir
+	 */
 	public void setWdir(Object wdir){
 		this.wdir = wdir;
 	}
 
+	/**
+	 * Get wdir object.
+	 *
+	 * @return the object
+	 */
 	public Object getWdir(){
 		return wdir;
 	}
 
+	/**
+	 * Set wpgt.
+	 *
+	 * @param wpgt the wpgt
+	 */
 	public void setWpgt(Object wpgt){
 		this.wpgt = wpgt;
 	}
 
+	/**
+	 * Get wpgt object.
+	 *
+	 * @return the object
+	 */
 	public Object getWpgt(){
 		return wpgt;
 	}
 
+	/**
+	 * Set temp.
+	 *
+	 * @param temp the temp
+	 */
 	public void setTemp(Object temp){
 		this.temp = temp;
 	}
 
+	/**
+	 * Get temp object.
+	 *
+	 * @return the object
+	 */
 	public Object getTemp(){
 		return temp;
 	}
 
+	/**
+	 * Set pres.
+	 *
+	 * @param pres the pres
+	 */
 	public void setPres(Object pres){
 		this.pres = pres;
 	}
 
+	/**
+	 * Get pres object.
+	 *
+	 * @return the object
+	 */
 	public Object getPres(){
 		return pres;
 	}
 
+	/**
+	 * Set snow.
+	 *
+	 * @param snow the snow
+	 */
 	public void setSnow(Object snow){
 		this.snow = snow;
 	}
 
+	/**
+	 * Get snow object.
+	 *
+	 * @return the object
+	 */
 	public Object getSnow(){
 		return snow;
 	}
 
+	/**
+	 * Set coco.
+	 *
+	 * @param coco the coco
+	 */
 	public void setCoco(int coco){
 		this.coco = coco;
 		setCocoDescription();
 	}
 
+	/**
+	 * Get coco int.
+	 *
+	 * @return the int
+	 */
 	public int getCoco(){
 		return coco;
 	}
 
+	/**
+	 * Set wspd.
+	 *
+	 * @param wspd the wspd
+	 */
 	public void setWspd(Object wspd){
 		this.wspd = wspd;
 	}
 
+	/**
+	 * Get wspd object.
+	 *
+	 * @return the object
+	 */
 	public Object getWspd(){
 		return wspd;
 	}
 
+	/**
+	 * Set dwpt.
+	 *
+	 * @param dwpt the dwpt
+	 */
 	public void setDwpt(Object dwpt){
 		this.dwpt = dwpt;
 	}
 
+	/**
+	 * Get dwpt object.
+	 *
+	 * @return the object
+	 */
 	public Object getDwpt(){
 		return dwpt;
 	}
 
+	/**
+	 * Set time.
+	 *
+	 * @param time the time
+	 */
 	public void setTime(String time){
 		this.time = time;
 	}
 
+	/**
+	 * Get time string.
+	 *
+	 * @return the string
+	 */
 	public String getTime(){
 		return time;
 	}
 
+	/**
+	 * Set rhum.
+	 *
+	 * @param rhum the rhum
+	 */
 	public void setRhum(Object rhum){
 		this.rhum = rhum;
 	}
 
+	/**
+	 * Get rhum object.
+	 *
+	 * @return the object
+	 */
 	public Object getRhum(){
 		return rhum;
 	}
 
+	/**
+	 * Set prcp.
+	 *
+	 * @param prcp the prcp
+	 */
 	public void setPrcp(Object prcp){
 		this.prcp = prcp;
 	}
 
+	/**
+	 * Get prcp object.
+	 *
+	 * @return the object
+	 */
 	public Object getPrcp(){
 		return prcp;
 	}
 
+	/**
+	 * Set tsun.
+	 *
+	 * @param tsun the tsun
+	 */
 	public void setTsun(Object tsun){
 		this.tsun = tsun;
 	}
 
+	/**
+	 * Get tsun object.
+	 *
+	 * @return the object
+	 */
 	public Object getTsun(){
 		return tsun;
 	}

@@ -100,6 +100,9 @@ public class ActionAddJournal extends HttpServlet implements FormValidation {
 
     /**
      * Retrieves the data from the add journal form and creates a Journal object with it.
+     *
+     * @param request the http request
+     * @param user the session user
      * @return the journal to add to the database
      */
     private Journal retrieveFormData(HttpServletRequest request, User user) {

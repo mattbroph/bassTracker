@@ -84,6 +84,9 @@ public class ActionAddGoal extends HttpServlet {
 
     /**
      * Retrieves the data from the add bass goal form and creates a bass goal object with it.
+     * @param request the http request
+     * @param user the session user
+     *
      * @return the bass goal to add to the database
      */
      private BassGoal retrieveFormData(HttpServletRequest request, User user) {

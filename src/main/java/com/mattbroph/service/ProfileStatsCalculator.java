@@ -12,6 +12,8 @@ public class ProfileStatsCalculator {
 
     /**
      * Calculates profile statistics and assigns values to instance variables
+     *
+     * @param profileStats holds the users total stats
      */
     public void calculateStatistics(ProfileStats profileStats) {
 
@@ -92,6 +94,8 @@ public class ProfileStatsCalculator {
 
     /**
      * Calculates the total catch rate for the user and rounds it to 2 decimals
+     *
+     * @param profileStats holds the users total stats
      */
     private void calculateCatchRate(ProfileStats profileStats) {
 

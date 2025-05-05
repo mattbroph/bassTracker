@@ -101,6 +101,9 @@ public class ActionEditGoal extends HttpServlet implements FormValidation {
 
     /**
      * Retrieve parameters from form and update bass goal attributes in database
+     *
+     * @param bassGoalToEdit the bass goal object to be updated
+     * @param request the http request
      */
      public void editBassGoalParameters(BassGoal bassGoalToEdit, HttpServletRequest request) {
 
