@@ -177,12 +177,8 @@
 - [ ] Create video, add video link to readme.md
 - [ ] Finalize all documentation
 - [ ] Code quality check
-- [ ] Review all java docs (params / returns ect.)
+- [X] Review all java docs (params / returns ect.)
 - [ ] Weekly journal entry
-
-### Week 16
-- [ ] Weekly journal entry
-- [ ] Final touches before code complete
 
 ### Spring Break
 - [X] Gracefully handle user not being able to add or edit lake with same name
