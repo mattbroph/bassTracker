@@ -22,8 +22,9 @@ class GeoNamesDaoTest {
     @Test
     void getLocationInformation() throws JsonProcessingException {
 
-//        String zipCode = "53704";
-        String zipCode = "99999";
+        // Use: String zipCode = "99999" to produce an error
+        // Use: String zipCode = "53704" to produce successful test
+        String zipCode = "53704";
         String countryCode = "US";
         GeoNamesDao geoNamesDao = new GeoNamesDao();
 
