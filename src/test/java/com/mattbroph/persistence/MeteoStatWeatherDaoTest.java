@@ -32,6 +32,10 @@ class MeteoStatWeatherDaoTest {
         String countryCode = "US";
         Location location = geoNamesDao.getLocationInformation(zipCode, countryCode);
 
+        // Uncomment below to force an error by setting the lat and lng to incorrect values
+        // location.getPostalCodes().get(0).setLat(999);
+        // location.getPostalCodes().get(0).setLng(999);
+
         // Get the weather from the MeteoStat object
         MeteoStatWeatherDao meteostatDao = new MeteoStatWeatherDao();
         LocalDate startDate = LocalDate.parse("2025-03-25");
@@ -39,13 +43,28 @@ class MeteoStatWeatherDaoTest {
 
         MeteoStat meteoStat = meteostatDao.getMeteoStatWeather(location, startDate, endDate);
 
-        // Check meteoStat is not null
-        assertNotNull(meteoStat);
-        // Check the sun value is correct
-        assertEquals(33.4, meteoStat.getData().get(2).getTemp());
-        logger.info("The temp at 2:00am is: " + meteoStat.getData().get(2).getTemp());
-        // Check the weather condition at 2pm
-        assertEquals("Clear", meteoStat.getData().get(14).getCocoDescription());
-        logger.info("The weather condition at 2:00pm is: " + meteoStat.getData().get(14).getCocoDescription());
+
+        if (meteoStat != null && meteoStat.getData().size() > 0 ) {
+
+            // Check meteoStat is not null
+            assertNotNull(meteoStat);
+            // Check the sun value is correct
+            assertEquals(33.4, meteoStat.getData().get(2).getTemp());
+            logger.info("The temp at 2:00am is: " + meteoStat.getData().get(2).getTemp());
+            // Check the weather condition at 2pm
+            assertEquals("Clear", meteoStat.getData().get(14).getCocoDescription());
+            logger.info("The weather condition at 2:00pm is: " + meteoStat.getData().get(14).getCocoDescription());
+
+        } else {
+
+            logger.error("Something went wrong in the meteostat api call - received null"
+                    + " or empty MeteoStat object.");
+            // Force an error
+            fail("Something went wrong in the meteostat api call - received null"
+                    + " or empty MeteoStat object.");
+        }
+
+
+
     }
 }

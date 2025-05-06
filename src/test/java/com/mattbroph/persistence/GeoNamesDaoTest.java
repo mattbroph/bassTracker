@@ -54,11 +54,9 @@ class GeoNamesDaoTest {
                     + zipCode + ", or the country code " + countryCode
                     + " was not found");
             // Force an error
-            assertEquals(1, 2);
-
+            fail("Something went wrong. Either the zip code "
+                    + zipCode + ", or the country code " + countryCode
+                    + " was not found");
         }
-
-
-
     }
 }
