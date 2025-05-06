@@ -22,7 +22,8 @@ class GeoNamesDaoTest {
     @Test
     void getLocationInformation() throws JsonProcessingException {
 
-        String zipCode = "53704";
+//        String zipCode = "53704";
+        String zipCode = "99999";
         String countryCode = "US";
         GeoNamesDao geoNamesDao = new GeoNamesDao();
 
@@ -32,17 +33,31 @@ class GeoNamesDaoTest {
         // Get the Location object back from the GeoNamesDao
         Location madisonLocation = geoNamesDao.getLocationInformation(zipCode, countryCode);
 
-        // Check that location is not null
-        assertNotNull(madisonLocation);
-        // Check that the zip code is correct
-        assertEquals("53704", madisonLocation.getPostalCodes().get(0).getPostalCode());
-        logger.info("The Location zip code is " + madisonLocation.getPostalCodes().get(0).getPostalCode());
-        // Check that the placeName is correct
-        assertEquals("Madison", madisonLocation.getPostalCodes().get(0).getPlaceName());
-        logger.info("The Location place name is " + madisonLocation.getPostalCodes().get(0).getPlaceName());
-        // Check that the adminName1 is correct
-        assertEquals("Wisconsin", madisonLocation.getPostalCodes().get(0).getAdminName1());
-        logger.info("The Location admin name 1 is " + madisonLocation.getPostalCodes().get(0).getAdminName1());
+        if (madisonLocation != null && madisonLocation.getPostalCodes().size() > 0) {
+
+            // Check that location is not null
+            assertNotNull(madisonLocation);
+            // Check that the zip code is correct
+            assertEquals("53704", madisonLocation.getPostalCodes().get(0).getPostalCode());
+            logger.info("The Location zip code is " + madisonLocation.getPostalCodes().get(0).getPostalCode());
+            // Check that the placeName is correct
+            assertEquals("Madison", madisonLocation.getPostalCodes().get(0).getPlaceName());
+            logger.info("The Location place name is " + madisonLocation.getPostalCodes().get(0).getPlaceName());
+            // Check that the adminName1 is correct
+            assertEquals("Wisconsin", madisonLocation.getPostalCodes().get(0).getAdminName1());
+            logger.info("The Location admin name 1 is " + madisonLocation.getPostalCodes().get(0).getAdminName1());
+
+        } else {
+
+            logger.error("Something went wrong. Either the zip code "
+                    + zipCode + ", or the country code " + countryCode
+                    + " was not found");
+            // Force an error
+            assertEquals(1, 2);
+
+        }
+
+
 
     }
 }

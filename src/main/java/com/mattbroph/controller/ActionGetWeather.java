@@ -79,8 +79,12 @@ public class ActionGetWeather extends HttpServlet {
         // Build the geonames Location object
         Location location = geoNamesDao.getLocationInformation(zipCode, countryCode);
 
+        // TODO IF location is bad, end processing and send back to weather.jsp with an error
+
         // Build the MeteoStat object containing the weather
         MeteoStat meteoStat = meteostatDao.getMeteoStatWeather(location, date, date);
+
+        // TODO IF meteoStat is bad, end processing and send back to weather.jsp with an error
 
         // Get the meteoStat hourly data
         List<DataItem> hourlyData = meteoStat.getData();
