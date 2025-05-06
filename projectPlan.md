@@ -171,7 +171,7 @@
   - [X] Overide annotations in doGets doPosts
   - [X] Front end validation add / edit journal
   - [ ] Error handling in weather API calls
-  - [ ] Add logging
+  - [X] Add logging
 - [ ] Final Presentation
 - [ ] Create video, add video link to readme.md
 - [X] Finalize all documentation
