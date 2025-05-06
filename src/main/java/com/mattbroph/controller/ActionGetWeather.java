@@ -100,7 +100,19 @@ public class ActionGetWeather extends HttpServlet {
         // Build the MeteoStat object containing the weather
         MeteoStat meteoStat = meteostatDao.getMeteoStatWeather(location, date, date);
 
-        // TODO IF meteoStat is bad, end processing and send back to weather.jsp with an error
+        // If meteoStat is bad, end processing and send back to weather.jsp with an error
+        if (meteoStat == null || meteoStat.getData().size() == 0) {
+
+            session.setAttribute("errorMessages", "Something went wrong while"
+                    + " retrieving the weather data - Please try again.");
+
+            logger.error("Something went wrong in the meteostat api call - received null"
+                    + " or empty MeteoStat object.");
+
+            url = "weather";
+            response.sendRedirect(url);
+            return;
+        }
 
         // Get the meteoStat hourly data
         List<DataItem> hourlyData = meteoStat.getData();
