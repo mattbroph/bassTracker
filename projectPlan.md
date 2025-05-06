@@ -170,7 +170,7 @@
 - [X] Implement Feedback from Week 14 review
   - [X] Overide annotations in doGets doPosts
   - [X] Front end validation add / edit journal
-  - [ ] Error handling in weather API calls
+  - [X] Error handling in weather API calls
   - [X] Add logging
 - [ ] Final Presentation
 - [ ] Create video, add video link to readme.md
