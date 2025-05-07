@@ -130,6 +130,9 @@ public class ActionAddLake extends HttpServlet implements FormValidation {
 
     /**
      * Retrieves the data from the add lake form and creates a lake object with it.
+     *
+     * @param request the http request
+     * @param user the session user
      * @return the lake to add to the database
      */
      private Lake retrieveFormData(HttpServletRequest request, User user) {

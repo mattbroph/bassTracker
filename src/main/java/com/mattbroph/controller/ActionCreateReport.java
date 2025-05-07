@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
+ * Controller that creates a fishing report based on the report form submission
  *@author mbrophy
  */
 @WebServlet(
@@ -31,6 +31,7 @@ public class ActionCreateReport extends HttpServlet {
 
 
     /**
+     * Creates a fishing report based on the report form submission
      *
      *@param request the HttpServletRequest object
      *@param response the HttpServletRequest object
@@ -135,8 +136,12 @@ public class ActionCreateReport extends HttpServlet {
 
 
     /**
+     * Retrieves the form data needed to create the report
      *
-     * @return
+     * @param request the http request
+     * @param user the session user
+     *
+     * @return a property map with the data needed to filter the report on
      */
      private Map<String, Object> retrieveFormData(HttpServletRequest request, User user) {
 

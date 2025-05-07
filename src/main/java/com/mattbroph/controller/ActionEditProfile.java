@@ -87,6 +87,9 @@ public class ActionEditProfile extends HttpServlet implements FormValidation {
 
     /**
      * Retrieve parameters from form and update user attributes
+     *
+     * @param userToEdit the user to edit
+     * @param request the http request
      */
      public void editUserParameters(User userToEdit, HttpServletRequest request) {
 

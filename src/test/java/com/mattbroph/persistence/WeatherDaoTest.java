@@ -10,12 +10,20 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
+/**
+ * Tests the weather CRUD operations
+ * @author mbrophy
+ */
 class WeatherDaoTest {
 
     GenericDao weatherDao;
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * Reloads a fresh database via a script before each test
+     */
     @BeforeEach
     void setUp() {
         Database database = Database.getInstance();
@@ -23,12 +31,18 @@ class WeatherDaoTest {
         weatherDao = new GenericDao(Weather.class);
     }
 
+    /**
+     * Tests getting all of the weather items
+     */
     @Test
     void getAll() {
         List<Weather> weathers = (List<Weather>)weatherDao.getAll();
         assertEquals(5, weathers.size());
     }
 
+    /**
+     * Tests getting a weather item by id
+     */
     @Test
     void getById() {
         // Get ID 1
@@ -39,6 +53,9 @@ class WeatherDaoTest {
         assertEquals("Sunny", weather.getWeatherType());
     }
 
+    /**
+     * Tests updating a weather item by id
+     */
     @Test
     void update() {
         // Get the first weather
@@ -55,6 +72,9 @@ class WeatherDaoTest {
         logger.info("The weather type after updating: " + weather.getWeatherType());
     }
 
+    /**
+     * Tests inserting a new weather item
+     */
     @Test
     void insert() {
         int insertedWeatherId;
@@ -68,6 +88,9 @@ class WeatherDaoTest {
         assertEquals("Super Rainy", weatherInserted.getWeatherType());
     }
 
+    /**
+     * Tests deleting a weather item by id
+     */
     @Test
     void delete() {
         Weather weather = (Weather)weatherDao.getById(5);
@@ -75,6 +98,9 @@ class WeatherDaoTest {
         assertNull(weatherDao.getById(5));
     }
 
+    /**
+     * Tests getting a list of weather items by property equals
+     */
     @Test
     void getByPropertyEqual() {
         List<Weather> weathers = (List<Weather>)weatherDao.getByPropertyEqual("weatherType", "Sunny");
@@ -82,6 +108,9 @@ class WeatherDaoTest {
         assertEquals(1, weathers.get(0).getId());
     }
 
+    /**
+     * Tests getting a list of weather items by property like
+     */
     @Test
     void getByPropertyLike() {
         List<Weather> weathers = (List<Weather>)weatherDao.getByPropertyLike("weatherType", "Cloudy");

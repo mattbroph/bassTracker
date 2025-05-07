@@ -16,7 +16,10 @@ import javax.ws.rs.core.MultivaluedMap;
 import java.time.LocalDate;
 import java.util.Properties;
 
-
+/**
+ * Retrieves the weather information from Metostat API based on user input
+ * @author mbrophy
+ */
 public class MeteoStatWeatherDao implements PropertiesLoader {
 
     // Logger

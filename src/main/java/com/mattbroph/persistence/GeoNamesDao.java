@@ -7,6 +7,10 @@ import javax.ws.rs.client.*;
 import javax.ws.rs.core.MediaType;
 import java.util.Properties;
 
+/**
+ * Retrieves the location information based on zip code provided by user
+ * @author mbrophy
+ */
 
 public class GeoNamesDao implements PropertiesLoader {
 

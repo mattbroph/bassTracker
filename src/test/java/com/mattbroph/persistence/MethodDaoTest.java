@@ -10,12 +10,19 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests the method CRUD operations
+ * @author mbrophy
+ */
 class MethodDaoTest {
 
     GenericDao methodDao;
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * Reloads a fresh database via a script before each test
+     */
     @BeforeEach
     void setUp() {
         Database database = Database.getInstance();
@@ -23,12 +30,18 @@ class MethodDaoTest {
         methodDao = new GenericDao(Method.class);
     }
 
+    /**
+     * Tests getting all of the methods
+     */
     @Test
     void getAll() {
         List<Method> methods = (List<Method>)methodDao.getAll();
         assertEquals(12, methods.size());
     }
 
+    /**
+     * Tests getting a method by id
+     */
     @Test
     void getById() {
         // Get ID 1
@@ -39,6 +52,9 @@ class MethodDaoTest {
         assertEquals("Crankbaits", method.getMethodName());
     }
 
+    /**
+     * Tests updating a method by id
+     */
     @Test
     void update() {
         // Get the first method
@@ -55,6 +71,9 @@ class MethodDaoTest {
         logger.info("The method name after updating: " + method.getMethodName());
     }
 
+    /**
+     * Tests inserting a new method
+     */
     @Test
     void insert() {
         int insertedMethodId;
@@ -68,6 +87,9 @@ class MethodDaoTest {
         assertEquals("SuperFishing", methodInserted.getMethodName());
     }
 
+    /**
+     * Tests deleting a method by id
+     */
     @Test
     void delete() {
         Method method = (Method)methodDao.getById(5);
@@ -75,6 +97,9 @@ class MethodDaoTest {
         assertNull(methodDao.getById(5));
     }
 
+    /**
+     * Tests getting a list of methods by property equals
+     */
     @Test
     void getByPropertyEqual() {
         List<Method> methods = (List<Method>)methodDao.getByPropertyEqual("methodName", "Bed fishing");
@@ -82,6 +107,9 @@ class MethodDaoTest {
         assertEquals(3, methods.get(0).getId());
     }
 
+    /**
+     * Tests getting a list of methods by property like
+     */
     @Test
     void getByPropertyLike() {
         List<Method> methods = (List<Method>)methodDao.getByPropertyLike("methodName", "fishing");

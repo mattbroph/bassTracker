@@ -485,14 +485,9 @@ public class Journal {
                 ", smallMouth1416=" + smallMouth1416 +
                 ", imageURL='" + imageURL + '\'' +
                 ", comments='" + comments + '\'' +
-//                ", windID=" + windID +
-//                ", weatherID=" + weatherID +
                 ", airTemp=" + airTemp +
-//                ", methodID=" + methodID +
                 ", hours=" + hours +
-//                ", lake=" + lake +
                 ", journalDate=" + journalDate +
-//                ", user=" + user +
                 ", id=" + id +
                 '}';
     }

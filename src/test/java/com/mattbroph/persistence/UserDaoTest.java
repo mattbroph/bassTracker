@@ -11,6 +11,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests the user CRUD operations
+ * @author mbrophy
+ */
 class UserDaoTest {
 
 
@@ -19,15 +23,20 @@ class UserDaoTest {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * Reloads a fresh database via a script before each test
+     */
     @BeforeEach
     void setUp() {
         Database database = Database.getInstance();
-//        database.runSQL("fresh_db.sql");
+        database.runSQL("fresh_db.sql");
         lakeDao = new GenericDao(Lake.class);
         userDao = new GenericDao(User.class);
     }
 
-
+    /**
+     * Tests getting a user by id
+     */
     @Test
     void getById() {
         // Get ID 1
@@ -38,12 +47,18 @@ class UserDaoTest {
         assertEquals("mattbroph@gmail.com", user.getUserEmail());
     }
 
+    /**
+     * Tests getting all of the users
+     */
     @Test
     void getAll() {
         List<User> users = (List<User>)userDao.getAll();
         assertEquals(3, users.size());
     }
 
+    /**
+     * Tests updating a user by id
+     */
     @Test
     void update() {
         // Get the first user
@@ -60,6 +75,9 @@ class UserDaoTest {
         logger.info("The user email after updating: " + user.getUserEmail());
     }
 
+    /**
+     * Tests inserting a new user
+     */
     @Test
     void insert() {
         int insertedUserId;
@@ -73,8 +91,9 @@ class UserDaoTest {
         assertEquals("MyNewName@gmail.com", userInserted.getUserEmail());
     }
 
-
-    // If a user is deleted, check that lakes are deleted as well
+    /**
+     * Tests deleting a user by id
+     */
     @Test
     void delete() {
         User user = (User)userDao.getById(1);
@@ -88,6 +107,9 @@ class UserDaoTest {
         assertNull(lakeDao.getById(3));
     }
 
+    /**
+     * Tests getting a list of users by property equals
+     */
     @Test
     void getByPropertyEqual() {
         List<User> users = (List<User>)userDao.getByPropertyEqual("userEmail", "mattbroph@gmail.com");
@@ -95,6 +117,9 @@ class UserDaoTest {
         assertEquals(1, users.get(0).getId());
     }
 
+    /**
+     * Tests getting a list of users by property like
+     */
     @Test
     void getByPropertyLike() {
         List<User> users = (List<User>)userDao.getByPropertyLike("userEmail", "matt");

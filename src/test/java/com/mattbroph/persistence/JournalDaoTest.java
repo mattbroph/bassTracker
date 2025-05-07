@@ -13,6 +13,10 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests the journal CRUD operations
+ * @author mbrophy
+ */
 class JournalDaoTest {
 
     GenericDao journalDao;
@@ -24,6 +28,9 @@ class JournalDaoTest {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * Reloads a fresh database via a script before each test
+     */
     @BeforeEach
     void setUp() {
         Database database = Database.getInstance();
@@ -36,12 +43,18 @@ class JournalDaoTest {
         methodDao = new GenericDao(Method.class);
     }
 
+    /**
+     * Tests getting all of the journals
+     */
     @Test
     void getAll() {
         List<Journal> journals = (List<Journal>)journalDao.getAll();
         assertEquals(14, journals.size());
     }
 
+    /**
+     * Tests getting a journal by id
+     */
     @Test
     void getById() {
         // Get ID 1
@@ -52,6 +65,9 @@ class JournalDaoTest {
         assertEquals("2025-02-25", journal.getJournalDate().toString());
     }
 
+    /**
+     * Tests updating a journal by id
+     */
     @Test
     void update() {
         // Get the first journal
@@ -68,6 +84,9 @@ class JournalDaoTest {
         logger.info("The LM19+ count after updating: " + journal.getLargeMouth19Plus());
     }
 
+    /**
+     * Tests inserting a new journal
+     */
     @Test
     void insert() {
         int insertedjournalId;
@@ -92,6 +111,9 @@ class JournalDaoTest {
         assertNotNull(journalInserted);
     }
 
+    /**
+     * Tests deleting a journal by id
+     */
     @Test
     void delete() {
         Journal journal = (Journal)journalDao.getById(3);
@@ -99,6 +121,9 @@ class JournalDaoTest {
         assertNull(journalDao.getById(3));
     }
 
+    /**
+     * Tests getting a list of journals by property equals
+     */
     @Test
     void getByPropertyEqual() {
 
@@ -106,12 +131,18 @@ class JournalDaoTest {
         assertEquals(1, journals.size());
     }
 
+    /**
+     * Tests getting a list of journals by property like
+     */
     @Test
     void getByPropertyLike() {
         List<Journal> journals = (List<Journal>)journalDao.getByPropertyLike("imageURL", "https://myimage.com");
         assertEquals(1, journals.size());
     }
 
+    /**
+     * Tests getting a list of journals using a map with multiple property equals
+     */
     @Test
     void findByPropertyEqual() {
 

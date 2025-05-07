@@ -126,6 +126,8 @@ public class ActionEditLake extends HttpServlet implements FormValidation {
      * @param lakeToEdit the lake to edit
      * @param request the http request
      * @param sessionUser the user
+     *
+     * @return boolean indicating whether or not to edit the lake
      */
     public boolean editLakeParameters(Lake lakeToEdit,
              HttpServletRequest request, User sessionUser) {

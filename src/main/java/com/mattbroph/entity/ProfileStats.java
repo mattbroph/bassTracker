@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Calculates profile statistics from the user, journals and bass goals
+ * Holds the profile statistics from the user, journals and bass goals
  */
 public class ProfileStats {
 

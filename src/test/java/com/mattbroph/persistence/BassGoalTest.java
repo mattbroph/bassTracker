@@ -13,6 +13,10 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests the bass goal CRUD operations
+ * @author mbrophy
+ */
 class BassGoalTest {
 
     GenericDao bassGoalDao;
@@ -20,6 +24,9 @@ class BassGoalTest {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * Reloads a fresh database via a script before each test
+     */
     @BeforeEach
     void setUp() {
         Database database = Database.getInstance();
@@ -28,6 +35,9 @@ class BassGoalTest {
         userDao = new GenericDao(User.class);
     }
 
+    /**
+     * Tests getting a bass goal by id
+     */
     @Test
     void getById() {
         // Get ID 1
@@ -39,6 +49,9 @@ class BassGoalTest {
         assertEquals(150, bassGoal.getGoalCount());
     }
 
+    /**
+     * Tests updating a bass goal by id
+     */
     @Test
     void update() {
         // Get the first bassGoal
@@ -55,6 +68,10 @@ class BassGoalTest {
         logger.info("The bassGoalCount after updating: " + bassGoal.getGoalCount());
     }
 
+
+    /**
+     * Tests inserting a new bass goal
+     */
     @Test
     void insert() {
         int insertedBassGoalId;
@@ -72,6 +89,9 @@ class BassGoalTest {
         assertEquals(72, bassGoalInserted.getGoalCount());
     }
 
+    /**
+     * Tests deleting a bass goal by id
+     */
     @Test
     void delete() {
         BassGoal bassGoal = (BassGoal)bassGoalDao.getById(2);
@@ -79,11 +99,13 @@ class BassGoalTest {
         assertNull(bassGoalDao.getById(2));
     }
 
+    /**
+     * Tests getting a list of bass goals by property equals
+     */
     @Test
     void getByPropertyEqual() {
         List<BassGoal> bassGoals = (List<BassGoal>)bassGoalDao.getByPropertyEqual("goalYear", "2025");
         assertEquals(3, bassGoals.size());
-//        assertEquals(3, bassGoals.get(0).getId());
     }
 
     /* Hibernate requires a String for this value, but all the fields in the BassGoal
@@ -92,16 +114,21 @@ class BassGoalTest {
     */
     @Test
     void getByPropertyLike() {
-//        List<BassGoal> bassGoals = (List<BassGoal>)bassGoalDao.getByPropertyLike("goalYear", "20");
-//        assertEquals(4, bassGoals.size());
+
     }
 
+    /**
+     * Tests getting all of the bass goals
+     */
     @Test
     void getAll() {
         List<BassGoal> bassGoals = (List<BassGoal>)bassGoalDao.getAll();
         assertEquals(4, bassGoals.size());
     }
 
+    /**
+     * Tests getting a list of bass goal using a map with multiple property equals
+     */
     @Test
     void findByPropertyEqual() {
 

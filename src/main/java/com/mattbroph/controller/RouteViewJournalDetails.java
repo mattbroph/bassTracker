@@ -76,9 +76,6 @@ public class RouteViewJournalDetails extends HttpServlet {
 
         } else {
 
-            // Set the url param
-            // TODO delete me if not needed url = "/viewJournalDetails.jsp?journalId=" + journalId;
-
             // Add journal to request
             request.setAttribute("journal", journal);
 

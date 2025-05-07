@@ -63,6 +63,10 @@ public class UserService {
             insertedUserId = userDao.insert(user);
             User newUser = (User) userDao.getById(insertedUserId);
 
+            logger.info( "User " + newUser.getFirstName() + " "
+                    +  newUser.getLastName() + ", with email address "
+                    + newUser.getUserEmail() + ", was added to the database.");
+
             /*
              * If the user was inserted successfully, create bass goals for
              * the current year up to the max year for the user.

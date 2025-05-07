@@ -7,6 +7,8 @@ import com.mattbroph.jsonentity.PostalCodes;
 import com.mattbroph.persistence.GeoNamesDao;
 import com.mattbroph.persistence.MeteoStatWeatherDao;
 import com.mattbroph.service.PageTitleService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -30,6 +32,7 @@ import java.util.List;
 )
 public class ActionGetWeather extends HttpServlet {
 
+    private final Logger logger = LogManager.getLogger(this.getClass());
 
     /** Get the weather based on date and zip code
      *
@@ -79,8 +82,37 @@ public class ActionGetWeather extends HttpServlet {
         // Build the geonames Location object
         Location location = geoNamesDao.getLocationInformation(zipCode, countryCode);
 
+        // If GeoNames location is bad, end processing and send back to weather.jsp with an error
+        if (location == null || location.getPostalCodes().size() == 0) {
+
+            session.setAttribute("errorMessages", "Something went wrong.<br> Either the zip code "
+            + zipCode + " is invalid or the service is down.<br> Please try again.");
+
+            logger.error("Something went wrong. Either the zip code "
+                    + zipCode + ", or the country code " + countryCode
+                    + " was not found");
+
+            url = "weather";
+            response.sendRedirect(url);
+            return;
+        }
+
         // Build the MeteoStat object containing the weather
         MeteoStat meteoStat = meteostatDao.getMeteoStatWeather(location, date, date);
+
+        // If meteoStat is bad, end processing and send back to weather.jsp with an error
+        if (meteoStat == null || meteoStat.getData().size() == 0) {
+
+            session.setAttribute("errorMessages", "Something went wrong while"
+                    + " retrieving the weather data - Please try again.");
+
+            logger.error("Something went wrong in the meteostat api call - received null"
+                    + " or empty MeteoStat object.");
+
+            url = "weather";
+            response.sendRedirect(url);
+            return;
+        }
 
         // Get the meteoStat hourly data
         List<DataItem> hourlyData = meteoStat.getData();

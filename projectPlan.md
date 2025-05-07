@@ -161,28 +161,23 @@
 
 - [X] Perform code reviews
 - [X] All test plans
-- [ ] Add logging
 - [X] Update journal time log
 - [X] Update session check sending to index.jsp to remove duplicate code - checkpoint 3
 - [X] Remove printlns or printStackTraces - checkpoint 3
 - [X] Generally overloaded constructors should call the no-arg constructor, allowing you to place common logic in a single place. This is true even if there is not currently logic in the no-arg constructor. - Checkpoint 3
 
 ### Week 15
-- [ ] Implement Feedback from Week 14 review
+- [X] Implement Feedback from Week 14 review
   - [X] Overide annotations in doGets doPosts
   - [X] Front end validation add / edit journal
-  - [ ] Error handling in weather API calls
-  - [ ] Add to JSPs check if user is logged in - not just on controllers
+  - [X] Error handling in weather API calls
+  - [X] Add logging
 - [ ] Final Presentation
 - [ ] Create video, add video link to readme.md
-- [ ] Finalize all documentation
-- [ ] Code quality check
-- [ ] Review all java docs (params / returns ect.)
-- [ ] Weekly journal entry
-
-### Week 16
-- [ ] Weekly journal entry
-- [ ] Final touches before code complete
+- [X] Finalize all documentation
+- [X] Code quality check
+- [X] Review all java docs (params / returns ect.)
+- [X] Weekly journal entry
 
 ### Spring Break
 - [X] Gracefully handle user not being able to add or edit lake with same name

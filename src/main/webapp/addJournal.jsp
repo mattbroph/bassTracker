@@ -3,10 +3,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- JavaScript -->
-<%--<script src="js/dashboard.js"></script>--%>
+<script src="js/dashboard.js"></script>
 <%-- CSS --%>
-<%--<link rel="stylesheet" href="css/main.css">--%>
-<%--<link rel="stylesheet" href="css/forms.css">--%>
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/forms.css">
 </head>
 
 <body>

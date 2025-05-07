@@ -17,6 +17,12 @@ public class UserSessionValidator {
     /**
      * Validates if a user is logged in.
      * If not, redirect them to another page.
+     *
+     * @param request the http request
+     * @param response the http response
+     * @param session the http session
+     * @throws IOException if an error occurs during processing
+     * @return the user that is logged into the session
      */
      public static User validateUserSession(HttpServletRequest request,
             HttpServletResponse response, HttpSession session) throws IOException {
