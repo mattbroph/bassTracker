@@ -175,9 +175,9 @@
 - [ ] Final Presentation
 - [ ] Create video, add video link to readme.md
 - [X] Finalize all documentation
-- [ ] Code quality check
+- [X] Code quality check
 - [X] Review all java docs (params / returns ect.)
-- [ ] Weekly journal entry
+- [X] Weekly journal entry
 
 ### Spring Break
 - [X] Gracefully handle user not being able to add or edit lake with same name

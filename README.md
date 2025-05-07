@@ -22,14 +22,15 @@ The Bass Tracker application will allow users to log their fishing trips, track 
 * Database
   * MySQL 8.x
 * ORM Framework
-  * Hibernate Version TBD
+  * Hibernate Version
 * Dependency Management
   * Maven
 * Web Services consumed using Java
   * Meteostat Weather API
+  * GeoNames Location API
 * CSS 
   * Custom CSS
-  * Minimal Bootstrap
+  * Minimal Bootstrap for nav bar collapsable menu
 * Data Validation
   * Hibernate Validator
 * Logging
@@ -41,7 +42,7 @@ The Bass Tracker application will allow users to log their fishing trips, track 
   * DataTables
   * AWS
 * Unit Testing
-  * JUnit tests to cover all testable logic
+  * JUnit 
 * IDE: IntelliJ IDEA
 
 ## Screenshots
