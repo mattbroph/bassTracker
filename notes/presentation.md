@@ -1,7 +1,16 @@
 # Presentation Notes
 
 1. Introduction (2 min)
-    - Read overview in readme
+
+    Hey this is Matt here, thanks for checking out my presentation. My application is called Bass Tracker,
+    and it allows users to log their fishing trips, track progress towards yearly goals and analyze data to
+    determine fishing strategies. The app features a dashboard with key statistic, detailed journal entries
+    and a reporting tool for in-depth analysis. 
+
+    This application was inspired last christmas when my Dad was showing me his fishing logs and how he
+    tracks data in an excel spreadsheet. I thought it could really benefit to be turned into an application
+    and so that's how this idea started.
+
     - Read technologies in readme
 
 #### 2 MINUTE MARK
@@ -36,7 +45,7 @@
     - Demo frontend validation of data
       - Add journal example
     - Demo 404 & 500
-    - Demo unauthorized - try access journal that ain't theirs
+    - Demo unauthorized - try access journal 15
 
 #### 13 MINUTE MARK
 

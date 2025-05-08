@@ -22,7 +22,7 @@ The Bass Tracker application will allow users to log their fishing trips, track 
 * Database
   * MySQL 8.x
 * ORM Framework
-  * Hibernate Version
+  * Hibernate
 * Dependency Management
   * Maven
 * Web Services consumed using Java
