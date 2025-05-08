@@ -2,7 +2,11 @@
 
 1. Introduction (2 min)
 
-    Hey this is Matt here, thanks for checking out my presentation. My application is called Bass Tracker,
+    Hey this is Matt here, thanks for checking out my presentation. I'll be splitting this into two videos,
+    the first being an overview and demo of the application itself. The second video we'll take a look into some
+    interesting aspects of the code.    
+    
+    My application is called Bass Tracker,
     and it allows users to log their fishing trips, track progress towards yearly goals and analyze data to
     determine fishing strategies. The app features a dashboard with key statistic, detailed journal entries
     and a reporting tool for in-depth analysis. 

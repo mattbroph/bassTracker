@@ -28,9 +28,11 @@ The Bass Tracker application will allow users to log their fishing trips, track 
 * Web Services consumed using Java
   * Meteostat Weather API
   * GeoNames Location API
+* Design
+  * FIGMA
 * CSS 
   * Custom CSS
-  * Minimal Bootstrap for nav bar collapsable menu
+  * Minimal Bootstrap - for nav bar collapsable menu
 * Data Validation
   * Hibernate Validator
 * Logging
