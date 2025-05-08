@@ -46,6 +46,15 @@
         <li>Log journals</li>
         <li>Explore</li>
     </ol>
+    <br>
+    <br>
+    <h2>Special Thanks To:</h2>
+        <ul>
+            <li><a href="https://datatables.net/" target="_blank">DataTables</a></li>
+            <li><a href="https://www.chartjs.org/docs/latest/" target="_blank">Chart.js</a></li>
+            <li><a href="https://dev.meteostat.net/api/#quick-start" target="_blank">MeteoStat Weather API</a></li>
+            <li><a href="https://www.geonames.org/" target="_blank">GeoNames Location API</a></li>
+        </ul>
 
     <%-- If an error occured while inserting the user into the db. Check
     UserService addUserSession() for details --%>
