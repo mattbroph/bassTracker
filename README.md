@@ -7,6 +7,10 @@ Many bass fisherman use journals to log details about their fishing trips, inclu
 The Bass Tracker application will allow users to log their fishing trips, track progress towards yearly goals and analyze data to determine fishing strategies. The app features a dashboard with key statistic, detailed journal entries and a reporting tool for in-depth analysis.
 
 
+### Presentation
+* Part 1 - App Demo - https://youtu.be/snmNbnFT4hU
+* Part 2 - Code Review - https://youtu.be/-v4OsyYydjE
+
 ### Design
 
 * [User Stories](designDocuments/userStories.md)
