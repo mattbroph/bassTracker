@@ -19,7 +19,8 @@ The Bass Tracker application will allow users to log their fishing trips, track 
 * [Screen Design](designDocuments/siteDesign)
 * [Database Design](designDocuments/databaseDesign)
 
-### [Project Plan](ProjectPlan.md)
+### Project Planning
+* [Planning Document](projectPlan.md)
 
 ### Project Technologies/Techniques
 
