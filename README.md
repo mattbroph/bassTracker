@@ -11,6 +11,8 @@ The Bass Tracker application will allow users to log their fishing trips, track 
 * Part 1 - App Demo - https://youtu.be/snmNbnFT4hU
 * Part 2 - Code Review - https://youtu.be/-v4OsyYydjE
 
+![Dashboard](https://private-user-images.githubusercontent.com/167562576/442224100-388348b5-1dea-4d1a-b517-b6d1c69ab4e2.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDY4MDg3MDEsIm5iZiI6MTc0NjgwODQwMSwicGF0aCI6Ii8xNjc1NjI1NzYvNDQyMjI0MTAwLTM4ODM0OGI1LTFkZWEtNGQxYS1iNTE3LWI2ZDFjNjlhYjRlMi5naWY_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwNTA5JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDUwOVQxNjMzMjFaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT03MzkzMTBmMjIxYmNjMGY3ZDcyNWRiZWU2M2I1YTRkN2EzMDY0ZjA4OTA5OWI2M2E5ZDM4NTBiMjk1NTY0MzIxJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.hnWywU-qFU8AenrCQt6vh90ETEKjUnMMlorQpxele1I)
+
 ### Design
 
 * [User Stories](designDocuments/userStories.md)
