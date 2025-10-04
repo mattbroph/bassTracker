@@ -172,8 +172,8 @@
   - [X] Front end validation add / edit journal
   - [X] Error handling in weather API calls
   - [X] Add logging
-- [ ] Final Presentation
-- [ ] Create video, add video link to readme.md
+- [X] Final Presentation
+- [X] Create video, add video link to readme.md
 - [X] Finalize all documentation
 - [X] Code quality check
 - [X] Review all java docs (params / returns ect.)
@@ -198,9 +198,81 @@
 - [X] Unauthorized access page
 - [X] Send Ashlie logo info
 
-### Future
-- [ ] Add journal validation - send em back to the form but keep it populated
-- [ ] Add a download paper journal feature on the journals page
-- [ ] Redesign view journal details page
-- [ ] Redesign view profile page
-- [ ] Add special character removal from data input / when rendering on page - XSS - maybe use Java HTML Sanitizer (by OWASP)
+## Release 2
+
+### CSS
+
+#### Page Design
+- [ ] View journal details
+- [ ] View profile
+- [ ] Reports
+- [ ] Homepage
+- [ ] Donate
+- [ ] Hover over edit or view buttons in tables
+
+#### Responsiveness
+- [ ] Dashboard
+- [ ] View journals
+- [ ] Edit journal
+- [ ] Add journal
+- [ ] Add lake
+- [ ] Edit lake
+- [ ] Remaining pages
+
+### FUNCTIONALITY
+
+#### Bass Goals
+- [ ] One bass goal on sign up
+- [ ] Add bass goals
+- [ ] Delete bass goal just not current year
+
+#### Water Temp
+- [ ] Add water temp to journal
+- [ ] Database
+- [ ] ETC.
+
+#### Paper Journal
+- [ ] Create PDF
+- [ ] Add download button
+
+#### Delete Lake
+- [ ] Option to delete lake and all related journals
+
+### VALIDATION
+
+#### Front End Validation
+- [ ] Add journal
+- [ ] Edit journal
+- [ ] Add lake
+- [ ] Edit lake
+- [ ] Edit profile
+- [ ] Edit bass count
+
+#### Hibernate Validation (send them back with errors, leave fields populated & highlight errors)?
+- [ ] Add journal
+- [ ] Edit journal
+- [ ] Add lake
+- [ ] Edit lake
+- [ ] Edit profile
+- [ ] Edit bass count
+
+#### Remove Special Characters (When rendering on page - XSS - maybe use Java HTML Sanitizer (by OWASP))
+- [ ] Add journal
+- [ ] Edit journal
+- [ ] Add lake
+- [ ] Edit lake
+- [ ] Edit profile
+- [ ] Edit bass count
+
+### HOSTING
+
+#### AWS
+- [ ] Calculate costs
+- [ ] Setup alerts
+- [ ] Buy domain
+- [ ] Create certificate
+
+### CODE
+- [ ] Unit tests for profile stats
+- [ ] Unit tests for dashboard calculator
+- [ ] Move JSPs to WEB-INF

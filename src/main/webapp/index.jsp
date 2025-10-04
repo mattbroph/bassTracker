@@ -12,7 +12,7 @@
 
 <main id="mainContent">
 
-    <h1>Welcome to bass tracker</h1>
+    <h1>Welcome to Bass Tracker</h1>
 
     <c:choose>
     <%-- User is not logged in --%>
